@@ -21,7 +21,7 @@ Custom Elements Example
    * Shadow DOM fancy-tab  
      http://embed.plnkr.co/rHUIW6/
 
-* `<fancy-tabs>`
+* Shadow DOM Practice `<fancy-tabs>`
   1. Getting Started http://embed.plnkr.co/YkGwCb/
   2. Slot http://embed.plnkr.co/Reh8eq/
   3. Named Slot http://embed.plnkr.co/wIi9HE/
