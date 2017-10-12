@@ -1,6 +1,14 @@
 # custom-elements
 Custom Elements With Material Design
 
+```
+  <!-- web components polyfills -->
+  <script src="//unpkg.com/@webcomponents/custom-elements"></script>
+  <script src="//https://unpkg.com/@webcomponents/webcomponentsjs"></script>
+  <script src="//unpkg.com/@webcomponents/shadydom"></script>
+  <link rel="stylesheet" href="//unpkg.com/@webcomponents/shadycss">
+```
+
 
 https://plnkr.co/edit/WJ57Ep?p=preview
 
