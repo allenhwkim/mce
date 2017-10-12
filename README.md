@@ -21,4 +21,13 @@ Custom Elements Example
    * Shadow DOM fancy-tab  
      http://embed.plnkr.co/rHUIW6/
 
+* `<fancy-tabs>`
+  1. Getting Started http://embed.plnkr.co/YkGwCb/
+  2. Slot http://embed.plnkr.co/Reh8eq/
+  3. Named Slot http://embed.plnkr.co/wIi9HE/
+  4. Scoped Style http://embed.plnkr.co/OhnJ0Q/
+  5. Scoped Style :host http://embed.plnkr.co/QOUNcE/
+
+  
+
 
