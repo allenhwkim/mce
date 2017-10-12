@@ -13,6 +13,12 @@ Custom Elements Example
   http://embed.plnkr.co/q6zdDp/
 * Element-Defined Content  
   http://embed.plnkr.co/pjeAhU/
-* Shadow DOM  
-  http://embed.plnkr.co/wABVOdU4cGnYdCR47DrH/
+* Shadow DOM
+   * Shadow DOM Basic  
+     http://embed.plnkr.co/wABVOdU4cGnYdCR47DrH/
+   * Shadow DOM with template  
+     http://embed.plnkr.co/ZaPDz5/
+   * Shadow DOM fancy-tab  
+     http://embed.plnkr.co/rHUIW6/
+
 
