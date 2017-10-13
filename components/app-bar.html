@@ -1,0 +1,77 @@
+<template for="AppBar">
+  <link rel="stylesheet" href="../themes/default.css">
+  <style>
+    :host {
+      display: block;
+      width: 100%;
+      min-width: 320px;
+      min-height: 56px;
+      background-color: var(--theme-primary, #fff);
+      color: var(--theme-text-primary, #212121);
+      box-shadow: var(--theme-shadow-4dp);
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 4;
+    }
+    :host(.theme-reversed) {
+      background-color: var(--theme-text-primary, #fff);
+      color: var(--theme-primary, #212121);
+    }
+    :host(.fixed) {
+      position: fixed;
+    }
+    #app-title {
+      line-height: 56px;
+      font-size: 20px;
+      font-weight: 500;
+      margin-left: 16px;
+    }
+    [md-icon] {
+      padding: 16px;
+    }
+    #icons ::slotted([md-icon]) {
+      padding: 16px;
+    }
+  </style>
+  <div class="float-left" id="menu">
+    <a md-icon>menu</a>
+  </div>
+  <span id="app-title">Title</span>
+  <div class="float-right" id="icons">
+    <slot name="action-icon"></slot>
+    <a md-icon>more_vert</a>
+  </div>
+  <br class="clear-both" />
+  <slot></slot>
+</template>
+
+<script>
+  class AppBar extends HTMLElement {
+    constructor() {
+      super();
+      let shadowRoot = this.attachShadow({mode: 'open'});
+      const template = document.currentScript.ownerDocument.querySelector('template[for=AppBar]');
+      shadowRoot.appendChild(template.content.cloneNode(true));
+      this.appTitleEl = shadowRoot.querySelector('#app-title');
+    }
+
+    set appTitle(title) {
+      this.appTitleEl.innerHTML = title;
+    }
+
+    static get observedAttributes() {
+      return ['app-title'];
+    }
+
+    connectedCallback() {}
+
+    disconnectedCallback() {}
+
+    attributeChangedCallback(attrName, oldVal, newVal) {
+      attrName === 'app-title' && (this.appTitle = newVal);
+    }
+  }
+  
+  customElements.define('an-app-bar', AppBar);
+</script>
