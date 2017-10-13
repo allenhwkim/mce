@@ -20,6 +20,11 @@
         left: 0;
         z-index: 4;
       }
+      ce-app-bar.position-relative {
+        position: relative;
+        top: inherit;
+        left: inherit;
+      }
       ce-app-bar .title {
         line-height: 56px;
         font-size: 20px;
@@ -28,15 +33,15 @@
       }
     </style>
     <style id="ce-main">
-      ce-main {
+      .main {
         padding: 20px 28px;
       }
-      ce-app-bar ~ ce-main {
+      ce-app-bar ~ .main {
         display: block;
         margin-top: 56px;
       }
     </style>
-    <ce-app-bar position="top">
+    <ce-app-bar>
       <div class="float-left">
         <a class="ce-icon">menu</a>
       </div>
