@@ -1,0 +1,101 @@
+<!--
+  z-index: 8
+  shadow: 2
+  padding: 8px 0px
+
+  diviver
+  
+  menu-item
+    * properties
+      * icon 
+      * text
+      * shortcut
+      * disabled
+    * respond to touch
+    * padding: 16px
+    * font-size: 16px
+    * height: 48px
+    * line-height: 48px
+    * hover
+
+
+  divider
+
+  ref. https://material.io/guidelines/components/menus.html#menus-specs
+  TODO: 
+    1. multi-level meu
+    2. dynamic menu(slot changed)
+
+-->
+<template for="Menu">
+  <link rel="stylesheet" href="../components/common.css">
+  <style>
+  .visible {
+    left: 0;
+    transform: translateX(0);
+    visibility: visible;
+    transition: var(--theme-animation-in);
+  }
+  .drawer:not(.visible) {
+    left: -241px;
+    transform: translateX(0);
+    visibility: hidden;
+    transition: var(--theme-animation-out);
+  }
+  </style>
+  <div id="blocker" class="blocker"></div>
+  <div id="drawer" class="drawer">
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  class NavDrawer extends HTMLElement {
+    constructor() {
+      super();
+      let shadowRoot = this.attachShadow({mode: 'open'});
+      const template = document.currentScript.ownerDocument.querySelector('template[for=NavDrawer]');
+      shadowRoot.appendChild(template.content.cloneNode(true));
+      this.blocker = shadowRoot.querySelector('#blocker');
+      this.drawer = shadowRoot.querySelector('#drawer');
+    }
+
+    static get observedAttributes() {
+      return ['visible']; 
+    }
+
+    get visible() {
+      return this.hasAttribute('visible');
+    }
+
+    set visible(visible) {
+      visible ? this.setAttribute('visible','') : this.removeAttribute('visible');
+    }
+
+    connectedCallback() {
+      this.shadowRoot.querySelector('.blocker').addEventListener('click', () => this.visible = false );
+      this.show(this.visible);
+    }
+
+    disconnectedCallback() {}
+
+    attributeChangedCallback(attr, oldVal, newVal) {
+      (attr === 'visible') && this.show(newVal !== null);
+    }
+
+    show(visible) {
+      if (visible) {
+        this.blocker.style.display = 'block';
+        this.drawer.classList.add("visible");
+        document.body.style.overflow = 'hidden';
+      } else {
+        this.blocker.style.display = 'none';
+        this.drawer.classList.remove("visible");
+        document.body.style.overflow = ''
+      }
+    }
+
+  }
+  
+  customElements.define('a-nav-drawer', NavDrawer);
+</script>

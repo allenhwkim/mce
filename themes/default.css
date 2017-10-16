@@ -8,11 +8,15 @@
   --theme-primary: #212121;
   --theme-text-primary: #fff;
 
+  /* animation */
+  --theme-animation-in: all .3s ease-in;
+  --theme-animation-out: all .2s ease-out;
+  --theme-animation-dropdown: all .45s cubic-bezier(0.23, 1, 0.32, 1);
+
   /* shadows */
-  --theme-shadow-4dp: 
-    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
-    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  --theme-shadow-1dp: rgba(0, 0, 0, 0.12) 0px 1px  6px, rgba(0, 0, 0, 0.12) 0px 1px  4px;
+  --theme-shadow-3dp: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
+  --theme-shadow-4dp: rgba(0, 0 ,0, 0.20)  0px 2px 4px, rgba(0, 0, 0, .14)  0px 4px  5px;
 }
 
 /****************************************************************************
@@ -57,14 +61,30 @@
 } 
 
 /****************************************************************************
+ * elements
+ ***************************************************************************/
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+an-app-bar + * {
+  margin-top: 56px;
+}
+p {
+  padding: 16px;
+}
+
+/****************************************************************************
  * classes
  ***************************************************************************/
 :root {
   font-family: var(--theme-font);
+  font-size: 20px;
 }
 
 .float-left { float: left; }
 .float-right { float: right; }
+.display-none { display: none; }
+.display-none:target { display: block; }
 .clear-both:after {
   visibility: hidden;
   display: block;

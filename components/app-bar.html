@@ -1,5 +1,5 @@
 <template for="AppBar">
-  <link rel="stylesheet" href="../themes/default.css">
+  <link rel="stylesheet" href="../components/common.css">
   <style>
     :host {
       display: block;
@@ -18,10 +18,11 @@
       background-color: var(--theme-text-primary, #fff);
       color: var(--theme-primary, #212121);
     }
-    :host(.fixed) {
+    :host([fixed]) {
       position: fixed;
     }
-    #app-title {
+    .title {
+      display: inline-block;
       line-height: 56px;
       font-size: 20px;
       font-weight: 500;
@@ -30,20 +31,30 @@
     [md-icon] {
       padding: 16px;
     }
-    #icons ::slotted([md-icon]) {
+    #container ::slotted([md-icon]) {
       padding: 16px;
     }
+    #container ::slotted(a) {
+      text-decoration: none;
+      color: inherit;
+    }
+    #container #icons :slotted(div) {
+      display: inline-block;
+    }
   </style>
-  <div class="float-left" id="menu">
-    <a md-icon>menu</a>
+  <div id="container">
+    <div class="float-left" id="menu">
+      <slot name="menu-icon"></slot>
+    </div>
+    <div class="title">
+      <slot name="title"></slot>
+    </div>
+    <div class="float-right" id="icons">
+      <slot name="action-icon"></slot>
+    </div>
+    <br class="clear-both" />
+    <slot></slot>
   </div>
-  <span id="app-title">Title</span>
-  <div class="float-right" id="icons">
-    <slot name="action-icon"></slot>
-    <a md-icon>more_vert</a>
-  </div>
-  <br class="clear-both" />
-  <slot></slot>
 </template>
 
 <script>
@@ -53,24 +64,11 @@
       let shadowRoot = this.attachShadow({mode: 'open'});
       const template = document.currentScript.ownerDocument.querySelector('template[for=AppBar]');
       shadowRoot.appendChild(template.content.cloneNode(true));
-      this.appTitleEl = shadowRoot.querySelector('#app-title');
-    }
-
-    set appTitle(title) {
-      this.appTitleEl.innerHTML = title;
-    }
-
-    static get observedAttributes() {
-      return ['app-title'];
     }
 
     connectedCallback() {}
-
     disconnectedCallback() {}
-
-    attributeChangedCallback(attrName, oldVal, newVal) {
-      attrName === 'app-title' && (this.appTitle = newVal);
-    }
+    attributeChangedCallback(a,o,n) {}
   }
   
   customElements.define('an-app-bar', AppBar);

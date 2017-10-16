@@ -1,0 +1,99 @@
+<template for="NavDrawer">
+  <link rel="stylesheet" href="../components/common.css">
+  <style>
+  #blocker {
+    background-color: #000;
+    height: 100%;
+    left: 0;
+    opacity: .5;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 13;
+  }
+  #drawer {
+    background-color: var(--theme-text-primary);
+    box-shadow: var(--theme-shadow-3dp);
+    color: var(--theme-primary);
+    display: block;
+    height: 100%; 
+    left: 0;
+    max-width: 320px; /* for desktop 400px */
+    overflow: auto;
+    padding: 16px;
+    position: fixed;
+    top: 0;
+    width: calc(100% - 56px);
+    z-index: 16;
+  }
+  #drawer.visible {
+    left: 0;
+    transform: translateX(0);
+    visibility: visible;
+    transition: var(--theme-animation-in);
+  }
+  #drawer:not(.visible) {
+    left: -241px;
+    transform: translateX(0);
+    visibility: hidden;
+    transition: var(--theme-animation-out);
+  }
+  </style>
+  <div id="container">
+    <div id="blocker"></div>
+    <div id="drawer">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+  class NavDrawer extends HTMLElement {
+    constructor() {
+      super();
+      let shadowRoot = this.attachShadow({mode: 'open'});
+      const template = document.currentScript.ownerDocument.querySelector('template[for=NavDrawer]');
+      shadowRoot.appendChild(template.content.cloneNode(true));
+      this.drawer = shadowRoot.querySelector('#drawer');
+      this.blocker = shadowRoot.querySelector('#blocker');
+      this.blocker.addEventListener('click', () => this.visible = false );
+    }
+
+    static get observedAttributes() {
+      return ['visible']; 
+    }
+
+    get visible() {
+      return this.hasAttribute('visible');
+    }
+
+    set visible(visible) {
+      visible ? this.setAttribute('visible','') : this.removeAttribute('visible');
+    }
+
+    connectedCallback() {
+      this.show(this.visible);
+    }
+
+    disconnectedCallback() {}
+
+    attributeChangedCallback(attr, oldVal, newVal) {
+      (attr === 'visible') && this.show(newVal !== null);
+    }
+
+    show(visible) {
+      if (visible) {
+        this.blocker.style.display = 'block';
+        this.drawer.classList.add("visible");
+        document.body.style.overflow = 'hidden';
+      } else {
+        this.blocker.style.display = 'none';
+        this.drawer.classList.remove("visible");
+        document.body.style.overflow = ''
+      }
+    }
+
+  }
+  
+  customElements.define('a-nav-drawer', NavDrawer);
+</script>

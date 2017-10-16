@@ -1,6 +1,18 @@
 # custom-elements
 Custom Elements With Material Design
 
+## Design Principle
+
+  1. Max Respect Standards
+    * custom element / shadow dom / template / html import
+    * Do not reinvent a wheel although with more codes, e,g. framework, scss, etc.
+
+  2. Minimal Javascript For Users
+    * Javascript is easy to brean and not forgivable.
+
+  3. Themable By Beginner 
+    * By changing only a theme variables, user can change look and feel
+
 ```
   <!-- web components polyfills -->
   <script src="//unpkg.com/@webcomponents/custom-elements"></script>

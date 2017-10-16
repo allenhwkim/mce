@@ -1,24 +1,83 @@
 <!doctype html>
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
     <link rel="stylesheet" href="../themes/default.css">
     <link rel="import" href="../components/app-bar.html">
+    <link rel="import" href="../components/nav-drawer.html">
+    <link rel="import" href="../components/menu.html">
   </head>
   <body>
-    <an-app-bar app-title="app-bar" class="theme-reversed">
+    <an-app-bar app-title="app-bar" fixed>
+      <span slot="title">Title</span>
+      <a slot="menu-icon" md-icon onclick="showDrawer()">menu</a>
       <a slot="action-icon" md-icon>favorite</a>
       <a slot="action-icon" md-icon>search</a>
+      <a slot="action-icon" md-icon onclick="toggleMenu()">more_vert</a>
+      <a-menu id="app-bar-menu" position="bottom-right">
+        <div>This is menu from app-bar</div>
+        <hr>
+        <div>This is menu from app-bar</div>
+      </a-menu>
     </an-app-bar>
+    <main>
+      <a-nav-drawer id="nav-drawer">
+        drawer
+      </a-nav-drawer>
+      <p>
+        This is `&lt;a-main>` after `&lt;an-app-bar>`.
 
-    <a href="//material.io/guidelines/layout/structure.html#structure-app-bar">
-      Material Design Original Spec.
-    </a>
+        <a href="//material.io/guidelines/layout/structure.html#structure-app-bar">
+          Material Design Original Spec.
+        </a>
+        <img width="100%" src="https://storage.googleapis.com/material-design/publish/material_v_12/assets/0Bzhp5Z4wHba3VG9SaVpNbkpHb2s/whatismaterial-3d-elevation2.png">
+        /** 
+         * references
+         * . https://material.io/guidelines/layout/structure.html#structure-side-nav 
+         * . https://material.io/guidelines/patterns/navigation-drawer.html# 
+         * . https://material.io/guidelines/motion/duration-easing.html#duration-easing-dynamic-durations/
+         * . https://drafts.csswg.org/css-transitions/#transition-shorthand-property
+         * . https://material.io/guidelines/material-design/elevation-shadows.html#
+         */
 
-    <pre>
-      TODO
-      1. mobile vs desktop
-      2. rename ce-app-bar -> an-app-bar
-      3. a-source-viewer button
-    </pre>
+      </p>
+
+      <pre>
+        TODO
+        1. mobile vs desktop
+        2. a-source-viewer component
+        3. a-ruler comonent
+        4. a-slider
+        5. a-drop-down-menu
+
+      </pre>
+
+      <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+      </p>
+      
+      <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+      </p>
+      
+      <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+      </p>
+      
+      <p>
+        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
+      </p>
+      
+    </main>
+    <script>
+      function showDrawer() {
+        document.querySelector('#nav-drawer').setAttribute('visible','');
+      }
+      function toggleMenu() {
+        let menuEl = document.querySelector('#app-bar-menu');
+        menuEl.getAttribute('visible') !== null ?
+           menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
+      }
+    </script>
   </body>
 </html>
