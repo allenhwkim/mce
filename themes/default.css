@@ -4,9 +4,19 @@
 :root {
   --theme-font: Roboto, sans-serif;
 
-  /* colors */
-  --theme-primary: #212121;
-  --theme-text-primary: #fff;
+  /* colors  https://material.io/guidelines/style/color.html#color-color-palette */
+  --theme-primary: #212121;   /* deprecated */
+  --theme-text-primary: #fff; /* deprecated */
+  --theme-color-50:  #FAFAFA;
+  --theme-color-100: #F5F5F5;
+  --theme-color-200: #EEEEEE;
+  --theme-color-300: #E0E0E0;
+  --theme-color-400: #BDBDBD;
+  --theme-color-500: #9E9E9E; /* primary color */
+  --theme-color-600: #757575;
+  --theme-color-700: #616161;
+  --theme-color-800: #424242;
+  --theme-color-900: #212121;
 
   /* animation */
   --theme-animation-in: all .3s ease-in;
@@ -110,6 +120,7 @@ p {
   direction: ltr;
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
+  user-select: none;
 }
 
 @keyframes ripple {
@@ -132,6 +143,6 @@ p {
   transform: scale(0);
 }
 
-[md-icon]:not(:active):after {
+[md-icon]:active:after {
   animation: ripple .4s ease-out;
 }

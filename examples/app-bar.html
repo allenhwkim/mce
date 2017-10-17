@@ -6,6 +6,7 @@
     <link rel="import" href="../components/app-bar.html">
     <link rel="import" href="../components/nav-drawer.html">
     <link rel="import" href="../components/menu.html">
+    <link rel="import" href="../components/menu-item.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -15,9 +16,11 @@
       <a slot="action-icon" md-icon>search</a>
       <a slot="action-icon" md-icon onclick="toggleMenu()">more_vert</a>
       <a-menu id="app-bar-menu" position="bottom-right">
-        <div>This is menu from app-bar</div>
+        <a-menuitem icon="favorite" shortcut="ctrl-d">menuitem text</a-menuitem>
         <hr>
-        <div>This is menu from app-bar</div>
+        <a-menuitem disabled>menuitem text</a-menuitem>
+        <a-menuitem shortcut="ctrl-d">menuitem text</a-menuitem>
+        <a-menuitem icon="search">menuitem text</a-menuitem>
       </a-menu>
     </an-app-bar>
     <main>

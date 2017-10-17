@@ -1,101 +1,100 @@
 <!--
-  z-index: 8
-  shadow: 2
-  padding: 8px 0px
+  ref. 
+    * https://material.io/guidelines/components/menus.html#menus-specs
+    * https://material.io/components/web/catalog/menus/
 
-  diviver
-  
-  menu-item
-    * properties
-      * icon 
-      * text
-      * shortcut
-      * disabled
-    * respond to touch
-    * padding: 16px
-    * font-size: 16px
-    * height: 48px
-    * line-height: 48px
-    * hover
-
-
-  divider
-
-  ref. https://material.io/guidelines/components/menus.html#menus-specs
-  TODO: 
-    1. multi-level meu
-    2. dynamic menu(slot changed)
-
+  Requirements
+    * must display icon, text, on the left and shortcut on the right
+    * must have hover effect
+    * must to have click effect
+    * when disabled
+      * must not have hover effect
+      * must not have click effect
 -->
-<template for="Menu">
+<template for="MenuItem">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-  .visible {
-    left: 0;
-    transform: translateX(0);
-    visibility: visible;
-    transition: var(--theme-animation-in);
+  :host-context(:not(a-menu)) :host {  /* only display inside menu */
+    display: none;
   }
-  .drawer:not(.visible) {
-    left: -241px;
-    transform: translateX(0);
-    visibility: hidden;
-    transition: var(--theme-animation-out);
+  :host {
+    height: 48px;
+    line-height: 48px;
+    padding: 8px 16px;
+    font-size: 16px;
+    display: block;
+  }
+  :host(:not([disabled]):hover) {
+    background-color: var(--theme-color-200);
+  }
+  :host(:not([disabled]):active:after) {
+    background-color: var(--theme-color-50);
+  }
+  #container {
+    position: relative;
+  }
+  #container[disabled] {
+    color: var(--theme-color-200);
+    pointer-events: none;
+  }
+  #container img {
+    height: 16px;
+  }
+  #container:not([disabled]):hover {
+    background-color: var(--theme-color-200);
+  }
+  #container ::slotted(a) {
+    text-decoration: none;
+  }
+  #container .md-icon {
+    font-size: 16px;
+  }
+  #container #shortcut {
+    display: inline-block;
+    position: absolute;
+    right; 0
   }
   </style>
-  <div id="blocker" class="blocker"></div>
-  <div id="drawer" class="drawer">
+  <div id="container">
+    <span id="icon"></span>
     <slot></slot>
+    <div id="shortcut"></div>
   </div>
 </template>
 
 <script>
-  class NavDrawer extends HTMLElement {
+  class MenuItem extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = document.currentScript.ownerDocument.querySelector('template[for=NavDrawer]');
+      const template = document.currentScript.ownerDocument.querySelector('template[for=MenuItem]');
       shadowRoot.appendChild(template.content.cloneNode(true));
-      this.blocker = shadowRoot.querySelector('#blocker');
-      this.drawer = shadowRoot.querySelector('#drawer');
     }
 
-    static get observedAttributes() {
-      return ['visible']; 
-    }
-
-    get visible() {
-      return this.hasAttribute('visible');
-    }
-
-    set visible(visible) {
-      visible ? this.setAttribute('visible','') : this.removeAttribute('visible');
-    }
+    static get observedAttributes() {}
 
     connectedCallback() {
-      this.shadowRoot.querySelector('.blocker').addEventListener('click', () => this.visible = false );
-      this.show(this.visible);
-    }
-
-    disconnectedCallback() {}
-
-    attributeChangedCallback(attr, oldVal, newVal) {
-      (attr === 'visible') && this.show(newVal !== null);
-    }
-
-    show(visible) {
-      if (visible) {
-        this.blocker.style.display = 'block';
-        this.drawer.classList.add("visible");
-        document.body.style.overflow = 'hidden';
-      } else {
-        this.blocker.style.display = 'none';
-        this.drawer.classList.remove("visible");
-        document.body.style.overflow = ''
+      this.icon = this.getAttribute('icon');
+      this.shortcut = this.getAttribute('shortcut');
+      if (this.icon) {
+        let isMDIcon = this.icon.match(/^[a-z_]+$/);
+        this.iconEl = this.shadowRoot.querySelector('#icon');
+        if (isMDIcon) {
+          this.iconEl.setAttribute('md-icon', '');
+          this.iconEl.innerHTML = this.icon;
+        } else {
+          this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
+        }
+      }
+      if (this.shortcut) {
+        this.shortcutEl = this.shadowRoot.querySelector('#shortcut');
+        this.shortcutEl.innerHTML = this.shortcut;
       }
     }
 
+    disconnectedCallback() {}
+    attributeChangedCallback(a,o,n) {}
   }
   
-  customElements.define('a-nav-drawer', NavDrawer);
+  customElements.define('a-menuitem', MenuItem);
 </script>
