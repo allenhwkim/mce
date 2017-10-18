@@ -1,6 +1,8 @@
 # custom-elements
 Custom Elements With Material Design
 
+http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera 
+
 ## Design Principle
 
   1. Max Respect Standards

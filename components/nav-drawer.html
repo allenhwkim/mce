@@ -48,11 +48,14 @@
 </template>
 
 <script>
+  // it will only reference the element while it's initially being processe
+  var thisScript = document.currentScript;
+
   class NavDrawer extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = document.currentScript.ownerDocument.querySelector('template[for=NavDrawer]');
+      const template = thisScript.ownerDocument.querySelector('template[for=NavDrawer]');
       shadowRoot.appendChild(template.content.cloneNode(true));
       this.drawer = shadowRoot.querySelector('#drawer');
       this.blocker = shadowRoot.querySelector('#blocker');

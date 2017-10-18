@@ -1,4 +1,7 @@
-<template for="AppBar">
+<!--
+  https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
+-->
+<template for="BottomNavBar">
   <link rel="stylesheet" href="../components/common.css">
   <style>
     :host {
@@ -58,13 +61,11 @@
 </template>
 
 <script>
-  var thisScript = document.currentScript;
-
-  class AppBar extends HTMLElement {
+  class BottomNavBar extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=AppBar]');
+      const template = document.currentScript.ownerDocument.querySelector('template[for=BottomNavBar]');
       shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
@@ -73,5 +74,5 @@
     attributeChangedCallback(a,o,n) {}
   }
   
-  customElements.define('an-app-bar', AppBar);
+  customElements.define('an-bottom-nav-bar', BottomNavBar);
 </script>

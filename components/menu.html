@@ -82,11 +82,13 @@
 </template>
 
 <script>
+  var thisScript = document.currentScript;
+
   class Menu extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = document.currentScript.ownerDocument.querySelector('template[for=Menu]');
+      const template = thisScript.ownerDocument.querySelector('template[for=Menu]');
       shadowRoot.appendChild(template.content.cloneNode(true));
       this.containerEl = shadowRoot.querySelector('#container');
       this.documentClickHandler = this.closeWhenDocumentClicked.bind(this);

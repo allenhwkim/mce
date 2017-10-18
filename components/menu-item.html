@@ -35,6 +35,7 @@
   }
   #container {
     line-height: 32px;
+    width: 300px;
   }
   #container img {
     height: 16px;
@@ -53,7 +54,6 @@
     padding-right: 8px;
   }
   #container #shortcut {
-    padding-left: 24px;
     float: right;
   }
   </style>
@@ -65,11 +65,13 @@
 </template>
 
 <script>
+  var thisScript = document.currentScript;
+
   class MenuItem extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = document.currentScript.ownerDocument.querySelector('template[for=MenuItem]');
+      const template = thisScript.ownerDocument.querySelector('template[for=MenuItem]');
       shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
