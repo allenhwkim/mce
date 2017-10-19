@@ -14,7 +14,7 @@
   }
   #container {
     height: 100%;
-    font-size: 12px;
+    font-size: 0px;
     background-color: var(--theme-color-50);
     color: var(--theme-color-900);
     transition: var(--theme-animation-dropdown);
@@ -23,6 +23,7 @@
     box-shadow: var(--theme-shadow-1dp);
     max-width: 800px;
     margin: 0 auto;
+    text-align: center;
   }
   #container ::slotted(*) {
     /* placeholder */
@@ -42,11 +43,18 @@
       let shadowRoot = this.attachShadow({mode: 'open'});
       const template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
       shadowRoot.appendChild(template.content.cloneNode(true));
+      this.container = shadowRoot.querySelector('#container');
+      this.container.addEventListener('click', this.setActiveItem.bind(this));
     }
 
     connectedCallback() {}
     disconnectedCallback() {}
     attributeChangedCallback(a,o,n) {}
+
+    setActiveItem(event) {
+      Array.from(this.querySelectorAll('a-nav-item')).forEach(el => el.removeAttribute('active'));
+      event.target.setAttribute('active','');
+    }
   }
   
   customElements.define('a-bottom-nav-bar', BottomNavBar);

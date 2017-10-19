@@ -1,57 +1,70 @@
 <!--
   ref. 
-    * https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
+    * https://material.io/guidelines/components/menus.html#menus-specs
+    * https://material.io/components/web/catalog/menus/
 
   Requirements
     * must display icon, text, on the left and shortcut on the right
     * must have hover effect
     * must to have click effect
-    * must show the currently active item
     * when disabled
       * must not have hover effect
       * must not have click effect
 -->
-<template for="MenuItem">
+<template for="NavItem">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-  :host {
-    height: 48px;
-    padding: 8px 16px;
-    font-size: 16px;
-    display: block;
-  }
   :host([disabled]) {
     color: var(--theme-color-400);
     pointer-events: none;
   }
-  :host(:not([disabled]):hover) {
-    background-color: var(--theme-color-200);
-  }
-  :host(:not([disabled]):active) {
-    background-color: var(--theme-color-50);
-  }
-  #container {
+
+
+  /* menu items */
+  :host-context(a-menu) #container {
     line-height: 32px;
-    width: 300px;
+    padding: 8px 16px;
+    font-size: 16px;
+    display: block;
   }
-  #container img {
+  :host-context(a-menu) #container img {
     height: 16px;
   }
-  #container:not([disabled]):hover {
+  :host-context(a-menu) #container:hover {
     background-color: var(--theme-color-200);
   }
-  #container:not([disabled]):active {
+  :host-context(a-menu) #container:active {
     background-color: var(--theme-color-50);
   }
-  #container ::slotted(a) {
-    text-decoration: none;
-  }
-  #container [md-icon] {
+  :host-context(a-menu) #container [md-icon] {
     vertical-align: middle;
     padding-right: 8px;
   }
-  #container #shortcut {
+  :host-context(a-menu) #container #shortcut {
+    padding-left: 16px;
     float: right;
+  }
+
+  /* bottom nav bar items */
+  :host-context(a-bottom-nav-bar) #container {
+    display: inline-block;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  :host-context(a-bottom-nav-bar) #container.active {
+    color: red;
+    min-width: 96px;
+    max-width: 168px;
+  }
+  :host-context(a-bottom-nav-bar) #container:not(.active) {
+    min-width: 56px;
+    max-width: 96px;
+  }
+  :host-context(a-bottom-nav-bar) #container [md-icon] {
+    display: block;
+  }
+  :host-context(a-bottom-nav-bar) #container img {
   }
   </style>
   <div id="container">
@@ -64,15 +77,17 @@
 <script>
   var thisScript = document.currentScript;
 
-  class MenuItem extends HTMLElement {
+  class NavItem extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=MenuItem]');
+      const template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
       shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    static get observedAttributes() {}
+    static get observedAttributes() {
+      return ['active']; 
+    }
 
     connectedCallback() {
       this.icon = this.getAttribute('icon');
@@ -94,8 +109,15 @@
     }
 
     disconnectedCallback() {}
-    attributeChangedCallback(a,o,n) {}
+    attributeChangedCallback(attr, oldVal, newVal) {
+      if (attr === 'active' && newVal !== null) {
+        this.shadowRoot.querySelector('#container').classList.add('active');
+      } else {
+        this.shadowRoot.querySelector('#container').classList.remove('active');
+      }
+    }
+
   }
   
-  customElements.define('a-menuitem', MenuItem);
+  customElements.define('a-nav-item', NavItem);
 </script>

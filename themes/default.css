@@ -83,6 +83,9 @@ body {
 *, *:before, *:after {
   box-sizing: border-box;
 }
+a {
+  text-decoration: none;
+}
 an-app-bar + * {
   margin: 56px 0;
 }

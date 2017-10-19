@@ -15,13 +15,10 @@ http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera
   3. Themable By Beginner 
     * By changing only a theme variables, user can change look and feel
 
-```
-  <!-- web components polyfills -->
-  <script src="//unpkg.com/@webcomponents/custom-elements"></script>
-  <script src="//https://unpkg.com/@webcomponents/webcomponentsjs"></script>
-  <script src="//unpkg.com/@webcomponents/shadydom"></script>
-  <link rel="stylesheet" href="//unpkg.com/@webcomponents/shadycss">
-```
+## About Web Component
+  - **Custom Elements v1**: allows authors to define their own custom tags ([spec](https://w3c.github.io/webcomponents/spec/custom/), [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/customelements)).
+  - **HTML Imports**: a way to include and reuse HTML documents via other HTML documents ([spec](https://w3c.github.io/webcomponents/spec/imports/), [tutorial](https://www.html5rocks.com/en/tutorials/webcomponents/imports/)).
+  - **Shadow DOM v1**: provides encapsulation by hiding DOM subtrees under shadow roots ([spec](https://w3c.github.io/webcomponents/spec/shadow/), [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom)).
 
 
 https://plnkr.co/edit/WJ57Ep?p=preview

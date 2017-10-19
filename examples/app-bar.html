@@ -6,7 +6,7 @@
     <link rel="import" href="../components/app-bar.html">
     <link rel="import" href="../components/nav-drawer.html">
     <link rel="import" href="../components/menu.html">
-    <link rel="import" href="../components/menu-item.html">
+    <link rel="import" href="../components/nav-item.html">
     <link rel="import" href="../components/bottom-nav-bar.html">
   </head>
   <body>
@@ -17,11 +17,11 @@
       <a slot="action-icon" md-icon>search</a>
       <a slot="action-icon" md-icon onclick="toggleMenu()">more_vert</a>
       <a-menu id="app-bar-menu" position="bottom-right">
-        <a-menuitem icon="favorite" shortcut="ctrl-d">menuitem text</a-menuitem>
+        <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
         <hr>
-        <a-menuitem disabled>menuitem text</a-menuitem>
-        <a-menuitem shortcut="ctrl-d">menuitem text</a-menuitem>
-        <a-menuitem icon="search">menuitem text</a-menuitem>
+        <a-nav-item disabled>nav-item text</a-nav-item>
+        <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
+        <a-nav-item icon="search">nav-item text</a-nav-item>
       </a-menu>
     </an-app-bar>
     <main>
@@ -73,7 +73,12 @@
       </p>
       
     </main>
-    <a-bottom-nav-bar></a-bottom-nav-bar>
+    <a-bottom-nav-bar>
+      <a-nav-item icon="favorite" shortcut="ctrl-d">Favourite</a-nav-item>
+      <a-nav-item icon="search" disabled>Search</a-nav-item>
+      <a-nav-item icon="alarm">Alarm</a-nav-item>
+      <a-nav-item icon="music_note">Music</a-nav-item>
+    </a-bottom-nav-bar>
     <script>
       function showDrawer() {
         document.querySelector('#nav-drawer').setAttribute('visible','');
