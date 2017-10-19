@@ -4,68 +4,43 @@
 <template for="BottomNavBar">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-    :host {
-      display: block;
-      width: 100%;
-      min-width: 320px;
-      min-height: 56px;
-      background-color: var(--theme-primary, #fff);
-      color: var(--theme-text-primary, #212121);
-      box-shadow: var(--theme-shadow-4dp);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 4;
-    }
-    :host(.theme-reversed) {
-      background-color: var(--theme-text-primary, #fff);
-      color: var(--theme-primary, #212121);
-    }
-    :host([fixed]) {
-      position: fixed;
-    }
-    .title {
-      display: inline-block;
-      line-height: 56px;
-      font-size: 20px;
-      font-weight: 500;
-      margin-left: 16px;
-    }
-    [md-icon] {
-      padding: 16px;
-    }
-    #container ::slotted([md-icon]) {
-      padding: 16px;
-    }
-    #container ::slotted(a) {
-      text-decoration: none;
-      color: inherit;
-    }
-    #container #icons :slotted(div) {
-      display: inline-block;
-    }
+  :host {
+    z-index: 8;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 56px;
+    display: block;
+  }
+  #container {
+    height: 100%;
+    font-size: 12px;
+    background-color: var(--theme-color-50);
+    color: var(--theme-color-900);
+    transition: var(--theme-animation-dropdown);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    box-shadow: var(--theme-shadow-1dp);
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  #container ::slotted(*) {
+    /* placeholder */
+  }
   </style>
   <div id="container">
-    <div class="float-left" id="menu">
-      <slot name="menu-icon"></slot>
-    </div>
-    <div class="title">
-      <slot name="title"></slot>
-    </div>
-    <div class="float-right" id="icons">
-      <slot name="action-icon"></slot>
-    </div>
-    <br class="clear-both" />
     <slot></slot>
   </div>
 </template>
 
 <script>
+  var thisScript = document.currentScript;
+
   class BottomNavBar extends HTMLElement {
     constructor() {
       super();
       let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = document.currentScript.ownerDocument.querySelector('template[for=BottomNavBar]');
+      const template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
       shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
@@ -74,5 +49,5 @@
     attributeChangedCallback(a,o,n) {}
   }
   
-  customElements.define('an-bottom-nav-bar', BottomNavBar);
+  customElements.define('a-bottom-nav-bar', BottomNavBar);
 </script>
