@@ -12,6 +12,7 @@ Custom Elements With Material Design
   2. Themable-CSS with variables
     * By changing theme variables, we can have different look-and-feel
 
+[DEMO](https://rawgit.com/allenhwkim/custom-elements/master/examples/app-bar.html)
 <hr/>
 The below is notes for development
 <hr/>
