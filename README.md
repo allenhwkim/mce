@@ -6,13 +6,11 @@ http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera
 ## Design Principle
 
   1. Max Respect Standards
-    * custom element / shadow dom / template / html import
-    * Do not reinvent a wheel although with more codes, e,g. framework, scss, etc.
+    * Use custom element / shadow dom / template / html import
+    * No Framework
+    * No Workaround (including Polyfills)
 
-  2. Minimal Javascript For Users
-    * Javascript is easy to brean and not forgivable.
-
-  3. Themable By Beginner 
+  2. Themable
     * By changing only a theme variables, user can change look and feel
 
 ## About Web Component
