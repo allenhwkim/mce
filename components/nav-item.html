@@ -49,17 +49,19 @@
   :host-context(a-bottom-nav-bar) #container {
     display: inline-block;
     font-size: 16px;
-    border: 1px solid #ccc;
     text-align: center;
   }
   :host-context(a-bottom-nav-bar) #container.active {
-    color: red;
     min-width: 96px;
     max-width: 168px;
+    padding: 6px 12px 10px 12px;
+    font-size: 14px;
   }
   :host-context(a-bottom-nav-bar) #container:not(.active) {
-    min-width: 56px;
+    min-width: 80px;
     max-width: 96px;
+    padding: 8px 12px;
+    font-size: 12px;
   }
   :host-context(a-bottom-nav-bar) #container [md-icon] {
     display: block;
