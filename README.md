@@ -1,25 +1,38 @@
 # custom-elements
 Custom Elements With Material Design
 
-http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera 
-
 ## Design Principle
 
-  1. Max Respect Standards
-    * custom element / shadow dom / template / html import
-    * Do not reinvent a wheel although with more codes, e,g. framework, scss, etc.
+  1. Standards-Only
+  
+     * Only HTML4/HTML5/ES5/ES6/ES7CSS2/CSS3
+     * No Framework, Typescript
+     * No Workaround (including Polyfills)
 
-  2. Minimal Javascript For Users
-    * Javascript is easy to brean and not forgivable.
+  2. Themable-CSS with variables
+    * By changing theme variables, we can have different look-and-feel
 
-  3. Themable By Beginner 
-    * By changing only a theme variables, user can change look and feel
+<hr/>
+The below is notes for development
+<hr/>
 
 ## About Web Component
-  - **Custom Elements v1**: allows authors to define their own custom tags ([spec](https://w3c.github.io/webcomponents/spec/custom/), [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/customelements)).
-  - **HTML Imports**: a way to include and reuse HTML documents via other HTML documents ([spec](https://w3c.github.io/webcomponents/spec/imports/), [tutorial](https://www.html5rocks.com/en/tutorials/webcomponents/imports/)).
-  - **Shadow DOM v1**: provides encapsulation by hiding DOM subtrees under shadow roots ([spec](https://w3c.github.io/webcomponents/spec/shadow/), [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom)).
 
+   - **Custom Elements v1**: allows authors to define their own custom tags 
+     - [spec](https://w3c.github.io/webcomponents/spec/custom/)
+     - [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/customelements))
+     - [caniuse](http://caniuse.com/#feat=custom-elementsv1)
+
+   - **HTML Imports**: a way to include and reuse HTML documents via other HTML documents 
+     - [spec](https://w3c.github.io/webcomponents/spec/imports/)
+     - [tutorial](https://www.html5rocks.com/en/tutorials/webcomponents/imports/)
+     - [caniuse](http://caniuse.com/#feat=imports)
+     
+   - **Shadow DOM v1**: provides encapsulation by hiding DOM subtrees under shadow roots 
+     - [spec](https://w3c.github.io/webcomponents/spec/shadow/)
+     - [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom)
+     - [caniuse](http://caniuse.com/#feat=shadowdomv1)
+   
 
 https://plnkr.co/edit/WJ57Ep?p=preview
 
