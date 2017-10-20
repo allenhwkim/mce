@@ -35,17 +35,12 @@
     position: absolute;
     display: block;
     font-size: 16px;
-    min-width: 56px;
   }
   :host(:not([visible])) {
     visibility: hidden;
-    /* buggy, transition: var(--theme-animation-dropdown);*/
-    height: 0px;
   }
   :host([visible]) {
     visibility: visible;
-    /* buggy, transition: var(--theme-animation-dropdown);*/
-    max-height: 2000px;
   }
   :host([position=bottom-right]) {
     right: 16px;
@@ -71,6 +66,7 @@
   #container ::slotted(hr), 
   #container .divider {
     display: block;
+    margin: 4px 0px;
     height: 1px;
     border: 1px solid #ccc;
     border-width: 0 0 1px 0;

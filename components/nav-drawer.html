@@ -1,6 +1,11 @@
 <template for="NavDrawer">
   <link rel="stylesheet" href="../components/common.css">
   <style>
+  /**
+    For nav drawer
+   
+    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+  */
   #blocker {
     background-color: #000;
     height: 100%;
@@ -18,12 +23,11 @@
     display: block;
     height: 100%; 
     left: 0;
-    max-width: 320px; /* for desktop 400px */
+    max-width: 320px;
     overflow: auto;
-    padding: 16px;
     position: fixed;
     top: 0;
-    width: calc(100% - 56px);
+    width: calc(100vw - var(--theme-height-app-bar));
     z-index: 16;
   }
   #drawer.visible {
@@ -37,6 +41,15 @@
     transform: translateX(0);
     visibility: hidden;
     transition: var(--theme-animation-out);
+  }
+
+  #drawer ::slotted(hr), 
+  #drawer .divider {
+    display: block;
+    margin: 4px 0px;
+    height: 1px;
+    border: 1px solid #ccc;
+    border-width: 0 0 1px 0;
   }
   </style>
   <div id="container">

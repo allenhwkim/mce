@@ -18,6 +18,21 @@
   --theme-color-800: #424242;
   --theme-color-900: #212121;
 
+  --theme-text-color-0: #FFFFFF;
+  --theme-text-color-100: #F5F5F5;
+  --theme-text-color-200: #EEEEEE;
+  --theme-text-color-300: #E0E0E0;
+  --theme-text-color-400: #BDBDBD;
+  --theme-text-color-500: rgba(0,0,0,.54); /* #999999 */
+  --theme-text-color-600: #757575;
+  --theme-text-color-700: #616161;
+  --theme-text-color-800: #424242;
+  --theme-text-color-900: rgba(0,0,0,.87); /* #333333 */
+
+  /* size */
+  --theme-height-app-bar: 56px;
+  --theme-height-bottom-nav-bar: 56px;
+
   /* animation */
   --theme-animation-in: all .3s ease-in;
   --theme-animation-out: all .2s ease-out;

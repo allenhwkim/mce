@@ -1,8 +1,8 @@
 DRAFT  : App Bar 4
-DRAFT  : Menu 8
-DRAFT  : Nav drawer 16
-DRAFT  : MenuItem
-TODO   : Bottom navigation bar 8
+DRAFT  : Menu + nav-item 8
+DRAFT  : Nav drawer + nav-item 16
+DRAFT  : NavItem
+DRAFT  : Bottom navigation bar + nav-item 8
 TODO   : Card (resting elevation) * 2
 TODO   : Card (when picked up) 8
 TODO   : Dialog 24

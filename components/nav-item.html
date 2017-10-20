@@ -1,26 +1,32 @@
 <!--
-  ref. 
-    * https://material.io/guidelines/components/menus.html#menus-specs
-    * https://material.io/components/web/catalog/menus/
-
   Requirements
-    * must display icon, text, on the left and shortcut on the right
-    * must have hover effect
-    * must to have click effect
-    * when disabled
-      * must not have hover effect
-      * must not have click effect
+
 -->
 <template for="NavItem">
   <link rel="stylesheet" href="../components/common.css">
   <style>
+  :host {
+    display: block;
+    color: var(--theme-text-color-900, #333333); 
+  }
   :host([disabled]) {
     color: var(--theme-color-400);
     pointer-events: none;
   }
 
+  /**
+    For menu items  
+    
+    https://material.io/guidelines/components/menus.html#menus-specs
+    https://material.io/components/web/catalog/menus/
 
-  /* menu items */
+    . must display icon, text, on the left and shortcut on the right
+    . must have hover effect
+    . must to have click effect
+    . when disabled
+      . must not have hover effect
+      . must not have click effect
+   */
   :host-context(a-menu) #container {
     line-height: 32px;
     padding: 8px 16px;
@@ -45,7 +51,11 @@
     float: right;
   }
 
-  /* bottom nav bar items */
+  /**
+     For bottom nav bar
+     
+     https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
+   */
   :host-context(a-bottom-nav-bar) #container {
     display: inline-block;
     font-size: 16px;
@@ -68,6 +78,32 @@
   }
   :host-context(a-bottom-nav-bar) #container img {
   }
+
+  /**
+    For nav drawer
+   
+    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+   */
+  :host-context(a-nav-drawer) #container {
+    line-height: 24px;
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  :host-context(a-nav-drawer) #container:hover {
+    background-color: var(--theme-color-200);
+  }
+  :host-context(a-nav-drawer) #container:active {
+    background-color: var(--theme-color-50);
+  }
+  :host-context(a-nav-drawer) #container .subheader {
+    color: var(--theme-text-color-500);
+  }
+  :host-context(a-nav-drawer) #container [md-icon] {
+    padding-right: 32px;
+    color: var(--theme-text-color-500);
+    vertical-align: middle;
+  }
+
   </style>
   <div id="container">
     <span id="icon"></span>

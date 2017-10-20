@@ -5,27 +5,27 @@
   <link rel="stylesheet" href="../components/common.css">
   <style>
   :host {
-    z-index: 8;
-    position: fixed;
     bottom: 0;
-    width: 100%;
-    height: 56px;
     display: block;
+    height: var(--theme-height-bottom-nav-bar);
+    position: fixed;
+    width: 100%;
+    z-index: 8;
   }
   #container {
-    height: 100%;
-    font-size: 0px;
+    /*max-width: 800px;*/
     background-color: var(--theme-color-50);
-    color: var(--theme-color-900);
-    transition: var(--theme-animation-dropdown);
-    border: 1px solid #ccc;
     border-radius: 2px;
+    border: 1px solid #ccc;
     box-shadow: var(--theme-shadow-1dp);
-    max-width: 800px;
+    color: var(--theme-color-900);
+    display: flex;
+    font-size: 0px;
+    height: 100%;
+    justify-content: space-between;
     margin: 0 auto;
     text-align: center;
-    display: flex;
-    justify-content: space-between;
+    transition: var(--theme-animation-dropdown);
   }
   #container ::slotted(*) {
     flex: 1;

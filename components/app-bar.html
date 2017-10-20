@@ -2,28 +2,27 @@
   <link rel="stylesheet" href="../components/common.css">
   <style>
     :host {
-      display: block;
-      width: 100%;
-      min-width: 320px;
-      min-height: 56px;
-      background-color: var(--theme-primary, #fff);
-      color: var(--theme-text-primary, #212121);
+      background-color: var(--theme-color-50, #ffffff);
       box-shadow: var(--theme-shadow-4dp);
+      color: var(--theme-text-color-900, #212121);
+      display: block;
+      left: 0;
+      min-height: var(--theme-height-app-bar);
       position: absolute;
       top: 0;
-      left: 0;
+      width: 100%;
       z-index: 4;
     }
     :host(.theme-reversed) {
-      background-color: var(--theme-text-primary, #fff);
-      color: var(--theme-primary, #212121);
+      background-color: var(--theme-text-color-900, #212121);
+      color: var(--theme-color-50, #ffffff);
     }
     :host([fixed]) {
       position: fixed;
     }
     .title {
       display: inline-block;
-      line-height: 56px;
+      line-height: var(--theme-height-app-bar);
       font-size: 20px;
       font-weight: 500;
       margin-left: 16px;

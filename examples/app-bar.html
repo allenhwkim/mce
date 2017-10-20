@@ -19,14 +19,18 @@
       <a-menu id="app-bar-menu" position="bottom-right">
         <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
         <hr>
-        <a-nav-item disabled>nav-item text</a-nav-item>
+        <a-nav-item disabled>Disabled</a-nav-item>
         <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
         <a-nav-item icon="search">nav-item text</a-nav-item>
       </a-menu>
     </an-app-bar>
     <main>
       <a-nav-drawer id="nav-drawer">
-        drawer
+        <a-nav-item icon="favorite">Favourite</a-nav-item>
+        <a-nav-item icon="search" disabled>Disabled</a-nav-item>
+        <a-nav-item>Alarm</a-nav-item>
+        <hr/>
+        <a-nav-item icon="music_note">Music</a-nav-item>
       </a-nav-drawer>
       <p>
         This is `&lt;a-main>` after `&lt;an-app-bar>`.
@@ -75,7 +79,7 @@
     </main>
     <a-bottom-nav-bar>
       <a-nav-item icon="favorite">Favourite</a-nav-item>
-      <a-nav-item icon="search" disabled>Search</a-nav-item>
+      <a-nav-item icon="search" disabled>Disabled</a-nav-item>
       <a-nav-item icon="alarm">Alarm</a-nav-item>
       <a-nav-item icon="music_note">Music</a-nav-item>
     </a-bottom-nav-bar>
