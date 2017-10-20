@@ -1,8 +1,6 @@
 # custom-elements
 Custom Elements With Material Design
 
-http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera 
-
 ## Design Principle
 
   1. Standards-Only
@@ -11,8 +9,12 @@ http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera
      * No Framework, Typescript
      * No Workaround (including Polyfills)
 
-  2. Themable-CSS
-    * By changing only a theme variables, user can change look and feel
+  2. Themable-CSS with variables
+    * By changing theme variables, we can have different look-and-feel
+
+<hr/>
+The below is notes for development
+<hr/>
 
 ## About Web Component
 
@@ -20,10 +22,9 @@ http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera
    - **HTML Imports**: a way to include and reuse HTML documents via other HTML documents ([spec](https://w3c.github.io/webcomponents/spec/imports/), [tutorial](https://www.html5rocks.com/en/tutorials/webcomponents/imports/)).
    - **Shadow DOM v1**: provides encapsulation by hiding DOM subtrees under shadow roots ([spec](https://w3c.github.io/webcomponents/spec/shadow/), [tutorial](https://developers.google.com/web/fundamentals/getting-started/primers/shadowdom)).
 
+http://caniuse.com/#feat=shadowdomv1 Good w/ Chrome/Opera 
 
-<hr/>
-The below is notes for development
-<hr/>
+
 https://plnkr.co/edit/WJ57Ep?p=preview
 
 Custom Elements Example
