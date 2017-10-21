@@ -4,36 +4,26 @@
 <template for="BottomNavBar">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-  :host {
-    bottom: 0;
-    display: block;
-    height: var(--theme-height-bottom-nav-bar);
-    position: fixed;
-    width: 100%;
-    z-index: 8;
-  }
-  #container {
-    /*max-width: 800px;*/
+  a-bottom-nav-bar {
     background-color: var(--theme-color-50);
     border-radius: 2px;
     border: 1px solid #ccc;
+    bottom: 0;
     box-shadow: var(--theme-shadow-1dp);
     color: var(--theme-color-900);
     display: flex;
     font-size: 0px;
-    height: 100%;
+    height: var(--theme-height-bottom-nav-bar);
     justify-content: space-between;
     margin: 0 auto;
-    text-align: center;
-    transition: var(--theme-animation-dropdown);
+    position: fixed;
+    width: 100%;
+    z-index: 8;
   }
-  #container ::slotted(*) {
+  a-bottom-nav-bar > * {
     flex: 1;
   }
   </style>
-  <div id="container">
-    <slot></slot>
-  </div>
 </template>
 
 <script>
@@ -42,11 +32,11 @@
   class BottomNavBar extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
-      shadowRoot.appendChild(template.content.cloneNode(true));
-      this.container = shadowRoot.querySelector('#container');
-      this.container.addEventListener('click', this.setActiveItem.bind(this));
+      let template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
+      let style = template.content.querySelector('style');
+      style.setAttribute('id', 'a-bottom-nav-bar-style');
+      (!document.querySelector('#a-bottom-nav-bar-style')) && this.insertBefore(style, this.firstChild);
+      this.addEventListener('click', this.setActiveItem.bind(this));
     }
 
     connectedCallback() {}

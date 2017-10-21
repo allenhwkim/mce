@@ -1,7 +1,8 @@
+<!-- No ShadowDOM for simplicity -->
+
 <template for="AppBar">
-  <link rel="stylesheet" href="../components/common.css">
-  <style id="an-app-bar-style">
-    :host {
+  <style>
+    an-app-bar {
       background-color: var(--theme-color-50, #ffffff);
       box-shadow: var(--theme-shadow-4dp);
       color: var(--theme-text-color-900, #212121);
@@ -13,47 +14,27 @@
       width: 100%;
       z-index: 4;
     }
-    :host(.theme-reversed) {
+    an-app-bar.theme-reversed {
       background-color: var(--theme-text-color-900, #212121);
       color: var(--theme-color-50, #ffffff);
     }
-    :host([fixed]) {
+    an-app-bar[fixed] {
       position: fixed;
     }
-    .title {
+    an-app-bar .title {
       display: inline-block;
       line-height: var(--theme-height-app-bar);
       font-size: 20px;
       font-weight: 500;
       margin-left: 16px;
     }
-    [md-icon] {
+    an-app-bar [md-icon] {
       padding: 16px;
     }
-    #container ::slotted([md-icon]) {
-      padding: 16px;
-    }
-    #container ::slotted(a) {
-      text-decoration: none;
-      color: inherit;
-    }
-    #container #icons :slotted(div) {
+    an-app-bar .icons > * {
       display: inline-block;
     }
   </style>
-  <div id="container">
-    <div class="float-left" id="menu">
-      <slot name="menu-icon"></slot>
-    </div>
-    <div class="title">
-      <slot name="title"></slot>
-    </div>
-    <div class="float-right" id="icons">
-      <slot name="action-icon"></slot>
-    </div>
-    <br class="clear-both" />
-    <slot></slot>
-  </div>
 </template>
 
 <script>
@@ -62,9 +43,10 @@
   class AppBar extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=AppBar]');
-      shadowRoot.appendChild(template.content.cloneNode(true));
+      let template = thisScript.ownerDocument.querySelector('template[for=AppBar]');
+      let style = template.content.querySelector('style');
+      style.setAttribute('id', 'an-app-bar-style');
+      (!document.querySelector('#an-app-bar-style')) && this.insertBefore(style, this.firstChild);
     }
 
     connectedCallback() {}

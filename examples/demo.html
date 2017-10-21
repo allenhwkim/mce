@@ -12,18 +12,22 @@
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
-      <span slot="title">Title</span>
-      <a slot="menu-icon" md-icon onclick="showDrawer()">menu</a>
-      <a slot="action-icon" md-icon>favorite</a>
-      <a slot="action-icon" md-icon>search</a>
-      <a slot="action-icon" md-icon onclick="toggleMenu()">more_vert</a>
-      <a-menu id="app-bar-menu" position="bottom-right">
-        <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
-        <hr>
-        <a-nav-item disabled>Disabled</a-nav-item>
-        <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
-        <a-nav-item icon="search">nav-item text</a-nav-item>
-      </a-menu>
+      <div class="float-left">
+        <a md-icon onclick="showDrawer()">menu</a>
+      </div>
+      <span class="title">Title</span>
+      <div class="float-right">
+        <a slot="action-icon" md-icon>favorite</a>
+        <a slot="action-icon" md-icon>search</a>
+        <a slot="action-icon" md-icon onclick="toggleMenu()">more_vert</a>
+        <a-menu id="app-bar-menu" position="bottom-right">
+          <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+          <hr>
+          <a-nav-item disabled>Disabled</a-nav-item>
+          <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
+          <a-nav-item icon="search">nav-item text</a-nav-item>
+        </a-menu>
+      </div>
     </an-app-bar>
     <main>
       <a-nav-drawer id="nav-drawer">
@@ -33,9 +37,57 @@
         <hr/>
         <a-nav-item icon="music_note">Music</a-nav-item>
       </a-nav-drawer>
+
+      <ul>
+        Material Design Specification
+        <li>
+          <a href="https://material.io/guidelines/layout/structure.html#structure-app-bar">app bar</a>
+        </li>
+        <li>
+          <a href="https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs">Bottom Nav bar</a>
+        </li>
+        <li>
+          <a href="https://material.io/guidelines/components/menus.html#menus-specs">Menu</a>
+        </li>
+        <li>
+          <a href="https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs">Navigatrion Drawer</a>
+        </li>
+        <li>
+          <a href="https://material.io/guidelines/components/cards.html">Card</a>
+        </li>
+      </ul>
+
+      <a-card>
+        <div class="title">
+          <h1>Title Goes Here</h1>
+          <div class="subtitle">Subtitle here</div>
+        </div>
+        <div class="text">
+          Text: 14sp
+          Left and right padding: 16dp
+          Top padding: 16dp or 24dp (when a primary title is present)
+          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+        </div>
+        <div class="actions">
+          <a href="">ACTION 1</a>
+          <a href="">ACTION 2</a>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Title Goes Here</h1>
+          <div class="subtitle">Subtitle here</div>
+        </div>
+        <div class="actions">
+          <a href="">ACTION 1</a>
+          <a href="">ACTION 2</a>
+        </div>
+      </a-card>
+
       <a-card>
         <div class="media">
-          <img src="http://lorempixel.com/800/600/nature/" />
+          <img src="nature.jpg" />
         </div>
         <div class="title">
           <h1>Title Goes Here</h1>
@@ -53,7 +105,7 @@
         </div>
         <a-card>
           <div class="media">
-            <img src="http://lorempixel.com/800/600/nature/" />
+            <img src="nature.jpg" />
           </div>
           <div class="text">
             Text: 14sp
@@ -64,74 +116,10 @@
         </a-card>
       </a-card>
 
-      <a-card>
-        <div class="title">
-          <h1>Title Goes Here</h1>
-          <div class="subtitle">Subtitle here</div>
-        </div>
-        <div class="text">
-          Text: 14sp
-          Left and right padding: 16dp
-          Top padding: 16dp or 24dp (when a primary title is present)
-          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
-        </div>
-        <div class="actions">
-          <a href="">ACTION 1</a>
-          <a href="">ACTION 2</a>
-        </div>
-      </a-card>
-
-      <a-card>
-        <div class="title">
-          <h1>Title Goes Here</h1>
-          <div class="subtitle">Subtitle here</div>
-        </div>
-        <div class="actions">
-          <a href="">ACTION 1</a>
-          <a href="">ACTION 2</a>
-        </div>
-      </a-card>
-
       <p>
-        <ul>
-          Material Design Specification
-          <li>
-            <a href="https://material.io/guidelines/layout/structure.html#structure-app-bar">app bar</a>
-          </li>
-          <li>
-            <a href="https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs">Bottom Nav bar</a>
-          </li>
-          <li>
-            <a href="https://material.io/guidelines/components/menus.html#menus-specs">Menu</a>
-          </li>
-          <li>
-            <a href="https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs">Navigatrion Drawer</a>
-          </li>
-          <li>
-            <a href="https://material.io/guidelines/components/cards.html">Card</a>
-          </li>
-        </ul>
-
-
-        <img width="100%" src="https://storage.googleapis.com/material-design/publish/material_v_12/assets/0Bzhp5Z4wHba3VG9SaVpNbkpHb2s/whatismaterial-3d-elevation2.png">
+        <img width="100%" src="whatismaterial-3d-elevation2.png">
       </p>
 
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-      </p>
-      
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-      </p>
-      
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-      </p>
-      
-      <p>
-        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est.
-      </p>
-      
       <ul>
         TODO
         <li> mobile vs desktop
