@@ -16,6 +16,7 @@ Custom Elements With Material Design
 <hr/>
 The below is notes for development
 <hr/>
+When use custom element w/o shadow DOM, there must be a way to prevent style bleeding.
 
 ## About Web Component
 

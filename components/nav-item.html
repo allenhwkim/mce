@@ -1,16 +1,10 @@
-<!--
-  Requirements
-
--->
 <template for="NavItem">
-  <link rel="stylesheet" href="../components/common.css">
   <style>
-  :host {
+  a-nav-item {
     display: block;
     color: var(--theme-text-color-900, #333333); 
-    text-align: center;
   }
-  :host([disabled]) {
+  a-nav-item[disabled] {
     color: var(--theme-color-400);
     pointer-events: none;
   }
@@ -28,26 +22,26 @@
       . must not have hover effect
       . must not have click effect
    */
-  :host-context(a-menu) #container {
+  a-menu a-nav-item {
     line-height: 32px;
     padding: 8px 16px;
     font-size: 16px;
     display: block;
   }
-  :host-context(a-menu) #container img {
+  a-menu a-nav-item img {
     height: 16px;
   }
-  :host-context(a-menu) #container:hover {
+  a-menu a-nav-item:hover {
     background-color: var(--theme-color-200);
   }
-  :host-context(a-menu) #container:active {
+  a-menu a-nav-item:active {
     background-color: var(--theme-color-50);
   }
-  :host-context(a-menu) #container [md-icon] {
+  a-menu a-nav-item [md-icon] {
     vertical-align: middle;
-    padding-right: 8px;
+    padding: 0 8px 0 0;
   }
-  :host-context(a-menu) #container #shortcut {
+  a-menu a-nav-item #shortcut {
     padding-left: 16px;
     float: right;
   }
@@ -57,27 +51,21 @@
      
      https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
    */
-  :host-context(a-bottom-nav-bar) #container {
+  a-bottom-nav-bar a-nav-item {
     display: inline-block;
     font-size: 16px;
     text-align: center;
   }
-  :host-context(a-bottom-nav-bar) #container.active {
-    min-width: 96px;
-    max-width: 168px;
+  a-bottom-nav-bar a-nav-item[active] {
     padding: 6px 12px 10px 12px;
     font-size: 14px;
   }
-  :host-context(a-bottom-nav-bar) #container:not(.active) {
-    min-width: 80px;
-    max-width: 96px;
+  a-bottom-nav-bar a-nav-item:not([active]) {
     padding: 8px 12px;
     font-size: 12px;
   }
-  :host-context(a-bottom-nav-bar) #container [md-icon] {
+  a-bottom-nav-bar a-nav-item [md-icon] {
     display: block;
-  }
-  :host-context(a-bottom-nav-bar) #container img {
   }
 
   /**
@@ -85,32 +73,26 @@
    
     https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
    */
-  :host-context(a-nav-drawer) #container {
+  a-nav-drawer a-nav-item {
     line-height: 24px;
     font-size: 14px;
     padding: 8px 16px;
   }
-  :host-context(a-nav-drawer) #container:hover {
+  a-nav-drawer a-nav-item:hover {
     background-color: var(--theme-color-200);
   }
-  :host-context(a-nav-drawer) #container:active {
+  a-nav-drawer a-nav-item:active {
     background-color: var(--theme-color-50);
   }
-  :host-context(a-nav-drawer) #container .subheader {
+  a-nav-drawer a-nav-item .subheader {
     color: var(--theme-text-color-500);
   }
-  :host-context(a-nav-drawer) #container [md-icon] {
+  a-nav-drawer a-nav-item [md-icon] {
     padding-right: 32px;
     color: var(--theme-text-color-500);
     vertical-align: middle;
   }
-
   </style>
-  <div id="container">
-    <span id="icon"></span>
-    <slot></slot>
-    <div id="shortcut"></div>
-  </div>
 </template>
 
 <script>
@@ -119,13 +101,11 @@
   class NavItem extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
-      shadowRoot.appendChild(template.content.cloneNode(true));
-    }
-
-    static get observedAttributes() {
-      return ['active']; 
+      let template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-nav-item');
+      (!document.querySelector('style#a-nav-item')) && this.insertBefore(style, this.firstChild);
+      this.addEventListener('click', this.setActiveItem.bind(this));
     }
 
     connectedCallback() {
@@ -133,27 +113,31 @@
       this.shortcut = this.getAttribute('shortcut');
       if (this.icon) {
         let isMDIcon = this.icon.match(/^[a-z_]+$/);
-        this.iconEl = this.shadowRoot.querySelector('#icon');
+        this.iconEl = document.createElement('div');
+        this.iconEl.setAttribute('id', 'icon');
         if (isMDIcon) {
           this.iconEl.setAttribute('md-icon', '');
           this.iconEl.innerHTML = this.icon;
         } else {
           this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
         }
+        this.insertBefore(this.iconEl, this.firstChild)
       }
       if (this.shortcut) {
-        this.shortcutEl = this.shadowRoot.querySelector('#shortcut');
+        this.shortcutEl = document.createElement('div');
+        this.shortcutEl.setAttribute('id', 'shortcut');
         this.shortcutEl.innerHTML = this.shortcut;
+        this.appendChild(this.shortcutEl);
       }
     }
 
+    static get observedAttributes() {}
     disconnectedCallback() {}
-    attributeChangedCallback(attr, oldVal, newVal) {
-      if (attr === 'active' && newVal !== null) {
-        this.shadowRoot.querySelector('#container').classList.add('active');
-      } else {
-        this.shadowRoot.querySelector('#container').classList.remove('active');
-      }
+    attributeChangedCallback(a, o, n) {}
+ 
+    setActiveItem(event) {
+      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(el => el.removeAttribute('active'));
+      this.setAttribute('active', '');
     }
 
   }

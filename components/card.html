@@ -71,7 +71,7 @@
     constructor() {
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Card]');
-      let style = template.content.querySelector('style');
+      let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'a-card-style');
       (!document.querySelector('#a-card-style')) && this.insertBefore(style, this.firstChild);
     }

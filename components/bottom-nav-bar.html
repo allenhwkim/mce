@@ -33,20 +33,14 @@
     constructor() {
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
-      let style = template.content.querySelector('style');
+      let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'a-bottom-nav-bar-style');
       (!document.querySelector('#a-bottom-nav-bar-style')) && this.insertBefore(style, this.firstChild);
-      this.addEventListener('click', this.setActiveItem.bind(this));
     }
 
     connectedCallback() {}
     disconnectedCallback() {}
     attributeChangedCallback(a,o,n) {}
-
-    setActiveItem(event) {
-      Array.from(this.querySelectorAll('a-nav-item')).forEach(el => el.removeAttribute('active'));
-      event.target.setAttribute('active','');
-    }
   }
   
   customElements.define('a-bottom-nav-bar', BottomNavBar);

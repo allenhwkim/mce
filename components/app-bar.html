@@ -31,6 +31,24 @@
     an-app-bar [md-icon] {
       padding: 16px;
     }
+    an-app-bar [md-icon]:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      margin-left: -18px;
+      margin-top: -40px;
+      background: #3f51b5;
+      border-radius: 100%;
+      opacity: .6;
+      transform: scale(0);
+    }
+
+    an-app-bar [md-icon]:active:after {
+      animation: ripple .4s ease-out;
+    }
+
     an-app-bar .icons > * {
       display: inline-block;
     }
@@ -44,7 +62,7 @@
     constructor() {
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=AppBar]');
-      let style = template.content.querySelector('style');
+      let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'an-app-bar-style');
       (!document.querySelector('#an-app-bar-style')) && this.insertBefore(style, this.firstChild);
     }
