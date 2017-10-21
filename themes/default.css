@@ -40,8 +40,9 @@
 
   /* shadows */
   --theme-shadow-1dp: rgba(0, 0, 0, 0.12) 0px 1px  6px, rgba(0, 0, 0, 0.12) 0px 1px  4px;
+  --theme-shadow-2dp: rgba(0, 0, 0, 0.12) 0px 2px  6px, rgba(0, 0, 0, 0.12) 0px 2px  4px;
   --theme-shadow-3dp: rgba(0, 0, 0, 0.16) 0px 3px 10px, rgba(0, 0, 0, 0.23) 0px 3px 10px;
-  --theme-shadow-4dp: rgba(0, 0 ,0, 0.20)  0px 2px 4px, rgba(0, 0, 0, .14)  0px 4px  5px;
+  --theme-shadow-4dp: rgba(0, 0 ,0, 0.20) 0px 2px  4px, rgba(0, 0, 0, .14)  0px 4px  5px;
 }
 
 :root {
@@ -103,6 +104,7 @@ a {
 }
 an-app-bar + * {
   margin: 56px 0;
+  padding: 16px;
 }
 p {
   padding: 16px;

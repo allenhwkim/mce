@@ -1,0 +1,83 @@
+<template for="Card">
+  <style>
+    a-card {
+      display: block;
+      border-radius: 2px;
+      z-index: 2;
+      box-shadow: var(--theme-shadow-2dp);
+      padding-bottom: 8px;
+    }
+    a-card + a-card {
+      margin-top: 16px;
+    }
+    a-card > a-card {
+      margin: 16px;
+    }
+    a-card .title {
+      padding: 24px 16px 16px 16px;
+    }
+    a-card .title h1, a-card .title h2, a-card .title h3 {
+      font-size: 24px;
+      margin: 0;
+      font-weight: normal;
+    }
+    a-card .media { /* 16*9 image */
+      background-color: #000;
+      width: 100%;
+      padding-bottom: 56.25%;
+      position: relative;
+    }
+    a-card .media img {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+    a-card .title .subtitle {
+      font-size: 14px;
+      color: var(--theme-text-color-600, #757575);
+    }
+    a-card .title.with-avatar {
+      padding: 16px;
+      height: 72px;
+      font-size: 14px;
+      /* TODO */
+    }
+    a-card .actions {
+      padding: 8px;
+    }
+    a-card .actions > * {
+      padding: 8px;
+      display: inline-block;
+    }
+    a-card .text {
+      padding: 16px;
+      font-size: 14px;
+      color: var(--theme-text-color-400, #444444);
+    }
+    a-card .text + .actions{
+      padding-top: 0;
+    }
+  </style>
+</template>
+
+<script>
+  var thisScript = document.currentScript;
+
+  class Card extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=Card]');
+      let style = template.content.querySelector('style');
+      style.setAttribute('id', 'a-card-style');
+      (!document.querySelector('#a-card-style')) && this.insertBefore(style, this.firstChild);
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+    attributeChangedCallback(a,o,n) {}
+  }
+  
+  customElements.define('a-card', Card);
+</script>
