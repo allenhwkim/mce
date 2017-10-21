@@ -6,8 +6,15 @@
       display: block;
       border-radius: 2px;
       z-index: 2;
+      background-color: var(--theme-color-0);
       box-shadow: var(--theme-shadow-2dp);
       padding-bottom: 8px;
+      position: relative;
+    }
+    a-card:active {
+      top: -8px;
+      box-shadow: var(--theme-shadow-4dp);
+      z-index: 8;
     }
     a-card + a-card {
       margin-top: 16px;

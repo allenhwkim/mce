@@ -1,21 +1,21 @@
-DRAFT  : App Bar 4
-DRAFT  : Menu + nav-item 8
-DRAFT  : Nav drawer + nav-item 16
-DRAFT  : NavItem
-DRAFT  : Bottom navigation bar + nav-item 8
-DRAFT  : Card (resting elevation) * 2
-TODO   : Card (when picked up) 8
-TODO   : Dialog 24
-TODO   : Floating action button (FAB - pressed) 12
-TODO   : Floating action button (FAB - resting elevation) 6
-TODO   : Raised button (pressed state) 8
-TODO   : Raised button (resting elevation)* 2
-TODO   : Refresh indicator 3
-FUTURE : Picker 24
-FUTURE : Right drawer 16
-FUTURE : Snackbar 6
-FUTURE : Sub menu (+1dp for each sub menu) 9
-?????? : Modal bottom Sheet 16
-?????? : Quick entry / Search bar (resting elevation) 2
-?????? : Quick entry / Search bar (scrolled state) 3
-?????? : Switch 1
+DRAFT  :  4 App Bar
+DRAFT  :  8 Menu + nav-item
+DRAFT  : 16 Nav drawer + nav-item
+DRAFT  :  0 NavItem
+DRAFT  :  8 Bottom navigation bar
+DRAFT  :  2 Card (resting elevation)
+DRAFT  :  8 Card (when picked up)
+TODO   : 24 Dialog
+TODO   : 12 Floating action button (FAB - pressed)
+TODO   :  6 Floating action button (FAB - resting elevation)
+TODO   :  8 Raised button (pressed state)
+TODO   :  2 Raised button (resting elevation)
+TODO   :  3 Refresh indicator
+FUTURE : 24 Picker
+FUTURE : 15 Right drawer
+FUTURE :  6 Snackbar
+FUTURE :  9 Sub menu (+1dp for each sub menu)
+?????? : 16 Modal bottom Sheet
+?????? :  2 Quick entry / Search bar (resting elevation)
+?????? :  3 Quick entry / Search bar (scrolled state)
+?????? :  1 Switch
