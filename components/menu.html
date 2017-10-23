@@ -21,7 +21,6 @@
 
   Bug: 
     # css animation is not right
-
 -->
 <template for="Menu">
   <style>
@@ -78,32 +77,45 @@
       let template = thisScript.ownerDocument.querySelector('template[for=Menu]');
       let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'a-menu-style');
-      this.documentClickHandler = this.closeWhenDocumentClicked.bind(this);
+      // this.documentClickHandler = this._closeWhenDocumentClicked.bind(this);
       (!document.querySelector('style#a-menu-style')) && this.insertBefore(style, this.firstChild);
+      this.observeAttrChange('visible', this._attrChanged);
+      this.hideMenu = this._hideMenu.bind(this);
     }
 
-    static get observedAttributes() {
-      return ['visible']; 
+    connectedCallback() {
+      document.addEventListener('click', this.hideMenu);
     }
 
-    attributeChangedCallback(attr, oldVal, newVal) {
-      let show =  newVal !== null;
-      if (show) {
-        Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
-          (this !== menu) &&  menu.removeAttribute('visible');
+    disconnectedCallback() {
+      document.removeEventListener('click', this.hideMenu);
+    }
+
+    observeAttrChange(attrNames, callback) {
+      var observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.type === 'attributes' && ([].concat(attrNames)).includes(mutation.attributeName)) {
+            let newVal = mutation.target.getAttribute(mutation.attributeName);
+            callback.apply(this, [mutation.attributeName, newVal]);
+          }
         });
-        this.showJustCalled = true;
-        setTimeout(_ => this.showJustCalled = false, 100);
-        document.addEventListener('click', this.documentClickHandler);
-      } else {
-        document.removeEventListener('click', this.documentClickHandler);
+      });
+      observer.observe(this, {attributes: true});
+      return observer;
+    }
+
+    _attrChanged(attr, newVal) {
+      if (newVal === '') {
+        Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
+          (this.isSameNode(menu) === false) && menu.removeAttribute('visible');
+        });
+        this.justShown = true; // in case when attribute is changed by outside of this
+        setTimeout(_ => this.justShown = false, 100);
       }
     }
 
-    disconnectedCallback() {}
-
-    closeWhenDocumentClicked(event) {
-      if (this.showJustCalled === false && !this.contains(event.target)) {
+    _hideMenu(event) {
+      if (!this.justShown && !this.contains(event.target)) {
         this.removeAttribute('visible');
       }
     }

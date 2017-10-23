@@ -5,6 +5,7 @@ Custom Elements With Material Design
 
   1. Standards-Only
   
+     * Including W3C Draft Standard
      * Only HTML4/HTML5/ES5/ES6/ES7CSS2/CSS3
      * No Framework, Typescript
      * No Workaround (including Polyfills)

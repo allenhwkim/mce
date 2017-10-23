@@ -7,6 +7,7 @@ DRAFT  :  2 Card (resting elevation)
 DRAFT  :  8 Card (when picked up)
 DRAFT  : 2 Raised button (resting elevation)
 DRAFT  :  6 Floating action button (FAB - resting elevation)
+DRAFT  : 12 Floating action button (FAB - pressed)
 
 * tabs
 * text-field
@@ -14,7 +15,6 @@ DRAFT  :  6 Floating action button (FAB - resting elevation)
 
 TODO   :  3 Refresh indicator
 TODO   : 24 Dialog
-TODO   : 12 Floating action button (FAB - pressed)
 FUTURE : 24 Picker
 FUTURE : 15 Right drawer
 FUTURE :  6 Snackbar

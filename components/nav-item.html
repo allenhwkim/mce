@@ -131,15 +131,10 @@
       }
     }
 
-    static get observedAttributes() {}
-    disconnectedCallback() {}
-    attributeChangedCallback(a, o, n) {}
- 
     setActiveItem(event) {
       Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(el => el.removeAttribute('active'));
       this.setAttribute('active', '');
     }
-
   }
   
   customElements.define('a-nav-item', NavItem);

@@ -6,17 +6,18 @@
    
     https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
   */
-  #blocker {
-    background-color: #000;
-    height: 100%;
-    left: 0;
-    opacity: .5;
+  a-nav-drawer ~ #blocker {
     position: fixed;
+    background-color: #000;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .5;
     top: 0;
-    width: 100%;
     z-index: 13;
+    display: none;
   }
-  #drawer {
+  a-nav-drawer {
     background-color: var(--theme-text-primary);
     box-shadow: var(--theme-shadow-3dp);
     color: var(--theme-primary);
@@ -30,21 +31,21 @@
     width: calc(100vw - var(--theme-height-app-bar));
     z-index: 16;
   }
-  #drawer.visible {
+  a-nav-drawer[visible] {
     left: 0;
     transform: translateX(0);
     visibility: visible;
     transition: var(--theme-animation-in);
   }
-  #drawer:not(.visible) {
+  a-nav-drawer:not([visible]) {
     left: -241px;
     transform: translateX(0);
     visibility: hidden;
     transition: var(--theme-animation-out);
   }
 
-  #drawer ::slotted(hr), 
-  #drawer .divider {
+  a-nav-drawer hr, 
+  a-nav-drawer .divider {
     display: block;
     margin: 4px 0px;
     height: 1px;
@@ -67,49 +68,49 @@
   class NavDrawer extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=NavDrawer]');
-      shadowRoot.appendChild(template.content.cloneNode(true));
-      this.drawer = shadowRoot.querySelector('#drawer');
-      this.blocker = shadowRoot.querySelector('#blocker');
-      this.blocker.addEventListener('click', () => this.visible = false );
+      let template = thisScript.ownerDocument.querySelector('template[for=NavDrawer]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-nav-drawer-style');
+      (!document.querySelector('#a-nav-drawer')) && this.insertBefore(style, this.firstChild);
+      this.observeAttrChange('visible', this._show);
+      this.blockerEl = this._addBlockerEl();
     }
 
-    static get observedAttributes() {
-      return ['visible']; 
-    }
-
-    get visible() {
-      return this.hasAttribute('visible');
-    }
-
-    set visible(visible) {
-      visible ? this.setAttribute('visible','') : this.removeAttribute('visible');
-    }
-
-    connectedCallback() {
-      this.show(this.visible);
-    }
-
+    connectedCallback() {}
     disconnectedCallback() {}
 
-    attributeChangedCallback(attr, oldVal, newVal) {
-      (attr === 'visible') && this.show(newVal !== null);
+    observeAttrChange(attrNames, callback) {
+      var observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+          if (mutation.type === 'attributes' && ([].concat(attrNames)).includes(mutation.attributeName)) {
+            let newVal = mutation.target.getAttribute(mutation.attributeName);
+            callback.apply(this, [mutation.attributeName, newVal]);
+          }
+        });
+      });
+      observer.observe(this, {attributes: true});
+      return observer;
     }
 
-    show(visible) {
-      if (visible) {
-        this.blocker.style.display = 'block';
-        this.drawer.classList.add("visible");
-        document.body.style.overflow = 'hidden';
-      } else {
-        this.blocker.style.display = 'none';
-        this.drawer.classList.remove("visible");
-        document.body.style.overflow = ''
-      }
+    _addBlockerEl() {
+      let blockerEl = document.createElement('div');
+      blockerEl.setAttribute('id', 'blocker');
+      blockerEl.addEventListener('click', () => {
+        this.removeAttribute('visible');
+        this._show();
+      });
+      this.parentElement.insertBefore(blockerEl, this.nextSibling);
+      return blockerEl;
+    }
+
+    _show() {
+      let visible = this.getAttribute('visible') !== null;
+      document.body.style.overflow = visible ? 'hidden' : '';
+      this.blockerEl.style.display = visible ? 'block' : 'none';
     }
 
   }
   
   customElements.define('a-nav-drawer', NavDrawer);
+</script>
 </script>
