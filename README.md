@@ -18,6 +18,9 @@ The below is notes for development
 <hr/>
 When use custom element w/o shadow DOM, there must be a way to prevent style bleeding.
 
+tiny color
+http://plnkr.co/edit/e5eYGKLrg9SUXiGSvAgZ?p=preview
+
 ## About Web Component
 
    - **Custom Elements v1**: allows authors to define their own custom tags 

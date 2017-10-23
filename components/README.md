@@ -5,12 +5,16 @@ DRAFT  :  0 NavItem
 DRAFT  :  8 Bottom navigation bar
 DRAFT  :  2 Card (resting elevation)
 DRAFT  :  8 Card (when picked up)
+DRAFT  : 2 Raised button (resting elevation)
+DRAFT  :  6 Floating action button (FAB - resting elevation)
+
+* tabs
+* text-field
+* chip https://material.io/guidelines/components/chips.html#chips-specs
+
+TODO   :  3 Refresh indicator
 TODO   : 24 Dialog
 TODO   : 12 Floating action button (FAB - pressed)
-TODO   :  6 Floating action button (FAB - resting elevation)
-TODO   :  8 Raised button (pressed state)
-TODO   :  2 Raised button (resting elevation)
-TODO   :  3 Refresh indicator
 FUTURE : 24 Picker
 FUTURE : 15 Right drawer
 FUTURE :  6 Snackbar
@@ -19,3 +23,4 @@ FUTURE :  9 Sub menu (+1dp for each sub menu)
 ?????? :  2 Quick entry / Search bar (resting elevation)
 ?????? :  3 Quick entry / Search bar (scrolled state)
 ?????? :  1 Switch
+?????? :  8 Raised button (pressed state)

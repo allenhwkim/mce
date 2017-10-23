@@ -24,47 +24,42 @@
 
 -->
 <template for="Menu">
-  <link rel="stylesheet" href="../components/common.css">
   <style>
-  :host {
-    z-index: 8;
-    padding: 8px 0px;
-    box-shadow: var(--theme-shadow-1dp);
+  a-menu {
     background-color: var(--theme-text-primary);
-    overflow-y: auto;
-    position: absolute;
-    display: block;
+    box-shadow: var(--theme-shadow-1dp);
+    color: var(--theme-primary);
     font-size: 16px;
+    overflow-y: auto;
+    padding: 8px 0px;
+    position: absolute;
+    z-index: 8;
   }
-  :host(:not([visible])) {
+  a-menu:not([visible]) {
     visibility: hidden;
   }
-  :host([visible]) {
+  a-menu[visible] {
+    display: block;
     visibility: visible;
   }
-  :host([position=bottom-right]) {
+  a-menu[position=bottom-right] {
     right: 16px;
     top: 48px;
   }
-  :host([position=bottom-left]) {
+  a-menu[position=bottom-left] {
     left: 16px;
     top: 48px;
   }
-  :host([position=top-right]) {
+  a-menu[position=top-right] {
     right: 16px;
     bottom: 48px;
   }
-  :host([position=top-left]) {
+  a-menu[position=top-left] {
     left: 16px;
     bottom: 48px;
   }
-  #container {
-    display: block;
-    background-color: var(--theme-text-primary);
-    color: var(--theme-primary);
-  }
-  #container ::slotted(hr), 
-  #container .divider {
+  a-menu hr, 
+  a-menu .divider {
     display: block;
     margin: 4px 0px;
     height: 1px;
@@ -72,9 +67,6 @@
     border-width: 0 0 1px 0;
   }
   </style>
-  <div id="container">
-    <slot></slot>
-  </div>
 </template>
 
 <script>
@@ -83,59 +75,36 @@
   class Menu extends HTMLElement {
     constructor() {
       super();
-      let shadowRoot = this.attachShadow({mode: 'open'});
-      const template = thisScript.ownerDocument.querySelector('template[for=Menu]');
-      shadowRoot.appendChild(template.content.cloneNode(true));
-      this.containerEl = shadowRoot.querySelector('#container');
+      let template = thisScript.ownerDocument.querySelector('template[for=Menu]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-menu-style');
       this.documentClickHandler = this.closeWhenDocumentClicked.bind(this);
-      this.showJustCalled = false; // if open by JS, not to close immediately
+      (!document.querySelector('style#a-menu-style')) && this.insertBefore(style, this.firstChild);
     }
 
     static get observedAttributes() {
       return ['visible']; 
     }
 
-    get visible() {
-      return this.hasAttribute('visible');
-    }
-
-    set visible(visible) {
-      visible ? this.setAttribute('visible','') : this.removeAttribute('visible');
-    }
-
-    connectedCallback() {
-      this.show(this.visible);
-    }
-
-    disconnectedCallback() {
-    }
-
     attributeChangedCallback(attr, oldVal, newVal) {
-      (attr === 'visible') && this.show(newVal !== null);
-    }
-
-    show(visible) {
-      if (visible) {
-        this.hideAllOtherMenus();
-        this.containerEl.classList.add("visible");
-        document.addEventListener('click', this.documentClickHandler);
+      let show =  newVal !== null;
+      if (show) {
+        Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
+          (this !== menu) &&  menu.removeAttribute('visible');
+        });
         this.showJustCalled = true;
         setTimeout(_ => this.showJustCalled = false, 100);
+        document.addEventListener('click', this.documentClickHandler);
       } else {
-        this.containerEl.classList.remove("visible");
         document.removeEventListener('click', this.documentClickHandler);
       }
     }
 
-    hideAllOtherMenus() {
-      Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
-        //menu.removeAttribute('visible');
-      });
-    }
+    disconnectedCallback() {}
 
     closeWhenDocumentClicked(event) {
       if (this.showJustCalled === false && !this.contains(event.target)) {
-        this.visible = false;
+        this.removeAttribute('visible');
       }
     }
 
