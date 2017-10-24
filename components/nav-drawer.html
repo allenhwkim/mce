@@ -1,12 +1,12 @@
+<!-- 
+  For nav drawer
+ 
+  https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+-->
 <template for="NavDrawer">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-  /**
-    For nav drawer
-   
-    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
-  */
-  a-nav-drawer ~ #blocker {
+  a-nav-drawer ~ #a-nav-drawer-blocker {
     position: fixed;
     background-color: #000;
     left: 0;
@@ -18,9 +18,9 @@
     display: none;
   }
   a-nav-drawer {
-    background-color: var(--theme-text-primary);
+    background-color: var(--theme-color-0);
     box-shadow: var(--theme-shadow-3dp);
-    color: var(--theme-primary);
+    color: var(--theme-text-color-900);
     display: block;
     height: 100%; 
     left: 0;
@@ -53,12 +53,6 @@
     border-width: 0 0 1px 0;
   }
   </style>
-  <div id="container">
-    <div id="blocker"></div>
-    <div id="drawer">
-      <slot></slot>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -94,7 +88,7 @@
 
     _addBlockerEl() {
       let blockerEl = document.createElement('div');
-      blockerEl.setAttribute('id', 'blocker');
+      blockerEl.setAttribute('id', 'a-nav-drawer-blocker');
       blockerEl.addEventListener('click', () => {
         this.removeAttribute('visible');
         this._show();

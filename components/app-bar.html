@@ -1,5 +1,3 @@
-<!-- No ShadowDOM for simplicity -->
-
 <template for="AppBar">
   <style>
     an-app-bar {
@@ -20,8 +18,8 @@
     an-app-bar .title {
       display: inline-block;
       line-height: var(--theme-height-app-bar);
-      font-size: 20px;
-      font-weight: 500;
+      font-size: var(--theme-title-font-size);
+      font-weight: var(--theme-title-font-weight);
       margin-left: 16px;
     }
     an-app-bar [md-icon] {

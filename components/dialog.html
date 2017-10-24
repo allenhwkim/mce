@@ -1,0 +1,114 @@
+<!--
+https://material.io/guidelines/components/dialogs.html#dialogs-specs
+-->
+<template for="Dialog">
+  <style>
+  a-dialog {
+    padding: 24px;
+    position:fixed;
+    left: 50%;
+    top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    min-width: 280px; /* 56 x 5 */
+    max-width: calc(100% - 80px);
+    z-index: 24;
+    box-shadow: var(--theme-shadow-10dp);
+    border: 1px solid var(--theme-color-200);
+    border-radius: var(--theme-border-radius);
+    background-color: var(--theme-color-0);
+  }
+  a-dialog.hidden {
+    display: none;
+  }
+  a-dialog ~ #a-dialog-blocker {
+    position: fixed;
+    background-color: #000;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .5;
+    top: 0;
+    z-index: 13;
+    display: none;
+  }
+  a-dialog .divider {
+    display: block;
+    margin: 0px -24px;
+    height: 1px;
+    border: 1px solid #ccc;
+    border-width: 0 0 1px 0;
+  }
+  a-dialog .title {
+    color: var(--theme-text-color-900);
+    padding-bottom: 20px;
+    font-size: var(--theme-title-font-size);
+    font-weight: var(--theme-title-font-weight);
+    margin: 0;
+  }
+  a-dialog .content {
+    padding-bottom: 24px;
+    color: var(--theme-text-color-500);
+  }
+  a-dialog .actions {
+    padding: 8px;
+    margin-right: -16px;
+    margin-bottom: -16px;
+    text-align: right;
+  }
+  a-dialog .actions > * {
+    display: inline-block;
+    margin-left: 8px;
+    padding: 8px 0px;
+    min-width: 64px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  </style>
+</template>
+
+<script>
+  var thisScript = document.currentScript;
+
+  class Dialog extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=Dialog]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-dialog-style');
+      (!document.querySelector('#a-dialog-style')) && this.insertBefore(style, this.firstChild);
+      this.blockerEl = this._addBlockerEl();
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+    
+    open(open=true) {
+      document.body.style.overflow = open ? 'hidden' : '';
+      open ? this.classList.remove('hidden') : this.classList.add('hidden');
+      this.blockerEl.style.display = open ? 'block' : 'none';
+    }
+
+    close() {
+      this.open(false);
+    }
+
+    _addBlockerEl() {
+      let blockerEl = document.createElement('div');
+      blockerEl.setAttribute('id', 'a-dialog-blocker');
+      blockerEl.addEventListener('click', () => {
+        this.open(false);
+      });
+      this.parentElement.insertBefore(blockerEl, this.nextSibling);
+      return blockerEl;
+    }
+
+  }
+  
+  customElements.define('a-dialog', Dialog);
+</script>

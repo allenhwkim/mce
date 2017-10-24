@@ -5,9 +5,6 @@
   --theme-font: Roboto, sans-serif;
 
   /* colors  https://material.io/guidelines/style/color.html#color-color-palette */
-  --theme-primary: #212121;   /* deprecated */
-  --theme-text-primary: #fff; /* deprecated */
-      
   --theme-color-0: #FFFFFF;
   --theme-color-50:  #FAFAFA; /* 98 +35 */
   --theme-color-100: #F5F5F5; /* 96 +33 */
@@ -25,15 +22,18 @@
   --theme-text-color-200: #EEEEEE;
   --theme-text-color-300: #E0E0E0;
   --theme-text-color-400: #BDBDBD;
-  --theme-text-color-500: rgba(0,0,0,.54); /* #999999 */
+  --theme-text-color-500: #9E9E9E;
   --theme-text-color-600: #757575;
   --theme-text-color-700: #616161;
   --theme-text-color-800: #424242;
-  --theme-text-color-900: rgba(0,0,0,.87); /* #333333 */
+  --theme-text-color-900: #212121;
 
   /* size */
+  --theme-title-font-size: 20px;
+  --theme-title-font-weight: 500;
   --theme-height-app-bar: 56px;
   --theme-height-bottom-nav-bar: 56px;
+  --theme-border-radius: 2px;
 
   /* animation */
   --theme-animation-in: all .3s ease-in;

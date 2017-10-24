@@ -3,6 +3,9 @@
   <head>
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <!-- <script src="https://rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-loader.js"></script> -->
+    <!-- <script src="https://rawgit.com/WebReflection/document-register-element/master/examples/bower_components/webcomponentsjs/webcomponents.min.js"></script> -->
+
+    <script src="//rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-loader.js"></script>
     <link rel="stylesheet" href="../themes/default.css">
     <link rel="import" href="../components/app-bar.html">
     <link rel="import" href="../components/nav-drawer.html">
@@ -10,6 +13,7 @@
     <link rel="import" href="../components/nav-item.html">
     <link rel="import" href="../components/bottom-nav-bar.html">
     <link rel="import" href="../components/card.html">
+    <link rel="import" href="../components/dialog.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -57,6 +61,15 @@
           <a href="https://material.io/guidelines/components/cards.html">Card</a>
         </li>
       </ul>
+
+      <a-dialog>
+        <h3 class="title">Title</h3>
+        <div class="content">contents</div>
+        <div class="actions">
+          <a href="javascript:void(0)">cancel</a>
+          <a href="javascript:void(0)">ok</a>
+        </div>
+      </a-dialog>
 
       <a-card>
         <div class="title">
