@@ -35,6 +35,7 @@
       </div>
     </an-app-bar>
     <main>
+
       <a-nav-drawer id="nav-drawer">
         <a-nav-item icon="favorite">Favourite</a-nav-item>
         <a-nav-item icon="search" disabled>Disabled</a-nav-item>
@@ -62,15 +63,6 @@
         </li>
       </ul>
 
-      <a-dialog>
-        <h3 class="title">Title</h3>
-        <div class="content">contents</div>
-        <div class="actions">
-          <a href="javascript:void(0)">cancel</a>
-          <a href="javascript:void(0)">ok</a>
-        </div>
-      </a-dialog>
-
       <a-card>
         <div class="title">
           <h1>Buttons</h1>
@@ -91,6 +83,25 @@
           <button fab class="color-reversed"><i md-icon>add</i></button> &nbsp;
           <button fab mini><i md-icon>add</i></button> &nbsp;
           <button fab mini class="color-reversed"><i md-icon>add</i></button> &nbsp;
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Dialog</h1>
+          <div class="subtitle">Dialogs</div>
+        </div>
+        <div class="text">
+          <button raised onclick="openDialog('dialog-1')">Open A Dialog</button>
+          <button raised onclick="openDialogWith('dialog-1',{title: 'me', contents:'bar', actions: {ok: ()=>{}}})">Open A Dialog With Data</button>
+          <a-dialog id="dialog-1">
+            <h3 class="title">Title</h3>
+            <div class="content">contents</div>
+            <div class="actions">
+              <button onclick="closeDialog('dialog-1')">cancel</buttoin>
+              <button onclick="closeDialog('dialog-1')">OK</buttoin>
+            </div>
+          </a-dialog>
         </div>
       </a-card>
 
@@ -179,6 +190,16 @@
         let menuEl = document.querySelector('#app-bar-menu');
         menuEl.getAttribute('visible') !== null ?
            menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
+      }
+      function openDialog(id) {
+        document.getElementById(id).open();
+      }
+      function closeDialog(id) {
+        document.getElementById(id).close();
+      }
+      function openDialogWith(id, data) {
+        let dialog = document.getElementById(id);
+        dialog.open(data);
       }
     </script>
   </body>
