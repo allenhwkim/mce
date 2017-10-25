@@ -99,30 +99,31 @@
   a-tabs > a-nav-item {
     max-width: 264px;
     min-width: 72px; /* 160px for larger views */
-    color: var(--theme-text-color-300);
     text-align: center;
   }
   a-tabs > a-nav-item[active] [md-icon],
+  a-tabs > a-nav-item .text {
+    color: var(--theme-text-color-200);
+  }
   a-tabs > a-nav-item[active] .text {
     color: var(--theme-text-color-0);
   }
   a-tabs > a-nav-item [md-icon] {
-    padding: 0 12px;
+    padding: 12px 0;
     color: var(--theme-text-color-0);
     display: block;
   }
   a-tabs > a-nav-item .text {
     display: block;
     padding: 18px 12px 20px 12px;
-    height: 48px;
     text-transform: uppercase;
     vertical-align: bottom;
     font-size: 14px;
   }
   a-tabs > a-nav-item [md-icon] ~ .text {
     display: block;
-    margin-top: -2px;
-    padding-top: 10px;
+    margin-top: -4px;
+    padding-top: 0px;
     padding-bottom: 16px;
   }
   a-tabs > a-nav-item:after {
@@ -153,7 +154,9 @@
   class NavItem extends HTMLElement {
     constructor() {
       super();
-      this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
+      if (this.innerHTML) {
+        this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
+      }
       let template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
       let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'a-nav-item');

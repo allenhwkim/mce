@@ -10,8 +10,8 @@ DRAFT  :  6 Floating action button (FAB - resting elevation)
 DRAFT  : 12 Floating action button (FAB - pressed)
 DRAFT  : 24 Dialog
 DRAFT  :  3 Refresh indicator
+DRAFT  :  0 tabs
 
-* tabs
 * text-field
 * chip https://material.io/guidelines/components/chips.html#chips-specs
 
