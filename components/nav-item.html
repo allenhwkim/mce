@@ -70,7 +70,6 @@
 
   /**
     For nav drawer
-   
     https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
    */
   a-nav-drawer a-nav-item {
@@ -92,6 +91,59 @@
     color: var(--theme-text-color-500);
     vertical-align: middle;
   }
+
+  /**
+    For tabs
+    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+   */
+  a-tabs > a-nav-item {
+    max-width: 264px;
+    min-width: 72px; /* 160px for larger views */
+    color: var(--theme-text-color-300);
+    text-align: center;
+  }
+  a-tabs > a-nav-item[active] [md-icon],
+  a-tabs > a-nav-item[active] .text {
+    color: var(--theme-text-color-0);
+  }
+  a-tabs > a-nav-item [md-icon] {
+    padding: 0 12px;
+    color: var(--theme-text-color-0);
+    display: block;
+  }
+  a-tabs > a-nav-item .text {
+    display: block;
+    padding: 18px 12px 20px 12px;
+    height: 48px;
+    text-transform: uppercase;
+    vertical-align: bottom;
+    font-size: 14px;
+  }
+  a-tabs > a-nav-item [md-icon] ~ .text {
+    display: block;
+    margin-top: -2px;
+    padding-top: 10px;
+    padding-bottom: 16px;
+  }
+  a-tabs > a-nav-item:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 120px;
+    margin-left: -60px;
+    margin-top: -60px;
+    background: #3f51b5;
+    border-radius: 100%;
+    opacity: .6;
+    visibility: hidden;
+    transform: scale(0);
+  }
+  a-tabs a-nav-item:active:after {
+    animation: ripple 1s ease-out;
+  }
   </style>
 </template>
 
@@ -101,6 +153,7 @@
   class NavItem extends HTMLElement {
     constructor() {
       super();
+      this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
       let template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
       let style = template.content.querySelector('style').cloneNode(true);
       style.setAttribute('id', 'a-nav-item');

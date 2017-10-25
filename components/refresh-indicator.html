@@ -1,0 +1,73 @@
+<template for="RefreshIndicator">
+  <style>
+    a-refresh-indicator {
+      width: 56px;
+      height: 56px;
+      text-align: center;
+      line-height: 56px;
+      border-radius: 50%;
+      padding: 0;
+      box-shadow: var(--theme-shadow-2dp);
+      z-index: 3;
+      display: inline-block;
+    }
+    a-refresh-indicator svg {
+      width: 40px; 
+      height: 40px;
+      vertical-align: middle;
+    }
+    a-refresh-indicator[loading] svg {
+      animation: rotate 1.4s infinite linear;
+    }
+    a-refresh-indicator[mini] {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+    }
+    a-refresh-indicator[mini] svg {
+      width: 32px; 
+      height: 32px;
+    }
+    a-refresh-indicator svg circle {
+      stroke-dasharray: 44.2336, 200;
+      stroke-dashoffset: -15;
+      stroke: var(--theme-color-500); 
+      stroke-linecap: round;
+      opacity: 1; 
+      stroke-width: 3; 
+      fill: none; 
+      transition: all 750ms ease-in-out 0ms;
+    }
+    a-refresh-indicator svg polygon {
+      fill: var(--theme-color-500); 
+      transform: rotate(314deg);
+      transform-origin: 16px 16px 0px;
+      opacity: 1;
+    }
+  </style>
+  <svg viewBox="0 0 32 32">
+    <circle cx="16" cy="16" r="11"></circle>
+    <polygon points="21.75,16 32.25,16 27,21.25"></polygon>
+  </svg>
+</template>
+
+<script>
+  var thisScript = document.currentScript;
+
+  class RefreshIndicator extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=RefreshIndicator]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-refresh-indicator-style');
+      (!document.querySelector('#a-refresh-indicator-style')) && this.insertBefore(style, this.firstChild);
+      let svg = template.content.querySelector('svg').cloneNode(true);
+      this.appendChild(svg);
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+  }
+  
+  customElements.define('a-refresh-indicator', RefreshIndicator);
+</script>

@@ -1,0 +1,120 @@
+<!--
+  https://material.io/guidelines/components/tabs.html#tabs-types-of-tabs
+-->
+<template for="Tabs">
+  <link rel="stylesheet" href="../components/common.css">
+  <style>
+  a-tabs {
+    position: relative;
+    background-color: var(--theme-color-500);
+    border-radius: 2px;
+    bottom: 0;
+    color: var(--theme-color-900);
+    display: flex;
+    font-size: 0px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  a-tabs > * {
+    flex: 1;
+  }
+  a-tabs > .indicator {
+    position: absolute;
+    bottom: 0px;
+    height: 2px;
+    background-color: var(--theme-color-accent, #fff);
+    left: 0%;
+  }
+  </style>
+</template>
+
+<script>
+  var thisScript = document.currentScript;
+
+  class Tabs extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=Tabs]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-tabs-style');
+      (!document.querySelector('#a-tabs-style')) && this.insertBefore(style, this.firstChild);
+      this.indicatorEl = this._addIndicatorEl();
+      this._registerNavItemClick();
+      this._animateIndicator();
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+
+    _addIndicatorEl() {
+      let el = document.createElement('div');
+      let thisWidth  = this.getBoundingClientRect().width;
+      let left = (
+          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          - this.getBoundingClientRect().left
+        ) / thisWidth;
+
+      el.classList.add('indicator');
+      el.style.left = left*100 + '%';
+      this.appendChild(el);
+      return el;
+    }
+
+    _registerNavItemClick() {
+      Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
+        navItem.addEventListener('click', this._animateIndicator.bind(this));
+      })
+    }
+
+    /**
+     * common function for Javascript animation
+     */
+    _animateCommon({duration, draw, timing}) {
+    
+      let start = performance.now();
+    
+      requestAnimationFrame(function animate(time) {
+        let timeFraction = (time - start) / duration;
+        if (timeFraction > 1) timeFraction = 1;
+    
+        let progress = timing(timeFraction)
+    
+        draw(progress);
+    
+        if (timeFraction < 1) {
+          requestAnimationFrame(animate);
+        }
+      });
+    }
+    
+    /**
+     * animate the indicator below the active tab
+     */
+    _animateIndicator() {
+      let indicatorEl = this.indicatorEl;
+      let numTab = this.querySelectorAll('a-nav-item').length;
+      let thisWidth  = this.getBoundingClientRect().width;
+      let indicatorLeftFrom = parseFloat(indicatorEl.style.left);
+      let indicatorLeftTo = (
+          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          - this.getBoundingClientRect().left
+        ) / thisWidth;
+      let move = indicatorLeftTo*100 - indicatorLeftFrom;
+
+      indicatorEl.style.width = parseFloat(100/numTab) + '%';
+
+      this._animateCommon({
+        duration: 500,
+        timing: function(timeFraction) {
+          return 1 - Math.sin(Math.acos(timeFraction));
+        },
+        draw: function(progress) {
+          indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
+        }
+      });
+    }
+  
+  }
+  
+  customElements.define('a-tabs', Tabs);
+</script>

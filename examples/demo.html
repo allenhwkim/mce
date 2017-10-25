@@ -14,6 +14,8 @@
     <link rel="import" href="../components/bottom-nav-bar.html">
     <link rel="import" href="../components/card.html">
     <link rel="import" href="../components/dialog.html">
+    <link rel="import" href="../components/refresh-indicator.html">
+    <link rel="import" href="../components/tabs.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -66,19 +68,26 @@
       <a-card>
         <div class="title">
           <h1>Buttons</h1>
-          <div class="subtitle">Flat Buttons</div>
+          <h3 class="subtitle">Buttons communicate the action that will occur when the user touches them.</h3>
         </div>
         <div class="text">
+          <p>
+          Flat Buttons are used for general functions and reduce the amount of layering on the screen, making it more readable.
+          </p>
           <button><i md-icon>search</i>Normal</button> &nbsp;
           <button class="color-reversed"><i md-icon>search</i>Normal</button> &nbsp;
           <button disabled><i md-icon>search</i>disabled</button>
           <button disabled class="color-reversed"><i md-icon>search</i>disabled</button>
-          <br/><br/>
+          <p>
+            Raised buttons are used to add dimension to mostly flat layouts and emphasizes important functions on your page.
+          </p>
           <button raised><i md-icon>search</i>Normal</button> &nbsp;
           <button raised class="color-reversed"><i md-icon>search</i>Normal</button> &nbsp;
           <button raised disabled><i md-icon>search</i>disabled</button>
           <button raised disabled class="color-reversed"><i md-icon>search</i>disabled</button>
-          <br/><br/>
+          <p>
+            The Floating Action Button is used for frequently used functions.
+          </p>
           <button fab><i md-icon>add</i></button> &nbsp;
           <button fab class="color-reversed"><i md-icon>add</i></button> &nbsp;
           <button fab mini><i md-icon>add</i></button> &nbsp;
@@ -89,7 +98,7 @@
       <a-card>
         <div class="title">
           <h1>Dialog</h1>
-          <div class="subtitle">Dialogs</div>
+          <div class="subtitle">Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks.</div>
         </div>
         <div class="text">
           <button raised onclick="openDialog('dialog-1')">Open A Dialog</button>
@@ -107,6 +116,47 @@
 
       <a-card>
         <div class="title">
+          <h1>Refresh Indicator</h1>
+          <div class="subtitle">The refresh indicator is used when showing an item is loading</div>
+        </div>
+        <div class="text">
+          <div class="subtitle">Ready</div>
+          <a-refresh-indicator></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator mini></a-refresh-indicator>
+          <br/><br/>
+          <div class="subtitle">Loading</div>
+          <a-refresh-indicator loading></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator mini loading></a-refresh-indicator>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Tabs</h1>
+          <div class="subtitle">Tabs make it easy to explore and switch between different views.</div>
+        </div>
+        <p> Text Only Tabs</p>
+        <a-tabs>
+          <a-nav-item>item one</a-nav-item>
+          <a-nav-item>item two</a-nav-item>
+          <a-nav-item>item three</a-nav-item>
+        </a-tabs>
+        <p> Icon Only Tabs</p>
+        <a-tabs>
+          <a-nav-item>item one</a-nav-item>
+          <a-nav-item active>item two</a-nav-item>
+          <a-nav-item>item three</a-nav-item>
+        </a-tabs>
+        <p> Icon/Text Tabs</p>
+        <a-tabs>
+          <a-nav-item>item one</a-nav-item>
+          <a-nav-item>item two</a-nav-item>
+          <a-nav-item active>item three</a-nav-item>
+        </a-tabs>
+      </a-card>
+
+      <a-card>
+        <div class="title">
           <h1>Title Goes Here</h1>
           <div class="subtitle">Subtitle here</div>
         </div>
@@ -117,8 +167,8 @@
           Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
         </div>
         <div class="actions">
-          <a href="javascript:void()" class="button">ACTION 1</a>
-          <a href="javascript:void()" class="button">ACTION 2</a>
+          <a href="javascript:void(0)" class="button">ACTION 1</a>
+          <a href="javascript:void(0)" class="button">ACTION 2</a>
         </div>
       </a-card>
 
