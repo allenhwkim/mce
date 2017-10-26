@@ -16,6 +16,7 @@
     <link rel="import" href="../components/dialog.html">
     <link rel="import" href="../components/refresh-indicator.html">
     <link rel="import" href="../components/tabs.html">
+    <link rel="import" href="../components/text-field.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -122,11 +123,15 @@
         <div class="text">
           <div class="subtitle">Ready</div>
           <a-refresh-indicator></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator class="color-reversed"></a-refresh-indicator> &nbsp;
           <a-refresh-indicator mini></a-refresh-indicator>
+          <a-refresh-indicator mini class="color-reversed"></a-refresh-indicator>
           <br/><br/>
           <div class="subtitle">Loading</div>
           <a-refresh-indicator loading></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator loading class="color-reversed"></a-refresh-indicator> &nbsp;
           <a-refresh-indicator mini loading></a-refresh-indicator>
+          <a-refresh-indicator mini loading class="color-reversed"></a-refresh-indicator>
         </div>
       </a-card>
 
@@ -154,6 +159,35 @@
           <a-nav-item icon="alarm">item three</a-nav-item>
         </a-tabs>
         <br/> <br/> <br/> <br/>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Text Field</h1>
+          <div class="subtitle">Text fields allow users to input, edit, and select text.</div>
+        </div>
+        <div class="text">
+          <p>Text fields typically reside in forms but can appear in other places, like dialog boxes and search.</p>
+          NOTE: Work In Progress :)
+          <br/>
+          <a-text-field
+            icon="favorite"
+            helper-text="this is helper text"
+            label="this is label"
+            maxlength="10"
+            minlength="2"
+            minlength-error="invalid text min. length"
+            maxlength-error="invalid text max. length"
+            optional="(optional)"
+            pattern-error="invalid text pattern"
+            pattern="[0-9]+"
+            placeholder="this is hint text"
+            prefix="$"
+            required
+            required-error="this field is required"
+            suffix="dollars">
+          </a-text-field>
+        </div>
       </a-card>
 
       <a-card>

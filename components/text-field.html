@@ -1,0 +1,338 @@
+<!--
+  https://material.io/guidelines/components/text-fields.html#text-fields-principles
+
+  TODO: list attribute and <datalist> support
+
+  root level status
+    disabled / empty / invalid / active
+
+  attributes
+    * disabled
+    * icon="favorite"
+    * label="this is label"
+    * length-error="invalid text length"
+    * maxlength -> word-counter
+    * minlength -> word-counter
+    * optional="(optional)"
+    * pattern-error="invalid text pattern"
+    * pattern=""
+    * placeholder="this is hint text"
+    * prefix="$"
+    * readonly
+    * required="this field is required"
+    * suffix="dollars"
+
+ Example
+
+ <a-text-field disabled
+   icon="favorite"
+   helper-text="this is helper text"
+   label="this is label"
+   maxlength -> word-counter
+   minlength -> word-counter
+   minlength-error="invalid text min. length"
+   maxlength-error="invalid text max. length"
+   optional="(optional)"
+   pattern-error="invalid text pattern"
+   pattern=""
+   placeholder="this is hint text"
+   prefix="$"
+   readonly
+   required="this field is required"
+   suffix="dollars"></a-text-field>
+
+  a-text-field {
+    display: block;
+  }
+
+  a-text-field > .label {
+    padding: 0 0 8px 0;
+    font-size: 12px;
+  }
+  a.text-field > .input {
+    padding: 16px 0 8px 0;
+    border-bottom: 1px solid var(--theme-text-color-500);
+  }
+  a.text-field > .input {
+    padding: 16px 0 8px 0;
+    border-bottom: 1px solid var(--theme-text-color-500);
+  }
+  a-text-field:hover > .label {
+    colo: var(--theme-text-color-600);
+  }
+  a.text-field:hover > .input {
+    border-bottom: 1px solid var(--theme-text-color-800);
+  }
+  /* JS voice icon when active and empty     */
+  /* JS clear icon when active and not empty */
+  a.text-field > md-icon {
+    padding-right: 16px
+  }
+  a.text-field > .word-counter {
+    color: var(--theme-text-color-500, #ccc);
+    float: right;
+  }
+
+  a.text-field[active] > .input {
+    border-bottom: 2px solid var(--theme-color-500);
+  }
+  a.text-field[active] > .label {
+    color: var(--theme-color-400);
+  }
+  a.text-field[active] > .helper-text {
+    padding-top: 12px
+    font-size: 12px;
+  }
+
+  /* JS required with */
+  /* JS optional with (optional)/
+  
+  a.text-field[invalid] {
+    color: var(--theme-text-color-error, #fc1f49)
+  }
+  a.text-field[invalid] > .helper-text {
+    display: none;
+  }
+  a.text-field[invalid] > input {
+    border-bottom: 2px solid var(--theme-color-error, #fc1f49);
+  }
+
+  /** material ui */
+  <a-text-field>
+    <label for="input-99999"" style="">Floating Label Text</label>
+    <div class="hint-text">Hint Text</div>
+    <input type="text" id="input-99999" />
+    <hr />
+    <div class="helper-text">This is a helper text.</div>
+    <div class="error-message">This is an error message.</div>
+  </a-text-field>
+-->
+<template for="TextField">
+  <link rel="stylesheet" href="../components/common.css">
+  <style>
+  a-text-field {
+    line-height: 24px;
+    height: 72px;
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    transition: height 200ms var(--theme-animation-ease);
+  }
+
+  a-text-field[disabled] {
+  }
+  a-text-field[empty] {
+  }
+  a-text-field[invalid] {
+  }
+  a-text-field[active] {
+  }
+
+  a-text-field > label {
+    position: absolute;
+    line-height: 22px;
+    top: 38px;
+    transition: all 450ms var(--theme-animation-ease);
+    z-index: 1; 
+    transform: scale(1) translate(0px, 0px);
+    transform-origin: left top 0px;
+    pointer-events: none;
+    user-select: none;
+    color: var(--theme-text-color-900);
+  }
+
+  a-text-field > .hint-text {
+    position: absolute;
+    opacity: 0; 
+    color: var(--theme-text-color-900);
+    transition: all 450ms var(--theme-animation-ease);
+    bottom: 12px;"
+  }
+
+  a-text-field > [md-icon] {
+    position: absolute;
+  }
+
+  a-text-field > .prefix {
+    position: absolute;
+  }
+
+  a-text-field > .suffix {
+    position: absolute;
+  }
+
+  a-text-field > input {
+    padding: 0px;
+    position: relative;
+    width: 100%;
+    border: none;
+    outline: none; 
+    background-color: transparent; 
+    color: var(--theme-text-color-900);
+    cursor: inherit;
+    font-style: inherit;
+    font-variant: inherit;
+    font-weight: inherit;
+    font-stretch: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: inherit;
+    opacity: 1;
+    -webkit-tap-highlight-color: transparent;
+    height: 100%;
+    box-sizing:
+    border-box;
+    margin-top: 14px;
+  }
+  a-text-field > hr {
+    border: 2px solid var(--theme-color-800);
+    border-width: 0 0 2px 0;
+    bottom: 8px;
+    margin: 0px;
+    position: absolute;
+    width: 100%;
+    transform: scaleX(1);
+    transition: all 450ms var(--theme-animation-ease);
+  }
+  a-text-field > .helper-text {
+    position: relative;
+    bottom: 15px;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--theme-text-color-800);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  }
+  a-text-field > .error-messages {
+    position: relative;
+    bottom: 15px;
+    font-size: 12px;
+    line-height: 12px;
+    color: var(--theme-text-error);
+    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+  }
+
+  </style>
+</template>
+
+<script>
+( function() {
+  var thisScript = document.currentScript;
+
+  class TextField extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=TextField]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-text-field-style');
+      (!document.querySelector('#a-text-field-style')) && this.insertBefore(style, this.firstChild);
+      this.id = 'a-text-field-'+Math.round(Math.random()*10**9);
+      this._buildHTML();
+    }
+
+    get disabled() {
+      return this.getAttribute('disabled') !== '';
+    }
+
+    set disabled(disabled) {
+      disabled ? this.setAttribute('disabled', '') : this.removeAttribute('disabled');
+    }
+
+    get errorMessages() {
+      let errorMesages = this.__cachedErrorMessages || {
+        rangeUnderflow: this.getAttribute('min-error') || 'invalid min. value',
+        rangeOverflow: this.getAttribute('max-error') || 'invalid max. value',
+        stepMismatch: this.getAttribute('step-error') || 'invalid value(step)',
+        tooShort:  this.getAttribute('minlength-error') || 'invalid min. length',
+        tooLong: this.getAttribute('maxlength-error') || 'invalid max. length',
+        patternMismatch: this.getAttribute('pattern-error') || 'invalid input text',
+        valueMissing: this.getAttribute('required-error') || 'this field is requierd',
+        typeMismatch: this.getAttribute('type-error') || 'invalid input for type, '+this.getAttribute('type'),
+        customError: this.getAttribute('custom-error') || 'invaid input(custom error)',
+        invalidError: this.getAttribute('invalid-error') || 'invaid input'
+      }
+      this.__cachedErrorMessages = errorMessages;
+      return errorMessages;
+    }
+
+    connectedCallback() {
+      this.inputEl = this.querySelector('#'+this.id);
+      this._addEventListeners();
+      console.log('this', this)
+    }
+
+    _buildHTML() {
+      let icon = this.getAttribute('icon') || '';
+      let type = this.getAttribute('type') || 'text';
+      let hintText = this.getAttribute('placeholder') || '';
+      let helpetText = this.getAttribute('helper-text') || '';
+      let label = this.getAttribute('label') || '';
+      let prefix = this.getAttribute('prefix') || '';
+      let suffix = this.getAttribute('suffix') || '';
+      let optionalText = this.getAttribute('optional') || '';
+      let helperText = this.getAttribute('helper-text') || '';
+      let requiredText = this.getAttribute('required') !== null ? '*' : '';
+
+      let attrs = [];
+      let inputElAttrs = ['type', 'id', 'maxlength', 'step', 'max', 'min', 'minlength', 'pattern', 'required'];
+      for (let i=0; i<this.attributes.length; i++) {
+        let attr = this.attributes[i];
+        if (inputElAttrs.includes(attr.name)) {
+          attrs.push(`${attr.name}="${attr.value}"`);
+        }
+      }
+      let attributes = attrs.join(' ');
+
+      let html = `
+        <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
+        <div class="hint-text">${hintText}</div>
+        <div class="icon" md-icon>${icon}</div>
+        <div class="prefix">${prefix}</div>
+        <div class="suffix">${suffix}</div>
+        <input type="${type}" id="${this.id}" ${attributes} />
+        <hr />
+        <div class="helper-text">${helperText}</div>
+        <div class="error-messages"></div>
+      `;
+      this.insertAdjacentHTML('beforeend', html);
+    }
+
+    _getErrors(valuesOnly=false, firstOnly=true) {
+      let errors = {};
+      for (var key in this.inputEl.validity) {
+        if (this.inputEl.validity) {
+          errors[key] = this.errorMessages[key];
+        }
+      }
+      let errorMsgs = Object.values(errors);
+
+      return
+        (!errorMsgs.length) ? null : 
+        firstOnly ? errorMsgs[0] : 
+        valuesOnly ? errorMsgs : errors;
+    }
+
+    _addEventListeners() {
+      this.addEventListener('click', event => {
+        console.log('click to a-text-field')
+        this.setAttribute('active', '');
+        this.inputEl.focus();
+      });
+      this.inputEl.addEventListener('blur', event => {
+        console.log('blur from input element')
+        this.removeAttribute('active');
+      });
+      this.inputEl.addEventListener('change', event => {
+        let errMsgEl = this.querySelector('error-messages');
+        let errors = this._getErors();
+        let empty  = !this.inputEl.value;
+        errMsgEl.innerHTML = errors || '';
+
+        errors ? this.setAttribute('invalid', '') : this.removeAttribute('invalid'); 
+        empty  ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+      });
+    }
+  }
+  
+  customElements.define('a-text-field', TextField);
+})();
+</script>

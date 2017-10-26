@@ -1,5 +1,5 @@
 <!--
-  https://material.io/guidelines/components/tabs.html#tabs-types-of-tabs
+  https://material.io/guidelines/components/text-fields.html
 -->
 <template for="Tabs">
   <link rel="stylesheet" href="../components/common.css">
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class Tabs extends HTMLElement {
@@ -117,4 +118,5 @@
   }
   
   customElements.define('a-tabs', Tabs);
+})();
 </script>

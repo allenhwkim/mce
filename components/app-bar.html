@@ -50,6 +50,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class AppBar extends HTMLElement {
@@ -66,4 +67,5 @@
   }
   
   customElements.define('an-app-bar', AppBar);
+})();
 </script>

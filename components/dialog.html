@@ -77,6 +77,7 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class Dialog extends HTMLElement {
@@ -167,4 +168,5 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
   }
   
   customElements.define('a-dialog', Dialog);
+})();
 </script>

@@ -62,7 +62,7 @@
     a-card .text {
       padding: 16px;
       font-size: 14px;
-      color: var(--theme-text-color-400, #444444);
+      color: var(--theme-text-color-700, #444444);
     }
     a-card .text + .actions{
       padding-top: 0;
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class Card extends HTMLElement {
@@ -87,4 +88,5 @@
   }
   
   customElements.define('a-card', Card);
+})();
 </script>

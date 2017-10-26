@@ -16,6 +16,12 @@
       height: 40px;
       vertical-align: middle;
     }
+    a-refresh-indicator.color-reversed svg circle {
+      stroke: var(--theme-color-0); 
+    }
+    a-refresh-indicator.color-reversed svg polygon {
+      fill: var(--theme-color-0); 
+    }
     a-refresh-indicator[loading] svg {
       animation: rotate 1.4s infinite linear;
     }
@@ -52,6 +58,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class RefreshIndicator extends HTMLElement {
@@ -70,4 +77,5 @@
   }
   
   customElements.define('a-refresh-indicator', RefreshIndicator);
+})();
 </script>

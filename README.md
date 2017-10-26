@@ -3,17 +3,17 @@ Custom Elements With Material Design
 
 ## Design Principle
 
-  1. Standards-Only
+  1. Standards-Only and Less Engineering
   
      * Including W3C Draft Standard
      * Only HTML4/HTML5/ES5/ES6/ES7CSS2/CSS3
      * No Framework, Typescript
-     * No Workaround (including Polyfills)
 
   2. Themable-CSS with variables
     * By changing theme variables, we can have different look-and-feel
 
-[DEMO](https://rawgit.com/allenhwkim/custom-elements/master/examples/app-bar.html)
+[DEMO](https://rawgit.com/allenhwkim/custom-elements/master/examples/demo.html)
+
 <hr/>
 The below is notes for development
 <hr/>

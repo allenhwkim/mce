@@ -69,6 +69,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class Menu extends HTMLElement {
@@ -123,4 +124,5 @@
   }
   
   customElements.define('a-menu', Menu);
+})();
 </script>

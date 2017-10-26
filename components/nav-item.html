@@ -149,6 +149,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class NavItem extends HTMLElement {
@@ -194,4 +195,5 @@
   }
   
   customElements.define('a-nav-item', NavItem);
+})();
 </script>
