@@ -19,6 +19,9 @@ The below is notes for development
 <hr/>
 When use custom element w/o shadow DOM, there must be a way to prevent style bleeding.
 
+FlexBox Examples
+http://plnkr.co/edit/lxx7QCwZbeZyyUtwiCym?p=preview
+
 tiny color
 http://plnkr.co/edit/e5eYGKLrg9SUXiGSvAgZ?p=preview
 

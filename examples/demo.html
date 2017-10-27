@@ -173,19 +173,70 @@
           <a-text-field
             icon="favorite"
             helper-text="this is helper text"
-            label="this is label"
+            label="Floating Label Text"
             maxlength="10"
             minlength="2"
             minlength-error="invalid text min. length"
             maxlength-error="invalid text max. length"
-            optional="(optional)"
+            xx-optional="(optional)"
             pattern-error="invalid text pattern"
             pattern="[0-9]+"
-            placeholder="this is hint text"
+            placeholder="Hint Text."
             prefix="$"
             required
-            required-error="this field is required"
+            required-error="This field is required"
             suffix="dollars">
+          </a-text-field>
+          <img src="material-ui-text-field.png" style="height: 92px; vertical-align: top;     position: relative;
+    top: -8px;" />
+          <br/>
+          <b>Disabled Status</b>
+          <br/>
+          <a-text-field disabled required
+            icon="favorite"
+            helper-text="this is helper text"
+            label="Floating Label Text"
+            maxlength="10"
+            minlength="2"
+            minlength-error="invalid text min. length"
+            maxlength-error="invalid text max. length"
+            xx-optional="(optional)"
+            pattern-error="invalid text pattern"
+            pattern="[0-9]+"
+            prefix="$" suffix="dollars"
+            placeholder="Hint Text."
+            required-error="This field is required">
+          </a-text-field>
+          <a-text-field disabled required
+            helper-text="this is helper text"
+            label="Floating Label Text"
+            maxlength="10" minlength="2"
+            minlength-error="invalid text min. length"
+            maxlength-error="invalid text max. length"
+            pattern-error="invalid text pattern"
+            pattern="[0-9]+"
+            placeholder="Hint Text."
+            prefix="$"
+            required-error="This field is required"
+            suffix="dollars">
+          </a-text-field>
+          <a-text-field disabled
+            icon="favorite"
+            helper-text="this is helper text"
+            label="Floating Label Text"
+            maxlength="10"
+            minlength="2"
+            minlength-error="invalid text min. length"
+            maxlength-error="invalid text max. length"
+            xx-optional="(optional)"
+            pattern-error="invalid text pattern"
+            pattern="[0-9]+"
+            placeholder="Hint Text."
+            prefix="$"
+            required
+            required-error="This field is required"
+            suffix="dollars"
+            value="300">
           </a-text-field>
         </div>
       </a-card>

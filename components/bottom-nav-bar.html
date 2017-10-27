@@ -27,6 +27,7 @@
 </template>
 
 <script>
+( function() {
   var thisScript = document.currentScript;
 
   class BottomNavBar extends HTMLElement {
@@ -43,4 +44,5 @@
   }
   
   customElements.define('a-bottom-nav-bar', BottomNavBar);
+})();
 </script>

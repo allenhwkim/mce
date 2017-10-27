@@ -40,87 +40,81 @@
    readonly
    required="this field is required"
    suffix="dollars"></a-text-field>
-
-  a-text-field {
-    display: block;
-  }
-
-  a-text-field > .label {
-    padding: 0 0 8px 0;
-    font-size: 12px;
-  }
-  a.text-field > .input {
-    padding: 16px 0 8px 0;
-    border-bottom: 1px solid var(--theme-text-color-500);
-  }
-  a.text-field > .input {
-    padding: 16px 0 8px 0;
-    border-bottom: 1px solid var(--theme-text-color-500);
-  }
-  a-text-field:hover > .label {
-    colo: var(--theme-text-color-600);
-  }
-  a.text-field:hover > .input {
-    border-bottom: 1px solid var(--theme-text-color-800);
-  }
-  /* JS voice icon when active and empty     */
-  /* JS clear icon when active and not empty */
-  a.text-field > md-icon {
-    padding-right: 16px
-  }
-  a.text-field > .word-counter {
-    color: var(--theme-text-color-500, #ccc);
-    float: right;
-  }
-
-  a.text-field[active] > .input {
-    border-bottom: 2px solid var(--theme-color-500);
-  }
-  a.text-field[active] > .label {
-    color: var(--theme-color-400);
-  }
-  a.text-field[active] > .helper-text {
-    padding-top: 12px
-    font-size: 12px;
-  }
-
-  /* JS required with */
-  /* JS optional with (optional)/
-  
-  a.text-field[invalid] {
-    color: var(--theme-text-color-error, #fc1f49)
-  }
-  a.text-field[invalid] > .helper-text {
-    display: none;
-  }
-  a.text-field[invalid] > input {
-    border-bottom: 2px solid var(--theme-color-error, #fc1f49);
-  }
-
-  /** material ui */
-  <a-text-field>
-    <label for="input-99999"" style="">Floating Label Text</label>
-    <div class="hint-text">Hint Text</div>
-    <input type="text" id="input-99999" />
-    <hr />
-    <div class="helper-text">This is a helper text.</div>
-    <div class="error-message">This is an error message.</div>
-  </a-text-field>
 -->
 <template for="TextField">
   <link rel="stylesheet" href="../components/common.css">
   <style>
   a-text-field {
+    display: inline-block;
+    min-width: 258px;
+    height: 84px;
+  }
+
+  /* disabled / empty / invalid / active */
+  a-text-field[empty]:not([active]) .input-wrapper {
+    visibility: hidden;
+  }
+
+  a-text-field[empty][active] label {
+    top: 12px;
+    font-size: 12px;
+  }
+  a-text-field:not([empty]) label {
+    visibility: hidden;
+  }
+
+  a-text-field[disabled] {
+    pointer-events: none;
+  }
+  a-text-field[disabled] .error-messages,
+  a-text-field[disabled] label,
+  a-text-field[disabled] .prefix,
+  a-text-field[disabled] .suffix,
+  a-text-field[disabled] input,
+  a-text-field[disabled] hr,
+  a-text-field[disabled] .helper-text,
+  a-text-field[disabled] .error-messages,
+  a-text-field[disabled] [md-icon]:not(:empty) {
+    color: var(--theme-text-color-500);
+  }
+  a-text-field[disabled] hr {
+    border-color: var(--theme-color-500);
+  }
+
+  a-text-field:not([empty], [active]) .suffix,
+  a-text-field:not([empty], [active]) .prefix,
+  a-text-field[disabled] input {
+    display: inherit;
+  }
+  a-text-field [md-icon]:empty,
+  a-text-field label:empty,
+  a-text-field .prefix:empty,
+  a-text-field .suffix:empty,
+  a-text-field .helper-text:empty,
+  a-text-field .error-messages:empty {
+    display: none;
+  }
+
+  a-text-field [md-icon]:not(:empty) {
+    color: var(--theme-text-color-700);
+    position: relative;
+    bottom: 22px;
+  }
+
+  a-text-field .container {
+    font-size: 16px;
     line-height: 24px;
-    height: 72px;
+    height: 84px;
     display: inline-block;
     position: relative;
     background-color: transparent;
     transition: height 200ms var(--theme-animation-ease);
+    width: 100%;
+  }
+  a-text-field [md-icon]:not(:empty) ~ .container {
+    width: calc(100% - 40px);
   }
 
-  a-text-field[disabled] {
-  }
   a-text-field[empty] {
   }
   a-text-field[invalid] {
@@ -128,42 +122,39 @@
   a-text-field[active] {
   }
 
-  a-text-field > label {
-    position: absolute;
-    line-height: 22px;
+  a-text-field label {
     top: 38px;
+    font-size: inherit;
+    position: absolute;
     transition: all 450ms var(--theme-animation-ease);
     z-index: 1; 
     transform: scale(1) translate(0px, 0px);
     transform-origin: left top 0px;
     pointer-events: none;
     user-select: none;
-    color: var(--theme-text-color-900);
+    color: var(--theme-text-color-700);
   }
 
-  a-text-field > .hint-text {
-    position: absolute;
-    opacity: 0; 
-    color: var(--theme-text-color-900);
-    transition: all 450ms var(--theme-animation-ease);
-    bottom: 12px;"
-  }
-
-  a-text-field > [md-icon] {
-    position: absolute;
-  }
-
-  a-text-field > .prefix {
-    position: absolute;
-  }
-
-  a-text-field > .suffix {
-    position: absolute;
-  }
-
-  a-text-field > input {
+  a-text-field .input-wrapper {
     padding: 0px;
-    position: relative;
+    position: absolute;
+    bottom: 24px;
+    display: flex;
+  }
+
+  a-text-field .prefix {
+    color: var(--theme-text-color-500);
+    padding-right: 8px;
+  }
+
+  a-text-field .suffix {
+    padding-left: 8px;
+    color: var(--theme-text-color-500);
+  }
+
+  a-text-field input {
+    flex: 1;
+    padding: 0px;
     width: 100%;
     border: none;
     outline: none; 
@@ -179,32 +170,30 @@
     font-family: inherit;
     opacity: 1;
     -webkit-tap-highlight-color: transparent;
-    height: 100%;
-    box-sizing:
-    border-box;
-    margin-top: 14px;
+    box-sizing: border-box;
   }
-  a-text-field > hr {
+
+  a-text-field hr {
     border: 2px solid var(--theme-color-800);
     border-width: 0 0 2px 0;
-    bottom: 8px;
+    bottom: 20px;
     margin: 0px;
     position: absolute;
     width: 100%;
     transform: scaleX(1);
     transition: all 450ms var(--theme-animation-ease);
   }
-  a-text-field > .helper-text {
-    position: relative;
-    bottom: 15px;
+  a-text-field .helper-text {
+    position: absolute;
+    bottom: 0;
     font-size: 12px;
     line-height: 12px;
-    color: var(--theme-text-color-800);
+    color: var(--theme-text-color-600);
     transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
   }
-  a-text-field > .error-messages {
+  a-text-field .error-messages {
     position: relative;
-    bottom: 15px;
+    bottom: 0px;
     font-size: 12px;
     line-height: 12px;
     color: var(--theme-text-error);
@@ -238,7 +227,7 @@
     }
 
     get errorMessages() {
-      let errorMesages = this.__cachedErrorMessages || {
+      let errorMessages = this.__cachedErrorMessages || {
         rangeUnderflow: this.getAttribute('min-error') || 'invalid min. value',
         rangeOverflow: this.getAttribute('max-error') || 'invalid max. value',
         stepMismatch: this.getAttribute('step-error') || 'invalid value(step)',
@@ -257,7 +246,6 @@
     connectedCallback() {
       this.inputEl = this.querySelector('#'+this.id);
       this._addEventListeners();
-      console.log('this', this)
     }
 
     _buildHTML() {
@@ -270,10 +258,13 @@
       let suffix = this.getAttribute('suffix') || '';
       let optionalText = this.getAttribute('optional') || '';
       let helperText = this.getAttribute('helper-text') || '';
-      let requiredText = this.getAttribute('required') !== null ? '*' : '';
+      let requiredText = this.getAttribute('required') !== null ? ' *' : '';
 
       let attrs = [];
-      let inputElAttrs = ['type', 'id', 'maxlength', 'step', 'max', 'min', 'minlength', 'pattern', 'required'];
+      let inputElAttrs = [
+        'disabled', 'readonly', 'type', 'id', 'maxlength', 'step',
+        'max', 'min', 'minlength', 'pattern', 'required', 'value'
+      ];
       for (let i=0; i<this.attributes.length; i++) {
         let attr = this.attributes[i];
         if (inputElAttrs.includes(attr.name)) {
@@ -283,15 +274,18 @@
       let attributes = attrs.join(' ');
 
       let html = `
-        <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
-        <div class="hint-text">${hintText}</div>
-        <div class="icon" md-icon>${icon}</div>
-        <div class="prefix">${prefix}</div>
-        <div class="suffix">${suffix}</div>
-        <input type="${type}" id="${this.id}" ${attributes} />
-        <hr />
-        <div class="helper-text">${helperText}</div>
-        <div class="error-messages"></div>
+        <i class="icon" md-icon>${icon}</i>
+        <div class="container">
+          <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
+          <div class="input-wrapper">
+            <div class="prefix">${prefix}</div>
+            <input type="${type}" id="${this.id}" ${attributes} />
+            <div class="suffix">${suffix}</div>
+          </div>
+          <hr />
+          <div class="helper-text">${helperText}</div>
+          <div class="error-messages"></div>
+        </div>
       `;
       this.insertAdjacentHTML('beforeend', html);
     }
@@ -312,15 +306,20 @@
     }
 
     _addEventListeners() {
+      let empty  = !this.inputEl.value;
+      empty  ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+      let errors = this._getErrors();
+      errors ? this.setAttribute('invalid', '') : this.removeAttribute('invalid'); 
+
       this.addEventListener('click', event => {
-        console.log('click to a-text-field')
         this.setAttribute('active', '');
         this.inputEl.focus();
       });
+
       this.inputEl.addEventListener('blur', event => {
-        console.log('blur from input element')
         this.removeAttribute('active');
       });
+
       this.inputEl.addEventListener('change', event => {
         let errMsgEl = this.querySelector('error-messages');
         let errors = this._getErors();
