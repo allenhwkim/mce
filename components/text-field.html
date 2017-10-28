@@ -4,7 +4,7 @@
   TODO: list attribute and <datalist> support
 
   root level status
-    disabled / empty / invalid / active
+    disabled / empty / invalid / active / dirty
 
   attributes
     * disabled
@@ -49,77 +49,8 @@
     min-width: 258px;
     height: 84px;
   }
-
-  /* disabled / empty / invalid / active */
-  a-text-field[empty]:not([active]) .input-wrapper {
-    visibility: hidden;
-  }
-
-  a-text-field[empty][active] label {
-    top: 12px;
-    font-size: 12px;
-  }
-  a-text-field:not([empty]) label {
-    visibility: hidden;
-  }
-
-  a-text-field[disabled] {
-    pointer-events: none;
-  }
-  a-text-field[disabled] .error-messages,
-  a-text-field[disabled] label,
-  a-text-field[disabled] .prefix,
-  a-text-field[disabled] .suffix,
-  a-text-field[disabled] input,
-  a-text-field[disabled] hr,
-  a-text-field[disabled] .helper-text,
-  a-text-field[disabled] .error-messages,
-  a-text-field[disabled] [md-icon]:not(:empty) {
-    color: var(--theme-text-color-500);
-  }
-  a-text-field[disabled] hr {
-    border-color: var(--theme-color-500);
-  }
-
-  a-text-field:not([empty], [active]) .suffix,
-  a-text-field:not([empty], [active]) .prefix,
-  a-text-field[disabled] input {
-    display: inherit;
-  }
-  a-text-field [md-icon]:empty,
-  a-text-field label:empty,
-  a-text-field .prefix:empty,
-  a-text-field .suffix:empty,
-  a-text-field .helper-text:empty,
-  a-text-field .error-messages:empty {
-    display: none;
-  }
-
-  a-text-field [md-icon]:not(:empty) {
-    color: var(--theme-text-color-700);
-    position: relative;
-    bottom: 22px;
-  }
-
-  a-text-field .container {
-    font-size: 16px;
-    line-height: 24px;
-    height: 84px;
-    display: inline-block;
-    position: relative;
-    background-color: transparent;
-    transition: height 200ms var(--theme-animation-ease);
+  a-text-field.full-width {
     width: 100%;
-  }
-  a-text-field [md-icon]:not(:empty) ~ .container {
-    width: calc(100% - 40px);
-  }
-
-  a-text-field[empty] {
-  }
-  a-text-field[invalid] {
-  }
-  a-text-field[active] {
   }
 
   a-text-field label {
@@ -135,7 +66,19 @@
     color: var(--theme-text-color-700);
   }
 
+  a-text-field .container {
+    font-size: 16px;
+    line-height: 24px;
+    height: 84px;
+    display: inline-block;
+    position: relative;
+    background-color: transparent;
+    transition: height 200ms var(--theme-animation-ease);
+    width: 100%;
+  }
+
   a-text-field .input-wrapper {
+    width: 100%;
     padding: 0px;
     position: absolute;
     bottom: 24px;
@@ -189,16 +132,84 @@
     font-size: 12px;
     line-height: 12px;
     color: var(--theme-text-color-600);
-    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transition: all 450ms var(--theme-animation-ease) 0ms;
   }
   a-text-field .error-messages {
-    position: relative;
+    position: absolute;
     bottom: 0px;
+    width: 100%;
     font-size: 12px;
     line-height: 12px;
-    color: var(--theme-text-error);
-    transition: all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    background-color: var(--theme-color-0);
+    transition: all 450ms var(--theme-animation-ease) 0ms;
   }
+
+  /* disabled / empty / invalid / active */
+  a-text-field[empty]:not([active]) .input-wrapper {
+    visibility: hidden;
+  }
+
+  a-text-field:not([empty]) label,
+  a-text-field[empty][active] label {
+    top: 12px;
+    font-size: 12px;
+  }
+
+  a-text-field[disabled] {
+    pointer-events: none;
+  }
+  a-text-field[disabled] label,
+  a-text-field[disabled] .prefix,
+  a-text-field[disabled] .suffix,
+  a-text-field[disabled] input,
+  a-text-field[disabled] hr,
+  a-text-field[disabled] .helper-text,
+  a-text-field[disabled] .error-messages,
+  a-text-field[disabled] [md-icon]:not(:empty) {
+    color: var(--theme-text-color-500);
+  }
+  a-text-field[disabled] hr {
+    border-color: var(--theme-color-500);
+  }
+
+  a-text-field[invalid] label,
+  a-text-field[invalid] hr,
+  a-text-field[invalid] .helper-text,
+  a-text-field[invalid] .error-messages,
+  a-text-field[invalid] [md-icon]:not(:empty) {
+    color: var(--theme-color-error);
+  }
+  a-text-field[disabled] hr {
+    border-color: var(--theme-color-erroor);
+  }
+  a-text-field:not([invalid]) .error-messages {
+    visibility: hidden;
+  }
+
+  a-text-field:not([empty], [active]) .suffix,
+  a-text-field:not([empty], [active]) .prefix,
+  a-text-field[disabled] input {
+    display: inherit;
+  }
+  a-text-field [md-icon]:empty,
+  a-text-field label:empty,
+  a-text-field .prefix:empty,
+  a-text-field .suffix:empty,
+  a-text-field .helper-text:empty,
+  a-text-field .error-messages:empty {
+    display: none;
+  }
+
+  a-text-field [md-icon]:not(:empty) {
+    color: var(--theme-text-color-700);
+    position: relative;
+    bottom: 22px;
+  }
+
+  a-text-field [md-icon]:not(:empty) ~ .container {
+    width: calc(100% - 40px);
+  }
+
 
   </style>
 </template>
@@ -235,7 +246,8 @@
         tooLong: this.getAttribute('maxlength-error') || 'invalid max. length',
         patternMismatch: this.getAttribute('pattern-error') || 'invalid input text',
         valueMissing: this.getAttribute('required-error') || 'this field is requierd',
-        typeMismatch: this.getAttribute('type-error') || 'invalid input for type, '+this.getAttribute('type'),
+        typeMismatch: this.getAttribute('type-error') ||
+          'invalid input for type, '+this.getAttribute('type'),
         customError: this.getAttribute('custom-error') || 'invaid input(custom error)',
         invalidError: this.getAttribute('invalid-error') || 'invaid input'
       }
@@ -261,15 +273,9 @@
       let requiredText = this.getAttribute('required') !== null ? ' *' : '';
 
       let attrs = [];
-      let inputElAttrs = [
-        'disabled', 'readonly', 'type', 'id', 'maxlength', 'step',
-        'max', 'min', 'minlength', 'pattern', 'required', 'value'
-      ];
       for (let i=0; i<this.attributes.length; i++) {
         let attr = this.attributes[i];
-        if (inputElAttrs.includes(attr.name)) {
-          attrs.push(`${attr.name}="${attr.value}"`);
-        }
+        (!attr.name.match(/-/)) && attrs.push(`${attr.name}="${attr.value}"`);
       }
       let attributes = attrs.join(' ');
 
@@ -279,7 +285,7 @@
           <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
           <div class="input-wrapper">
             <div class="prefix">${prefix}</div>
-            <input type="${type}" id="${this.id}" ${attributes} />
+            <input class="input" type="${type}" id="${this.id}" ${attributes} />
             <div class="suffix">${suffix}</div>
           </div>
           <hr />
@@ -290,26 +296,37 @@
       this.insertAdjacentHTML('beforeend', html);
     }
 
-    _getErrors(valuesOnly=false, firstOnly=true) {
+    _getErrors() {
       let errors = {};
       for (var key in this.inputEl.validity) {
-        if (this.inputEl.validity) {
+        if (key !== 'valid' && this.inputEl.validity[key]) {
           errors[key] = this.errorMessages[key];
         }
       }
-      let errorMsgs = Object.values(errors);
-
-      return
-        (!errorMsgs.length) ? null : 
-        firstOnly ? errorMsgs[0] : 
-        valuesOnly ? errorMsgs : errors;
+      if (this.getAttribute('maxlength')) {
+        let tooLong = this.inputEl.value.length > parseInt(this.getAttribute('maxLength'));
+        tooLong && (errors.tooLong = this.errorMessages.tooLong);
+      }
+      return errors;
     }
 
     _addEventListeners() {
-      let empty  = !this.inputEl.value;
-      empty  ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
-      let errors = this._getErrors();
-      errors ? this.setAttribute('invalid', '') : this.removeAttribute('invalid'); 
+      let setStatus = () => {
+        let empty  = !this.inputEl.value;
+        let error = Object.values(this._getErrors())[0];
+        let errMsgEl = this.querySelector('.error-messages');
+        let dirty = this.getAttribute('dirty') !== null;
+
+        empty ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+        if (dirty && error) {
+          this.setAttribute('invalid', ''); 
+          errMsgEl.innerHTML = error;
+        } else {
+          this.removeAttribute('invalid')
+        }
+      }
+
+      setStatus();
 
       this.addEventListener('click', event => {
         this.setAttribute('active', '');
@@ -321,13 +338,8 @@
       });
 
       this.inputEl.addEventListener('change', event => {
-        let errMsgEl = this.querySelector('error-messages');
-        let errors = this._getErors();
-        let empty  = !this.inputEl.value;
-        errMsgEl.innerHTML = errors || '';
-
-        errors ? this.setAttribute('invalid', '') : this.removeAttribute('invalid'); 
-        empty  ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+        this.setAttribute('dirty', '');
+        setStatus();
       });
     }
   }

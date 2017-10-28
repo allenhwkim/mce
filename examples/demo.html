@@ -167,76 +167,92 @@
           <div class="subtitle">Text fields allow users to input, edit, and select text.</div>
         </div>
         <div class="text">
-          <p>Text fields typically reside in forms but can appear in other places, like dialog boxes and search.</p>
-          NOTE: Work In Progress :)
+          Text fields typically reside in forms but can appear in other places, like dialog boxes and search.
           <br/>
           <a-text-field
-            icon="favorite"
-            helper-text="this is helper text"
+            icon="credit_card"
             label="Floating Label Text"
-            maxlength="10"
-            minlength="2"
-            minlength-error="invalid text min. length"
-            maxlength-error="invalid text max. length"
-            xx-optional="(optional)"
-            pattern-error="invalid text pattern"
-            pattern="[0-9]+"
+            optional="(optional)"
             placeholder="Hint Text."
             prefix="$"
-            required
-            required-error="This field is required"
+            helper-text="this is helper text"
             suffix="dollars">
           </a-text-field>
-          <img src="material-ui-text-field.png" style="height: 92px; vertical-align: top;     position: relative;
-    top: -8px;" />
+          <br/>
+          <a-text-field class="full-width"
+            icon="credit_card"
+            label="Floating Label Text"
+            optional="(optional)"
+            placeholder="Hint Text."
+            prefix="$"
+            helper-text="this is helper text"
+            suffix="dollars">
+          </a-text-field>
+          <br/>
           <br/>
           <b>Disabled Status</b>
           <br/>
-          <a-text-field disabled required
-            icon="favorite"
+          <a-text-field disabled
+            icon="credit_card"
             helper-text="this is helper text"
-            label="Floating Label Text"
-            maxlength="10"
-            minlength="2"
-            minlength-error="invalid text min. length"
-            maxlength-error="invalid text max. length"
-            xx-optional="(optional)"
-            pattern-error="invalid text pattern"
-            pattern="[0-9]+"
-            prefix="$" suffix="dollars"
-            placeholder="Hint Text."
-            required-error="This field is required">
-          </a-text-field>
-          <a-text-field disabled required
-            helper-text="this is helper text"
-            label="Floating Label Text"
-            maxlength="10" minlength="2"
-            minlength-error="invalid text min. length"
-            maxlength-error="invalid text max. length"
-            pattern-error="invalid text pattern"
-            pattern="[0-9]+"
-            placeholder="Hint Text."
-            prefix="$"
-            required-error="This field is required"
-            suffix="dollars">
+            label="With Icon">
           </a-text-field>
           <a-text-field disabled
-            icon="favorite"
+            label="Without Icon">
+          </a-text-field>
+          <a-text-field disabled
+            icon="credit_card"
             helper-text="this is helper text"
-            label="Floating Label Text"
-            maxlength="10"
-            minlength="2"
-            minlength-error="invalid text min. length"
-            maxlength-error="invalid text max. length"
-            xx-optional="(optional)"
-            pattern-error="invalid text pattern"
-            pattern="[0-9]+"
-            placeholder="Hint Text."
+            label="With value"
             prefix="$"
-            required
-            required-error="This field is required"
             suffix="dollars"
             value="300">
+          </a-text-field>
+          <br/><br/><br/>
+          <b> With Errors </b>
+          <br/>
+          <a-text-field required dirty 
+            label="Default required error" 
+            helper-text="This is to show required error"
+            />
+          </a-text-field>
+          <a-text-field required dirty 
+            label="Custom required error"
+            helper-text="This is to show custom required error message"
+            required-error="Hey, don't be lazy, fill it up!!!" />
+          </a-text-field>
+          <a-text-field dirty 
+            label="min/max length error"
+            helper-text="Enter charaters between 3 to 5"
+            maxlength="5"
+            minlength="3"
+            value="too long"
+            minlength-error="It's less than 3. too short"
+            maxlength-error="It's more than 5. too long" />
+          </a-text-field>
+          <a-text-field dirty
+            label="Pattern error"
+            pattern-error="Please enter number only"
+            helper-text="Enter any number"
+            value="not a number"
+            pattern="[0-9]+">
+          </a-text-field>
+          <a-text-field required dirty 
+            label="min/max value error"
+            helper-text="Enter your age"
+            type="number"
+            max="100"
+            min="50"
+            value="49"
+            min-error="It's less than 49. too young"
+            max-error="It's more than 100. too old" />
+          </a-text-field>
+          <a-text-field dirty
+            type="email"
+            helper-text="Type an email"
+            label="Type error"
+            value="not.an.email"
+            type-error="That is not an email">
           </a-text-field>
         </div>
       </a-card>
