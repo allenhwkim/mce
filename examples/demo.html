@@ -2,10 +2,6 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <!-- <script src="https://rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-loader.js"></script> -->
-    <!-- <script src="https://rawgit.com/WebReflection/document-register-element/master/examples/bower_components/webcomponentsjs/webcomponents.min.js"></script> -->
-
-    <script src="//rawgit.com/webcomponents/webcomponentsjs/master/webcomponents-loader.js"></script>
     <link rel="stylesheet" href="../themes/default.css">
     <link rel="import" href="../components/app-bar.html">
     <link rel="import" href="../components/nav-drawer.html">
@@ -17,6 +13,9 @@
     <link rel="import" href="../components/refresh-indicator.html">
     <link rel="import" href="../components/tabs.html">
     <link rel="import" href="../components/text-field.html">
+    <link rel="import" href="../components/chip.html">
+    <link rel="import" href="../components/tooltip.html">
+    <link rel="import" href="../components/icon.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -47,25 +46,6 @@
         <a-nav-item icon="music_note">Music</a-nav-item>
       </a-nav-drawer>
 
-      <ul>
-        Material Design Specification
-        <li>
-          <a href="https://material.io/guidelines/layout/structure.html#structure-app-bar">app bar</a>
-        </li>
-        <li>
-          <a href="https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs">Bottom Nav bar</a>
-        </li>
-        <li>
-          <a href="https://material.io/guidelines/components/menus.html#menus-specs">Menu</a>
-        </li>
-        <li>
-          <a href="https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs">Navigatrion Drawer</a>
-        </li>
-        <li>
-          <a href="https://material.io/guidelines/components/cards.html">Card</a>
-        </li>
-      </ul>
-
       <a-card>
         <div class="title">
           <h1>Buttons</h1>
@@ -76,23 +56,23 @@
           Flat Buttons are used for general functions and reduce the amount of layering on the screen, making it more readable.
           </p>
           <button><i md-icon>search</i>Normal</button> &nbsp;
-          <button class="color-reversed"><i md-icon>search</i>Normal</button> &nbsp;
+          <button dark><i md-icon>search</i>Normal</button> &nbsp;
           <button disabled><i md-icon>search</i>disabled</button>
-          <button disabled class="color-reversed"><i md-icon>search</i>disabled</button>
+          <button disabled dark><i md-icon>search</i>disabled</button>
           <p>
             Raised buttons are used to add dimension to mostly flat layouts and emphasizes important functions on your page.
           </p>
           <button raised><i md-icon>search</i>Normal</button> &nbsp;
-          <button raised class="color-reversed"><i md-icon>search</i>Normal</button> &nbsp;
+          <button raised dark><i md-icon>search</i>Normal</button> &nbsp;
           <button raised disabled><i md-icon>search</i>disabled</button>
-          <button raised disabled class="color-reversed"><i md-icon>search</i>disabled</button>
+          <button raised disabled dark><i md-icon>search</i>disabled</button>
           <p>
             The Floating Action Button is used for frequently used functions.
           </p>
           <button fab><i md-icon>add</i></button> &nbsp;
-          <button fab class="color-reversed"><i md-icon>add</i></button> &nbsp;
+          <button fab dark><i md-icon>add</i></button> &nbsp;
           <button fab mini><i md-icon>add</i></button> &nbsp;
-          <button fab mini class="color-reversed"><i md-icon>add</i></button> &nbsp;
+          <button fab mini dark><i md-icon>add</i></button> &nbsp;
         </div>
       </a-card>
 
@@ -259,6 +239,170 @@
 
       <a-card>
         <div class="title">
+          <h1>Chips</h1>
+          <div class="subtitle">Chips represent complex entities in small blocks, such as a contact.</div>
+        </div>
+        <div class="text">
+          <a-chip text="AMZ Bank"></a-chip>
+          <a-chip avatar="A" text="AMZ Bank"></a-chip>
+          <a-chip text="AMZ Bank" removable></a-chip>
+          <a-chip avatar="A" text="AMZ Bank" removable on-remove="alert('chip removal')"></a-chip>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Tooltips</h1>
+          <div class="subtitle">Chips represent complex entities in small blocks, such as a contact.</div>
+        </div>
+        <div class="text" class="clear-both">
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+          <button raised>
+            <a-tooltip>This is a tooltip for a button</a-tooltip>
+            A Button
+          </button>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Seelction Controls</h1>
+          <div class="subtitle">Selection controls allow the user to select options.</div>
+        </div>
+        <div class="text">
+          <h3>Checkbox</h3>
+          <h3>Radio Button</h3>
+          <h3>Switches</h3>
+        </div>
+        <div class="actions">
+          <a href="javascript:void(0)" class="button">ACTION 1</a>
+          <a href="javascript:void(0)" class="button">ACTION 2</a>
+        </div>
+      </a-card>
+
+      <a-card id="icons">
+        <div class="title">
+          <h1>Icons</h1>
+          <div class="subtitle">Material icons use geometric shapes to visually represent core ideas, capabilities, or topics.</div>
+        </div>
+        <div class="text">
+          <h3>Light Background</h3>
+          Small: <an-icon small>face</an-icon>
+          Default: <an-icon>face</an-icon>
+          Big: <an-icon big>face</an-icon>
+          Double: <an-icon double>face</an-icon>
+          Image: <an-icon double img="ali.connors.jpg"></an-icon>
+          <hr />
+          <h3>Dark Background</h3>
+          Small: <an-icon dark-bg small>face</an-icon>
+          Default: <an-icon dark-bg>face</an-icon>
+          Big: <an-icon dark-bg big>face</an-icon>
+          Double: <an-icon dark-bg double>face</an-icon>
+          <hr />
+          <h3>Circle</h3>
+          Default: <an-icon circle>face</an-icon>
+          Dark Background: <an-icon circle dark-bg>face</an-icon>
+          small: <an-icon circle small>face</an-icon>
+          big: <an-icon circle big>face</an-icon>
+          <hr />
+          <h3>Squared</h3>
+          Default: <an-icon square>face</an-icon>
+          Dark Background: <an-icon square dark-bg>face</an-icon>
+          small: <an-icon square small>face</an-icon>
+          big: <an-icon square big>face</an-icon>
+          <hr />
+          <h3>Disabled</h3>
+          Default: <an-icon disabled>face</an-icon>
+          Dark Background: <an-icon disabled bark-bg>face</an-icon>
+          Circle: <an-icon disabled circle>face</an-icon>
+          Square: <an-icon disabled square>face</an-icon>
+          <hr />
+          <h3>Reactive</h3>
+          Default: <an-icon reactive>face</an-icon>
+          Dark Background: <an-icon reactive dark-bg>face</an-icon>
+          Cicle: <an-icon reactive circle>face</an-icon>
+          Square: <an-icon reactive square>face</an-icon>
+          Image: <an-icon reactive double img="ali.connors.jpg"></an-icon>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
+          <h1>Selection Controls</h1>
+          <div class="subtitle">Selection controls allow the user to select options.</div>
+        </div>
+        <div class="text">
+          Spec: https://material.io/guidelines/components/selection-controls.html#selection-controls-switch
+
+          <div class="container">
+            <h3>Checkbox Light</h3>
+            <input type="checkbox" id="checkbox1"> <label for="checkbox1">Unchecked</label>
+            <input type="checkbox" id="checkbox2" checked> <label for="checkbox2">Checked</label>
+            <input type="checkbox" id="checkbox3" disabled> <label for="checkbox3">Disabled</label>
+            <input type="checkbox" id="checkbox4" checked disabled> <label for="checkbox4">Disabled</label>
+          </div>
+          <div class="container dark-bg">
+            <h3>Checkbox Dark</h3>
+            <input type="checkbox" id="checkbox1"> <label for="checkbox1">Unchecked</label>
+            <input type="checkbox" id="checkbox2" checked> <label for="checkbox2">Checked</label>
+            <input type="checkbox" id="checkbox3" disabled> <label for="checkbox3">Disabled</label>
+            <input type="checkbox" id="checkbox4" checked disabled> <label for="checkbox4">Disabled</label>
+          </div>
+
+          <div class="container">
+            <h3>Radio Button Light</h3>
+            <input type="radio" name="radio1" id="radio1"> <label for="radio1">Unchecked</label>
+            <input type="radio" name="radio1" id="radio2" checked> <label for="radio2">Checked</label>
+            <input type="radio" name="radio1" id="radio3" disabled> <label for="radio3">Disabled</label>
+            <input type="radio" name="radio1" id="radio4" checked disabled> <label for="radio4">Disabled</label>
+          </div>
+          <div class="container dark-bg">
+            <h3>Radio Button Dark</h3>
+            <input type="radio" name="radio1" id="radio1"> <label for="radio1">Unchecked</label>
+            <input type="radio" name="radio1" id="radio2" checked> <label for="radio2">Checked</label>
+            <input type="radio" name="radio1" id="radio3" disabled> <label for="radio3">Disabled</label>
+            <input type="radio" name="radio1" id="radio4" checked disabled> <label for="radio4">Disabled</label>
+          </div>
+
+          <div class="container">
+            <h3>Switch Light</h3>
+            <input type="checkbox" switch id="checkbox11"> <label for="checkbox11">Unchecked</label>
+            <input type="checkbox" switch id="checkbox12" checked> <label for="checkbox12">Checked</label>
+            <input type="checkbox" switch id="checkbox13" disabled> <label for="checkbox13">Disabled</label>
+            <input type="checkbox" switch id="checkbox14" checked disabled> <label for="checkbox14">Disabled</label>
+          </div>
+          <div class="container dark-bg">
+            <h3>Switch Dark</h3>
+            <input type="checkbox" switch id="checkbox11"> <label for="checkbox11">Unchecked</label>
+            <input type="checkbox" switch id="checkbox12" checked> <label for="checkbox12">Checked</label>
+            <input type="checkbox" switch id="checkbox13" disabled> <label for="checkbox13">Disabled</label>
+            <input type="checkbox" switch id="checkbox14" checked disabled> <label for="checkbox14">Disabled</label>
+          </div>
+        </div>
+      </a-card>
+
+      <h2>Card</h2>
+      <a-card>
+        <div class="title">
           <h1>Title Goes Here</h1>
           <div class="subtitle">Subtitle here</div>
         </div>
@@ -274,29 +418,15 @@
         </div>
       </a-card>
 
-      <a-card>
-        <div class="title">
-          <h1>Title Goes Here</h1>
-          <div class="subtitle">Subtitle here</div>
-        </div>
-        <div class="actions">
-          <a href="javascript:void()" class="button">ACTION 1</a>
-          <a href="javascript:void()" class="button">ACTION 2</a>
-        </div>
-      </a-card>
-
+      <h2>Card With Media</h2>
       <a-card class="container">
         <div class="media">
           <img src="nature.jpg" />
         </div>
-        <div class="title">
-          <h1>Title Goes Here</h1>
-          <div class="subtitle">Subtitle here</div>
-        </div>
-        <div class="actions">
-          <a href="javascript:void()" class="button">ACTION 1</a>
-          <a href="javascript:void()" class="button">ACTION 2</a>
-        </div>
+      </a-card>
+
+      <h2>Card With Card</h2>
+      <a-card class="container">
         <div class="text">
           Text: 14sp
           Left and right padding: 16dp

@@ -1,150 +1,150 @@
 <template for="NavItem">
   <style>
-  a-nav-item {
-    display: block;
-    color: var(--theme-text-color-900, #333333); 
-  }
-  a-nav-item[disabled] {
-    color: var(--theme-color-400);
-    pointer-events: none;
-  }
+    a-nav-item {
+      display: block;
+      color: var(--theme-text-color-900, #333333); 
+    }
+    a-nav-item[disabled] {
+      color: var(--theme-color-400);
+      pointer-events: none;
+    }
 
-  /**
-    For menu items  
-    
-    https://material.io/guidelines/components/menus.html#menus-specs
-    https://material.io/components/web/catalog/menus/
+    /**
+      For menu items  
+      
+      https://material.io/guidelines/components/menus.html#menus-specs
+      https://material.io/components/web/catalog/menus/
 
-    . must display icon, text, on the left and shortcut on the right
-    . must have hover effect
-    . must to have click effect
-    . when disabled
-      . must not have hover effect
-      . must not have click effect
-   */
-  a-menu a-nav-item {
-    line-height: 32px;
-    padding: 8px 16px;
-    font-size: 16px;
-    display: block;
-  }
-  a-menu a-nav-item img {
-    height: 16px;
-  }
-  a-menu a-nav-item:hover {
-    background-color: var(--theme-color-200);
-  }
-  a-menu a-nav-item:active {
-    background-color: var(--theme-color-50);
-  }
-  a-menu a-nav-item [md-icon] {
-    vertical-align: middle;
-    padding: 0 8px 0 0;
-  }
-  a-menu a-nav-item #shortcut {
-    padding-left: 16px;
-    float: right;
-  }
+      . must display icon, text, on the left and shortcut on the right
+      . must have hover effect
+      . must to have click effect
+      . when disabled
+        . must not have hover effect
+        . must not have click effect
+     */
+    a-menu a-nav-item {
+      line-height: 32px;
+      padding: 8px 16px;
+      font-size: 16px;
+      display: block;
+    }
+    a-menu a-nav-item img {
+      height: 16px;
+    }
+    a-menu a-nav-item:hover {
+      background-color: var(--theme-color-200);
+    }
+    a-menu a-nav-item:active {
+      background-color: var(--theme-color-50);
+    }
+    a-menu a-nav-item [md-icon] {
+      vertical-align: middle;
+      padding: 0 8px 0 0;
+    }
+    a-menu a-nav-item #shortcut {
+      padding-left: 16px;
+      float: right;
+    }
 
-  /**
-     For bottom nav bar
-     
-     https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
-   */
-  a-bottom-nav-bar a-nav-item {
-    display: inline-block;
-    font-size: 16px;
-    text-align: center;
-  }
-  a-bottom-nav-bar a-nav-item[active] {
-    padding: 6px 12px 10px 12px;
-    font-size: 14px;
-  }
-  a-bottom-nav-bar a-nav-item:not([active]) {
-    padding: 8px 12px;
-    font-size: 12px;
-  }
-  a-bottom-nav-bar a-nav-item [md-icon] {
-    display: block;
-  }
+    /**
+       For bottom nav bar
+       
+       https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
+     */
+    a-bottom-nav-bar a-nav-item {
+      display: inline-block;
+      font-size: 16px;
+      text-align: center;
+    }
+    a-bottom-nav-bar a-nav-item[active] {
+      padding: 6px 12px 10px 12px;
+      font-size: 14px;
+    }
+    a-bottom-nav-bar a-nav-item:not([active]) {
+      padding: 8px 12px;
+      font-size: 12px;
+    }
+    a-bottom-nav-bar a-nav-item [md-icon] {
+      display: block;
+    }
 
-  /**
-    For nav drawer
-    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
-   */
-  a-nav-drawer a-nav-item {
-    line-height: 24px;
-    font-size: 14px;
-    padding: 8px 16px;
-  }
-  a-nav-drawer a-nav-item:hover {
-    background-color: var(--theme-color-200);
-  }
-  a-nav-drawer a-nav-item:active {
-    background-color: var(--theme-color-50);
-  }
-  a-nav-drawer a-nav-item .subheader {
-    color: var(--theme-text-color-500);
-  }
-  a-nav-drawer a-nav-item [md-icon] {
-    padding-right: 32px;
-    color: var(--theme-text-color-500);
-    vertical-align: middle;
-  }
+    /**
+      For nav drawer
+      https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+     */
+    a-nav-drawer a-nav-item {
+      line-height: 24px;
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+    a-nav-drawer a-nav-item:hover {
+      background-color: var(--theme-color-200);
+    }
+    a-nav-drawer a-nav-item:active {
+      background-color: var(--theme-color-50);
+    }
+    a-nav-drawer a-nav-item .subheader {
+      color: var(--theme-text-color-500);
+    }
+    a-nav-drawer a-nav-item [md-icon] {
+      padding-right: 32px;
+      color: var(--theme-text-color-500);
+      vertical-align: middle;
+    }
 
-  /**
-    For tabs
-    https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
-   */
-  a-tabs > a-nav-item {
-    max-width: 264px;
-    min-width: 72px; /* 160px for larger views */
-    text-align: center;
-  }
-  a-tabs > a-nav-item[active] [md-icon],
-  a-tabs > a-nav-item .text {
-    color: var(--theme-text-color-200);
-  }
-  a-tabs > a-nav-item[active] .text {
-    color: var(--theme-text-color-0);
-  }
-  a-tabs > a-nav-item [md-icon] {
-    padding: 12px 0;
-    color: var(--theme-text-color-0);
-    display: block;
-  }
-  a-tabs > a-nav-item .text {
-    display: block;
-    padding: 18px 12px 20px 12px;
-    text-transform: uppercase;
-    vertical-align: bottom;
-    font-size: 14px;
-  }
-  a-tabs > a-nav-item [md-icon] ~ .text {
-    display: block;
-    margin-top: -4px;
-    padding-top: 0px;
-    padding-bottom: 16px;
-  }
-  a-tabs > a-nav-item:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 120px;
-    height: 120px;
-    margin-left: -60px;
-    margin-top: -60px;
-    background: #3f51b5;
-    border-radius: 100%;
-    opacity: .6;
-    visibility: hidden;
-    transform: scale(0);
-  }
-  a-tabs a-nav-item:active:after {
-    animation: ripple 1s ease-out;
-  }
+    /**
+      For tabs
+      https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
+     */
+    a-tabs > a-nav-item {
+      max-width: 264px;
+      min-width: 72px; /* 160px for larger views */
+      text-align: center;
+    }
+    a-tabs > a-nav-item[active] [md-icon],
+    a-tabs > a-nav-item .text {
+      color: var(--theme-text-color-200);
+    }
+    a-tabs > a-nav-item[active] .text {
+      color: var(--theme-text-color-0);
+    }
+    a-tabs > a-nav-item [md-icon] {
+      padding: 12px 0;
+      color: var(--theme-text-color-0);
+      display: block;
+    }
+    a-tabs > a-nav-item .text {
+      display: block;
+      padding: 18px 12px 20px 12px;
+      text-transform: uppercase;
+      vertical-align: bottom;
+      font-size: 14px;
+    }
+    a-tabs > a-nav-item [md-icon] ~ .text {
+      display: block;
+      margin-top: -4px;
+      padding-top: 0px;
+      padding-bottom: 16px;
+    }
+    a-tabs > a-nav-item:after {
+      content: '';
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120px;
+      height: 120px;
+      margin-left: -60px;
+      margin-top: -60px;
+      background: #3f51b5;
+      border-radius: 100%;
+      opacity: .6;
+      visibility: hidden;
+      transform: scale(0);
+    }
+    a-tabs a-nav-item:active:after {
+      animation: ripple 1s ease-out;
+    }
   </style>
 </template>
 

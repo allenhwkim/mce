@@ -44,171 +44,171 @@
 <template for="TextField">
   <link rel="stylesheet" href="../components/common.css">
   <style>
-  a-text-field {
-    display: inline-block;
-    min-width: 258px;
-    height: 84px;
-  }
-  a-text-field.full-width {
-    width: 100%;
-  }
+    a-text-field {
+      display: inline-block;
+      min-width: 258px;
+      height: 84px;
+    }
+    a-text-field.full-width {
+      width: 100%;
+    }
 
-  a-text-field label {
-    top: 38px;
-    font-size: inherit;
-    position: absolute;
-    transition: all 450ms var(--theme-animation-ease);
-    z-index: 1; 
-    transform: scale(1) translate(0px, 0px);
-    transform-origin: left top 0px;
-    pointer-events: none;
-    user-select: none;
-    color: var(--theme-text-color-700);
-  }
+    a-text-field label {
+      top: 38px;
+      font-size: inherit;
+      position: absolute;
+      transition: all 450ms var(--theme-animation-ease);
+      z-index: 1; 
+      transform: scale(1) translate(0px, 0px);
+      transform-origin: left top 0px;
+      pointer-events: none;
+      user-select: none;
+      color: var(--theme-text-color-700);
+    }
 
-  a-text-field .container {
-    font-size: 16px;
-    line-height: 24px;
-    height: 84px;
-    display: inline-block;
-    position: relative;
-    background-color: transparent;
-    transition: height 200ms var(--theme-animation-ease);
-    width: 100%;
-  }
+    a-text-field .container {
+      font-size: 16px;
+      line-height: 24px;
+      height: 84px;
+      display: inline-block;
+      position: relative;
+      background-color: transparent;
+      transition: height 200ms var(--theme-animation-ease);
+      width: 100%;
+    }
 
-  a-text-field .input-wrapper {
-    width: 100%;
-    padding: 0px;
-    position: absolute;
-    bottom: 24px;
-    display: flex;
-  }
+    a-text-field .input-wrapper {
+      width: 100%;
+      padding: 0px;
+      position: absolute;
+      bottom: 24px;
+      display: flex;
+    }
 
-  a-text-field .prefix {
-    color: var(--theme-text-color-500);
-    padding-right: 8px;
-  }
+    a-text-field .prefix {
+      color: var(--theme-text-color-500);
+      padding-right: 8px;
+    }
 
-  a-text-field .suffix {
-    padding-left: 8px;
-    color: var(--theme-text-color-500);
-  }
+    a-text-field .suffix {
+      padding-left: 8px;
+      color: var(--theme-text-color-500);
+    }
 
-  a-text-field input {
-    flex: 1;
-    padding: 0px;
-    width: 100%;
-    border: none;
-    outline: none; 
-    background-color: transparent; 
-    color: var(--theme-text-color-900);
-    cursor: inherit;
-    font-style: inherit;
-    font-variant: inherit;
-    font-weight: inherit;
-    font-stretch: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    font-family: inherit;
-    opacity: 1;
-    -webkit-tap-highlight-color: transparent;
-    box-sizing: border-box;
-  }
+    a-text-field input {
+      flex: 1;
+      padding: 0px;
+      width: 100%;
+      border: none;
+      outline: none; 
+      background-color: transparent; 
+      color: var(--theme-text-color-900);
+      cursor: inherit;
+      font-style: inherit;
+      font-variant: inherit;
+      font-weight: inherit;
+      font-stretch: inherit;
+      font-size: inherit;
+      line-height: inherit;
+      font-family: inherit;
+      opacity: 1;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
 
-  a-text-field hr {
-    border: 2px solid var(--theme-color-800);
-    border-width: 0 0 2px 0;
-    bottom: 20px;
-    margin: 0px;
-    position: absolute;
-    width: 100%;
-    transform: scaleX(1);
-    transition: all 450ms var(--theme-animation-ease);
-  }
-  a-text-field .helper-text {
-    position: absolute;
-    bottom: 0;
-    font-size: 12px;
-    line-height: 12px;
-    color: var(--theme-text-color-600);
-    transition: all 450ms var(--theme-animation-ease) 0ms;
-  }
-  a-text-field .error-messages {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    font-size: 12px;
-    line-height: 12px;
-    background-color: var(--theme-color-0);
-    transition: all 450ms var(--theme-animation-ease) 0ms;
-  }
+    a-text-field hr {
+      border: 2px solid var(--theme-color-800);
+      border-width: 0 0 2px 0;
+      bottom: 20px;
+      margin: 0px;
+      position: absolute;
+      width: 100%;
+      transform: scaleX(1);
+      transition: all 450ms var(--theme-animation-ease);
+    }
+    a-text-field .helper-text {
+      position: absolute;
+      bottom: 0;
+      font-size: 12px;
+      line-height: 12px;
+      color: var(--theme-text-color-600);
+      transition: all 450ms var(--theme-animation-ease) 0ms;
+    }
+    a-text-field .error-messages {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      font-size: 12px;
+      line-height: 12px;
+      background-color: var(--theme-color-0);
+      transition: all 450ms var(--theme-animation-ease) 0ms;
+    }
 
-  /* disabled / empty / invalid / active */
-  a-text-field[empty]:not([active]) .input-wrapper {
-    visibility: hidden;
-  }
+    /* disabled / empty / invalid / active */
+    a-text-field[empty]:not([active]) .input-wrapper {
+      visibility: hidden;
+    }
 
-  a-text-field:not([empty]) label,
-  a-text-field[empty][active] label {
-    top: 12px;
-    font-size: 12px;
-  }
+    a-text-field:not([empty]) label,
+    a-text-field[empty][active] label {
+      top: 12px;
+      font-size: 12px;
+    }
 
-  a-text-field[disabled] {
-    pointer-events: none;
-  }
-  a-text-field[disabled] label,
-  a-text-field[disabled] .prefix,
-  a-text-field[disabled] .suffix,
-  a-text-field[disabled] input,
-  a-text-field[disabled] hr,
-  a-text-field[disabled] .helper-text,
-  a-text-field[disabled] .error-messages,
-  a-text-field[disabled] [md-icon]:not(:empty) {
-    color: var(--theme-text-color-500);
-  }
-  a-text-field[disabled] hr {
-    border-color: var(--theme-color-500);
-  }
+    a-text-field[disabled] {
+      pointer-events: none;
+    }
+    a-text-field[disabled] label,
+    a-text-field[disabled] .prefix,
+    a-text-field[disabled] .suffix,
+    a-text-field[disabled] input,
+    a-text-field[disabled] hr,
+    a-text-field[disabled] .helper-text,
+    a-text-field[disabled] .error-messages,
+    a-text-field[disabled] [md-icon]:not(:empty) {
+      color: var(--theme-text-color-500);
+    }
+    a-text-field[disabled] hr {
+      border-color: var(--theme-color-500);
+    }
 
-  a-text-field[invalid] label,
-  a-text-field[invalid] hr,
-  a-text-field[invalid] .helper-text,
-  a-text-field[invalid] .error-messages,
-  a-text-field[invalid] [md-icon]:not(:empty) {
-    color: var(--theme-color-error);
-  }
-  a-text-field[disabled] hr {
-    border-color: var(--theme-color-erroor);
-  }
-  a-text-field:not([invalid]) .error-messages {
-    visibility: hidden;
-  }
+    a-text-field[invalid] label,
+    a-text-field[invalid] hr,
+    a-text-field[invalid] .helper-text,
+    a-text-field[invalid] .error-messages,
+    a-text-field[invalid] [md-icon]:not(:empty) {
+      color: var(--theme-color-error);
+    }
+    a-text-field[disabled] hr {
+      border-color: var(--theme-color-erroor);
+    }
+    a-text-field:not([invalid]) .error-messages {
+      visibility: hidden;
+    }
 
-  a-text-field:not([empty], [active]) .suffix,
-  a-text-field:not([empty], [active]) .prefix,
-  a-text-field[disabled] input {
-    display: inherit;
-  }
-  a-text-field [md-icon]:empty,
-  a-text-field label:empty,
-  a-text-field .prefix:empty,
-  a-text-field .suffix:empty,
-  a-text-field .helper-text:empty,
-  a-text-field .error-messages:empty {
-    display: none;
-  }
+    a-text-field:not([empty], [active]) .suffix,
+    a-text-field:not([empty], [active]) .prefix,
+    a-text-field[disabled] input {
+      display: inherit;
+    }
+    a-text-field [md-icon]:empty,
+    a-text-field label:empty,
+    a-text-field .prefix:empty,
+    a-text-field .suffix:empty,
+    a-text-field .helper-text:empty,
+    a-text-field .error-messages:empty {
+      display: none;
+    }
 
-  a-text-field [md-icon]:not(:empty) {
-    color: var(--theme-text-color-700);
-    position: relative;
-    bottom: 22px;
-  }
+    a-text-field [md-icon]:not(:empty) {
+      color: var(--theme-text-color-700);
+      position: relative;
+      bottom: 22px;
+    }
 
-  a-text-field [md-icon]:not(:empty) ~ .container {
-    width: calc(100% - 40px);
-  }
+    a-text-field [md-icon]:not(:empty) ~ .container {
+      width: calc(100% - 40px);
+    }
 
 
   </style>
