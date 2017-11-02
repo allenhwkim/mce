@@ -18,6 +18,7 @@
     <link rel="import" href="../components/icon.html">
     <link rel="import" href="../components/expansion-panel.html">
     <link rel="import" href="../components/grid-list.html">
+    <link rel="import" href="../components/list.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -200,7 +201,7 @@
           </a-text-field>
           <a-text-field required dirty 
             label="Custom required error"
-            helper-text="This is to show custom required error message"
+            helper-text="This is to show custom required error"
             required-error="Hey, don't be lazy, fill it up!!!" />
           </a-text-field>
           <a-text-field dirty 
@@ -314,36 +315,39 @@
           Double: <an-icon double>face</an-icon>
           Image: <an-icon double img="ali.connors.jpg"></an-icon>
           <hr />
-          <h3>Dark Background</h3>
-          Small: <an-icon dark-bg small>face</an-icon>
-          Default: <an-icon dark-bg>face</an-icon>
-          Big: <an-icon dark-bg big>face</an-icon>
-          Double: <an-icon dark-bg double>face</an-icon>
-          <hr />
           <h3>Circle</h3>
+          Small: <an-icon circle small>face</an-icon>
           Default: <an-icon circle>face</an-icon>
-          Dark Background: <an-icon circle dark-bg>face</an-icon>
-          small: <an-icon circle small>face</an-icon>
           big: <an-icon circle big>face</an-icon>
           <hr />
           <h3>Squared</h3>
+          Small: <an-icon square small>face</an-icon>
           Default: <an-icon square>face</an-icon>
-          Dark Background: <an-icon square dark-bg>face</an-icon>
-          small: <an-icon square small>face</an-icon>
-          big: <an-icon square big>face</an-icon>
+          Big: <an-icon square big>face</an-icon>
           <hr />
           <h3>Disabled</h3>
           Default: <an-icon disabled>face</an-icon>
-          Dark Background: <an-icon disabled bark-bg>face</an-icon>
           Circle: <an-icon disabled circle>face</an-icon>
           Square: <an-icon disabled square>face</an-icon>
           <hr />
           <h3>Reactive</h3>
           Default: <an-icon reactive>face</an-icon>
-          Dark Background: <an-icon reactive dark-bg>face</an-icon>
           Cicle: <an-icon reactive circle>face</an-icon>
           Square: <an-icon reactive square>face</an-icon>
           Image: <an-icon reactive double img="ali.connors.jpg"></an-icon>
+          <hr />
+          <div class="container dark-bg">
+            <h3>Icons In Dark Background</h3>
+            Small: <an-icon dark-bg small>face</an-icon>
+            Default: <an-icon dark-bg>face</an-icon>
+            Big: <an-icon dark-bg big>face</an-icon>
+            Double: <an-icon dark-bg double>face</an-icon>
+            Circle: <an-icon circle dark-bg>face</an-icon>
+            Square: <an-icon square dark-bg>face</an-icon>
+            Disabled: <an-icon disabled bark-bg>face</an-icon>
+            Reactive: <an-icon reactive dark-bg>face</an-icon>
+          </div>
+          <hr />
         </div>
       </a-card>
 
@@ -356,14 +360,14 @@
           Spec: https://material.io/guidelines/components/selection-controls.html#selection-controls-switch
 
           <div class="container">
-            <h3>Checkbox Light</h3>
+            <h3>Checkboxes</h3>
             <input type="checkbox" id="checkbox1"> <label for="checkbox1">Unchecked</label>
             <input type="checkbox" id="checkbox2" checked> <label for="checkbox2">Checked</label>
             <input type="checkbox" id="checkbox3" disabled> <label for="checkbox3">Disabled</label>
             <input type="checkbox" id="checkbox4" checked disabled> <label for="checkbox4">Disabled</label>
           </div>
           <div class="container dark-bg">
-            <h3>Checkbox Dark</h3>
+            <h3>Checkbox In Dark Background</h3>
             <input type="checkbox" id="checkbox1"> <label for="checkbox1">Unchecked</label>
             <input type="checkbox" id="checkbox2" checked> <label for="checkbox2">Checked</label>
             <input type="checkbox" id="checkbox3" disabled> <label for="checkbox3">Disabled</label>
@@ -371,14 +375,14 @@
           </div>
 
           <div class="container">
-            <h3>Radio Button Light</h3>
+            <h3>Radio Buttons</h3>
             <input type="radio" name="radio1" id="radio1"> <label for="radio1">Unchecked</label>
             <input type="radio" name="radio1" id="radio2" checked> <label for="radio2">Checked</label>
             <input type="radio" name="radio1" id="radio3" disabled> <label for="radio3">Disabled</label>
             <input type="radio" name="radio1" id="radio4" checked disabled> <label for="radio4">Disabled</label>
           </div>
           <div class="container dark-bg">
-            <h3>Radio Button Dark</h3>
+            <h3>Radio Button In Dark Background</h3>
             <input type="radio" name="radio1" id="radio1"> <label for="radio1">Unchecked</label>
             <input type="radio" name="radio1" id="radio2" checked> <label for="radio2">Checked</label>
             <input type="radio" name="radio1" id="radio3" disabled> <label for="radio3">Disabled</label>
@@ -386,14 +390,14 @@
           </div>
 
           <div class="container">
-            <h3>Switch Light</h3>
+            <h3>Switches</h3>
             <input type="checkbox" switch id="checkbox11"> <label for="checkbox11">Unchecked</label>
             <input type="checkbox" switch id="checkbox12" checked> <label for="checkbox12">Checked</label>
             <input type="checkbox" switch id="checkbox13" disabled> <label for="checkbox13">Disabled</label>
             <input type="checkbox" switch id="checkbox14" checked disabled> <label for="checkbox14">Disabled</label>
           </div>
           <div class="container dark-bg">
-            <h3>Switch Dark</h3>
+            <h3>Switches In Dark Background</h3>
             <input type="checkbox" switch id="checkbox11"> <label for="checkbox11">Unchecked</label>
             <input type="checkbox" switch id="checkbox12" checked> <label for="checkbox12">Checked</label>
             <input type="checkbox" switch id="checkbox13" disabled> <label for="checkbox13">Disabled</label>
@@ -526,33 +530,68 @@
         </div>
       </a-card>
 
-      <h2>Card With Media</h2>
-      <a-card class="container">
+      <a-card>
         <div class="media">
           <img src="nature.jpg" />
         </div>
+        <div class="text">
+          It's to show media is expanded to full width by ration of 16x9
+        </div>
       </a-card>
 
-      <h2>Card With Card</h2>
-      <a-card class="container">
-        <div class="text">
-          Text: 14sp
-          Left and right padding: 16dp
-          Top padding: 16dp or 24dp (when a primary title is present)
-          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+      <a-card>
+        <div class="title">
+          <h1>Card with card</h1>
+          <div class="subtitle">Subtitle here</div>
         </div>
         <a-card>
           <div class="media">
             <img src="nature.jpg" />
           </div>
           <div class="text">
-            Text: 14sp
-            Left and right padding: 16dp
-            Top padding: 16dp or 24dp (when a primary title is present)
-            Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+            Pretty flowers.. 
           </div>
         </a-card>
       </a-card>
+
+      <h3>List</h3>
+      <a-list>
+        <ul>
+          <li>
+            <div class="icon"><an-icon circle dark-bg>folder</an-icon></div>
+            <span>Directory</span>
+            <i md-icon>info</i>
+          </li>
+          <li>
+            <div class="icon"><an-icon circle dark-bg>hotel</an-icon></div>
+            <span>Hotel</span>
+            <i md-icon>info</i>
+          </li>
+          <li>
+            <div class="icon"><an-icon circle dark-bg>local_bar</an-icon></div>
+            <span>Bar</span>
+            <i md-icon>info</i>
+          </li>
+          <li> <i md-icon>local_airport</i> <span>Airport</span></li>
+          <li> <i md-icon>local_atm</i> <span>ATM</span></li>
+          <li> <i md-icon>local_cafe</i> <span>Cafe</span> </li>
+          <li> 
+            <an-icon>local_pharmacy</an-icon>
+            <div> <div>First Line</div> <div class="text">Second Line</div> </div>
+            <i md-icon>chat_bubble</i>
+          </li>
+          <li> 
+            <an-icon>local_hospital</an-icon>
+            <div> <div>First Line</div> <div class="text">Second Line</div> </div>
+            <i md-icon>chat_bubble</i>
+          </li>
+          <li> 
+            <an-icon>local_hospital</an-icon>
+            <div> <div>First Line</div> <div class="text">Second Line</div> </div>
+            <i md-icon>chat_bubble</i>
+          </li>
+        </ul>
+      </a-list>
 
       <p>
         <img width="100%" src="whatismaterial-3d-elevation2.png">

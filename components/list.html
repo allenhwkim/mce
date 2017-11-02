@@ -1,0 +1,65 @@
+<!--
+  https://material.io/guidelines/components/lists.html#lists-specs
+-->
+<template for="List">
+  <style>
+    a-list {
+      display: block;
+    }
+    a-list ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    a-list ul li {
+      list-style-type: none;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 48px;
+      border-bottom: 1px solid #ccc;
+    }
+    a-list ul li > .icon:first-child,
+    a-list ul li > an-icon:first-child,
+    a-list ul li > [md-icon]:first-child {
+      width: 72px;
+    }
+    a-list ul li > * {
+      flex: 1;
+      color: var(--theme-text-color-900, #212121);
+    }
+    a-list ul li > .icon,
+    a-list ul li > .material-icons,
+    a-list ul li > [md-icon],
+    a-list ul li > an-icon {
+      color: var(--theme-text-color-500, #9e9e9e);
+      flex: initial;
+    }
+    a-list ul li .text {
+      font-size: 14px;
+      color: var(--theme-text-color-400, #9e9e9e);
+    }
+  </style>
+</template>
+
+<script>
+(function() {
+  var thisScript = document.currentScript;
+
+  class List extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=List]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-list-style');
+      (!document.querySelector('#a-list-style')) && this.insertBefore(style, this.firstChild);
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+  }
+  
+  customElements.define('a-list', List);
+})();
+</script>
