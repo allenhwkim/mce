@@ -16,6 +16,8 @@
     <link rel="import" href="../components/chip.html">
     <link rel="import" href="../components/tooltip.html">
     <link rel="import" href="../components/icon.html">
+    <link rel="import" href="../components/expansion-panel.html">
+    <link rel="import" href="../components/grid-list.html">
   </head>
   <body>
     <an-app-bar app-title="app-bar" fixed>
@@ -400,6 +402,112 @@
         </div>
       </a-card>
 
+      <h2>Expansion Panel</h2>
+      <an-expansion-panel collapsed>
+        <div class="title">
+          <h1>Trip name</h1>
+          <div>Carribean Cruise</div>
+        </div>
+        <div class="text">
+          Text: 14sp
+          Left and right padding: 16dp
+          Top padding: 16dp or 24dp (when a primary title is present)
+          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+        </div>
+      </an-expansion-panel>
+      <an-expansion-panel collapsed>
+        <div class="title">
+          <h1>Trip name</h1>
+          <div>Carribean Cruise</div>
+        </div>
+        <div class="text">
+          Text: 14sp
+          Left and right padding: 16dp
+          Top padding: 16dp or 24dp (when a primary title is present)
+          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+        </div>
+      </an-expansion-panel>
+      <an-expansion-panel>
+        <div class="title">
+          <h1>Trip name</h1>
+          <div>Carribean Cruise</div>
+        </div>
+        <div class="text">
+          Text: 14sp
+          Left and right padding: 16dp
+          Top padding: 16dp or 24dp (when a primary title is present)
+          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+        </div>
+        <div class="actions">
+          <a href="javascript:void(0)" class="button">CANCEL</a>
+          <a href="javascript:void(0)" class="button">SAVE</a>
+        </div>
+      </an-expansion-panel>
+
+      <h2>Grid List</h2>
+      <a-grid-list>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <div class="text">
+              <h1>Two line</h1>
+              Support Text
+            </div>
+            <i class="float-right md-icon">favorite</i>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <div class="text">
+              <h1>Two line</h1>
+              Support Text
+            </div>
+            <i class="float-right md-icon">favorite</i>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+            <i class="float-right md-icon">favorite</i>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+            <i class="float-right md-icon">favorite</i>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+            <i class="float-right icon">172</i>
+          </div>
+        </div>
+        <div>
+          <img src="nature2.jpg" />
+          <div class="text-with-icon">
+            <h1>Single Line</h1>
+            <i class="float-right icon">181</i>
+          </div>
+        </div>
+      </a-grid-list>
+
       <h2>Card</h2>
       <a-card>
         <div class="title">
@@ -413,8 +521,8 @@
           Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
         </div>
         <div class="actions">
-          <a href="javascript:void(0)" class="button">ACTION 1</a>
-          <a href="javascript:void(0)" class="button">ACTION 2</a>
+          <a href="javascript:void(0)">ACTION 1</a>
+          <a href="javascript:void(0)">ACTION 2</a>
         </div>
       </a-card>
 

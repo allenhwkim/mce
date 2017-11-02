@@ -1,0 +1,96 @@
+<!--
+  https://material.io/guidelines/components/grid-lists.html#grid-lists-specs
+-->
+<template for="GridList">
+  <style>
+    a-grid-list {
+      display: block;
+      text-align: center;
+    }
+
+    a-grid-list > div {
+      display: inline-block;
+      position: relative;
+      width: 50%;
+      max-width: 180px;
+      height: 230px;
+    } 
+
+    a-grid-list > div img {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto
+    }
+
+    a-grid-list > div .text-with-icon {
+      position: absolute;
+      background-color: rgba(0,0,0,0.5);
+      color: var(--theme-text-color-0);
+      width: 100%;
+    }
+
+    a-grid-list > div .text-with-icon .text {
+      padding: 16px;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    a-grid-list > div .text-with-icon .text > h1,
+    a-grid-list > div .text-with-icon .text > h2,
+    a-grid-list > div .text-with-icon .text > h3 {
+      font-size: 14px;
+      margin: 0 0 6px 0;
+    }
+
+    a-grid-list > div .text-with-icon > h1,
+    a-grid-list > div .text-with-icon > h2,
+    a-grid-list > div .text-with-icon > h3 {
+      text-align: left;
+      padding: 16px;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    a-grid-list > div .text-with-icon [md-icon],
+    a-grid-list > div .text-with-icon .md-icon,
+    a-grid-list > div .text-with-icon .icon {
+      height: 24px;
+      top: 50%;
+      position: absolute;
+      right: 12px;
+      margin-top: -12px;
+      line-height: 24px;
+    }
+
+    a-grid-list > div .text-with-icon.top {
+      top: 0;
+      bottom: inherit;
+    }
+
+    a-grid-list > div .text-with-icon:not(.top) {
+      bottom: 0;
+      top: inherit;
+    }
+  </style>
+</template>
+
+<script>
+(function() {
+  var thisScript = document.currentScript;
+
+  class GridList extends HTMLElement {
+    constructor() {
+      super();
+      let template = thisScript.ownerDocument.querySelector('template[for=GridList]');
+      let style = template.content.querySelector('style').cloneNode(true);
+      style.setAttribute('id', 'a-grid-list-style');
+      (!document.querySelector('#a-grid-list-style')) && this.insertBefore(style, this.firstChild);
+    }
+
+    connectedCallback() {}
+    disconnectedCallback() {}
+  }
+  
+  customElements.define('a-grid-list', GridList);
+})();
+</script>

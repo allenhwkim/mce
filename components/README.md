@@ -18,18 +18,16 @@ MOBILE :  0 icon
 MOBILE :  0 radio
 MOBILE :  0 checkbox
 MOBILE :  0 switch
+MOBILE :  0 expansion panel
+MOBILE :  0 Grid List
 
-* expansion panel
-* grid list
 * list
-* steppers
 
 FUTURE : 15 Right drawer
 FUTURE :  6 Snackbar
 FUTURE :  9 Sub menu (+1dp for each sub menu)
-
+FUTURE : steppers
 FUTURE : input type=number with masks. e.g. (416)222-3333 1,234,567
-
 FUTURE : 24 Picker
 FUTURE : ColorPicker input type=color
 FUTURE : FilePicker  input type=file (with two numbers)
