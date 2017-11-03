@@ -33,10 +33,10 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
       transform: translate(-50%,-50%);
       min-width: 280px; /* 56 x 5 */
       max-width: calc(100% - 80px);
-      box-shadow: var(--theme-shadow-10dp);
-      border: 1px solid var(--theme-color-200);
-      border-radius: var(--theme-border-radius);
-      background-color: var(--theme-color-0);
+      box-shadow: var(--theme-shadow-10dp, 0 10px 20px rgba(0,0,0,0.19), 0  6px  6px rgba(0,0,0,0.23));
+      border: 1px solid var(--theme-color-200, #eeeeee);
+      border-radius: var(--theme-border-radius, 2px);
+      background-color: var(--theme-color-0), #ffffff;
     }
     a-dialog > .container .divider {
       display: block;
@@ -46,15 +46,15 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
       border-width: 0 0 1px 0;
     }
     a-dialog > .container .title {
-      color: var(--theme-text-color-900);
+      color: var(--theme-text-color-900, #212121);
       padding-bottom: 20px;
-      font-size: var(--theme-title-font-size);
-      font-weight: var(--theme-title-font-weight);
+      font-size: var(--theme-title-font-size, 20px);
+      font-weight: var(--theme-title-font-weight, 500);
       margin: 0;
     }
     a-dialog > .container .content {
       padding-bottom: 24px;
-      color: var(--theme-text-color-500);
+      color: var(--theme-text-color-500, #9e9e9e);
     }
     a-dialog > .container .actions {
       padding: 8px;

@@ -4,14 +4,14 @@
       height: 32px;
       display: inline-block;
       border-radius:16px; 
-      background-color: var(--theme-color-300);
+      background-color: var(--theme-color-300, #E0E0E0);
       font-size: 0;
       overflow: auto;
       vertical-align: middle;
     }
 
     a-chip:hover {
-      background-color: var(--theme-color-500);
+      background-color: var(--theme-color-500, #9E9E9E);
     }
 
     a-chip .avatar {
@@ -20,15 +20,15 @@
       line-height: 32px;
       text-align: center;
       border-radius: 50%;
-      background-color: var(--theme-color-600);
-      color: var(--theme-text-color-0);
+      background-color: var(--theme-color-600, #757575);
+      color: var(--theme-text-color-0, #FFFFFF);
       font-size: 14px;
       float: left;
       overflow: hidden;
     }
 
     a-chip .text {
-      color: var(--theme-text-color-800);
+      color: var(--theme-text-color-800, #424242);
       display: inline-block;
       height: 32px;
       padding: 0 12px;
@@ -38,7 +38,7 @@
       float: left;
     }
     a-chip:hover .text {
-      color: var(--theme-text-color-0);
+      color: var(--theme-text-color-0, #FFFFFF);
     }
     a-chip .avatar ~ .text {
       padding-left: 8px;
@@ -46,8 +46,8 @@
 
     a-chip .delete {
       display: inline-block;
-      background-color: var(--theme-color-500);
-      color: var(--theme-text-color-0);
+      background-color: var(--theme-color-500, #9E9E9E);
+      color: var(--theme-text-color-0, #FFFFFF);
       border-radius: 50%;
       height: 24px;
       width: 24px;
@@ -57,8 +57,8 @@
       margin: 4px 4px 4px -8px;
     }
     a-chip:hover .delete {
-      background-color: var(--theme-color-0);
-      color: var(--theme-text-color-600);
+      background-color: var(--theme-color-0, #FFFFFF);
+      color: var(--theme-text-color-600, #757575);
     }
   </style>
 </template>

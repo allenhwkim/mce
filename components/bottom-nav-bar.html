@@ -4,15 +4,15 @@
 <template for="BottomNavBar">
   <style id="a-bottom-nav-bar-style">
     a-bottom-nav-bar {
-      background-color: var(--theme-color-50);
+      background-color: var(--theme-color-50, #FAFAFA);
       border-radius: 2px;
       border: 1px solid #ccc;
       bottom: 0;
-      box-shadow: var(--theme-shadow-1dp);
-      color: var(--theme-color-900);
+      box-shadow: var(--theme-shadow-1dp, 0   1px  3px rgba(0,0,0,0.12), 0  1px  2px rgba(0,0,0,0.24));
+      color: var(--theme-color-900, #212121);
       display: flex;
       font-size: 0px;
-      height: var(--theme-height-bottom-nav-bar);
+      height: var(--theme-height-bottom-nav-bar, 56px);
       justify-content: space-between;
       margin: 0 auto;
       position: fixed;

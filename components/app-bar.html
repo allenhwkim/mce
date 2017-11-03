@@ -4,12 +4,12 @@
 <template for="AppBar">
   <style id="an-app-bar-style">
     an-app-bar {
-      background-color: var(--theme-color-600);
-      box-shadow: var(--theme-shadow-4dp);
-      color: var(--theme-text-color-0);
+      background-color: var(--theme-color-600, #757575);
+      box-shadow: var(--theme-shadow-4dp, 0   4px  8px rgba(0,0,0,0.18), 0  4px  8px rgba(0,0,0,0.23));
+      color: var(--theme-text-color-0, #ffffff);
       display: block;
       left: 0;
-      min-height: var(--theme-height-app-bar);
+      min-height: var(--theme-height-app-bar, 56px);
       position: absolute;
       top: 0;
       width: 100%;
@@ -20,9 +20,9 @@
     }
     an-app-bar .title {
       display: inline-block;
-      line-height: var(--theme-height-app-bar);
-      font-size: var(--theme-title-font-size);
-      font-weight: var(--theme-title-font-weight);
+      line-height: var(--theme-height-app-bar, 56px);
+      font-size: var(--theme-title-font-size, 20px);
+      font-weight: var(--theme-title-font-weight, 500);
       margin-left: 16px;
     }
     an-app-bar [md-icon] {

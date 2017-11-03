@@ -56,13 +56,13 @@
       top: 38px;
       font-size: inherit;
       position: absolute;
-      transition: all 450ms var(--theme-animation-ease);
+      transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
       z-index: 1; 
       transform: scale(1) translate(0px, 0px);
       transform-origin: left top 0px;
       pointer-events: none;
       user-select: none;
-      color: var(--theme-text-color-700);
+      color: var(--theme-text-color-700, #616161);
     }
 
     a-text-field .container {
@@ -72,7 +72,7 @@
       display: inline-block;
       position: relative;
       background-color: transparent;
-      transition: height 200ms var(--theme-animation-ease);
+      transition: height 200ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
       width: 100%;
     }
 
@@ -85,13 +85,13 @@
     }
 
     a-text-field .prefix {
-      color: var(--theme-text-color-500);
+      color: var(--theme-text-color-500, #9e9e9e);
       padding-right: 8px;
     }
 
     a-text-field .suffix {
       padding-left: 8px;
-      color: var(--theme-text-color-500);
+      color: var(--theme-text-color-500, #9e9e9e);
     }
 
     a-text-field input {
@@ -101,7 +101,7 @@
       border: none;
       outline: none; 
       background-color: transparent; 
-      color: var(--theme-text-color-900);
+      color: var(--theme-text-color-900, #9e9e9e);
       cursor: inherit;
       font-style: inherit;
       font-variant: inherit;
@@ -116,22 +116,22 @@
     }
 
     a-text-field hr {
-      border: 2px solid var(--theme-color-800);
+      border: 2px solid var(--theme-color-800, #424242);
       border-width: 0 0 2px 0;
       bottom: 20px;
       margin: 0px;
       position: absolute;
       width: 100%;
       transform: scaleX(1);
-      transition: all 450ms var(--theme-animation-ease);
+      transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
     }
     a-text-field .helper-text {
       position: absolute;
       bottom: 0;
       font-size: 12px;
       line-height: 12px;
-      color: var(--theme-text-color-600);
-      transition: all 450ms var(--theme-animation-ease) 0ms;
+      color: var(--theme-text-color-600, #757575);
+      transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms) 0ms;
     }
     a-text-field .error-messages {
       position: absolute;
@@ -139,8 +139,8 @@
       width: 100%;
       font-size: 12px;
       line-height: 12px;
-      background-color: var(--theme-color-0);
-      transition: all 450ms var(--theme-animation-ease) 0ms;
+      background-color: var(--theme-color-0, #ffffff);
+      transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms) 0ms;
     }
 
     /* disabled / empty / invalid / active */
@@ -165,10 +165,10 @@
     a-text-field[disabled] .helper-text,
     a-text-field[disabled] .error-messages,
     a-text-field[disabled] [md-icon]:not(:empty) {
-      color: var(--theme-text-color-500);
+      color: var(--theme-text-color-500, #9e9e9e);
     }
     a-text-field[disabled] hr {
-      border-color: var(--theme-color-500);
+      border-color: var(--theme-color-500, #9e9e9e);
     }
 
     a-text-field[invalid] label,
@@ -176,10 +176,10 @@
     a-text-field[invalid] .helper-text,
     a-text-field[invalid] .error-messages,
     a-text-field[invalid] [md-icon]:not(:empty) {
-      color: var(--theme-color-error);
+      color: var(--theme-color-error, #ff0000);
     }
-    a-text-field[disabled] hr {
-      border-color: var(--theme-color-erroor);
+    a-text-field[invalid] hr {
+      border-color: var(--theme-color-eroor, #ff0000);
     }
     a-text-field:not([invalid]) .error-messages {
       visibility: hidden;
@@ -200,7 +200,7 @@
     }
 
     a-text-field [md-icon]:not(:empty) {
-      color: var(--theme-text-color-700);
+      color: var(--theme-text-color-700, #616161);
       position: relative;
       bottom: 22px;
     }
