@@ -2,8 +2,7 @@
   https://material.io/guidelines/components/text-fields.html
 -->
 <template for="Tabs">
-  <link rel="stylesheet" href="../components/common.css">
-  <style>
+  <style id="a-tabs-style">
     a-tabs {
       position: relative;
       background-color: var(--theme-color-500);
@@ -37,8 +36,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Tabs]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-tabs-style');
-      (!document.querySelector('#a-tabs-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.indicatorEl = this._addIndicatorEl();
       this._registerNavItemClick();
       this._animateIndicator();

@@ -2,7 +2,7 @@
   https://material.io/guidelines/layout/structure.html#structure-app-bar
 -->
 <template for="AppBar">
-  <style>
+  <style id="an-app-bar-style">
     an-app-bar {
       background-color: var(--theme-color-500);
       box-shadow: var(--theme-shadow-4dp);
@@ -61,8 +61,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=AppBar]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'an-app-bar-style');
-      (!document.querySelector('#an-app-bar-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
 
     connectedCallback() {}

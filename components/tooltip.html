@@ -2,8 +2,7 @@
   https://material.io/guidelines/components/tooltips.html#tooltips-tooltips-mobile
 -->
 <template for="Tooltip">
-  <link rel="stylesheet" href="../components/common.css">
-  <style>
+  <style id="a-tooltip-style">
     a-tooltip {
       position: absolute;
       visibility: hidden;
@@ -32,8 +31,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Tooltip]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'tooltip-style');
-      (!document.querySelector('#tooltip-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
       this._addEventListeners();
     }

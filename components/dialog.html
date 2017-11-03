@@ -2,7 +2,7 @@
 https://material.io/guidelines/components/dialogs.html#dialogs-specs
 -->
 <template for="Dialog">
-  <style>
+  <style id="a-dialog-style">
     a-dialog {
       position: absolute;
     }
@@ -85,8 +85,8 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Dialog]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-dialog-style');
-      (!document.querySelector('#a-dialog-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+      
       this._regroupElements();
       this.originalPos;
     }

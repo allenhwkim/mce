@@ -2,7 +2,7 @@
   https://material.io/guidelines/components/expansion-panels.html#
 -->
 <template for="ExpansionPanel">
-  <style>
+  <style id="an-expansion-panel-style">
     an-expansion-panel {
       display: block;
       border-radius: 2px;
@@ -106,8 +106,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=ExpansionPanel]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'an-expansion-panel-style');
-      (!document.querySelector('#an-expansion-panel-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
 
       let titleEl = this.querySelector('.title');
       titleEl.addEventListener('click', this._showThisPanelOnly.bind(this));

@@ -4,7 +4,7 @@
   https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs
 -->
 <template for="NavDrawer">
-  <style>
+  <style id="a-nav-drawer-style">
     a-nav-drawer[visible] {
       visibility: visible;
     }
@@ -66,8 +66,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=NavDrawer]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-nav-drawer-style');
-      (!document.querySelector('#a-nav-drawer')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.observeAttrChange('visible', this._show);
       this._regroupElements();
     }

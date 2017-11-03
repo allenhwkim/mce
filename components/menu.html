@@ -23,7 +23,7 @@
     # css animation is not right
 -->
 <template for="Menu">
-  <style>
+  <style id="a-menu-style">
   a-menu {
     background-color: var(--theme-color-0);
     box-shadow: var(--theme-shadow-1dp);
@@ -77,9 +77,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Menu]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-menu-style');
-      // this.documentClickHandler = this._closeWhenDocumentClicked.bind(this);
-      (!document.querySelector('style#a-menu-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.observeAttrChange('visible', this._attrChanged);
       this.hideMenu = this._hideMenu.bind(this);
     }

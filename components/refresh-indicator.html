@@ -1,5 +1,5 @@
 <template for="RefreshIndicator">
-  <style>
+  <style id="a-refresh-indicator-style">
     a-refresh-indicator {
       width: 56px;
       height: 56px;
@@ -66,8 +66,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=RefreshIndicator]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-refresh-indicator-style');
-      (!document.querySelector('#a-refresh-indicator-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       let svg = template.content.querySelector('svg').cloneNode(true);
       this.appendChild(svg);
     }

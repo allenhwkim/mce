@@ -1,5 +1,5 @@
 <template for="Card">
-  <style>
+  <style id="a-card-style">
     a-card {
       display: block;
       border-radius: 2px;
@@ -79,8 +79,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Card]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-card-style');
-      (!document.querySelector('#a-card-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
 
     connectedCallback() {}

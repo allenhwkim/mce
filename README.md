@@ -72,3 +72,7 @@ Custom Elements Example
   
 
 
+* Minifiers
+  mishoo/UglifyJS2
+  jakubpawlowicz/clean-css
+  kangax/html-minifier

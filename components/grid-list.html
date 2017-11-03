@@ -2,7 +2,7 @@
   https://material.io/guidelines/components/grid-lists.html#grid-lists-specs
 -->
 <template for="GridList">
-  <style>
+  <style id="a-grid-list-style">
     a-grid-list {
       display: block;
       text-align: center;
@@ -83,8 +83,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=GridList]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-grid-list-style');
-      (!document.querySelector('#a-grid-list-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
 
     connectedCallback() {}

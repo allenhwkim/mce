@@ -42,8 +42,7 @@
    suffix="dollars"></a-text-field>
 -->
 <template for="TextField">
-  <link rel="stylesheet" href="../components/common.css">
-  <style>
+  <style id="a-text-field-style">
     a-text-field {
       display: inline-block;
       min-width: 258px;
@@ -223,8 +222,8 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=TextField]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-text-field-style');
-      (!document.querySelector('#a-text-field-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.id = 'a-text-field-'+Math.round(Math.random()*10**9);
       this._buildHTML();
     }

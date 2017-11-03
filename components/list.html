@@ -2,7 +2,7 @@
   https://material.io/guidelines/components/lists.html#lists-specs
 -->
 <template for="List">
-  <style>
+  <style id="a-list-style">
     a-list {
       display: block;
     }
@@ -52,8 +52,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=List]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-list-style');
-      (!document.querySelector('#a-list-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
 
     connectedCallback() {}

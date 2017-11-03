@@ -1,5 +1,5 @@
 <template for="Chip">
-  <style>
+  <style id="a-chip-style">
     a-chip {
       height: 32px;
       display: inline-block;
@@ -71,8 +71,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=Chip]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-chip-style');
-      (!document.querySelector('#a-chip-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
       this._buildHTML();
     }
 

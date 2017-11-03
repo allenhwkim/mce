@@ -20,8 +20,7 @@ MOBILE :  0 checkbox
 MOBILE :  0 switch
 MOBILE :  0 expansion panel
 MOBILE :  0 Grid List
-
-* list
+MOBILE :  0 List
 
 FUTURE : 15 Right drawer
 FUTURE :  6 Snackbar

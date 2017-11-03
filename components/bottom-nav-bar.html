@@ -2,7 +2,7 @@
   https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
 -->
 <template for="BottomNavBar">
-  <style>
+  <style id="a-bottom-nav-bar-style">
     a-bottom-nav-bar {
       background-color: var(--theme-color-50);
       border-radius: 2px;
@@ -34,8 +34,7 @@
       super();
       let template = thisScript.ownerDocument.querySelector('template[for=BottomNavBar]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-bottom-nav-bar-style');
-      (!document.querySelector('#a-bottom-nav-bar-style')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
 
     connectedCallback() {}

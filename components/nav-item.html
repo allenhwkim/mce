@@ -1,5 +1,5 @@
 <template for="NavItem">
-  <style>
+  <style id="a-nav-item-style">
     a-nav-item {
       display: block;
       color: var(--theme-text-color-900, #333333); 
@@ -160,8 +160,8 @@
       }
       let template = thisScript.ownerDocument.querySelector('template[for=NavItem]');
       let style = template.content.querySelector('style').cloneNode(true);
-      style.setAttribute('id', 'a-nav-item');
-      (!document.querySelector('style#a-nav-item')) && this.insertBefore(style, this.firstChild);
+      !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
+
       this.addEventListener('click', this.setActiveItem.bind(this));
     }
 
