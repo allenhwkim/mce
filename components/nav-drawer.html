@@ -64,6 +64,10 @@
   class NavDrawer extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=NavDrawer]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
@@ -71,9 +75,6 @@
       this.observeAttrChange('visible', this._show);
       this._regroupElements();
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
 
     observeAttrChange(attrNames, callback) {
       var observer = new MutationObserver(mutations => {

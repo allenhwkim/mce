@@ -34,6 +34,10 @@
   class Tabs extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=Tabs]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
@@ -42,9 +46,6 @@
       this._registerNavItemClick();
       this._animateIndicator();
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
 
     _addIndicatorEl() {
       let el = document.createElement('div');

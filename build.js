@@ -1,3 +1,17 @@
+// create core-components.html
+// read all files, and for each file
+  // extract css, add to coreCss
+  // minify JS
+  // append to core-components.html
+
+// minify coreCss
+// read core-components.html
+// replace `<style id="ce-core-style">` with `<style id="ce-core-style">${coreCss}`
+// write to core-components.html
+
+// minify core-components.html, and write to dist/core-components.min.html
+// combine webcomponents-hi.js anc ce-polyfill.js, write to dist/custom-elements-polyfill.js
+
 /*
 <template for="CECore">
   <style id="ce-core-style">
@@ -13,16 +27,3 @@
   </script>
 </template>
 */
-
-// create core-components.html
-// read all files, and for each file
-  // extract css, add to coreCss
-  // minify JS
-  // append to core-components.html
-
-// minify coreCss
-// read core-components.html
-// replace `<style id="ce-core-style">` with `<style id="ce-core-style">${coreCss}`
-// write to core-components.html
-
-// minify core-components.html

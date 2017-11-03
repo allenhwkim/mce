@@ -16,10 +16,13 @@
       height: 40px;
       vertical-align: middle;
     }
-    a-refresh-indicator.color-reversed svg circle {
+    a-refresh-indicator[dark-bg] {
+      background-color: var(--theme-color-600, #333333); 
+    }
+    a-refresh-indicator[dark-bg] svg circle {
       stroke: var(--theme-color-0); 
     }
-    a-refresh-indicator.color-reversed svg polygon {
+    a-refresh-indicator[dark-bg] svg polygon {
       fill: var(--theme-color-0); 
     }
     a-refresh-indicator[loading] svg {
@@ -64,6 +67,10 @@
   class RefreshIndicator extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=RefreshIndicator]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
@@ -72,8 +79,6 @@
       this.appendChild(svg);
     }
 
-    connectedCallback() {}
-    disconnectedCallback() {}
   }
   
   customElements.define('a-refresh-indicator', RefreshIndicator);

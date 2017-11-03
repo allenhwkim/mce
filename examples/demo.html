@@ -2,7 +2,12 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="import" href="../components/default.html">
+    <!-- NOTE not to do it again. This does not work -->
+    <!-- <script src="https://rawgit.com/theftprevention/custom-elements-polyfill/master/dist/custom-elements-polyfill.js"></script> -->
+    <script src="webcomponents-hi.js"></script>
+    <script src="ce-polyfill.js"></script>
+
+    <link rel="import" href="../components/default.html"><!-- buttons, classes, radio, checkboxes -->
     <link rel="import" href="../components/app-bar.html">
     <link rel="import" href="../components/nav-drawer.html">
     <link rel="import" href="../components/menu.html">
@@ -108,15 +113,15 @@
         <div class="text">
           <div class="subtitle">Ready</div>
           <a-refresh-indicator></a-refresh-indicator> &nbsp;
-          <a-refresh-indicator class="color-reversed"></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator dark-bg></a-refresh-indicator> &nbsp;
           <a-refresh-indicator mini></a-refresh-indicator>
-          <a-refresh-indicator mini class="color-reversed"></a-refresh-indicator>
+          <a-refresh-indicator mini dark-bg></a-refresh-indicator>
           <br/><br/>
           <div class="subtitle">Loading</div>
           <a-refresh-indicator loading></a-refresh-indicator> &nbsp;
-          <a-refresh-indicator loading class="color-reversed"></a-refresh-indicator> &nbsp;
+          <a-refresh-indicator loading dark-bg></a-refresh-indicator> &nbsp;
           <a-refresh-indicator mini loading></a-refresh-indicator>
-          <a-refresh-indicator mini loading class="color-reversed"></a-refresh-indicator>
+          <a-refresh-indicator mini loading dark-bg></a-refresh-indicator>
         </div>
       </a-card>
 
@@ -285,22 +290,6 @@
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             A Button
           </button>
-        </div>
-      </a-card>
-
-      <a-card>
-        <div class="title">
-          <h1>Seelction Controls</h1>
-          <div class="subtitle">Selection controls allow the user to select options.</div>
-        </div>
-        <div class="text">
-          <h3>Checkbox</h3>
-          <h3>Radio Button</h3>
-          <h3>Switches</h3>
-        </div>
-        <div class="actions">
-          <a href="javascript:void(0)" class="button">ACTION 1</a>
-          <a href="javascript:void(0)" class="button">ACTION 2</a>
         </div>
       </a-card>
 
@@ -615,9 +604,11 @@
     </a-bottom-nav-bar>
     <script>
       function showDrawer() {
+        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
         document.querySelector('#nav-drawer').setAttribute('visible','');
       }
       function toggleMenu() {
+        console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
         let menuEl = document.querySelector('#app-bar-menu');
         menuEl.getAttribute('visible') !== null ?
            menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');

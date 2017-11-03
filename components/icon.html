@@ -86,6 +86,10 @@
   class Icon extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=Icon]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
@@ -98,7 +102,6 @@
         this.innerHTML = 'favorite';
       }
     }
-    disconnectedCallback() {}
   }
 
   customElements.define('an-icon', Icon);

@@ -83,17 +83,17 @@ https://material.io/guidelines/components/dialogs.html#dialogs-specs
   class Dialog extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=Dialog]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
       
       this._regroupElements();
-      this.originalPos;
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
-
+    
     open(data) {
       //replace title, content, actions with data given
       data && this._updateContent(data);

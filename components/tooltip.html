@@ -29,6 +29,10 @@
   class Tooltip extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=Tooltip]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
@@ -36,9 +40,6 @@
       this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
       this._addEventListeners();
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
 
     _addEventListeners() {
       this.parentElement.addEventListener('mouseenter', _ => {

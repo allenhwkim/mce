@@ -7,6 +7,7 @@
       background-color: var(--theme-color-300);
       font-size: 0;
       overflow: auto;
+      vertical-align: middle;
     }
 
     a-chip:hover {
@@ -69,14 +70,15 @@
   class Chip extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=Chip]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
       this._buildHTML();
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
 
     _buildHTML() {
       let avatar = this.getAttribute('avatar');

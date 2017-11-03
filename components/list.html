@@ -50,13 +50,14 @@
   class List extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       let template = thisScript.ownerDocument.querySelector('template[for=List]');
       let style = template.content.querySelector('style').cloneNode(true);
       !document.querySelector(`#ce-core-style, #${style.id}`) && document.head.appendChild(style);
     }
-
-    connectedCallback() {}
-    disconnectedCallback() {}
   }
   
   customElements.define('a-list', List);

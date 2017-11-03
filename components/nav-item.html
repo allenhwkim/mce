@@ -155,6 +155,10 @@
   class NavItem extends HTMLElement {
     constructor() {
       super();
+      this._init();
+    }
+
+    _init() {
       if (this.innerHTML) {
         this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
       }
