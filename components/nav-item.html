@@ -1,5 +1,11 @@
 <template for="NavItem">
   <style id="a-nav-item-style">
+    @keyframes ce-ripple {
+      0%   { transform: scale(0); }
+      20%  { transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
     a-nav-item {
       display: block;
       color: var(--theme-text-color-900, #212121); 
@@ -37,11 +43,12 @@
     a-menu a-nav-item:active {
       background-color: var(--theme-color-50, #fafafa);
     }
-    a-menu a-nav-item [md-icon] {
+    a-menu a-nav-item an-icon,
+    a-menu a-nav-item .an-icon {
       vertical-align: middle;
       padding: 0 8px 0 0;
     }
-    a-menu a-nav-item #shortcut {
+    a-menu a-nav-item .shortcut {
       padding-left: 16px;
       float: right;
     }
@@ -64,7 +71,8 @@
       padding: 8px 12px;
       font-size: 12px;
     }
-    a-bottom-nav-bar a-nav-item [md-icon] {
+    a-bottom-nav-bar a-nav-item .an-icon,
+    a-bottom-nav-bar a-nav-item an-icon {
       display: block;
     }
 
@@ -86,7 +94,8 @@
     a-nav-drawer a-nav-item .subheader {
       color: var(--theme-text-color-500, #9e9e9e);
     }
-    a-nav-drawer a-nav-item [md-icon] {
+    a-nav-drawer a-nav-item .an-icon,
+    a-nav-drawer a-nav-item an-icon {
       padding-right: 32px;
       color: var(--theme-text-color-500, #9e9e9e);
       vertical-align: middle;
@@ -101,14 +110,16 @@
       min-width: 72px; /* 160px for larger views */
       text-align: center;
     }
-    a-tabs > a-nav-item[active] [md-icon],
+    a-tabs > a-nav-item[active] .an-icon,
+    a-tabs > a-nav-item[active] an-icon,
     a-tabs > a-nav-item .text {
       color: var(--theme-text-color-200, #eeeeee);
     }
     a-tabs > a-nav-item[active] .text {
       color: var(--theme-text-color-0, #ffffff);
     }
-    a-tabs > a-nav-item [md-icon] {
+    a-tabs > a-nav-item an-icon,
+    a-tabs > a-nav-item .an-icon {
       padding: 12px 0;
       color: var(--theme-text-color-0, #ffffff);
       display: block;
@@ -120,7 +131,8 @@
       vertical-align: bottom;
       font-size: 14px;
     }
-    a-tabs > a-nav-item [md-icon] ~ .text {
+    a-tabs > a-nav-item an-icon ~ .text,
+    a-tabs > a-nav-item .an-icon ~ .text {
       display: block;
       margin-top: -4px;
       padding-top: 0px;
@@ -143,12 +155,13 @@
       transform: scale(0);
     }
     a-tabs a-nav-item:active:after {
-      animation: ripple 1s ease-out;
+      animation: ce-ripple 1s ease-out;
     }
   </style>
 </template>
 
 <script>
+// dependant on an-icon
 ( function() {
   var thisScript = document.currentScript;
 
@@ -174,10 +187,8 @@
       this.shortcut = this.getAttribute('shortcut');
       if (this.icon) {
         let isMDIcon = this.icon.match(/^[a-z_]+$/);
-        this.iconEl = document.createElement('div');
-        this.iconEl.setAttribute('id', 'icon');
+        this.iconEl = document.createElement('an-icon');
         if (isMDIcon) {
-          this.iconEl.setAttribute('md-icon', '');
           this.iconEl.innerHTML = this.icon;
         } else {
           this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
@@ -186,7 +197,7 @@
       }
       if (this.shortcut) {
         this.shortcutEl = document.createElement('div');
-        this.shortcutEl.setAttribute('id', 'shortcut');
+        this.shortcutEl.classList.add('shortcut');
         this.shortcutEl.innerHTML = this.shortcut;
         this.appendChild(this.shortcutEl);
       }

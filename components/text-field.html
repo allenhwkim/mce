@@ -164,7 +164,7 @@
     a-text-field[disabled] hr,
     a-text-field[disabled] .helper-text,
     a-text-field[disabled] .error-messages,
-    a-text-field[disabled] [md-icon]:not(:empty) {
+    a-text-field[disabled] an-icon:not(:empty) {
       color: var(--theme-text-color-500, #9e9e9e);
     }
     a-text-field[disabled] hr {
@@ -175,7 +175,7 @@
     a-text-field[invalid] hr,
     a-text-field[invalid] .helper-text,
     a-text-field[invalid] .error-messages,
-    a-text-field[invalid] [md-icon]:not(:empty) {
+    a-text-field[invalid] an-icon:not(:empty) {
       color: var(--theme-color-error, #ff0000);
     }
     a-text-field[invalid] hr {
@@ -190,7 +190,7 @@
     a-text-field[disabled] input {
       display: inherit;
     }
-    a-text-field [md-icon]:empty,
+    a-text-field an-icon:empty,
     a-text-field label:empty,
     a-text-field .prefix:empty,
     a-text-field .suffix:empty,
@@ -199,13 +199,13 @@
       display: none;
     }
 
-    a-text-field [md-icon]:not(:empty) {
+    a-text-field an-icon:not(:empty),
       color: var(--theme-text-color-700, #616161);
       position: relative;
       bottom: 22px;
     }
 
-    a-text-field [md-icon]:not(:empty) ~ .container {
+    a-text-field an-icon:not(:empty) ~ .container {
       width: calc(100% - 40px);
     }
 
@@ -214,6 +214,7 @@
 </template>
 
 <script>
+// dependenant on an-icon
 ( function() {
   var thisScript = document.currentScript;
 
@@ -283,7 +284,7 @@
       let attributes = attrs.join(' ');
 
       let html = `
-        <i class="icon" md-icon>${icon}</i>
+        <an-icon class="icon">${icon}</an-icon>
         <div class="container">
           <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
           <div class="input-wrapper">

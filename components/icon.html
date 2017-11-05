@@ -4,8 +4,13 @@
 <template for="Icon">
   <link rel="stylesheet" href="../components/common.css">
   <style id="an-icon-style">
-    an-icon {
-      color: var(--theme-text-color-500, #9e9e9e);
+    @keyframes ce-ripple {
+      0%   { transform: scale(0); }
+      20%  { transform: scale(1); }
+      100% { opacity: 0; transform: scale(2); }
+    }
+
+    an-icon, .an-icon {
       font-family: 'Material Icons';
       font-weight: normal;
       font-style: normal;
@@ -22,6 +27,7 @@
       user-select: none;
       vertical-align: middle;
     }
+
     an-icon[small] { font-size: 18px; }
     an-icon[big] { font-size: 36px; }
     an-icon[double] { font-size: 48px; }
@@ -44,7 +50,7 @@
     an-icon[circle][big],
     an-icon[square][big]     { padding: 18px;} 
 
-    an-icon[reactive]:active:after { animation: ripple .4s ease-out; }
+    an-icon[reactive]:active:after { animation: ce-ripple .4s ease-out; }
 
     an-icon[disabled] { color: var(--theme-text-color-400, #b9b9b9); }
 
@@ -74,7 +80,7 @@
     }
     an-icon[reactive]:active:after { 
       visibility: visible;
-      animation: ripple .4s ease-out;
+      animation: ce-ripple .4s ease-out;
     }
     an-icon[img] {
       color: transparent !important;

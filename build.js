@@ -1,19 +1,17 @@
-// create core-components.html
-// read all files, and for each file
-  // extract css, add to coreCss
-  // minify JS
-  // append to core-components.html
+var fs = require('fs');
+var path = require('path');
+var rimraf = require('rimraf');
 
-// minify coreCss
-// read core-components.html
-// replace `<style id="ce-core-style">` with `<style id="ce-core-style">${coreCss}`
-// write to core-components.html
+console.log('re-creating dist directoy');
+rimraf(path.join(__dirname, 'dist'));
+mkdirp(path.join(__dirname, 'dist', 'core'));
 
-// minify core-components.html, and write to dist/core-components.min.html
-// combine webcomponents-hi.js anc ce-polyfill.js, write to dist/custom-elements-polyfill.js
-
-/**  insert polyfill if not defined  **/
-/*
+console.log('reading all files');
+var files = fs.readdirSync(path.join(__dirname, 'components'));
+let allCSS = '';
+let allTmpl = '';
+let allJS = '';
+let polyfillJS = `
 <script>
 if (!('import' in document.createElement('link')) {
   let scriptEl = document.createElement('script');
@@ -26,6 +24,31 @@ if (!(window.customElements) {
   document.head.appendChild(scriptEl);
 }
 </script>
+`;
+
+files.forEach(file => {
+
+});
+// create core-components.html
+// read all files, and for each file
+  // extract css, add to coreCss
+  // minify JS
+  // append to core-components.html
+
+console.log('minifying css, js, html');
+// minify coreCss
+// read core-components.html
+// replace `<style id="ce-core-style">` with `<style id="ce-core-style">${coreCss}`
+console.log('creating dist/core-components.min.html')
+// write to core-components.html
+
+// minify core-components.html, and write to dist/core-components.min.html
+// combine webcomponents-hi.js anc ce-polyfill.js, write to dist/custom-elements-polyfill.js
+
+console.log('copying dist/web-components-hi.js');
+console.log('copying dist/ce-polyfill.js');
+/**  insert polyfill if not defined  **/
+/*
 
 <template for="CECore">
   <style id="ce-core-style">

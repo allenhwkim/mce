@@ -1,0 +1,105 @@
+/**
+  https://material.io/guidelines/components/buttons.html#buttons-style
+*/
+@keyframes ce-ripple {
+  0%   { transform: scale(0); }
+  20%  { transform: scale(1); }
+  100% { opacity: 0; transform: scale(2); }
+}
+
+a-button {
+  display: inline-block;
+  min-width: 88px;
+  height: 36px;
+  border-radius: 2px;
+  text-transform: uppercase;
+  line-height: 36px;
+  padding: 0 16px !important;
+  letter-spacing: 0px;
+  position: relative;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+  text-align: center;
+  border: none;
+  overflow: hidden;
+  background-color: var(--theme-text-color-0, #FFFFFF);
+  color: var(--theme-text-color-800, #424242);
+}
+
+a-button button { /* make real button not-visible */
+  padding: 0;
+  border: none;
+}
+
+a-button:focus {
+  outline: none;
+  background-color: var(--theme-color-300, #e0e0e0);
+}
+a-button:active {
+  background-color: var(--theme-color-400, #bdbdbd);
+}
+a-button:disabled {
+  color: var(--theme-text-color-400, #BDBDBD);
+  pointer-events: none;
+}
+a-button > * {
+  vertical-align: middle;
+}
+a-button:after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: -60px;
+  margin-top: -60px;
+  background: #3f51b5;
+  border-radius: 100%;
+  opacity: .6;
+  visibility: hidden;
+
+  transform: scale(0);
+}
+a-button:active:after {
+  animation: ce-ripple 1s ease-out;
+}
+a-button:focus:after {
+  visibility: visible;
+}
+
+a-button[dark] {
+  background-color: var(--theme-color-600, #757575);
+  color: var(--theme-color-0, #ffffff);
+}
+
+/* raised button */
+a-button[raised] {
+  box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
+}
+
+/* floating action button */
+a-button[fab] {
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  text-align: center;
+  line-height: 56px;
+  border-radius: 50%;
+  padding: 0;
+  box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
+  z-index: 6;
+}
+a-button[fab][pressed] {
+  z-index: 12;
+}
+a-button[fab][mini] {
+  width: 40px;
+  min-width: 40px;
+  padding: 0 !important;
+  height: 40px;
+  line-height: 40px;
+}

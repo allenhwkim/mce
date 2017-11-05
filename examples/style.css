@@ -1,0 +1,30 @@
+body {
+  font-family: var(--theme-main-font, 'Roboto');
+  margin: 0;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.float-left { float: left; }
+.float-right { float: right; }
+.display-none { display: none; }
+.display-none:target { display: block; }
+.clear-both:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.container {
+  padding: 12px;
+}
+
+.dark-bg {
+  background-color: var(--theme-color-600, #757575);
+  color: var(--theme-text-color-0, #ffffff);
+}

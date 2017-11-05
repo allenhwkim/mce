@@ -64,6 +64,7 @@
 </template>
 
 <script>
+// dependant on an-icon
 ( function() {
   var thisScript = document.currentScript;
 
@@ -93,9 +94,8 @@
         this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
       }
       if (removable !== null) {
-        let removeEl = document.createElement('div');
+        let removeEl = document.createElement('an-icon');
         removeEl.classList.add('delete');
-        removeEl.setAttribute('md-icon','');
         removeEl.innerHTML = 'clear';
 
         removeEl.addEventListener('click', event => {
