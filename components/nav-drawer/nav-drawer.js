@@ -4,11 +4,6 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   var thisScript = document.currentScript;
 
   class NavDrawer extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
     show() {
       this.setAttribute('visible', '');
     }
@@ -16,7 +11,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       this.removeAttribute('visible');
     }
 
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/nav-drawer/nav-drawer.css'); //id, url
       observeAttrChange(this, (attr, val) => {
         if (attr === 'visible') {

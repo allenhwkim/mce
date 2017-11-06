@@ -9,7 +9,7 @@
     if (el.tagName.match(/-/)) {
       // el.__proto__ = klass.prototype;
       Object.setPrototypeOf(el, klass.prototype);
-      el._init();
+      el._init && el._init();
       setTimeout(function(){
         el.connectedCallback && el.connectedCallback();
       })

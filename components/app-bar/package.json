@@ -1,0 +1,32 @@
+{
+  "name": "@custom-elements/app-bar",
+  "version": "0.1.0",
+  "description": "app-bar with MD/CE",
+  "main": "app-bar.js",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "package": "webpack app-bar.js --output-filename=dist/main.js --output-library-target=umd",
+    "package-with-polyfill": "cat ../ce-polyfill.js dist/main.js > dist/app-bar.js",
+    "min-css": "uglifycss app-bar.css > dist/app-bar.css",
+    "min-js": "uglifyjs dist/app-bar.js -mc > dist/app-bar.min.js",
+    "build": "npm-run-all clean min-css package package-with-polyfill min-js && rm dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allenhwkim/custom-elements/components/app-bar"
+  },
+  "keywords": [
+    "customElement",
+    "material",
+    "design",
+    "html"
+  ],
+  "author": "allenhwkim@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.1",
+    "uglify-es": "^3.1.7",
+    "uglifycss": "0.0.27",
+    "webpack": "^3.8.1"
+  }
+}

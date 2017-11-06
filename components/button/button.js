@@ -4,12 +4,8 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
 ( function() {
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
   class Button extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
     
-    _init() {
+    connectedCallback() {
       this.buttonAttrs = ['name', 'value', 'disabled'];
       addStyleSheet(this, '../components/button/button.css'); //id, url
       this.buttonEl = this._addRealButton();

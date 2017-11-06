@@ -11,12 +11,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     </svg>`;
 
   class RadioButton extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-    
-    _init() {
+    connectedCallback() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
       addStyleSheet(this, '../components/radio-button/radio-button.css'); //id, url
       this.inputEl = this._addRealInput();

@@ -4,17 +4,13 @@ import {addStyleSheet, animate} from '../util.js';
   var thisScript = document.currentScript;
 
   class Tabs extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
 
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/tabs/tabs.css'); //id, url
 
       this.indicatorEl = this._addIndicatorEl();
       this._registerNavItemClick();
-      this._animateIndicator();
+      setTimeout(this._animateIndicator.bind(this), 100);
     }
 
     _addIndicatorEl() {
@@ -44,7 +40,7 @@ import {addStyleSheet, animate} from '../util.js';
       let indicatorEl = this.indicatorEl;
       let numTab = this.querySelectorAll('a-nav-item').length;
       let thisWidth  = this.getBoundingClientRect().width;
-      let indicatorLeftFrom = parseFloat(indicatorEl.style.left);
+      let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
       let indicatorLeftTo = (
           (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
           - this.getBoundingClientRect().left

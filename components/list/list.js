@@ -4,12 +4,7 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class List extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/list/list.css'); //id, url
     }
   }

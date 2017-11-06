@@ -49,16 +49,14 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class TextField extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/text-field/text-field.css'); //id, url
 
       this.id = 'a-text-field-'+Math.round(Math.random()*Math.pow(10,9));
       this._buildHTML();
+
+      this.inputEl = this.querySelector('#'+this.id);
+      this._addEventListeners();
     }
 
     get disabled() {
@@ -85,11 +83,6 @@ import {addStyleSheet} from '../util.js';
       }
       this.__cachedErrorMessages = errorMessages;
       return errorMessages;
-    }
-
-    connectedCallback() {
-      this.inputEl = this.querySelector('#'+this.id);
-      this._addEventListeners();
     }
 
     _buildHTML() {

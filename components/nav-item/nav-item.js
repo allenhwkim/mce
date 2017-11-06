@@ -5,21 +5,13 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class NavItem extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       if (this.innerHTML) {
         this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
       }
       addStyleSheet(this, '../components/nav-item/nav-item.css'); //id, url
 
       this.addEventListener('click', this.setActiveItem.bind(this));
-    }
-
-    connectedCallback() {
       this.icon = this.getAttribute('icon');
       this.shortcut = this.getAttribute('shortcut');
       if (this.icon) {

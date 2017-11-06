@@ -27,18 +27,10 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   var thisScript = document.currentScript;
 
   class Menu extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/menu/menu.css'); //id, url
       observeAttrChange(this, (attr, val) => this._attrChanged(attr, val));
       this.hideMenu = this._hideMenu.bind(this); // so that hideMenu can be done from outside
-    }
-
-    connectedCallback() {
       document.addEventListener('click', this.hideMenu);
     }
 

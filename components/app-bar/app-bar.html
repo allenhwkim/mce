@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  </head>
+  <body>
+    <an-app-bar app-title="app-bar" fixed>
+      <div class="nav-icon">
+        <an-icon onclick="showDrawer()">menu</an-icon>
+      </div>
+      <span class="title">Custom Elements With Material Design</span>
+      <div class="icons">
+        <an-icon>favorite</an-icon>
+        <an-icon>search</an-icon>
+        <an-icon onclick="toggleMenu()">more_vert</an-icon>
+        <a-menu id="app-bar-menu" position="bottom-right">
+          <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+          <hr>
+          <a-nav-item disabled>Disabled</a-nav-item>
+          <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
+          <a-nav-item icon="search">nav-item text</a-nav-item>
+        </a-menu>
+      </div>
+    </an-app-bar>
+
+    <script>
+      function showDrawer() {
+        document.querySelector('a-nav-drawer').show();
+      }
+      function toggleMenu() {
+        let menuEl = document.querySelector('#app-bar-menu');
+        menuEl.getAttribute('visible') !== null ?
+           menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
+      }
+    </script>
+    <script src="dist/app-bar.min.js"></script>
+  </body>
+</html>

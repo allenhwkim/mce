@@ -11,12 +11,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     </svg>`;
 
   class Checkbox extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-    
-    _init() {
+    connectedCallback() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
       addStyleSheet(this, '../components/checkbox/checkbox.css'); //id, url
       this.inputEl = this._addRealInput();

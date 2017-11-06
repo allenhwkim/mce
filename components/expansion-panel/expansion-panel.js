@@ -2,12 +2,7 @@ import {addStyleSheet} from '../util.js';
 
 ( function() {
   class ExpansionPanel extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       let titleEl = this.querySelector('.title');
 
       addStyleSheet(this, '../components/expansion-panel/expansion-panel.css'); //id, url
@@ -20,7 +15,6 @@ import {addStyleSheet} from '../util.js';
         !panelEl.isSameNode(this) && panelEl.setAttribute('collapsed','');
       })
     }
-
   }
   
   customElements.define('an-expansion-panel', ExpansionPanel);

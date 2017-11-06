@@ -4,12 +4,7 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class Card extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/card/card.css'); //id, url
     }
   }

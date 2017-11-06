@@ -6,10 +6,9 @@ import {addStyleSheet} from '../util.js';
   class BottomNavBar extends HTMLElement {
     constructor() {
       super();
-      this._init();
     }
 
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/bottom-nav-bar/bottom-nav-bar.css'); //id, url
     }
   }

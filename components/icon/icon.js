@@ -4,16 +4,8 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class Icon extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
-      addStyleSheet(this, '../components/icon/icon.css'); //id, url
-    }
-
     connectedCallback() {
+      addStyleSheet(this, '../components/icon/icon.css'); //id, url
       let img = this.getAttribute('img');
       if (img) {
         this.style.backgroundImage = `url(${img})`;

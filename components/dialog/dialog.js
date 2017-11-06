@@ -5,12 +5,7 @@ import {addStyleSheet} from '../util.js';
   var thisScript = document.currentScript;
 
   class Dialog extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/dialog/dialog.css'); //id, url
       this._regroupElements();
     }

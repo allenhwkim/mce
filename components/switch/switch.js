@@ -4,12 +4,8 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
 
   class Switch extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
     
-    _init() {
+    connectedCallback() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
       addStyleSheet(this, '../components/switch/switch.css'); //id, url
       this.inputEl = this._addRealInput();

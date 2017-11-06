@@ -3,12 +3,7 @@ import {addStyleSheet} from '../util.js';
 ( function() {
 
   class Tooltip extends HTMLElement {
-    constructor() {
-      super();
-      this._init();
-    }
-
-    _init() {
+    connectedCallback() {
       addStyleSheet(this, '../components/tooltip/tooltip.css'); //id, url
 
       this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
