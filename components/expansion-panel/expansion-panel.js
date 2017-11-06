@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     _init() {
       let titleEl = this.querySelector('.title');
 
-      addStyleSheet('a-expansion-panel', '../components/expansion-panel/expansion-panel.css'); //id, url
+      addStyleSheet(this, '../components/expansion-panel/expansion-panel.css'); //id, url
       titleEl.addEventListener('click', this._showThisPanelOnly.bind(this));
     }
 

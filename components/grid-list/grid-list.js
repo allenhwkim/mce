@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-grid-list', '../components/grid-list/grid-list.css'); //id, url
+      addStyleSheet(this, '../components/grid-list/grid-list.css'); //id, url
     }
   }
   

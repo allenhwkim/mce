@@ -18,7 +18,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     
     _init() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
-      addStyleSheet('a-checkbox', '../components/checkbox/checkbox.css'); //id, url
+      addStyleSheet(this, '../components/checkbox/checkbox.css'); //id, url
       this.inputEl = this._addRealInput();
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);

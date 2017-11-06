@@ -9,7 +9,7 @@ import {addStyleSheet} from '../util.js';
     }
     
     _init() {
-      addStyleSheet('ce-app-bar-style', '../components/app-bar/app-bar.css');
+      addStyleSheet(this, '../components/app-bar/app-bar.css');
     }
   }
   

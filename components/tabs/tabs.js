@@ -10,7 +10,7 @@ import {addStyleSheet, animate} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-tabs', '../components/tabs/tabs.css'); //id, url
+      addStyleSheet(this, '../components/tabs/tabs.css'); //id, url
 
       this.indicatorEl = this._addIndicatorEl();
       this._registerNavItemClick();

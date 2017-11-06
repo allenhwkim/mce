@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('an-icon', '../components/icon/icon.css'); //id, url
+      addStyleSheet(this, '../components/icon/icon.css'); //id, url
     }
 
     connectedCallback() {

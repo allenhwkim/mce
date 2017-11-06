@@ -32,7 +32,7 @@ a-dialog > .container {
   box-shadow: var(--theme-shadow-10dp, 0 10px 20px rgba(0,0,0,0.19), 0  6px  6px rgba(0,0,0,0.23));
   border: 1px solid var(--theme-color-200, #eeeeee);
   border-radius: var(--theme-border-radius, 2px);
-  background-color: var(--theme-color-0), #ffffff;
+  background-color: var(--theme-color-0, #ffffff);
 }
 a-dialog > .container .divider {
   display: block;

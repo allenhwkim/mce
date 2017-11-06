@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-card', '../components/card/card.css'); //id, url
+      addStyleSheet(this, '../components/card/card.css'); //id, url
     }
   }
   

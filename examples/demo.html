@@ -4,7 +4,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="../polyfills/ce-polyfill.js"></script>
+    <script src="../components/ce-polyfill.js"></script>
 
     <script type="module" src="../components/app-bar/app-bar.js"></script>
     <script type="module" src="../components/button/button.js"></script>
@@ -33,13 +33,13 @@
   <body>
     <an-app-bar app-title="app-bar" fixed>
       <div class="nav-icon">
-        <an-icon onmousedown="showDrawer()">menu</an-icon>
+        <an-icon onclick="showDrawer()">menu</an-icon>
       </div>
       <span class="title">Custom Elements With Material Design</span>
       <div class="icons">
         <an-icon>favorite</an-icon>
         <an-icon>search</an-icon>
-        <an-icon onmousedown="toggleMenu()">more_vert</an-icon>
+        <an-icon onclick="toggleMenu()">more_vert</an-icon>
         <a-menu id="app-bar-menu" position="bottom-right">
           <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
           <hr>
@@ -95,14 +95,26 @@
           <div class="subtitle">Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks.</div>
         </div>
         <div class="text">
-          <a-button raised onmousedown="openDialog('dialog-1')">Open A Dialog</a-button>
-          <a-button raised onmousedown="openDialogWith('dialog-1',{title: 'me', contents:'bar', actions: {ok: ()=>{}}})">Open A Dialog With Data</a-button>
+          <a-button raised onclick="openDialog('dialog-1')">Open A Dialog</a-button>
+          <a-button raised onclick="openDialogWith('dialog-2',{
+            title: 'Custim Title', 
+            contents:'This is custom contents',
+            actions: {'Custom Button': () => alert('My Button is clicked.')}
+          })">Open A Dialog With Data</a-button>
           <a-dialog id="dialog-1">
             <h3 class="title">Title</h3>
             <div class="content">contents</div>
             <div class="actions">
-              <a-button onmousedown="closeDialog('dialog-1')">cancel</buttoin>
-              <a-button onmousedown="closeDialog('dialog-1')">OK</buttoin>
+              <a-button onclick="closeDialog('dialog-1')">cancel</a-button>
+              <a-button onclick="closeDialog('dialog-1')">OK</a-button>
+            </div>
+          </a-dialog>
+          <a-dialog id="dialog-2">
+            <h3 class="title">Title</h3>
+            <div class="content">contents</div>
+            <div class="actions">
+              <a-button>cancel</a-button>
+              <a-button>OK</a-button>
             </div>
           </a-dialog>
         </div>
@@ -608,7 +620,7 @@
     </a-bottom-nav-bar>
     <script>
       function showDrawer() {
-        document.querySelector('#nav-drawer').setAttribute('visible','');
+        document.querySelector('a-nav-drawer').show();
       }
       function toggleMenu() {
         let menuEl = document.querySelector('#app-bar-menu');
@@ -625,6 +637,10 @@
         let dialog = document.getElementById(id);
         dialog.open(data);
       }
+      // to prevent FOUC
+      var elm=document.querySelector('html');
+      elm.style.display="none";
+      document.addEventListener("DOMContentLoaded",_ => elm.style.display="block");
     </script>
   </body>
 </html>

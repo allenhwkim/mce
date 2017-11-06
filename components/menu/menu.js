@@ -33,7 +33,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-menu', '../components/menu/menu.css'); //id, url
+      addStyleSheet(this, '../components/menu/menu.css'); //id, url
       observeAttrChange(this, (attr, val) => this._attrChanged(attr, val));
       this.hideMenu = this._hideMenu.bind(this); // so that hideMenu can be done from outside
     }

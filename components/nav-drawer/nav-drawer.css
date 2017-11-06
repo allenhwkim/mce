@@ -1,4 +1,7 @@
 /*https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs*/
+a-nav-drawer {
+  display: block;
+}
 
 a-nav-drawer[visible] {
   visibility: visible;

@@ -14,7 +14,7 @@ import {addStyleSheet} from '../util.js';
       if (this.innerHTML) {
         this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
       }
-      addStyleSheet('a-nav-item', '../components/nav-item/nav-item.css'); //id, url
+      addStyleSheet(this, '../components/nav-item/nav-item.css'); //id, url
 
       this.addEventListener('click', this.setActiveItem.bind(this));
     }

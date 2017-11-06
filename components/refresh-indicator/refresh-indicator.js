@@ -14,7 +14,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-refresh-indicator', '../components/refresh-indicator/refresh-indicator.css'); //id, url
+      addStyleSheet(this, '../components/refresh-indicator/refresh-indicator.css'); //id, url
       this.insertAdjacentHTML('beforeend', SVG);
     }
 

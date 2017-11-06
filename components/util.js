@@ -1,10 +1,15 @@
-export function addStyleSheet(id, url) {
-  if (!document.querySelector(`#ce-core-style, #${id}`)) {
+export function addStyleSheet(el, url) {
+  let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
+    return (index !== 0 ? '-' : '') + char.toLowerCase();
+  });
+
+  if (!document.querySelector(`#ce-core-style, link#${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('id', id);
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', url);
-    document.head.appendChild(linkEl); 
+    el.appendChild(linkEl); 
+    // document.head.appendChild(linkEl); 
   }
 }
 

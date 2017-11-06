@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-bottom-nav-bar', '../components/bottom-nav-bar/bottom-nav-bar.css'); //id, url
+      addStyleSheet(this, '../components/bottom-nav-bar/bottom-nav-bar.css'); //id, url
     }
   }
   

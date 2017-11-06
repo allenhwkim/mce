@@ -11,7 +11,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-chip', '../components/chip/chip.css'); //id, url
+      addStyleSheet(this, '../components/chip/chip.css'); //id, url
       this._buildHTML();
     }
 

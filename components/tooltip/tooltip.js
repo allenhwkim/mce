@@ -9,7 +9,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-tooltip', '../components/tooltip/tooltip.css'); //id, url
+      addStyleSheet(this, '../components/tooltip/tooltip.css'); //id, url
 
       this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
       this._addEventListeners();

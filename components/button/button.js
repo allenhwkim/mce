@@ -11,7 +11,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     
     _init() {
       this.buttonAttrs = ['name', 'value', 'disabled'];
-      addStyleSheet('a-button', '../components/button/button.css'); //id, url
+      addStyleSheet(this, '../components/button/button.css'); //id, url
       this.buttonEl = this._addRealButton();
       observeAttrChange(this, (attr, val) => {
         this.buttonAttrs.includes(attr) && this.buttonEl.setAttribute(attr, val);

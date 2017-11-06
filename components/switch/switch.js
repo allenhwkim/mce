@@ -11,7 +11,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
     
     _init() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
-      addStyleSheet('a-switch', '../components/switch/switch.css'); //id, url
+      addStyleSheet(this, '../components/switch/switch.css'); //id, url
       this.inputEl = this._addRealInput();
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);

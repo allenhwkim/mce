@@ -10,7 +10,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-list', '../components/list/list.css'); //id, url
+      addStyleSheet(this, '../components/list/list.css'); //id, url
     }
   }
   

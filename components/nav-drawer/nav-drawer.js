@@ -9,8 +9,15 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       this._init();
     }
 
+    show() {
+      this.setAttribute('visible', '');
+    }
+    hide() {
+      this.removeAttribute('visible');
+    }
+
     _init() {
-      addStyleSheet('a-nav-drawer', '../components/nav-drawer/nav-drawer.css'); //id, url
+      addStyleSheet(this, '../components/nav-drawer/nav-drawer.css'); //id, url
       observeAttrChange(this, (attr, val) => {
         if (attr === 'visible') {
           document.body.style.overflow = val !== null ? 'hidden' : '';
@@ -23,10 +30,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       let pageBlockerEl, contentsEl;
       pageBlockerEl = document.createElement('div');
       pageBlockerEl.setAttribute('class', 'page-blocker');
-      pageBlockerEl.addEventListener('click', () => {
-        this.removeAttribute('visible');
-        this._show();
-      });
+      pageBlockerEl.addEventListener('click', () => this.hide());
       this.appendChild(pageBlockerEl);
 
       contentsEl = document.createElement('div');
@@ -34,7 +38,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       this.appendChild(contentsEl);
 
       Array.from(this.children).forEach(el => {
-        if (el.tagName !== 'STYLE' && !el.isSameNode(contentsEl) && !el.isSameNode(pageBlockerEl)) {
+        if (!el.isSameNode(contentsEl) && !el.isSameNode(pageBlockerEl)) {
           contentsEl.appendChild(el)
         }
       });

@@ -1,4 +1,6 @@
 import {addStyleSheet} from '../util.js';
+
+//dependant on a-button
 ( function() {
   var thisScript = document.currentScript;
 
@@ -9,7 +11,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-dialog', '../components/dialog/dialog.css'); //id, url
+      addStyleSheet(this, '../components/dialog/dialog.css'); //id, url
       this._regroupElements();
     }
     
@@ -60,21 +62,18 @@ import {addStyleSheet} from '../util.js';
         return el;
       }
       if (data.title !== undefined) {
-        console.log(1, this.querySelector('.title'), this.innerHTML)
         titleEl = this.querySelector('.title') || appendEl('title');
         titleEl.innerHTML = data.title;
       }
       if (data.contents !== undefined) {
-        console.log(2, this.querySelector('.content'), this.innerHTML)
         contentEl = this.querySelector('.content') || appendEl('content');
         contentEl.innerHTML = data.contents;
       }
       if (data.actions !== undefined) {
-        console.log(3, this.querySelector('.actions'), this.innerHTML)
         actionsEl = this.querySelector('.actions') || appendEl('actions');
         actionsEl.innerHTML = '';
         for (var key in data.actions) {
-          let buttonEl = document.createElement('button');
+          let buttonEl = document.createElement('a-button');
           buttonEl.innerHTML = key;
           buttonEl.addEventListener('click', _ => {
             data.actions[key]();

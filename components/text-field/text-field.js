@@ -55,7 +55,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _init() {
-      addStyleSheet('a-text-field', '../components/text-field/text-field.css'); //id, url
+      addStyleSheet(this, '../components/text-field/text-field.css'); //id, url
 
       this.id = 'a-text-field-'+Math.round(Math.random()*Math.pow(10,9));
       this._buildHTML();
