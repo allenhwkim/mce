@@ -4,29 +4,28 @@
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="ce-polyfill.js"></script>
+    <script src="../polyfills/ce-polyfill.js"></script>
 
     <script type="module" src="../components/app-bar/app-bar.js"></script>
     <script type="module" src="../components/button/button.js"></script>
     <script type="module" src="../components/radio-button/radio-button.js"></script>
     <script type="module" src="../components/checkbox/checkbox.js"></script>
     <script type="module" src="../components/switch/switch.js"></script>
-
-    <link rel="import" href="../components/nav-drawer.html">
-    <link rel="import" href="../components/menu.html">
-    <link rel="import" href="../components/nav-item.html">
-    <link rel="import" href="../components/bottom-nav-bar.html">
-    <link rel="import" href="../components/card.html">
-    <link rel="import" href="../components/dialog.html">
-    <link rel="import" href="../components/refresh-indicator.html">
-    <link rel="import" href="../components/tabs.html">
-    <link rel="import" href="../components/text-field.html">
-    <link rel="import" href="../components/chip.html">
-    <link rel="import" href="../components/tooltip.html">
-    <link rel="import" href="../components/icon.html">
-    <link rel="import" href="../components/expansion-panel.html">
-    <link rel="import" href="../components/grid-list.html">
-    <link rel="import" href="../components/list.html">
+    <script type="module" src="../components/bottom-nav-bar/bottom-nav-bar.js"></script>
+    <script type="module" src="../components/card/card.js"></script>
+    <script type="module" src="../components/chip/chip.js"></script>
+    <script type="module" src="../components/nav-drawer/nav-drawer.js"></script>
+    <script type="module" src="../components/menu/menu.js"></script>
+    <script type="module" src="../components/nav-item/nav-item.js"></script>
+    <script type="module" src="../components/dialog/dialog.js"></script>
+    <script type="module" src="../components/refresh-indicator/refresh-indicator.js"></script>
+    <script type="module" src="../components/tabs/tabs.js"></script>
+    <script type="module" src="../components/text-field/text-field.js"></script>
+    <script type="module" src="../components/tooltip/tooltip.js"></script>
+    <script type="module" src="../components/icon/icon.js"></script>
+    <script type="module" src="../components/expansion-panel/expansion-panel.js"></script>
+    <script type="module" src="../components/grid-list/grid-list.js"></script>
+    <script type="module" src="../components/list/list.js"></script>
 
     <link rel="stylesheet" href="../themes/grey.css"> <!-- theme -->
     <link rel="stylesheet" href="./style.css"> <!-- my application styles -->
@@ -34,13 +33,13 @@
   <body>
     <an-app-bar app-title="app-bar" fixed>
       <div class="nav-icon">
-        <an-icon onclick="showDrawer()">menu</an-icon>
+        <an-icon onmousedown="showDrawer()">menu</an-icon>
       </div>
       <span class="title">Custom Elements With Material Design</span>
       <div class="icons">
         <an-icon>favorite</an-icon>
         <an-icon>search</an-icon>
-        <an-icon onclick="toggleMenu()">more_vert</an-icon>
+        <an-icon onmousedown="toggleMenu()">more_vert</an-icon>
         <a-menu id="app-bar-menu" position="bottom-right">
           <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
           <hr>
@@ -96,14 +95,14 @@
           <div class="subtitle">Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks.</div>
         </div>
         <div class="text">
-          <a-button raised onclick="openDialog('dialog-1')">Open A Dialog</a-button>
-          <a-button raised onclick="openDialogWith('dialog-1',{title: 'me', contents:'bar', actions: {ok: ()=>{}}})">Open A Dialog With Data</a-button>
+          <a-button raised onmousedown="openDialog('dialog-1')">Open A Dialog</a-button>
+          <a-button raised onmousedown="openDialogWith('dialog-1',{title: 'me', contents:'bar', actions: {ok: ()=>{}}})">Open A Dialog With Data</a-button>
           <a-dialog id="dialog-1">
             <h3 class="title">Title</h3>
             <div class="content">contents</div>
             <div class="actions">
-              <a-button onclick="closeDialog('dialog-1')">cancel</buttoin>
-              <a-button onclick="closeDialog('dialog-1')">OK</buttoin>
+              <a-button onmousedown="closeDialog('dialog-1')">cancel</buttoin>
+              <a-button onmousedown="closeDialog('dialog-1')">OK</buttoin>
             </div>
           </a-dialog>
         </div>
@@ -146,23 +145,23 @@
           <h1>Tabs</h1>
           <div class="subtitle">Tabs make it easy to explore and switch between different views.</div>
         </div>
-        <p> Text Only Tabs</p>
+        <p class="text"> Text Only Tabs</p>
         <a-tabs>
           <a-nav-item>item one</a-nav-item>
           <a-nav-item>item two</a-nav-item>
           <a-nav-item>item three</a-nav-item>
         </a-tabs>
-        <p> Icon Only Tabs</p>
+        <p class="text"> Icon Only Tabs</p>
         <a-tabs>
           <a-nav-item icon="favorite"></a-nav-item>
           <a-nav-item icon="search" active></a-nav-item>
           <a-nav-item icon="alarm"></a-nav-item>
         </a-tabs>
-        <p> Icon/Text Tabs</p>
+        <p class="text"> Icon/Text Tabs</p>
         <a-tabs>
           <a-nav-item icon="favorite">item one</a-nav-item>
-          <a-nav-item icon="search" active>item two</a-nav-item>
-          <a-nav-item icon="alarm">item three</a-nav-item>
+          <a-nav-item icon="search">item two</a-nav-item>
+          <a-nav-item icon="alarm" active>item three</a-nav-item>
         </a-tabs>
         <br/> <br/> <br/> <br/>
       </a-card>
@@ -284,27 +283,27 @@
         <div class="text" class="clear-both">
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            Move
           </a-button>
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            Mouse
           </a-button>
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            Over
           </a-button>
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            Here
           </a-button>
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            To See
           </a-button>
           <a-button raised>
             <a-tooltip>This is a tooltip for a button</a-tooltip>
-            A Button
+            Tooltip
           </a-button>
         </div>
       </a-card>
@@ -507,14 +506,14 @@
           <img src="nature2.jpg" />
           <div class="text-with-icon">
             <h1>Single Line</h1>
-            <i class="float-right an-icon">172</i>
+            <span class="icon">172</span>
           </div>
         </div>
         <div>
           <img src="nature2.jpg" />
           <div class="text-with-icon">
             <h1>Single Line</h1>
-            <i class="float-right an-icon">181</i>
+            <span class="icon">181</span>
           </div>
         </div>
       </a-grid-list>
@@ -600,17 +599,6 @@
         </ul>
       </a-list>
 
-      <p>
-        <img width="100%" src="whatismaterial-3d-elevation2.png">
-      </p>
-
-      <ul>
-        TODO
-        <li> mobile vs desktop
-        <li> a-source-viewer component
-        <li> a-ruler comonent
-      </pre>
-
     </main>
     <a-bottom-nav-bar>
       <a-nav-item icon="favorite">Favourite</a-nav-item>
@@ -620,11 +608,9 @@
     </a-bottom-nav-bar>
     <script>
       function showDrawer() {
-        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
         document.querySelector('#nav-drawer').setAttribute('visible','');
       }
       function toggleMenu() {
-        console.log('yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy')
         let menuEl = document.querySelector('#app-bar-menu');
         menuEl.getAttribute('visible') !== null ?
            menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');

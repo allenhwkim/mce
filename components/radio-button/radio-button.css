@@ -45,7 +45,16 @@ a-radio-button:active:after {
 a-radio-button input {
   margin: 0;
   position: absolute;
-  visibility: hidden;
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+a-radio-button svg {
+  z-index: 1 ;
 }
 
 a-radio-button input + svg path {

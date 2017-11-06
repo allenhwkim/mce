@@ -40,31 +40,34 @@ a-button:focus {
 a-button:active {
   background-color: var(--theme-color-400, #bdbdbd);
 }
-a-button:disabled {
+a-button[disabled] {
   color: var(--theme-text-color-400, #BDBDBD);
   pointer-events: none;
 }
 a-button > * {
   vertical-align: middle;
 }
-a-button:after {
+a-button:after { /* to show it's pressed down */
+  background-color: var(--theme-color-500, #9e9e9e);
+  border-radius: 50%;
+  border: 1px solid #333;
   content: '';
   display: block;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 120px;
   height: 120px;
+  left: 50%;
   margin-left: -60px;
   margin-top: -60px;
-  background: #3f51b5;
-  border-radius: 100%;
-  opacity: .6;
-  visibility: hidden;
-
+  opacity: 0.6;
+  position: absolute;
+  top: 50%;
   transform: scale(0);
+  visibility: hidden;
+  width: 120px;
 }
+
 a-button:active:after {
+  transform: scale(1);
+  visibility: visible;
   animation: ce-ripple 1s ease-out;
 }
 a-button:focus:after {
@@ -74,6 +77,9 @@ a-button:focus:after {
 a-button[dark] {
   background-color: var(--theme-color-600, #757575);
   color: var(--theme-color-0, #ffffff);
+}
+a-button[dark][disabled] {
+  background-color: var(--theme-color-500, #9e9e9e);
 }
 
 /* raised button */

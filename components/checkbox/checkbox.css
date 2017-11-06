@@ -45,7 +45,16 @@ a-checkbox:active:after {
 a-checkbox input {
   margin: 0;
   position: absolute;
-  visibility: hidden;
+  opacity: 0;
+  width: 24px;
+  height: 24px;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+a-checkbox input + svg {
+  z-index: 0;
 }
 
 a-checkbox input + svg path {

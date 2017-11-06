@@ -35,8 +35,8 @@ a-switch input:before  {
   width: 20px;
 }
 a-switch input:checked:before  {
-  left: auto;
-  right: 0;
+  left: 16px;
+  transition: all 0.3s ease;
 }
 a-switch input { background-color: var(--theme-text-color-500, #9E9E9E); }
 a-switch input:before { background-color: var(--theme-text-color-700, #616161); }

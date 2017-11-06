@@ -23,9 +23,6 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
       });
-      this.addEventListener('mousedown', () => {
-        this.inputEl.checked = !this.inputEl.checked;
-      });
     }
 
     _addRealInput() {
