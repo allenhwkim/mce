@@ -21,13 +21,12 @@ import './grid-list/main.js';
 import './list/main.js';
 
 (function() {
-  var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/core.css';
-
-  if (!document.querySelector(`link.ce-core`)) {
+  if (!document.querySelector(`link#ce-core`)) { // if css not already added
+    var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/core.css';
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', 'ce-core');
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', cssUrl);
-    document.head.appendChild(linkEl); 
+    document.head.appendChild(linkEl);
   }
 })();

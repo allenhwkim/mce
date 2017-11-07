@@ -77,7 +77,8 @@ function addStyleSheet(el, url) {
   });
   url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  if (!document.querySelector(`link.ce-core, link.${id}`)) {
+  // script#ce-core load the common scripts from //unpkg.com, so don't load each css
+  if (document.querySelector(`script#ce-core link.${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
@@ -238,14 +239,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 (function() {
-  var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/core.css';
-
-  if (!document.querySelector(`link.ce-core`)) {
+  if (!document.querySelector(`link#ce-core`)) { // if css not already added
+    var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/core.css';
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', 'ce-core');
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', cssUrl);
-    document.head.appendChild(linkEl); 
+    document.head.appendChild(linkEl);
   }
 })();
 

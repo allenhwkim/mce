@@ -1,6 +1,6 @@
 {
   "name": "@custom-elements/core",
-  "version": "0.2.4",
+  "version": "0.2.7",
   "description": "core components with MD/CE",
   "main": "dist/core.min.js",
   "scripts": {
