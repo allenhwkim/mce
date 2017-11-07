@@ -1,0 +1,122 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/allen.kim/.nvm/versions/node/v7.6.0/bin/node',
+1 verbose cli   '/Users/allen.kim/.nvm/versions/node/v7.6.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@4.1.2
+3 info using node@v7.6.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/allen.kim/github/custom-elements/components/checkbox',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/allen.kim/.npm correctMkdir not in flight; initializing
+10 info lifecycle @custom-elements/checkbox@0.2.0~prepublish: @custom-elements/checkbox@0.2.0
+11 silly lifecycle @custom-elements/checkbox@0.2.0~prepublish: no script for prepublish, continuing
+12 info lifecycle @custom-elements/checkbox@0.2.0~prepare: @custom-elements/checkbox@0.2.0
+13 silly lifecycle @custom-elements/checkbox@0.2.0~prepare: no script for prepare, continuing
+14 verbose tar pack [ '/Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package.tgz',
+14 verbose tar pack   '/Users/allen.kim/github/custom-elements/components/checkbox' ]
+15 verbose tarball /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package.tgz
+16 verbose folder /Users/allen.kim/github/custom-elements/components/checkbox
+17 verbose addLocalTarball adding from inside cache /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package.tgz
+18 verbose correctMkdir /Users/allen.kim/.npm correctMkdir not in flight; initializing
+19 silly cache afterAdd @custom-elements/checkbox@0.2.0
+20 verbose afterAdd /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package/package.json not in flight; writing
+21 verbose correctMkdir /Users/allen.kim/.npm correctMkdir not in flight; initializing
+22 verbose afterAdd /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package/package.json written
+23 silly publish { name: '@custom-elements/checkbox',
+23 silly publish   version: '0.2.0',
+23 silly publish   description: 'checkbox with MD/CE',
+23 silly publish   main: 'dist/main.min.js',
+23 silly publish   scripts:
+23 silly publish    { clean: 'rm -rf dist && mkdir dist',
+23 silly publish      package: 'webpack main.js --output-filename=dist/_main.js',
+23 silly publish      'package-with-polyfill': 'cat ../ce-polyfill.js dist/_main.js > dist/main.js',
+23 silly publish      'min-css': 'uglifycss style.css > dist/style.css',
+23 silly publish      'min-js': 'uglifyjs dist/main.js -m reserved=[Checkbox] -c  > dist/main.min.js',
+23 silly publish      build: 'npm-run-all clean min-css package package-with-polyfill min-js && rm dist/_main.js' },
+23 silly publish   repository:
+23 silly publish    { type: 'git',
+23 silly publish      url: 'https://github.com/allenhwkim/custom-elements/components/checkbox' },
+23 silly publish   keywords: [ 'customElement', 'material', 'design', 'html' ],
+23 silly publish   files: [ 'dist' ],
+23 silly publish   author: { name: 'allenhwkim@gmail.com' },
+23 silly publish   license: 'MIT',
+23 silly publish   devDependencies:
+23 silly publish    { 'npm-run-all': '^4.1.1',
+23 silly publish      'uglify-es': '^3.1.7',
+23 silly publish      uglifycss: '0.0.27',
+23 silly publish      webpack: '^3.8.1' },
+23 silly publish   readme: 'ERROR: No README data found!',
+23 silly publish   _id: '@custom-elements/checkbox@0.2.0',
+23 silly publish   _shasum: '0b350f48ed784ab4ad6f6cbca9d884dfce818730',
+23 silly publish   _from: '.' }
+24 info lifecycle @custom-elements/checkbox@0.2.0~prepublishOnly: @custom-elements/checkbox@0.2.0
+25 silly lifecycle @custom-elements/checkbox@0.2.0~prepublishOnly: no script for prepublishOnly, continuing
+26 verbose getPublishConfig undefined
+27 silly mapToRegistry name @custom-elements/checkbox
+28 silly mapToRegistry scope (from package name) @custom-elements
+29 verbose mapToRegistry no registry URL found in name for scope @custom-elements
+30 silly mapToRegistry using default registry
+31 silly mapToRegistry registry https://registry.npmjs.org/
+32 silly mapToRegistry data Result {
+32 silly mapToRegistry   raw: '@custom-elements/checkbox',
+32 silly mapToRegistry   scope: '@custom-elements',
+32 silly mapToRegistry   escapedName: '@custom-elements%2fcheckbox',
+32 silly mapToRegistry   name: '@custom-elements/checkbox',
+32 silly mapToRegistry   rawSpec: '',
+32 silly mapToRegistry   spec: 'latest',
+32 silly mapToRegistry   type: 'tag' }
+33 silly mapToRegistry uri https://registry.npmjs.org/@custom-elements%2fcheckbox
+34 verbose publish registryBase https://registry.npmjs.org/
+35 silly publish uploading /Users/allen.kim/.npm/@custom-elements/checkbox/0.2.0/package.tgz
+36 verbose request uri https://registry.npmjs.org/@custom-elements%2fcheckbox
+37 verbose request sending authorization for write operation
+38 info attempt registry request try #1 at 10:03:28 PM
+39 verbose request using bearer token for auth
+40 verbose request id 06c5a7bb7781b45a
+41 http request PUT https://registry.npmjs.org/@custom-elements%2fcheckbox
+42 http 403 https://registry.npmjs.org/@custom-elements%2fcheckbox
+43 verbose headers { 'content-type': 'application/json',
+43 verbose headers   'cache-control': 'max-age=0',
+43 verbose headers   'content-length': '91',
+43 verbose headers   'accept-ranges': 'bytes',
+43 verbose headers   date: 'Tue, 07 Nov 2017 03:03:29 GMT',
+43 verbose headers   via: '1.1 varnish',
+43 verbose headers   connection: 'keep-alive',
+43 verbose headers   'x-served-by': 'cache-yyz8326-YYZ',
+43 verbose headers   'x-cache': 'MISS',
+43 verbose headers   'x-cache-hits': '0',
+43 verbose headers   'x-timer': 'S1510023809.509405,VS0,VE755' }
+44 verbose request invalidating /Users/allen.kim/.npm/registry.npmjs.org/_40custom-elements_252fcheckbox on PUT
+45 error publish Failed PUT 403
+46 verbose stack Error: You cannot publish over the previously published version 0.2.0. : @custom-elements/checkbox
+46 verbose stack     at makeError (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:304:12)
+46 verbose stack     at CachingRegistryClient.<anonymous> (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:292:14)
+46 verbose stack     at Request._callback (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:212:14)
+46 verbose stack     at Request.self.callback (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/request/request.js:186:22)
+46 verbose stack     at emitTwo (events.js:106:13)
+46 verbose stack     at Request.emit (events.js:192:7)
+46 verbose stack     at Request.<anonymous> (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/request/request.js:1081:10)
+46 verbose stack     at emitOne (events.js:96:13)
+46 verbose stack     at Request.emit (events.js:189:7)
+46 verbose stack     at IncomingMessage.<anonymous> (/Users/allen.kim/.nvm/versions/node/v7.6.0/lib/node_modules/npm/node_modules/request/request.js:1001:12)
+47 verbose statusCode 403
+48 verbose pkgid @custom-elements/checkbox
+49 verbose cwd /Users/allen.kim/github/custom-elements/components/checkbox
+50 error Darwin 15.6.0
+51 error argv "/Users/allen.kim/.nvm/versions/node/v7.6.0/bin/node" "/Users/allen.kim/.nvm/versions/node/v7.6.0/bin/npm" "publish"
+52 error node v7.6.0
+53 error npm  v4.1.2
+54 error code E403
+55 error You cannot publish over the previously published version 0.2.0. : @custom-elements/checkbox
+56 error If you need help, you may report this error at:
+56 error     <https://github.com/npm/npm/issues>
+57 verbose exit [ 1, true ]

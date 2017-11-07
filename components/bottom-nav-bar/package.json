@@ -1,19 +1,19 @@
 {
-  "name": "@custom-elements/app-bar",
+  "name": "@custom-elements/bottom-nav-bar",
   "version": "0.2.0",
-  "description": "app-bar with MD/CE",
+  "description": "bottom-nav-bar with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "package": "webpack main.js --output-filename=dist/_main.js",
     "package-with-polyfill": "cat ../ce-polyfill.js dist/_main.js > dist/main.js",
     "min-css": "uglifycss style.css > dist/style.css",
-    "min-js": "uglifyjs dist/main.js -m reserved=[AppBar] -c > dist/main.min.js",
+    "min-js": "uglifyjs dist/main.js -m reserved=[BottomNavBar] -c > dist/main.min.js",
     "build": "npm-run-all clean min-css package package-with-polyfill min-js && rm dist/_main.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/allenhwkim/custom-elements/components/app-bar"
+    "url": "https://github.com/allenhwkim/custom-elements/components/bottom-nav-bar"
   },
   "keywords": [
     "customElement",

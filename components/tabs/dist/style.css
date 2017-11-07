@@ -1,0 +1,1 @@
+a-tabs{position:relative;background-color:var(--theme-color-600,#757575);border-radius:2px;bottom:0;color:var(--theme-color-900,#212121);display:flex;font-size:0;justify-content:space-between;width:100%}a-tabs>*{flex:1}a-tabs>.indicator{position:absolute;bottom:0;height:2px;background-color:var(--theme-color-accent,#ff0);left:0}

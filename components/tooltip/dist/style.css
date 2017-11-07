@@ -1,0 +1,1 @@
+a-tooltip{position:absolute;visibility:hidden;background:var(--theme-color-600,#757575);color:#fff;line-height:32px;font-size:14px;padding:0 16px;border-radius:2px;white-space:nowrap}a-tooltip.visible{visibility:visible;transition:all .2s ease .5s;z-index:24}

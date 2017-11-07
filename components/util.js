@@ -2,10 +2,11 @@ export function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
+  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  if (!document.querySelector(`#ce-core-style, link#${id}`)) {
+  if (!document.querySelector(`#ce-core-style, link.${id}`)) {
     let linkEl = document.createElement('link');
-    linkEl.setAttribute('id', id);
+    linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', url);
     el.appendChild(linkEl); 
