@@ -244,7 +244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', 'ce-core');
     linkEl.setAttribute('rel', "stylesheet");
-    linkEl.setAttribute('href', url);
+    linkEl.setAttribute('href', cssUrl);
     document.head.appendChild(linkEl); 
   }
 })();

@@ -27,7 +27,7 @@ import './list/main.js';
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', 'ce-core');
     linkEl.setAttribute('rel', "stylesheet");
-    linkEl.setAttribute('href', url);
+    linkEl.setAttribute('href', cssUrl);
     document.head.appendChild(linkEl); 
   }
 })();
