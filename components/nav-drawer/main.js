@@ -4,28 +4,30 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   var thisScript = document.currentScript;
 
   class NavDrawer extends HTMLElement {
-    show() {
-      this.setAttribute('visible', '');
-    }
-    hide() {
-      this.removeAttribute('visible');
-    }
-
     connectedCallback() {
       addStyleSheet(this); //id, url
       observeAttrChange(this, (attr, val) => {
-        if (attr === 'visible') {
-          document.body.style.overflow = val !== null ? 'hidden' : '';
+        if (attr === 'class') {
+          // if drawer shown, disable body scroll
+          document.body.style.overflow = this.classList.contains('visible') ? 'hidden' : '';
         }
       });
       this._regroupElements();
+    }
+
+    open() {
+      this.classList.add('visible');
+    }
+
+    close() {
+      this.classList.remove('visible');
     }
 
     _regroupElements() {
       let pageBlockerEl, contentsEl;
       pageBlockerEl = document.createElement('div');
       pageBlockerEl.setAttribute('class', 'page-blocker');
-      pageBlockerEl.addEventListener('click', () => this.hide());
+      pageBlockerEl.addEventListener('click', () => this.close());
       this.appendChild(pageBlockerEl);
 
       contentsEl = document.createElement('div');

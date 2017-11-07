@@ -15,7 +15,7 @@ a-refresh-indicator {
   display: inline-block;
   background-color: var(--theme-color-0, #fff); 
 }
-a-refresh-indicator[no-border] {
+a-refresh-indicator.no-border {
   box-shadow: none;
   background-color: transparent; 
 }
@@ -24,35 +24,35 @@ a-refresh-indicator svg {
   height: 40px;
   vertical-align: middle;
 }
-a-refresh-indicator[dark-bg] {
+a-refresh-indicator.dark-bg {
   background-color: var(--theme-color-0, #fff); 
 }
-a-refresh-indicator[dark-bg] svg circle {
+a-refresh-indicator.dark-bg svg circle {
   stroke: var(--theme-color-500, #9e9e9e); 
 }
-a-refresh-indicator[dark-bg] svg polygon {
+a-refresh-indicator.dark-bg svg polygon {
   fill: var(--theme-color-500, #ffffff); 
 }
-a-refresh-indicator[dark-bg][no-border] {
+a-refresh-indicator.dark-bg.no-border {
   box-shadow: none;
   background-color: transparent; 
 }
-a-refresh-indicator[dark-bg][no-border] svg circle {
+a-refresh-indicator.dark-bg.no-border svg circle {
   stroke: var(--theme-color-0, #ffffff); 
 }
-a-refresh-indicator[dark-bg][no-border] svg polygon {
+a-refresh-indicator.dark-bg.no-border svg polygon {
   fill: var(--theme-color-0, #ffffff); 
 }
 
-a-refresh-indicator[loading] svg {
+a-refresh-indicator.loading svg {
   animation: ce-rotate 1.4s infinite linear;
 }
-a-refresh-indicator[mini] {
+a-refresh-indicator.mini {
   width: 40px;
   height: 40px;
   line-height: 40px;
 }
-a-refresh-indicator[mini] svg {
+a-refresh-indicator.mini svg {
   width: 32px; 
   height: 32px;
 }

@@ -99,12 +99,12 @@ a-text-field .error-messages {
 }
 
 /* disabled / empty / invalid / active */
-a-text-field[empty]:not([active]) .input-wrapper {
+a-text-field.empty:not(.active) .input-wrapper {
   visibility: hidden;
 }
 
-a-text-field:not([empty]) label,
-a-text-field[empty][active] label {
+a-text-field:not(.empty) label,
+a-text-field.empty.active label {
   top: 12px;
   font-size: 12px;
 }
@@ -126,22 +126,22 @@ a-text-field[disabled] hr {
   border-color: var(--theme-color-500, #9e9e9e);
 }
 
-a-text-field[invalid] label,
-a-text-field[invalid] hr,
-a-text-field[invalid] .helper-text,
-a-text-field[invalid] .error-messages,
-a-text-field[invalid] an-icon:not(:empty) {
+a-text-field.invalid label,
+a-text-field.invalid hr,
+a-text-field.invalid .helper-text,
+a-text-field.invalid .error-messages,
+a-text-field.invalid an-icon:not(:empty) {
   color: var(--theme-color-error, #ff0000);
 }
-a-text-field[invalid] hr {
+a-text-field.invalid hr {
   border-color: var(--theme-color-eroor, #ff0000);
 }
-a-text-field:not([invalid]) .error-messages {
+a-text-field:not(.invalid) .error-messages {
   visibility: hidden;
 }
 
-a-text-field:not([empty], [active]) .suffix,
-a-text-field:not([empty], [active]) .prefix,
+a-text-field:not(.empty, .active) .suffix,
+a-text-field:not(.empty, .active) .prefix,
 a-text-field[disabled] input {
   display: inherit;
 }

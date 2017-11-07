@@ -8,10 +8,10 @@ a-menu {
   position: absolute;
   z-index: 8;
 }
-a-menu:not([visible]) {
+a-menu:not(.visible) {
   visibility: hidden;
 }
-a-menu[visible] {
+a-menu.visible {
   display: block;
   visibility: visible;
 }

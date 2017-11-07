@@ -7,7 +7,7 @@ an-expansion-panel {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   margin: 16px 0px;
 }
-an-expansion-panel:not([collapsed]) {
+an-expansion-panel.expanded {
   transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }
 
@@ -61,30 +61,30 @@ an-expansion-panel .actions > * {
   line-height: 32px;
 }
 
-an-expansion-panel[collapsed]:first-child {
+an-expansion-panel:not(.expanded):first-child {
   border-radius: 2px 2px 0 0;
 }
-an-expansion-panel[collapsed]:last-child {
+an-expansion-panel:not(.expanded):last-child {
   border-radius: 0 0 2px 2px;
 }
 
-an-expansion-panel[collapsed] {
+an-expansion-panel:not(.expanded) {
   border-radius: 0;
   margin: 0;
   border-bottom: 1px solid var(--theme-text-color-100, #f5f5f5);
   max-height: 48px;
   overflow: hidden;
 }
-an-expansion-panel[collapsed] .title {
+an-expansion-panel:not(.expanded) .title {
   position: relative;
   padding: 0 24px;
   line-height: 48px;
 }
-an-expansion-panel[collapsed] .title:after {
+an-expansion-panel:not(.expanded) .title:after {
   content: '\e5cf';
 }
-an-expansion-panel[collapsed] .text,
-an-expansion-panel[collapsed] .actions {
+an-expansion-panel:not(.expanded) .text,
+an-expansion-panel:not(.expanded) .actions {
   line-height: 0;
   padding: 0;
   overflow: hidden;

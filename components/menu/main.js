@@ -29,8 +29,12 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   class Menu extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url
-      observeAttrChange(this, (attr, val) => this._attrChanged(attr, val));
-      this.hideMenu = this._hideMenu.bind(this); // so that hideMenu can be done from outside
+      observeAttrChange(this, (attr, val) => {
+        if (attr == 'class' && this.classList.contains('visible')) {
+          this.open();
+        }
+      });
+      this.hideMenu = this.close.bind(this); // so that hideMenu can be done from outside
       document.addEventListener('click', this.hideMenu);
     }
 
@@ -38,19 +42,23 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       document.removeEventListener('click', this.hideMenu);
     }
 
-    _attrChanged(attr, newVal) {
-      if (attr == 'visible' && newVal === '') {
-        Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
-          (this.isSameNode(menu) === false) && menu.removeAttribute('visible');
-        });
-        this.justShown = true; // in case when attribute is changed by outside of this
-        setTimeout(_ => this.justShown = false, 100);
+    open() {
+      // show only this
+      if (!this.classList.contains('visible')) { //  without, infinite loop, add <-> observe
+        this.classList.add('visible');
       }
+      // hide all other menus
+      Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
+        (this.isSameNode(menu) === false) && menu.classList.remove('visible');
+      });
+      // When document is clicked, it closes all menus, but this remained to open
+      this.justShown = true; // in case when attribute is changed by outside of this
+      setTimeout(_ => this.justShown = false, 100);
     }
 
-    _hideMenu(event) {
+    close() {
       if (!this.justShown && !this.contains(event.target)) {
-        this.removeAttribute('visible');
+        this.classList.remove('visible');
       }
     }
   }

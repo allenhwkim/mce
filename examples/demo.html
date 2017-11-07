@@ -43,7 +43,7 @@
         <a-menu id="app-bar-menu" position="bottom-right">
           <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
           <hr>
-          <a-nav-item disabled>Disabled</a-nav-item>
+          <a-nav-item class="disabled">Disabled</a-nav-item>
           <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
           <a-nav-item icon="search">nav-item text</a-nav-item>
         </a-menu>
@@ -53,7 +53,7 @@
     <main>
       <a-nav-drawer id="nav-drawer">
         <a-nav-item icon="favorite">Favourite</a-nav-item>
-        <a-nav-item icon="search" disabled>Disabled</a-nav-item>
+        <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
         <a-nav-item>Alarm</a-nav-item>
         <hr/>
         <a-nav-item icon="music_note">Music</a-nav-item>
@@ -130,24 +130,24 @@
             <h3>Light Background</h3>
             <div class="subtitle">Ready</div>
             <a-refresh-indicator></a-refresh-indicator>
-            <a-refresh-indicator mini></a-refresh-indicator>
-            <a-refresh-indicator no-border></a-refresh-indicator>
-            <a-refresh-indicator no-border mini></a-refresh-indicator>
-            <a-refresh-indicator loading></a-refresh-indicator>
-            <a-refresh-indicator mini loading></a-refresh-indicator>
-            <a-refresh-indicator no-border loading></a-refresh-indicator>
-            <a-refresh-indicator no-border mini loading></a-refresh-indicator>
+            <a-refresh-indicator class="mini"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border mini"></a-refresh-indicator>
+            <a-refresh-indicator class="loading"></a-refresh-indicator>
+            <a-refresh-indicator class="mini loading"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border loading"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border mini loading"></a-refresh-indicator>
           </div>
           <div class="container dark-bg">
             <h3>Dark Background</h3>
-            <a-refresh-indicator dark-bg></a-refresh-indicator> 
-            <a-refresh-indicator mini dark-bg></a-refresh-indicator>
-            <a-refresh-indicator no-border dark-bg></a-refresh-indicator> 
-            <a-refresh-indicator no-border mini dark-bg></a-refresh-indicator>
-            <a-refresh-indicator loading dark-bg></a-refresh-indicator>
-            <a-refresh-indicator mini loading dark-bg></a-refresh-indicator>
-            <a-refresh-indicator no-border loading dark-bg></a-refresh-indicator>
-            <a-refresh-indicator no-border mini loading dark-bg></a-refresh-indicator>
+            <a-refresh-indicator class="dark-bg"></a-refresh-indicator> 
+            <a-refresh-indicator class="mini dark-bg"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border dark-bg"></a-refresh-indicator> 
+            <a-refresh-indicator class="no-border mini dark-bg"></a-refresh-indicator>
+            <a-refresh-indicator class="loading dark-bg"></a-refresh-indicator>
+            <a-refresh-indicator class="mini loading dark-bg"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border loading dark-bg"></a-refresh-indicator>
+            <a-refresh-indicator class="no-border mini loading dark-bg"></a-refresh-indicator>
           </div>
         </div>
       </a-card>
@@ -166,14 +166,14 @@
         <p class="text"> Icon Only Tabs</p>
         <a-tabs>
           <a-nav-item icon="favorite"></a-nav-item>
-          <a-nav-item icon="search" active></a-nav-item>
+          <a-nav-item icon="search" class="active"></a-nav-item>
           <a-nav-item icon="alarm"></a-nav-item>
         </a-tabs>
         <p class="text"> Icon/Text Tabs</p>
         <a-tabs>
           <a-nav-item icon="favorite">item one</a-nav-item>
           <a-nav-item icon="search">item two</a-nav-item>
-          <a-nav-item icon="alarm" active>item three</a-nav-item>
+          <a-nav-item icon="alarm" class="active">item three</a-nav-item>
         </a-tabs>
         <br/> <br/> <br/> <br/>
       </a-card>
@@ -425,19 +425,7 @@
       </a-card>
 
       <h2>Expansion Panel</h2>
-      <an-expansion-panel collapsed>
-        <div class="title">
-          <h1>Trip name</h1>
-          <div>Carribean Cruise</div>
-        </div>
-        <div class="text">
-          Text: 14sp
-          Left and right padding: 16dp
-          Top padding: 16dp or 24dp (when a primary title is present)
-          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
-        </div>
-      </an-expansion-panel>
-      <an-expansion-panel collapsed>
+      <an-expansion-panel>
         <div class="title">
           <h1>Trip name</h1>
           <div>Carribean Cruise</div>
@@ -450,6 +438,18 @@
         </div>
       </an-expansion-panel>
       <an-expansion-panel>
+        <div class="title">
+          <h1>Trip name</h1>
+          <div>Carribean Cruise</div>
+        </div>
+        <div class="text">
+          Text: 14sp
+          Left and right padding: 16dp
+          Top padding: 16dp or 24dp (when a primary title is present)
+          Bottom padding: 16dp (if there are additional actions or supporting text) or 24dp (if there are no actions or supporting text)
+        </div>
+      </an-expansion-panel>
+      <an-expansion-panel class="expanded">
         <div class="title">
           <h1>Trip name</h1>
           <div>Carribean Cruise</div>
@@ -614,18 +614,20 @@
     </main>
     <a-bottom-nav-bar>
       <a-nav-item icon="favorite">Favourite</a-nav-item>
-      <a-nav-item icon="search" disabled>Disabled</a-nav-item>
+      <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
       <a-nav-item icon="alarm">Alarm</a-nav-item>
       <a-nav-item icon="music_note">Music</a-nav-item>
     </a-bottom-nav-bar>
     <script>
       function showDrawer() {
-        document.querySelector('a-nav-drawer').show();
+        document.querySelector('a-nav-drawer').open();
       }
       function toggleMenu() {
         let menuEl = document.querySelector('#app-bar-menu');
-        menuEl.getAttribute('visible') !== null ?
-           menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
+        console.log('xxxxxxxxxxxxxxxxxx', menuEl);
+        menuEl.classList.toggle('visible');
+        console.log('xxxxxxxxxxxxxxxxxx', menuEl.classList);
+           // menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
       }
       function openDialog(id) {
         document.getElementById(id).open();

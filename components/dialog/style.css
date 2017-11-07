@@ -2,11 +2,11 @@
 a-dialog {
   position: absolute;
 }
-a-dialog[visible] {
+a-dialog.visible {
   visibility: visible;
   z-index: 24;
 }
-a-dialog:not([visible]) {
+a-dialog:not(.visible) {
   visibility: hidden;
 }
 a-dialog > .page-blocker {

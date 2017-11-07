@@ -18,14 +18,14 @@ import {addStyleSheet} from '../util.js';
       this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
       document.body.appendChild(this);
       document.body.style.overflow = 'hidden';
-      this.setAttribute('visible', '');
+      this.classList.add('visible');
     }
 
     close() {
       // move back to the original position
       this.originalPos.parent.insertBefore(this, this.originalPos.nextSibling);
       document.body.style.overflow = '';
-      this.removeAttribute('visible');
+      this.classList.remove('visible');
     }
  
     _regroupElements() {

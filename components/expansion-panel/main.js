@@ -11,8 +11,8 @@ import {addStyleSheet} from '../util.js';
 
     _showThisPanelOnly(event) {
       Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
-        this.removeAttribute('collapsed');
-        !panelEl.isSameNode(this) && panelEl.setAttribute('collapsed','');
+        this.classList.add('expanded');
+        !panelEl.isSameNode(this) && panelEl.classList.remove('expanded');
       })
     }
   }

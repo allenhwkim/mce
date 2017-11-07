@@ -42,7 +42,7 @@ import {addStyleSheet, animate} from '../util.js';
       let thisWidth  = this.getBoundingClientRect().width;
       let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
       let indicatorLeftTo = (
-          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
           - this.getBoundingClientRect().left
         ) / thisWidth;
       let move = indicatorLeftTo*100 - indicatorLeftFrom;

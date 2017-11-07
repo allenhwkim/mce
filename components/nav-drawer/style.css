@@ -3,10 +3,10 @@ a-nav-drawer {
   display: block;
 }
 
-a-nav-drawer[visible] {
+a-nav-drawer.visible {
   visibility: visible;
 }
-a-nav-drawer:not([visible]) {
+a-nav-drawer:not(.visible) {
   visibility: hidden;
 }
 a-nav-drawer .page-blocker {
@@ -33,12 +33,12 @@ a-nav-drawer .contents {
   width: calc(100vw - var(--theme-height-app-bar, 56px));
   z-index: 16;
 }
-a-nav-drawer[visible] .contents {
+a-nav-drawer.visible .contents {
   left: 0;
   transform: translateX(0);
   transition: var(--theme-animation-in, all .3s ease-in);
 }
-a-nav-drawer:not([visible]) .contents {
+a-nav-drawer:not(.visible) .contents {
   left: -241px;
   transform: translateX(0);
   transition: var(--theme-animation-out, all .2s ease-out);

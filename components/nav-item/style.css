@@ -8,7 +8,7 @@ a-nav-item {
   display: block;
   color: var(--theme-text-color-900, #212121); 
 }
-a-nav-item[disabled] {
+a-nav-item.disabled {
   color: var(--theme-color-400, #bdbdbd);
   pointer-events: none;
 }
@@ -61,11 +61,11 @@ a-bottom-nav-bar a-nav-item {
   font-size: 16px;
   text-align: center;
 }
-a-bottom-nav-bar a-nav-item[active] {
+a-bottom-nav-bar a-nav-item.active {
   padding: 6px 12px 10px 12px;
   font-size: 14px;
 }
-a-bottom-nav-bar a-nav-item:not([active]) {
+a-bottom-nav-bar a-nav-item:not(.active) {
   padding: 8px 12px;
   font-size: 12px;
 }
@@ -108,12 +108,12 @@ a-tabs > a-nav-item {
   min-width: 72px; /* 160px for larger views */
   text-align: center;
 }
-a-tabs > a-nav-item[active] .an-icon,
-a-tabs > a-nav-item[active] an-icon,
+a-tabs > a-nav-item.active .an-icon,
+a-tabs > a-nav-item.active an-icon,
 a-tabs > a-nav-item .text {
   color: var(--theme-text-color-200, #eeeeee);
 }
-a-tabs > a-nav-item[active] .text {
+a-tabs > a-nav-item.active .text {
   color: var(--theme-text-color-0, #ffffff);
 }
 a-tabs > a-nav-item an-icon,

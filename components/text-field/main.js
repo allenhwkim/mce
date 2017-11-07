@@ -142,28 +142,28 @@ import {addStyleSheet} from '../util.js';
         let errMsgEl = this.querySelector('.error-messages');
         let dirty = this.getAttribute('dirty') !== null;
 
-        empty ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+        empty ? this.classList.add('empty') : this.classList.remove('empty');
         if (dirty && error) {
-          this.setAttribute('invalid', ''); 
+          this.classList.add('invalid'); 
           errMsgEl.innerHTML = error;
         } else {
-          this.removeAttribute('invalid')
+          this.classList.remove('invalid')
         }
       }
 
       setStatus();
 
       this.addEventListener('click', event => {
-        this.setAttribute('active', '');
+        this.classList.add('active');
         this.inputEl.focus();
       });
 
       this.inputEl.addEventListener('blur', event => {
-        this.removeAttribute('active');
+        this.classList.remove('active');
       });
 
       this.inputEl.addEventListener('change', event => {
-        this.setAttribute('dirty', '');
+        this.classList.remove('dirty');
         setStatus();
       });
     }

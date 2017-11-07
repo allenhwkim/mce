@@ -33,8 +33,10 @@ import {addStyleSheet} from '../util.js';
     }
 
     setActiveItem(event) {
-      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(el => el.removeAttribute('active'));
-      this.setAttribute('active', '');
+      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
+        el.classList.remove('active');
+      }); 
+      this.classList.add('active');
     }
   }
   
