@@ -5,13 +5,15 @@ import {addStyleSheet} from '../util.js';
   class Tooltip extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this, '../components/tooltip/tooltip.css'); //id, url
-
-      this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
       this._addEventListeners();
     }
 
     _addEventListeners() {
-      this.parentElement.addEventListener('mouseenter', _ => {
+      this.parentElement.addEventListener('mouseenter', event => {
+        this.originalPos = { 
+          parent: event.target,
+          nextSibling: this.nextSiblingNode
+        };
         this._showTooltip();
       });
       this.parentElement.addEventListener('mouseleave', _ => {
@@ -21,7 +23,7 @@ import {addStyleSheet} from '../util.js';
     }
 
     _showTooltip() {
-      let parentBCR = this.parentElement.getBoundingClientRect(); // relative to viewport
+      let parentBCR = this.originalPos.parent.getBoundingClientRect(); // relative to viewport
       let body = document.body;
       let docEl = document.documentElement;
 
