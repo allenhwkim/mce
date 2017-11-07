@@ -1,8 +1,6 @@
 import {addStyleSheet, animate} from '../util.js';
 
 ( function() {
-  var thisScript = document.currentScript;
-
   class Tabs extends HTMLElement {
 
     connectedCallback() {

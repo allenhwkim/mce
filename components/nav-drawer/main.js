@@ -1,8 +1,6 @@
 import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {
-  var thisScript = document.currentScript;
-
   class NavDrawer extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url

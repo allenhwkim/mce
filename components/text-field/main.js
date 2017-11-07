@@ -46,8 +46,6 @@ import {addStyleSheet} from '../util.js';
 
 // dependenant on an-icon
 ( function() {
-  var thisScript = document.currentScript;
-
   class TextField extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url

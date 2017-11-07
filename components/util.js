@@ -4,13 +4,13 @@ export function addStyleSheet(el, url) {
   });
   url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  if (!document.querySelector(`#ce-core-style, link.${id}`)) {
+  if (!document.querySelector(`link.ce-core, link.${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', url);
-    el.appendChild(linkEl); 
-    // document.head.appendChild(linkEl); 
+    el.appendChild(linkEl);  //caution, style will be broken if the element is removed
+    //document.head.appendChild(linkEl); 
   }
 }
 

@@ -2,8 +2,6 @@ import {addStyleSheet} from '../util.js';
 
 // dependant on an-icon
 ( function() {
-  var thisScript = document.currentScript;
-
   class NavItem extends HTMLElement {
     connectedCallback() {
       if (this.innerHTML) {

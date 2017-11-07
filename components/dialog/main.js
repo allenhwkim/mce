@@ -2,7 +2,6 @@ import {addStyleSheet} from '../util.js';
 
 //dependant on a-button
 ( function() {
-  var thisScript = document.currentScript;
 
   class Dialog extends HTMLElement {
     connectedCallback() {

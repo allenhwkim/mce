@@ -24,8 +24,6 @@
 import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {
-  var thisScript = document.currentScript;
-
   class Menu extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url

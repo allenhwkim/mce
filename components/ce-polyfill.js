@@ -1,6 +1,6 @@
 /**
  * Custom Element Polyfill
- * It's Allen's customElemnts polyfill since Allen does not use any shadowDOM at the moment
+ * It's Allen's customElemnts polyfill for better performance
  */
 (function(){
   let __customElements = {};

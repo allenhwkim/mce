@@ -623,11 +623,7 @@
         document.querySelector('a-nav-drawer').open();
       }
       function toggleMenu() {
-        let menuEl = document.querySelector('#app-bar-menu');
-        console.log('xxxxxxxxxxxxxxxxxx', menuEl);
-        menuEl.classList.toggle('visible');
-        console.log('xxxxxxxxxxxxxxxxxx', menuEl.classList);
-           // menuEl.removeAttribute('visible') : menuEl.setAttribute('visible','');
+        document.querySelector('#app-bar-menu').classList.toggle('visible');
       }
       function openDialog(id) {
         document.getElementById(id).open();

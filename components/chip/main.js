@@ -2,7 +2,6 @@ import {addStyleSheet} from '../util.js';
 
 // dependant on an-icon
 ( function() {
-  var thisScript = document.currentScript;
 
   class Chip extends HTMLElement {
 

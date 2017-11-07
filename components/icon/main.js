@@ -1,8 +1,6 @@
 import {addStyleSheet} from '../util.js';
 
 ( function() {
-  var thisScript = document.currentScript;
-
   class Icon extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url
