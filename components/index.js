@@ -21,10 +21,9 @@ import './grid-list/main.js';
 import './list/main.js';
 
 (function() {
-  if (!document.querySelector(`link#ce-core`)) { // if css not already added
-    var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/core.css';
+  if (!document.querySelector('link[href$="ce-core.css"]')) { // if css not already added
+    var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/ce-core.css';
     let linkEl = document.createElement('link');
-    linkEl.setAttribute('class', 'ce-core');
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', cssUrl);
     document.head.appendChild(linkEl);

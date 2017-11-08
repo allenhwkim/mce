@@ -4,8 +4,8 @@ export function addStyleSheet(el, url) {
   });
   url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  // script#ce-core load the common scripts from //unpkg.com, so don't load each css
-  if (document.querySelector(`script#ce-core link.${id}`)) {
+  // ce-core.js injects ce-core.css, so no need to load
+  if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
