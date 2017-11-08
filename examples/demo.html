@@ -6,8 +6,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <!-- For Development -->
-    <script type="module" id="ce-core" src="../dist/ce-core.min.js"></script>
-    <link id="ce-core" rel="stylesheet" href="../dist/ce-core.css" />
+    <!-- <script type="module" src="../components/core/index.js"></script> -->
+    <script type="module" src="../components/core/dist/ce-core.js"></script>
+    <link rel="stylesheet" href="../components/core/dist/ce-core.css" />
 
     <!-- For Public -->
     <!-- <script src="https://unpkg.com/@custom-elements/core/dist/ce-core.min.js"></script> -->
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="./style.css"> <!-- my application styles -->
   </head>
   <body>
-    <an-app-bar app-title="app-bar" fixed>
+    <an-app-bar app-title="app-bar" class="fixed">
       <div class="nav-icon">
         <an-icon onclick="showDrawer()">menu</an-icon>
       </div>
@@ -560,6 +561,7 @@
       <h3>List</h3>
       <a-list>
         <ul>
+          List Title Goest Here
           <li>
             <div class="icon"><an-icon circle>folder</an-icon></div>
             <span>Directory</span>
@@ -575,9 +577,15 @@
             <span>Bar</span>
             <an-icon>info</an-icon>
           </li>
+        </ul>
+        <ul>
+          List Title Goest Here
           <li> <an-icon>local_airport</an-icon> <span>Airport</span></li>
           <li> <an-icon>local_atm</an-icon> <span>ATM</span></li>
           <li> <an-icon>local_cafe</an-icon> <span>Cafe</span> </li>
+        </ul>
+        <ul>
+          List Title Goest Here
           <li> 
             <an-icon>local_pharmacy</an-icon>
             <div> <div>First Line</div> <div class="text">Second Line</div> </div>

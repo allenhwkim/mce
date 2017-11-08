@@ -1,3 +1,4 @@
+import '../ce-polyfill.js';
 import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {
@@ -23,6 +24,9 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
          (attr.name === 'id') && this.setAttribute('id', 'a-switch-'+attr.value);
         }
       })
+      inputEl.addEventListener('click', _ => {
+        inputEl.checked ? this.setAttribute('checked', '') : this.removeAttribute('checked');
+      });
       this.appendChild(inputEl);
       return inputEl;
     }

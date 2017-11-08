@@ -167,13 +167,14 @@ function addStyleSheet(el, url) {
   });
   url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  if (!document.querySelector(`#ce-core-style, link.${id}`)) {
+  // ce-core.js injects ce-core.css, so no need to load
+  if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', url);
-    el.appendChild(linkEl); 
-    // document.head.appendChild(linkEl); 
+    el.appendChild(linkEl);  //caution, style will be broken if the element is removed
+    //document.head.appendChild(linkEl); 
   }
 }
 

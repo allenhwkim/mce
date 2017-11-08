@@ -11,13 +11,13 @@ an-expansion-panel.expanded {
   transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }
 
-an-expansion-panel .title {
+an-expansion-panel > .title {
   position: relative;
   padding: 20px 24px;
   height: 64px;
   cursor: pointer;
 }
-an-expansion-panel .title:after {
+an-expansion-panel > .title:after {
   content: '\e5ce';
   display: inline-block;
   position: absolute;
@@ -25,7 +25,7 @@ an-expansion-panel .title:after {
   right: 24px;
   font-size: 24px;
 }
-an-expansion-panel .title h1, an-expansion-panel .title h2, an-expansion-panel .title h3 {
+an-expansion-panel > .title h1, an-expansion-panel > .title h2, an-expansion-panel > .title h3 {
   font-size: var(--theme-title-font-size, 20px);
   font-weight: var(--theme-title-font-weight, 500);
   margin: 0;
@@ -33,28 +33,28 @@ an-expansion-panel .title h1, an-expansion-panel .title h2, an-expansion-panel .
   font-weight: normal;
   display: inline-block;
 }
-an-expansion-panel .title > div {
+an-expansion-panel > .title > div {
   padding-left: 16px;
   display: inline-block;
 }
-an-expansion-panel .title .indicator {
+an-expansion-panel > .title .indicator {
   display: inline-block;
 }
 
-an-expansion-panel .text {
+an-expansion-panel > .text {
   padding: 0 24px 16px 24px;
   font-size: 14px;
   color: var(--theme-text-color-700, #616161);
 }
 
-an-expansion-panel .actions {
+an-expansion-panel > .actions {
   padding: 16px 8px 16px 24px;
   font-size: 14px;
   height: 68px;
   text-align: right;
   line-height: 32px;
 }
-an-expansion-panel .actions > * {
+an-expansion-panel > .actions > * {
   margin-left: 8px;
   display: inline-block;
   height: 32px;
@@ -75,16 +75,16 @@ an-expansion-panel:not(.expanded) {
   max-height: 48px;
   overflow: hidden;
 }
-an-expansion-panel:not(.expanded) .title {
+an-expansion-panel:not(.expanded) > .title {
   position: relative;
   padding: 0 24px;
   line-height: 48px;
 }
-an-expansion-panel:not(.expanded) .title:after {
+an-expansion-panel:not(.expanded) > .title:after {
   content: '\e5cf';
 }
-an-expansion-panel:not(.expanded) .text,
-an-expansion-panel:not(.expanded) .actions {
+an-expansion-panel:not(.expanded) > .text,
+an-expansion-panel:not(.expanded) > .actions {
   line-height: 0;
   padding: 0;
   overflow: hidden;

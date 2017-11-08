@@ -1,24 +1,134 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8"/>
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <style>
+      body { font-family: 'Roboto'; margin: 0; }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .demo { position: relative; min-height: 68px; }
+      .dark-bg { background-color: var(--theme-color-600switch, #757575); color: var(--theme-text-color-0, #ffffff); }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out;}
+    </style>
+
+    <!-- <script src="../core/dist/ce-core.min.js"></script> -->
+    <script type="module" src="../app-bar/main.js"></script>
+    <link rel="stylesheet" class="app-bar" href="../app-bar/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
   </head>
   <body>
-    <an-app-bar app-title="app-bar" fixed>
-      <div class="nav-icon">
-        <i class="material-icons icon">menu</i>
-      </div>
-      <span class="title">Custom Elements With Material Design</span>
-      <div class="icons">
-        <i class="material-icons icon">favorite</i>
-        <i class="material-icons icon">search</i>
-        <i class="material-icons icon">more_vert</i>
-      </div>
-    </an-app-bar>
 
-    <script src="dist/main.min.js"></script>
+    <template class="dark">
+      <an-app-bar app-title="app-bar">
+        <div class="nav-icon">
+          <i class="material-icons icon">menu</i>
+        </div>
+        <span class="title">Custom Elements With Material Design</span>
+        <div class="icons">
+          <i class="material-icons icon">favorite</i>
+          <i class="material-icons icon">search</i>
+          <i class="material-icons icon">more_vert</i>
+        </div>
+      </an-app-bar>
+    </template>
+
+    <template class="light">
+      <an-app-bar app-title="app-bar" class="light">
+        <div class="nav-icon">
+          <i class="material-icons icon">menu</i>
+        </div>
+        <span class="title">Custom Elements With Material Design</span>
+        <div class="icons">
+          <i class="material-icons icon">favorite</i>
+          <i class="material-icons icon">search</i>
+          <i class="material-icons icon">more_vert</i>
+        </div>
+      </an-app-bar>
+    </template>
+
+
+    <div class="container">
+      <h1>App bar</h1>
+      <a href="https://material.io/guidelines/layout/structure.html#structure-app-bar">Material Design Spec</a>
+      <p>
+        The app bar, formerly known as the action bar in Android, is a special kind of toolbar that’s used for branding, navigation, search, and actions.
+      </p>
+
+      <a-card class="dark">
+        <div class="title">
+          <h2>Dark Background Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source"></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>
+        var tmpl = document.querySelector('template.dark');
+        var html = tmpl.content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector('.dark .demo').innerHTML = html;
+        document.querySelector('.dark .code').innerHTML = html_beautify(html).replace(/</g,'\&lt;');
+      </script>
+
+      <br/>
+      <a-card class="light">
+        <div class="title">
+          <h2>Light Background Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source"></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>
+        var tmpl2 = document.querySelector('template.light');
+        var html2 = tmpl2.content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector('.light .demo').innerHTML = html2;
+        document.querySelector('.light .code').innerHTML = html_beautify(html2).replace(/</g,'\&lt;');
+      </script>
+    </div>
+
+    <div class="container">
+    TODO.
+    refert to http://www.material-ui.com/#/components/app-bar, and make the same.
+
+    <pre>
+    element classes
+        .fixed
+          .will be fixed positioned on top of the viewport
+
+    child element classes
+        .nav-icon 
+          . positioned left
+        .icons
+          . positioned right
+        .title
+          . positioned after .nav-icon
+        .icon 
+          . proper padding
+          . ripple effect
+    </pre>
+  </div>
+
   </body>
 </html>

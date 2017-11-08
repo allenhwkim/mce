@@ -21,6 +21,7 @@
 // Bug: 
 //   # css animation is not right
 
+import '../ce-polyfill.js';
 import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {

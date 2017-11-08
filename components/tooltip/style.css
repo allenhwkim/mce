@@ -8,10 +8,11 @@ a-tooltip {
   font-size: 14px;
   padding: 0 16px;
   border-radius: 2px;
+  display: block;
   white-space: nowrap;
 }
 a-tooltip.visible {
   visibility: visible;
-  transition: all .2s ease .5s;
+  transition: all .2s ease .1s;
   z-index: 24;
 }

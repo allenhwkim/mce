@@ -18,10 +18,10 @@ a-card + a-card {
 a-card > a-card {
   margin: 16px;
 }
-a-card .title {
+a-card > .title {
   padding: 24px 16px 16px 16px;
 }
-a-card .title h1, a-card .title h2, a-card .title h3 {
+a-card > .title h1, a-card > .title h2, a-card > .title h3 {
   font-size: var(--theme-title-font-size, 20px);
   font-weight: var(--theme-title-font-weight, 500);
   margin: 0;
@@ -40,11 +40,11 @@ a-card .media img {
   left: 0;
   height: 100%;
 }
-a-card .title .subtitle {
+a-card > .title .subtitle {
   font-size: 14px;
   color: var(--theme-text-color-600, #757575);
 }
-a-card .title.with-avatar {
+a-card > .title.with-avatar {
   padding: 16px;
   height: 72px;
   font-size: 14px;

@@ -3,15 +3,16 @@ Custom Elements With Material Design
 
 ## Design Principle
 
-  1. Less Engineering, More Standards
+  1. Use Standard Only
+    . No dependancies
+
+  2. Be Themable
+    . Use global variables for a theme
+
+  3. Think Search Engine
+    . Never create h1,h2,h3,.. tags by Javascript
+    . Never add readable contents by Javascript
   
-     * Including W3C Draft Standard
-     * Only HTML4/HTML5/ES5/ES6/ES7CSS2/CSS3
-     * No Framework or Typescript
-
-  2. Themable
-    * By changing theme variables, we can have different look-and-feel
-
 [DEMO](https://rawgit.com/allenhwkim/custom-elements/master/examples/demo.html)
 
 ##Status Table

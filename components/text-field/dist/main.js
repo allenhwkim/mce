@@ -1,63 +1,3 @@
-/**
- * Custom Element Polyfill
- * It's Allen's customElemnts polyfill since Allen does not use any shadowDOM at the moment
- */
-(function(){
-  let __customElements = {};
-
-  let applyCustomElement = function(el, klass) {
-    if (el.tagName.match(/-/)) {
-      // el.__proto__ = klass.prototype;
-      Object.setPrototypeOf(el, klass.prototype);
-      el._init && el._init();
-      setTimeout(function(){
-        el.connectedCallback && el.connectedCallback();
-      })
-    }
-  };
-
-  let CustomElements = { // polyfill of window.customElements. I only need .define
-    define: function(name, klass) {
-      __customElements[name] = klass;
-      //this is called after window.onload
-      Array.from(document.querySelectorAll(name)).forEach(function(el) {
-        applyCustomElement(el, __customElements[name]);
-      });
-    }
-  }
-
-  let observer = new MutationObserver(function(mutationRecords) {
-    mutationRecords.forEach(function(mutationRecord) {
-      if (mutationRecord.type == 'childList') { // e.g. attribures, characterData
-        Array.from(mutationRecord.removedNodes).forEach(function(node) {
-          let nodeName = node.nodeName.toLowerCase();
-          let klass = __customElements[nodeName];
-          if (klass) { // Ha, this is a customElement
-            applyCustomElement(node, klass);
-          }
-        });
-        Array.from(mutationRecord.addedNodes).forEach(function(node) {
-          node.disconnectedCallback && node.disconnectedCallback();
-        });
-      }
-    })
-  });
-
-  if (!window.customElements) {
-    window.customElements = CustomElements;
-    window.addEventListener('load', function() {
-      observer.observe(document.body, {childList: true});
-    });
-  }
-
-  if (!Object.values) {
-    Object.values = function(obj) {
-      return Object.keys(obj).map(function(key) {
-        return obj[key];
-      });
-    }
-  };
-})();
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -129,7 +69,9 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(2);
 /**
  *  https://material.io/guidelines/components/text-fields.html#text-fields-principles
  *
@@ -176,13 +118,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+
 // dependenant on an-icon
 ( function() {
-  var thisScript = document.currentScript;
-
   class TextField extends HTMLElement {
     connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_0__util_js__["a" /* addStyleSheet */])(this); //id, url
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
 
       this.id = 'a-text-field-'+Math.round(Math.random()*Math.pow(10,9));
       this._buildHTML();
@@ -274,28 +215,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         let errMsgEl = this.querySelector('.error-messages');
         let dirty = this.getAttribute('dirty') !== null;
 
-        empty ? this.setAttribute('empty', '')   : this.removeAttribute('empty');
+        empty ? this.classList.add('empty') : this.classList.remove('empty');
         if (dirty && error) {
-          this.setAttribute('invalid', ''); 
+          this.classList.add('invalid'); 
           errMsgEl.innerHTML = error;
         } else {
-          this.removeAttribute('invalid')
+          this.classList.remove('invalid')
         }
       }
 
       setStatus();
 
       this.addEventListener('click', event => {
-        this.setAttribute('active', '');
+        this.classList.add('active');
         this.inputEl.focus();
       });
 
       this.inputEl.addEventListener('blur', event => {
-        this.removeAttribute('active');
+        this.classList.remove('active');
       });
 
       this.inputEl.addEventListener('change', event => {
-        this.setAttribute('dirty', '');
+        this.classList.remove('dirty');
         setStatus();
       });
     }
@@ -307,6 +248,72 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+/**
+ * Custom Element Polyfill
+ * It's Allen's customElemnts polyfill for better performance
+ */
+(function(){
+  let __customElements = {};
+
+  let applyCustomElement = function(el, klass) {
+    if (el.tagName.match(/-/)) {
+      // el.__proto__ = klass.prototype;
+      Object.setPrototypeOf(el, klass.prototype);
+      el._init && el._init();
+      setTimeout(function(){
+        el.connectedCallback && el.connectedCallback();
+      })
+    }
+  };
+
+  let CustomElements = { // polyfill of window.customElements. I only need .define
+    define: function(name, klass) {
+      __customElements[name] = klass;
+      //this is called after window.onload
+      Array.from(document.querySelectorAll(name)).forEach(function(el) {
+        applyCustomElement(el, __customElements[name]);
+      });
+    }
+  }
+
+  let observer = new MutationObserver(function(mutationRecords) {
+    mutationRecords.forEach(function(mutationRecord) {
+      if (mutationRecord.type == 'childList') { // e.g. attribures, characterData
+        Array.from(mutationRecord.removedNodes).forEach(function(node) {
+          let nodeName = node.nodeName.toLowerCase();
+          let klass = __customElements[nodeName];
+          if (klass) { // Ha, this is a customElement
+            applyCustomElement(node, klass);
+          }
+        });
+        Array.from(mutationRecord.addedNodes).forEach(function(node) {
+          node.disconnectedCallback && node.disconnectedCallback();
+        });
+      }
+    })
+  });
+
+  if (!window.customElements) {
+    window.customElements = CustomElements;
+    window.addEventListener('load', function() {
+      observer.observe(document.body, {childList: true});
+    });
+  }
+
+  if (!Object.values) {
+    Object.values = function(obj) {
+      return Object.keys(obj).map(function(key) {
+        return obj[key];
+      });
+    }
+  };
+})();
+
+
+/***/ }),
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,13 +326,14 @@ function addStyleSheet(el, url) {
   });
   url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
 
-  if (!document.querySelector(`#ce-core-style, link.${id}`)) {
+  // ce-core.js injects ce-core.css, so no need to load
+  if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
     let linkEl = document.createElement('link');
     linkEl.setAttribute('class', id);
     linkEl.setAttribute('rel', "stylesheet");
     linkEl.setAttribute('href', url);
-    el.appendChild(linkEl); 
-    // document.head.appendChild(linkEl); 
+    el.appendChild(linkEl);  //caution, style will be broken if the element is removed
+    //document.head.appendChild(linkEl); 
   }
 }
 

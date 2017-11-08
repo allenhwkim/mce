@@ -1,4 +1,5 @@
 a-menu {
+  display: block;
   background-color: var(--theme-color-0, #ffffff);
   box-shadow: var(--theme-shadow-1dp,  0   1px  3px rgba(0,0,0,0.12), 0  1px  2px rgba(0,0,0,0.24));
   color: var(--theme-text-color-900, #212121);

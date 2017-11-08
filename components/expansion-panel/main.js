@@ -1,3 +1,4 @@
+import '../ce-polyfill.js';
 import {addStyleSheet} from '../util.js';
 
 ( function() {
@@ -6,14 +7,18 @@ import {addStyleSheet} from '../util.js';
       let titleEl = this.querySelector('.title');
 
       addStyleSheet(this);
-      titleEl.addEventListener('click', this._showThisPanelOnly.bind(this));
+      titleEl.addEventListener('click', _ => {
+        Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
+          if (panelEl.isSameNode(this)) {
+            panelEl.classList.toggle('expanded');
+          } else {
+            panelEl.classList.remove('expanded');
+          }
+        })
+      });
     }
 
     _showThisPanelOnly(event) {
-      Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
-        this.classList.add('expanded');
-        !panelEl.isSameNode(this) && panelEl.classList.remove('expanded');
-      })
     }
   }
   

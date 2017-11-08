@@ -1,6 +1,7 @@
 /*https://material.io/guidelines/components/dialogs.html#dialogs-specs*/
 a-dialog {
   position: absolute;
+  display: block;
 }
 a-dialog.visible {
   visibility: visible;

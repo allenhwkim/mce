@@ -1,6 +1,6 @@
 {
   "name": "@custom-elements/button",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "button with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/allenhwkim/custom-elements/components/button"
+    "url": "https://github.com/allenhwkim/custom-elements/components"
   },
   "keywords": [
     "customElement",

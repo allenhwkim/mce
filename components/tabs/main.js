@@ -1,3 +1,4 @@
+import '../ce-polyfill.js';
 import {addStyleSheet, animate} from '../util.js';
 
 ( function() {

@@ -42,6 +42,7 @@
  *   suffix="dollars"></a-text-field>
  */
 
+import '../ce-polyfill.js';
 import {addStyleSheet} from '../util.js';
 
 // dependenant on an-icon

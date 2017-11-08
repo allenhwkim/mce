@@ -1,3 +1,4 @@
+import '../ce-polyfill.js';
 import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {
