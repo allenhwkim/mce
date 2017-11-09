@@ -1,0 +1,61 @@
+/****************************************************************************
+ * Grey Theme Variables 
+ ***************************************************************************/
+:root {
+  /* fonts */
+  --theme-main-font: Roboto, sans-serif;
+  --theme-icon-font: 'Material Icons';
+
+  /* colors  https://material.io/guidelines/style/color.html#color-color-palette */
+  --theme-color-50:   #ffebee;
+  --theme-color-100:  #ffcdd2;
+  --theme-color-200:  #ef9a9a;
+  --theme-color-300:  #e57373;
+  --theme-color-400:  #ef5350;
+  --theme-color-500:  #f44336;
+  --theme-color-600:  #e53935;
+  --theme-color-700:  #d32f2f;
+  --theme-color-800:  #c62828;
+  --theme-color-900:  #b71c1c;
+  --theme-color-a100: #ff8a80;
+  --theme-color-a200: #ff5252;
+  --theme-color-a400: #ff1744;
+  --theme-color-a700: #d50000;
+
+  --theme-color-accent: #ff8a80;
+  --theme-color-error:  #ff0000;
+
+  --theme-text-color-0: #FFFFFF;
+  --theme-text-color-100: #F5F5F5;
+  --theme-text-color-200: #EEEEEE;
+  --theme-text-color-300: #E0E0E0;
+  --theme-text-color-400: #BDBDBD;
+  --theme-text-color-500: #9E9E9E;
+  --theme-text-color-600: #757575;
+  --theme-text-color-700: #616161;
+  --theme-text-color-800: #424242;
+  --theme-text-color-900: #212121;
+
+  /* size */
+  --theme-title-font-size: 20px;
+  --theme-title-font-weight: 500;
+  --theme-height-app-bar: 56px;
+  --theme-height-bottom-nav-bar: 56px;
+  --theme-border-radius: 2px;
+
+  /* animation */
+  --theme-animation-in: all .3s ease-in;
+  --theme-animation-out: all .2s ease-out;
+  --theme-animation: all 0.3s cubic-bezier(.25, .8, .25, 1);
+  --theme-animation-ease: cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+
+  /* shadows */
+  --theme-shadow-1dp: 0   1px  3px rgba(0,0,0,0.12), 0  1px  2px rgba(0,0,0,0.24);
+  --theme-shadow-2dp: 0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23);
+  --theme-shadow-3dp: 0   3px  6px rgba(0,0,0,0.18), 0  3px  6px rgba(0,0,0,0.23);
+  --theme-shadow-4dp: 0   4px  8px rgba(0,0,0,0.18), 0  4px  8px rgba(0,0,0,0.23);
+  --theme-shadow-6dp: 0   6px 12px rgba(0,0,0,0.18), 0  5px  5px rgba(0,0,0,0.23);
+  --theme-shadow-10dp: 0 10px 20px rgba(0,0,0,0.19), 0  6px  6px rgba(0,0,0,0.23);
+  --theme-shadow-14dp: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --theme-shadow-19dp: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
