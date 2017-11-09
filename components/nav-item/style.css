@@ -31,6 +31,7 @@ a-menu a-nav-item {
   padding: 8px 16px;
   font-size: 16px;
   display: block;
+  min-width: 160px;
 }
 a-menu a-nav-item img {
   height: 16px;
