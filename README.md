@@ -4,14 +4,11 @@ Custom Elements With Material Design
 ## Design Principle
 
   1. Use Standard Only
-    . No dependancies
+     * No dependancies on framework or library.
+     
+  2. Think Themable   
+     * Use variables for a theme.
 
-  2. Be Themable
-    . Use global variables for a theme
-
-  3. Think Search Engine
-    . Never create h1,h2,h3,.. tags by Javascript
-    . Never add readable contents by Javascript
   
 [DEMO](https://rawgit.com/allenhwkim/custom-elements/master/examples/demo.html)
 
