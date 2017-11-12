@@ -52,3 +52,24 @@ a-nav-drawer .contents .divider {
   border: 1px solid #ccc;
   border-width: 0 0 1px 0;
 }
+
+a-nav-drawer a-nav-item {
+  line-height: 24px;
+  font-size: 14px;
+  padding: 8px 16px;
+}
+a-nav-drawer a-nav-item:hover {
+  background-color: var(--theme-color-200, #eeeeee);
+}
+a-nav-drawer a-nav-item:active {
+  background-color: var(--theme-color-50, #fafafa);
+}
+a-nav-drawer a-nav-item .subheader {
+  color: var(--theme-text-color-500, #9e9e9e);
+}
+a-nav-drawer a-nav-item .an-icon,
+a-nav-drawer a-nav-item an-icon {
+  padding-right: 32px;
+  color: var(--theme-text-color-500, #9e9e9e);
+  vertical-align: middle;
+}

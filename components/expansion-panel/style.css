@@ -23,7 +23,9 @@ an-expansion-panel > .title:after {
   position: absolute;
   font-family: 'Material Icons';
   right: 24px;
+  top: 0;
   font-size: 24px;
+  line-height: 64px;
 }
 an-expansion-panel > .title h1, an-expansion-panel > .title h2, an-expansion-panel > .title h3 {
   font-size: var(--theme-title-font-size, 20px);
@@ -45,6 +47,7 @@ an-expansion-panel > .text {
   padding: 0 24px 16px 24px;
   font-size: 14px;
   color: var(--theme-text-color-700, #616161);
+  overflow-x: auto;
 }
 
 an-expansion-panel > .actions {
@@ -85,6 +88,7 @@ an-expansion-panel:not(.expanded) > .title:after {
 }
 an-expansion-panel:not(.expanded) > .text,
 an-expansion-panel:not(.expanded) > .actions {
+  height: -;
   line-height: 0;
   padding: 0;
   overflow: hidden;

@@ -33,12 +33,13 @@ an-app-bar > .nav-icon {
 an-app-bar > .icons {
   float: right;
 }
-an-app-bar .title {
+an-app-bar > .title {
   display: inline-block;
   line-height: var(--theme-height-app-bar, 56px);
   font-size: var(--theme-title-font-size, 20px);
   font-weight: var(--theme-title-font-weight, 500);
   margin-left: 16px;
+  margin: 0;
 }
 an-app-bar .icon,
 an-app-bar an-icon {

@@ -5,16 +5,82 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+    <link rel="stylesheet" href="../themes/grey.css"> <!-- theme -->
+    <link rel="stylesheet" href="./style.css"> <!-- my application styles -->
+
     <!-- For Development -->
     <!-- <script type="module" src="../components/core/index.js"></script> -->
-    <script type="module" src="../components/core/dist/ce-core.js"></script>
-    <link rel="stylesheet" href="../components/core/dist/ce-core.css" />
+    <!-- <script type="module" src="../components/core/dist/ce-core.js"></script> -->
+    <!-- <link rel="stylesheet" href="../components/core/dist/ce-core.css" /> -->
+
+    <script type="module" src="../components/search/main.js"></script>
+    <link rel="stylesheet" class="search" href="../components/search/style.css">
+
+    <script type="module" src="../components/app-bar/main.js"></script>
+    <link rel="stylesheet" class="app-bar" href="../components/app-bar/style.css">
+
+    <script type="module" src="../components/bottom-nav-bar/main.js"></script>
+    <link rel="stylesheet" class="bottom-nav-bar" href="../components/bottom-nav-bar/style.css">
+
+    <script type="module" src="../components/button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../components/button/style.css">
+
+    <script type="module" src="../components/button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../components/button/style.css">
+
+    <script type="module" src="../components/card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../components/card/style.css">
+
+    <script type="module" src="../components/checkbox/main.js"></script>
+    <link rel="stylesheet" class="checkbox" href="../components/checkbox/style.css">
+
+    <script type="module" src="../components/chip/main.js"></script>
+    <link rel="stylesheet" class="chip" href="../components/chip/style.css">
+
+    <script type="module" src="../components/dialog/main.js"></script>
+    <link rel="stylesheet" class="dialog" href="../components/dialog/style.css">
+
+    <script type="module" src="../components/expansion-panel/main.js"></script>
+    <link rel="stylesheet" class="expansion-panel" href="../components/expansion-panel/style.css">
+
+    <script type="module" src="../components/expansion-panel/main.js"></script>
+    <link rel="stylesheet" class="expansion-panel" href="../components/expansion-panel/style.css">
+
+    <script type="module" src="../components/grid-list/main.js"></script>
+    <link rel="stylesheet" class="grid-list" href="../components/grid-list/style.css">
+
+    <script type="module" src="../components/list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../components/list/style.css">
+
+    <script type="module" src="../components/menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../components/menu/style.css">
+
+    <script type="module" src="../components/nav-drawer/main.js"></script>
+    <link rel="stylesheet" class="nav-drawer" href="../components/nav-drawer/style.css">
+
+    <script type="module" src="../components/radio-button/main.js"></script>
+    <link rel="stylesheet" class="radio-button" href="../components/radio-button/style.css">
+
+    <script type="module" src="../components/refresh-indicator/main.js"></script>
+    <link rel="stylesheet" class="refresh-indicator" href="../components/refresh-indicator/style.css">
+
+    <script type="module" src="../components/switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../components/switch/style.css">
+
+    <script type="module" src="../components/tabs/main.js"></script>
+    <link rel="stylesheet" class="tabs" href="../components/tabs/style.css">
+
+    <script type="module" src="../components/text-field/main.js"></script>
+    <link rel="stylesheet" class="text-field" href="../components/text-field/style.css">
+
+    <script type="module" src="../components/tooltip/main.js"></script>
+    <link rel="stylesheet" class="tooltip" href="../components/tooltip/style.css">
+
+    <link rel="stylesheet" class="icon" href="../components/icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../components/nav-item/style.css">
 
     <!-- For Public -->
     <!-- <script src="https://unpkg.com/@custom-elements/core/dist/ce-core.min.js"></script> -->
-
-    <link rel="stylesheet" href="../themes/grey.css"> <!-- theme -->
-    <link rel="stylesheet" href="./style.css"> <!-- my application styles -->
   </head>
   <body>
     <an-app-bar app-title="app-bar" class="fixed">
@@ -25,7 +91,7 @@
       <div class="icons">
         <an-icon>favorite</an-icon>
         <an-icon>search</an-icon>
-        <an-icon onclick="toggleMenu()">more_vert</an-icon>
+        <an-icon onclick="showMenu()">more_vert</an-icon>
         <a-menu id="app-bar-menu" position="bottom-right">
           <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
           <hr>
@@ -47,6 +113,15 @@
 
       <a-card>
         <div class="title">
+          <h1>Search</h1>
+        </div>
+        <div class="text">
+          <a-search on-search="alert('You are searching...'+keyword)"></a-search>
+        </div>
+      </a-card>
+
+      <a-card>
+        <div class="title">
           <h1>Buttons</h1>
           <h3 class="subtitle">Buttons communicate the action that will occur when the user touches them.</h3>
         </div>
@@ -55,23 +130,23 @@
           Flat Buttons are used for general functions and reduce the amount of layering on the screen, making it more readable.
           </p>
           <a-button><an-icon>search</an-icon>Normal</a-button> &nbsp;
-          <a-button dark><an-icon>search</an-icon>Normal</a-button> &nbsp;
+          <a-button class="dark"><an-icon>search</an-icon>Normal</a-button> &nbsp;
           <a-button disabled><an-icon>search</an-icon>disabled</a-button>
-          <a-button disabled dark><an-icon>search</an-icon>disabled</a-button>
+          <a-button disabled class="dark"><an-icon>search</an-icon>disabled</a-button>
           <p>
             Raised a-buttons are used to add dimension to mostly flat layouts and emphasizes important functions on your page.
           </p>
-          <a-button raised><an-icon>search</an-icon>Normal</a-button> &nbsp;
-          <a-button raised dark><an-icon>search</an-icon>Normal</a-button> &nbsp;
-          <a-button raised disabled><an-icon>search</an-icon>disabled</a-button>
-          <a-button raised disabled dark><an-icon>search</an-icon>disabled</a-button>
+          <a-button class="raised"><an-icon>search</an-icon>Normal</a-button> &nbsp;
+          <a-button class="raised dark"><an-icon>search</an-icon>Normal</a-button> &nbsp;
+          <a-button class="raised" disabled><an-icon>search</an-icon>disabled</a-button>
+          <a-button class="raised dark" disabled><an-icon>search</an-icon>disabled</a-button>
           <p>
             The Floating Action Button is used for frequently used functions.
           </p>
-          <a-button fab><an-icon>add</an-icon></a-button> &nbsp;
-          <a-button fab dark><an-icon>add</an-icon></a-button> &nbsp;
-          <a-button fab mini><an-icon>add</an-icon></a-button> &nbsp;
-          <a-button fab mini dark><an-icon>add</an-icon></a-button> &nbsp;
+          <a-button class="fab"><an-icon>add</an-icon></a-button> &nbsp;
+          <a-button class="fab dark"><an-icon>add</an-icon></a-button> &nbsp;
+          <a-button class="fab mini"><an-icon>add</an-icon></a-button> &nbsp;
+          <a-button class="fab mini dark"><an-icon>add</an-icon></a-button> &nbsp;
         </div>
       </a-card>
 
@@ -81,8 +156,8 @@
           <div class="subtitle">Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks.</div>
         </div>
         <div class="text">
-          <a-button raised onclick="openDialog('dialog-1')">Open A Dialog</a-button>
-          <a-button raised onclick="openDialogWith('dialog-2',{
+          <a-button class="raised" onclick="openDialog('dialog-1')">Open A Dialog</a-button>
+          <a-button class="raised" onclick="openDialogWith('dialog-2',{
             title: 'Custim Title', 
             contents:'This is custom contents',
             actions: {'Custom Button': () => alert('My Button is clicked.')}
@@ -279,27 +354,27 @@
           <div class="subtitle">Chips represent complex entities in small blocks, such as a contact.</div>
         </div>
         <div class="text" class="clear-both">
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             Move
           </a-button>
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             Mouse
           </a-button>
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             Over
           </a-button>
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             Here
           </a-button>
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             To See
           </a-button>
-          <a-button raised>
+          <a-button class="raised">
             <a-tooltip>This is a tooltip for a button</a-tooltip>
             Tooltip
           </a-button>
@@ -313,43 +388,43 @@
         </div>
         <div class="text">
           <h3>Light Background</h3>
-          Small: <an-icon small>face</an-icon>
+          Small: <an-icon class="small">face</an-icon>
           Default: <an-icon>face</an-icon>
-          Big: <an-icon big>face</an-icon>
-          Double: <an-icon double>face</an-icon>
-          Image: <an-icon double img="ali.connors.jpg"></an-icon>
+          Big: <an-icon class="big">face</an-icon>
+          Double: <an-icon class="double">face</an-icon>
+          Image: <an-icon class="double" img="ali.connors.jpg"></an-icon>
           <hr />
           <h3>Circle</h3>
-          Small: <an-icon circle small>face</an-icon>
-          Default: <an-icon circle>face</an-icon>
-          big: <an-icon circle big>face</an-icon>
+          Small: <an-icon class="circle small">face</an-icon>
+          Default: <an-icon class="circle">face</an-icon>
+          big: <an-icon class="circle big">face</an-icon>
           <hr />
           <h3>Squared</h3>
-          Small: <an-icon square small>face</an-icon>
-          Default: <an-icon square>face</an-icon>
-          Big: <an-icon square big>face</an-icon>
+          Small: <an-icon class="square small">face</an-icon>
+          Default: <an-icon class="square">face</an-icon>
+          Big: <an-icon class="square big">face</an-icon>
           <hr />
           <h3>Disabled</h3>
-          Default: <an-icon disabled>face</an-icon>
-          Circle: <an-icon disabled circle>face</an-icon>
-          Square: <an-icon disabled square>face</an-icon>
+          Default: <an-icon class="disabled">face</an-icon>
+          Circle: <an-icon class="disabled circle">face</an-icon>
+          Square: <an-icon class="disabled square">face</an-icon>
           <hr />
           <h3>Reactive</h3>
-          Default: <an-icon reactive>face</an-icon>
-          Cicle: <an-icon reactive circle>face</an-icon>
-          Square: <an-icon reactive square>face</an-icon>
-          Image: <an-icon reactive double img="ali.connors.jpg"></an-icon>
+          Default: <an-icon class="reactive">face</an-icon>
+          Cicle: <an-icon class="reactive circle">face</an-icon>
+          Square: <an-icon class="reactive square">face</an-icon>
+          Image: <an-icon class="reactive double" img="ali.connors.jpg"></an-icon>
           <hr />
           <div class="container dark-bg">
             <h3>Icons In Dark Background</h3>
-            Small: <an-icon dark-bg small>face</an-icon>
-            Default: <an-icon dark-bg>face</an-icon>
-            Big: <an-icon dark-bg big>face</an-icon>
-            Double: <an-icon dark-bg double>face</an-icon>
-            Circle: <an-icon circle dark-bg>face</an-icon>
-            Square: <an-icon square dark-bg>face</an-icon>
-            Disabled: <an-icon disabled bark-bg>face</an-icon>
-            Reactive: <an-icon reactive dark-bg>face</an-icon>
+            Small: <an-icon class="dark-bg small">face</an-icon>
+            Default: <an-icon class="dark-bg">face</an-icon>
+            Big: <an-icon class="dark-bg big">face</an-icon>
+            Double: <an-icon class="dark-bg double">face</an-icon>
+            Circle: <an-icon class="circle dark-bg">face</an-icon>
+            Square: <an-icon class="square dark-bg">face</an-icon>
+            Disabled: <an-icon class="disabled bark-bg">face</an-icon>
+            Reactive: <an-icon class="reactive dark-bg">face</an-icon>
           </div>
           <hr />
         </div>
@@ -563,17 +638,17 @@
         <ul>
           <h3>List Title Goest Here</h3>
           <li>
-            <div class="icon"><an-icon circle>folder</an-icon></div>
+            <div class="icon"><an-icon class="circle">folder</an-icon></div>
             <span>Directory</span>
             <an-icon>info</an-icon>
           </li>
           <li>
-            <div class="icon"><an-icon circle>hotel</an-icon></div>
+            <div class="icon"><an-icon class="circle">hotel</an-icon></div>
             <span>Hotel</span>
             <an-icon>info</an-icon>
           </li>
           <li>
-            <div class="icon"><an-icon circle>local_bar</an-icon></div>
+            <div class="icon"><an-icon class="circle">local_bar</an-icon></div>
             <span>Bar</span>
             <an-icon>info</an-icon>
           </li>
@@ -617,7 +692,7 @@
       </a-list>
 
     </main>
-    <a-bottom-nav-bar>
+    <a-bottom-nav-bar class="fixed">
       <a-nav-item icon="favorite">Favourite</a-nav-item>
       <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
       <a-nav-item icon="alarm">Alarm</a-nav-item>
@@ -627,7 +702,7 @@
       function showDrawer() {
         document.querySelector('a-nav-drawer').open();
       }
-      function toggleMenu() {
+      function showMenu() {
         document.querySelector('#app-bar-menu').classList.toggle('visible');
       }
       function openDialog(id) {

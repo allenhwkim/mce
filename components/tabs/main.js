@@ -16,7 +16,7 @@ import {addStyleSheet, animate} from '../util.js';
       let el = document.createElement('div');
       let thisWidth  = this.getBoundingClientRect().width;
       let left = (
-          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
           - this.getBoundingClientRect().left
         ) / thisWidth;
 
@@ -36,26 +36,28 @@ import {addStyleSheet, animate} from '../util.js';
      * animate the indicator below the active tab
      */
     _animateIndicator() {
-      let indicatorEl = this.indicatorEl;
-      let numTab = this.querySelectorAll('a-nav-item').length;
-      let thisWidth  = this.getBoundingClientRect().width;
-      let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
-      let indicatorLeftTo = (
-          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
-          - this.getBoundingClientRect().left
-        ) / thisWidth;
-      let move = indicatorLeftTo*100 - indicatorLeftFrom;
+      setTimeout(_ => { // wait for a-nav-item.active changes
+        let indicatorEl = this.indicatorEl;
+        let numTab = this.querySelectorAll('a-nav-item').length;
+        let thisWidth  = this.getBoundingClientRect().width;
+        let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
+        let indicatorLeftTo = (
+            (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
+            - this.getBoundingClientRect().left
+          ) / thisWidth;
+        let move = indicatorLeftTo*100 - indicatorLeftFrom;
 
-      indicatorEl.style.width = parseFloat(100/numTab) + '%';
+        indicatorEl.style.width = parseFloat(100/numTab) + '%';
 
-      animate({
-        duration: 450,
-        timing: function(timeFraction) {
-          return 1 - Math.sin(Math.acos(timeFraction));
-        },
-        draw: function(progress) {
-          indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
-        }
+        animate({
+          duration: 450,
+          timing: function(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+          },
+          draw: function(progress) {
+            indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
+          }
+        });
       });
     }
   

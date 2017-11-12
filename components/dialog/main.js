@@ -1,12 +1,13 @@
 import '../ce-polyfill.js';
+import '../button/main.js';
 import {addStyleSheet} from '../util.js';
 
-//dependant on a-button
 ( function() {
 
   class Dialog extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url
+      this._regroupedOnce = false;
       this._regroupElements();
     }
     
@@ -29,23 +30,26 @@ import {addStyleSheet} from '../util.js';
     }
  
     _regroupElements() {
-      let pageBlockerEl, containerEl;
-      pageBlockerEl = document.createElement('div');
-      pageBlockerEl.setAttribute('class', 'page-blocker');
-      pageBlockerEl.addEventListener('click', () => {
-        this.close();
-      });
-      this.appendChild(pageBlockerEl);
+      if (!this._regroupedOnce) { // this must happen only once for a dialog
+        let pageBlockerEl, containerEl;
+        pageBlockerEl = document.createElement('div');
+        pageBlockerEl.setAttribute('class', 'page-blocker');
+        pageBlockerEl.addEventListener('click', () => {
+          this.close();
+        });
+        this.appendChild(pageBlockerEl);
 
-      containerEl = document.createElement('div');
-      containerEl.setAttribute('class', 'container');
-      this.appendChild(containerEl);
+        containerEl = document.createElement('div');
+        containerEl.setAttribute('class', 'container');
+        this.appendChild(containerEl);
 
-      Array.from(this.children).forEach(el => {
-        if (el.tagName !== 'STYLE' && !el.isSameNode(containerEl) && !el.isSameNode(pageBlockerEl)) {
-          containerEl.appendChild(el)
-        }
-      });
+        Array.from(this.children).forEach(el => {
+          if (!el.isSameNode(containerEl) && !el.isSameNode(pageBlockerEl)) {
+            containerEl.appendChild(el)
+          }
+        });
+      }
+      this._regroupedOnce = true;
     }
 
     _updateContent(data) {

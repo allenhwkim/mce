@@ -1,23 +1,182 @@
 <!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../theme.tmpl.html" />
+
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../button/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
   </head>
   <body>
-    <an-app-bar app-title="app-bar" fixed>
-      <div class="nav-icon">
-        <i class="material-icons icon">menu</i>
-      </div>
-      <span class="title">Custom Elements With Material Design</span>
-      <div class="icons">
-        <i class="material-icons icon">favorite</i>
-        <i class="material-icons icon">search</i>
-        <i class="material-icons icon">more_vert</i>
-      </div>
-    </an-app-bar>
 
-    <script src="dist/main.min.js"></script>
+    <template class="flat">
+      <div>
+        <a-button> <an-icon>search</an-icon> Normal </a-button>
+        <a-button class="dark"> <an-icon>search</an-icon> Normal </a-button> 
+        <a-button disabled> <an-icon>search</an-icon> disabled </a-button>
+        <a-button disabled class="dark"> <an-icon>search</an-icon> disabled </a-button>
+      </div>
+    </template>
+    <template class="raised">
+      <div>
+        <a-button class="raised"> <an-icon>search</an-icon> Normal </a-button>
+        <a-button class="raised dark"> <an-icon>search</an-icon> Normal </a-button>
+        <a-button disabled class="raised"> <an-icon>search</an-icon> disabled </a-button>
+        <a-button disabled class="raised dark"> <an-icon>search</an-icon> disabled </a-button>
+      </div>
+    </template>
+    <template class="fab">
+      <div>
+        <a-button class="fab"> <an-icon>add</an-icon> </a-button> 
+        <a-button class="fab dark"> <an-icon>add</an-icon> </a-button>
+        <a-button class="fab mini"> <an-icon>add</an-icon> </a-button>
+        <a-button class="fab mini dark"> <an-icon>add</an-icon> </a-button>
+      </div>
+    </template>
+
+    <div class="container">
+      <h1>Button</h1>
+      <a href="https://material.io/guidelines/components/buttons.html#buttons-style">
+        Material Design Spec
+      </a>
+      <p>
+        Buttons communicate the action that will occur when the user touches them.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <a-card class="flat">
+        <div class="title">
+          <h2>Flat Button Example</h2>
+          <p class="subtitle">
+            Flat Buttons are used for general functions and reduce the amount of layering on the screen, making it more readable.
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source" checked></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.flat', 'a-card.flat')</script>
+
+      <a-card class="raised">
+        <div class="title">
+          <h2>Raised Button Example</h2>
+          <p class="subtitle">
+            Raised a-buttons are used to add dimension to mostly flat layouts and emphasizes important functions on your page.
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source" checked></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.raised', 'a-card.raised')</script>
+
+      <a-card class="fab">
+        <div class="title">
+          <h2>Floating Action Button Example</h2>
+          <p class="subtitle">
+            The Floating Action Button is used for frequently used functions.
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0003" class="view-source" checked></a-switch>
+            <label for="vs0003"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.fab', 'a-card.fab')</script>
+
+    </div>
+
+    <div class="container">
+      <a-list>
+        <ul>
+          <h3>Element Classes</h3>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>dark</div>
+               <div class="text">A button with dark background color and light text</div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>raised</div>
+               <div class="text">Rectulangular button with shadow effect</div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>fab</div>
+               <div class="text">A floating action buttoin; a circular button with shadow effect</div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>mini</div>
+               <div class="text">A 40 pixel x 40 pixel.</div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+    </div>
+
   </body>
 </html>

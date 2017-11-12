@@ -19,7 +19,7 @@
   --theme-color-800: #37474F;
   --theme-color-900: #263238;
 
-  --theme-color-accent: var(--theme-color-A100, #ff0000);
+  --theme-color-accent: var(--theme-color-a100, #ff0000);
   --theme-color-error:  #ff0000;
 
   --theme-text-color-0: #FFFFFF;

@@ -8,15 +8,12 @@ a-checkbox {
   width: 24px;
   height: 24px;
   vertical-align: middle;
-  fill: currentColor;
+  fill: var(--theme-color-a100, #F5BEA9);
 }
 
 a-checkbox[disabled] {
   pointer-events: none;
   fill: var(--theme-text-color-500, #9e9e9e);
-}
-a-checkbox[dark-bg] {
-  color: var(--theme-text-color-0, #FFFFFF);
 }
 
 a-checkbox:after { /* to show it's pressed down */

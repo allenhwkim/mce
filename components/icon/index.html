@@ -1,23 +1,262 @@
 <!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
-  <body>
-    <an-app-bar app-title="app-bar" fixed>
-      <div class="nav-icon">
-        <i class="material-icons icon">menu</i>
-      </div>
-      <span class="title">Custom Elements With Material Design</span>
-      <div class="icons">
-        <i class="material-icons icon">favorite</i>
-        <i class="material-icons icon">search</i>
-        <i class="material-icons icon">more_vert</i>
-      </div>
-    </an-app-bar>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../theme.tmpl.html" />
 
-    <script src="dist/main.min.js"></script>
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); padding: 12px; }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../grid-list/main.js"></script>
+    <link rel="stylesheet" class="grid-list" href="../grid-list/style.css">
+
+    <script type="module" src="../button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../button/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+  </head>
+
+  <body>
+    
+    <template class="simple">
+      <div>
+        Small: <an-icon class="small">face</an-icon>
+        Default: <an-icon>face</an-icon>
+        Big: <an-icon class="big">face</an-icon>
+        Double: <an-icon class="double">face</an-icon>
+        Image: <an-icon class="double" img="ali.connors.jpg"></an-icon>
+      </div>
+    </template>
+    <template class="circle">
+      <div>
+        Small: <an-icon class="circle small">face</an-icon>
+        Default: <an-icon class="circle">face</an-icon>
+        big: <an-icon class="circle big">face</an-icon>
+      </div>
+    </template>
+    <template class="square">
+      <div>
+        Small: <an-icon class="square small">face</an-icon>
+        Default: <an-icon class="square">face</an-icon>
+        Big: <an-icon class="square big">face</an-icon>
+      </div>
+    </template>
+    <template class="disabled">
+      <div>
+        Default: <an-icon class="disabled">face</an-icon>
+        Circle: <an-icon class="disabled circle">face</an-icon>
+        Square: <an-icon class="disabled square">face</an-icon>
+      </div>
+    </template>
+    <template class="reactive">
+      <div>
+        Default: <an-icon class="reactive">face</an-icon>
+        Cicle: <an-icon class="reactive circle">face</an-icon>
+        Square: <an-icon class="reactive square">face</an-icon>
+        Image: <an-icon class="reactive double" img="ali.connors.jpg"></an-icon>
+      </div>
+    </template>
+    <template class="dark">
+      <div>
+        Small: <an-icon class="dark-bg small">face</an-icon>
+        Default: <an-icon class="dark-bg">face</an-icon>
+        Big: <an-icon class="dark-bg big">face</an-icon>
+        Double: <an-icon class="dark-bg double">face</an-icon>
+        Circle: <an-icon class="circle dark-bg">face</an-icon>
+        Square: <an-icon class="square dark-bg">face</an-icon>
+        Disabled: <an-icon class="disabled bark-bg">face</an-icon>
+        Reactive: <an-icon class="reactive dark-bg">face</an-icon>
+      </div>
+    </template>
+    <div class="container">
+      <h1>Icon</h1>
+      <a href="https://material.io/guidelines/style/icons.html#">
+        Material Design Spec.
+      </a>
+      <p>
+        Material icons use geometric shapes to visually represent core ideas, capabilities, or topics.
+        System icons represent a command, file, device, directory, or common actions.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+
+      <a-card class="simple">
+        <div class="title"><h2>Simple Example</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source"></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="circle">
+        <div class="title"><h2>Icons In Circle</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source"></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.circle', 'a-card.circle')</script>
+
+      <a-card class="square">
+        <div class="title"><h2>Icons In Square</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0003" class="view-source"></a-switch>
+            <label for="vs0003"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.square', 'a-card.square')</script>
+
+      <a-card class="disabled">
+        <div class="title"><h2>Disabled Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0004" class="view-source"></a-switch>
+            <label for="vs0004"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.disabled', 'a-card.disabled')</script>
+
+      <a-card class="reactive">
+        <div class="title"><h2>Reactive Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0005" class="view-source"></a-switch>
+            <label for="vs0005"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.reactive', 'a-card.reactive')</script>
+
+      <a-card class="dark">
+        <div class="title"><h2>Icons In Dark Background</h2></div>
+        <div class="text">
+          <div class="demo dark-bg"></div>
+          <div>
+            <a-switch id="vs0006" class="view-source"></a-switch>
+            <label for="vs0006"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.dark', 'a-card.dark')</script>
+
+    </div>
+
+    <div class="container">
+      <a-list>
+        <ul>
+          <h3>Element Attribute</h3>
+          <li> <an-icon>code</an-icon>
+            <div><div>img</div>
+               <div class="text">Show an image instead of font icon. e.g. img="ali.conors.jpg"</div> 
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <h3>Element Classes</h3>
+          <li> <an-icon>code</an-icon>
+            <div><div>small</div>
+               <div class="text">A smaller icon. 18px</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>big</div>
+               <div class="text">Bigger icon. 36px</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>double</div>
+               <div class="text">Double-sized icon. 48px</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>circle</div>
+               <div class="text">An icon in a circle</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>square</div>
+               <div class="text">An icon in a square</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>dark-bg</div>
+               <div class="text">An icon in dark background</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>reactive</div>
+               <div class="text">An icon respond to click and showing a ripple effect</div> 
+            </div>
+          </li>
+          <li> <an-icon>code</an-icon>
+            <div><div>disabled</div>
+               <div class="text">A greyed out without responsiveness</div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+    </div>
+      
   </body>
 </html>
