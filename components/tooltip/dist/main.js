@@ -75,6 +75,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+// FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {
 
   class Tooltip extends HTMLElement {
@@ -217,7 +218,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {

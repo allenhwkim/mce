@@ -1,5 +1,5 @@
 {
-  "name": "@custom-elements/list",
+  "name": "@custom-element/list",
   "version": "0.2.1",
   "description": "list with MD/CE",
   "main": "dist/main.min.js",

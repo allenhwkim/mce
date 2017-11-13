@@ -60,65 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(2);
-
-
-
-// dependant on an-icon
-( function() {
-  class NavItem extends HTMLElement {
-    connectedCallback() {
-      if (this.innerHTML) {
-        this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
-      }
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-
-      this.addEventListener('click', this.setActiveItem.bind(this));
-      this.icon = this.getAttribute('icon');
-      this.shortcut = this.getAttribute('shortcut');
-      if (this.icon) {
-        let isMDIcon = this.icon.match(/^[a-z_]+$/);
-        this.iconEl = document.createElement('an-icon');
-        if (isMDIcon) {
-          this.iconEl.innerHTML = this.icon;
-        } else {
-          this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
-        }
-        this.insertBefore(this.iconEl, this.firstChild)
-      }
-      if (this.shortcut) {
-        this.shortcutEl = document.createElement('div');
-        this.shortcutEl.classList.add('shortcut');
-        this.shortcutEl.innerHTML = this.shortcut;
-        this.appendChild(this.shortcutEl);
-      }
-    }
-
-    setActiveItem(event) {
-      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
-        el.classList.remove('active');
-      }); 
-      this.classList.add('active');
-    }
-  }
-  
-  customElements.define('a-nav-item', NavItem);
-})();
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 /**
@@ -184,7 +130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -195,7 +141,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
@@ -241,6 +187,96 @@ function animate({duration, draw, timing}) {
   });
 }
     
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+// dependant on an-icon
+( function() {
+  class NavItem extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this.regroupedOnce = false;
+      this._regroupElements();
+    }
+
+    setActiveItem(event) {
+      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
+        el.classList.remove('active');
+      }); 
+      this.classList.add('active');
+    }
+
+    _regroupElements() {
+      if (!this.regroupedOnce) {
+        if (!this.querySelector('span.text')) {
+          this.innerHTML = `<span class="text">${this.innerHTML}</span>`;
+        }
+        this.addEventListener('click', this.setActiveItem.bind(this));
+        this.icon = this.getAttribute('icon');
+        this.shortcut = this.getAttribute('shortcut');
+        if (this.icon && !this.querySelector('an-icon')) {
+          let isMDIcon = this.icon.match(/^[a-z_]+$/);
+          this.iconEl = document.createElement('an-icon');
+          if (isMDIcon) {
+            this.iconEl.innerHTML = this.icon;
+          } else {
+            this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
+          }
+          this.insertBefore(this.iconEl, this.firstChild)
+        }
+        if (this.shortcut && !this.querySelector('an-icon')) {
+          this.shortcutEl = document.createElement('div');
+          this.shortcutEl.classList.add('shortcut');
+          this.shortcutEl.innerHTML = this.shortcut;
+          this.appendChild(this.shortcutEl);
+        }
+      }
+      this.regroupedOnce = true;
+    }
+  }
+  
+  customElements.define('a-nav-item', NavItem);
+})();
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+( function() {
+  class Icon extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+      let img = this.getAttribute('img');
+      if (img) {
+        this.style.backgroundImage = `url(${img})`;
+        this.innerHTML = 'favorite';
+      }
+    }
+  }
+
+  customElements.define('an-icon', Icon);
+})();
+
 
 /***/ })
 /******/ ]);

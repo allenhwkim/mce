@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -141,7 +141,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
@@ -193,59 +193,25 @@ function animate({duration, draw, timing}) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_bar_main_js__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__button_main_js__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__radio_button_main_js__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__checkbox_main_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__switch_main_js__ = __webpack_require__(7);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__bottom_nav_bar_main_js__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__card_main_js__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__chip_main_js__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__nav_drawer_main_js__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__menu_main_js__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__nav_item_main_js__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__dialog_main_js__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__refresh_indicator_main_js__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__tabs_main_js__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__text_field_main_js__ = __webpack_require__(17);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__tooltip_main_js__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__icon_main_js__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__expansion_panel_main_js__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__grid_list_main_js__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__list_main_js__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-(function() {
-  if (!document.querySelector('link[href$="ce-core.css"]')) { // if css not already added
-    var cssUrl = 'https://unpkg.com/@custom-elements/core/dist/ce-core.css';
-    let linkEl = document.createElement('link');
-    linkEl.setAttribute('rel', "stylesheet");
-    linkEl.setAttribute('href', cssUrl);
-    document.head.appendChild(linkEl);
+( function() {
+  class Icon extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+      let img = this.getAttribute('img');
+      if (img) {
+        this.style.backgroundImage = `url(${img})`;
+        this.innerHTML = 'favorite';
+      }
+    }
   }
+
+  customElements.define('an-icon', Icon);
 })();
 
 
@@ -256,19 +222,58 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
 
 
 
+
+// dependant on an-icon
 ( function() {
-  //https://material.io/guidelines/layout/structure.html#structure-app-bar
-  class AppBar extends HTMLElement {
+  class NavItem extends HTMLElement {
     connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this.regroupedOnce = false;
+      this._regroupElements();
+    }
+
+    setActiveItem(event) {
+      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
+        el.classList.remove('active');
+      }); 
+      this.classList.add('active');
+    }
+
+    _regroupElements() {
+      if (!this.regroupedOnce) {
+        if (!this.querySelector('span.text')) {
+          this.innerHTML = `<span class="text">${this.innerHTML}</span>`;
+        }
+        this.addEventListener('click', this.setActiveItem.bind(this));
+        this.icon = this.getAttribute('icon');
+        this.shortcut = this.getAttribute('shortcut');
+        if (this.icon && !this.querySelector('an-icon')) {
+          let isMDIcon = this.icon.match(/^[a-z_]+$/);
+          this.iconEl = document.createElement('an-icon');
+          if (isMDIcon) {
+            this.iconEl.innerHTML = this.icon;
+          } else {
+            this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
+          }
+          this.insertBefore(this.iconEl, this.firstChild)
+        }
+        if (this.shortcut && !this.querySelector('an-icon')) {
+          this.shortcutEl = document.createElement('div');
+          this.shortcutEl.classList.add('shortcut');
+          this.shortcutEl.innerHTML = this.shortcut;
+          this.appendChild(this.shortcutEl);
+        }
+      }
+      this.regroupedOnce = true;
     }
   }
   
-  window.customElements.define('an-app-bar', AppBar);
+  customElements.define('a-nav-item', NavItem);
 })();
 
 
@@ -316,6 +321,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_bar_main_js__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bottom_nav_bar_main_js__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__button_main_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__card_main_js__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__checkbox_main_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chip_main_js__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__dialog_main_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__expansion_panel_main_js__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__grid_list_main_js__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__icon_main_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__list_main_js__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__menu_main_js__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__nav_drawer_main_js__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__nav_item_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__radio_button_main_js__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__refresh_indicator_main_js__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__search_main_js__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__switch_main_js__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__tabs_main_js__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__text_field_main_js__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__tooltip_main_js__ = __webpack_require__(23);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+(function() {
+  // add css only if css not already added
+  if (!document.querySelector('link[href$="ce-core.css"]')) {
+    var cssUrl = 'https://unpkg.com/@custom-element/core/dist/ce-core.css';
+    let linkEl = document.createElement('link');
+    linkEl.setAttribute('rel', "stylesheet");
+    linkEl.setAttribute('href', cssUrl);
+    document.head.appendChild(linkEl);
+  }
+})();
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
@@ -324,46 +393,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 ( function() {
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
-
-  var iconSVG = `
-    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-      <path class="checked" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-      <path class="unchecked" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
-      <path d="M0 0h24v24H0z" fill="none"/>
-    </svg>`;
-
-  class RadioButton extends HTMLElement {
+  class AppBar extends HTMLElement {
     connectedCallback() {
-      this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      this.inputEl = this._addRealInput();
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
-        val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
-      });
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
     }
-
-    _addRealInput() {
-      let inputEl = document.createElement('input');
-      inputEl.setAttribute("type", "radio");
-      Array.from(this.attributes).forEach( attr => {
-        if (this.inputAttrs.includes(attr.name) && attr.value !== null) {
-         inputEl.setAttribute(attr.name, attr.value);
-         (attr.name === 'id') && this.setAttribute('id', 'a-radio-button-'+attr.value);
-        }
-      })
-      this.appendChild(inputEl);
-      this.insertAdjacentHTML('beforeend', iconSVG)
-      return inputEl;
-    }
-
   }
   
-  customElements.define('a-radio-button', RadioButton); //name, class
+  window.customElements.define('an-app-bar', AppBar);
 })();
 
 
 /***/ }),
-/* 6 */
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_item_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+( function() {
+  class BottomNavBar extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this);
+    }
+  }
+  
+  customElements.define('a-bottom-nav-bar', BottomNavBar);
+})();
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+(function() {
+
+  class Card extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+    }
+  }
+  
+  customElements.define('a-card', Card);
+})();
+
+/***/ }),
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -414,7 +501,577 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 7 */
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+// dependant on an-icon
+( function() {
+
+  class Chip extends HTMLElement {
+
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this._buildHTML();
+    }
+
+    _buildHTML() {
+      let avatar = this.getAttribute('avatar');
+      let text = this.getAttribute('text');
+      let removable = this.getAttribute('removable');
+      let onRemove = this.getAttribute('on-remove');
+
+      if (avatar) {
+        if (avatar.match(/\.(png|jpg|gif|svg)$/)) {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar" style="background-image:url(${avatar})"></div>`);
+        } else {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
+        }
+      }
+
+      if (text) {
+        this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
+      }
+
+      if (removable !== null) {
+        let removeEl = document.createElement('an-icon');
+        removeEl.classList.add('delete');
+        removeEl.innerHTML = 'clear';
+
+        removeEl.addEventListener('click', event => {
+          let customEvent = new CustomEvent('remove', event);
+          this.dispatchEvent(customEvent);
+        })
+
+        this.appendChild(removeEl);
+
+        this.addEventListener('remove', function(event) {
+          let func = new Function(onRemove);
+          func();
+          this.remove();
+        });
+      }
+    }
+
+  }
+  
+  customElements.define('a-chip', Chip);
+})();
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__button_main_js__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+( function() {
+
+  class Dialog extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this._regroupedOnce = false;
+      this._regroupElements();
+    }
+    
+    open(data) {
+      //replace title, content, actions with data given
+      data && this._updateContent(data);
+
+      // move to document-level for z-indexing to work
+      this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
+      document.body.appendChild(this);
+      document.body.style.overflow = 'hidden';
+      this.classList.add('visible');
+    }
+
+    close() {
+      // move back to the original position
+      this.originalPos.parent.insertBefore(this, this.originalPos.nextSibling);
+      document.body.style.overflow = '';
+      this.classList.remove('visible');
+    }
+ 
+    _regroupElements() {
+      if (!this._regroupedOnce) { // this must happen only once for a dialog
+        let pageBlockerEl, containerEl;
+        pageBlockerEl = document.createElement('div');
+        pageBlockerEl.setAttribute('class', 'page-blocker');
+        pageBlockerEl.addEventListener('click', () => {
+          this.close();
+        });
+        this.appendChild(pageBlockerEl);
+
+        containerEl = document.createElement('div');
+        containerEl.setAttribute('class', 'container');
+        this.appendChild(containerEl);
+
+        Array.from(this.children).forEach(el => {
+          if (!el.isSameNode(containerEl) && !el.isSameNode(pageBlockerEl)) {
+            containerEl.appendChild(el)
+          }
+        });
+      }
+      this._regroupedOnce = true;
+    }
+
+    _updateContent(data) {
+      let titleEl, contentEl, actionsEl;
+      let appendEl = className  => {
+        let el = document.createElement('div');
+        el.classList.add(className);
+        this.appendChild(el);
+        return el;
+      }
+      if (data.title !== undefined) {
+        titleEl = this.querySelector('.title') || appendEl('title');
+        titleEl.innerHTML = data.title;
+      }
+      if (data.contents !== undefined) {
+        contentEl = this.querySelector('.content') || appendEl('content');
+        contentEl.innerHTML = data.contents;
+      }
+      if (data.actions !== undefined) {
+        actionsEl = this.querySelector('.actions') || appendEl('actions');
+        actionsEl.innerHTML = '';
+        for (var key in data.actions) {
+          let buttonEl = document.createElement('a-button');
+          buttonEl.innerHTML = key;
+          buttonEl.addEventListener('click', _ => {
+            data.actions[key]();
+            this.close();
+          });
+          actionsEl.appendChild(buttonEl);
+        }
+      }
+    }
+  }
+  
+  customElements.define('a-dialog', Dialog);
+})();
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+( function() {
+  class ExpansionPanel extends HTMLElement {
+    connectedCallback() {
+      let titleEl = this.querySelector('.title');
+
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
+      titleEl.addEventListener('click', _ => {
+        Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
+          if (panelEl.isSameNode(this)) {
+            panelEl.classList.toggle('expanded');
+          } else {
+            panelEl.classList.remove('expanded');
+          }
+        })
+      });
+    }
+
+    _showThisPanelOnly(event) {
+    }
+  }
+  
+  customElements.define('an-expansion-panel', ExpansionPanel);
+})();
+
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+(function() {
+  class GridList extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
+    }
+  }
+  
+  customElements.define('a-grid-list', GridList);
+})();
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+(function() {
+  class List extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+    }
+  }
+  
+  customElements.define('a-list', List);
+})();
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_item_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+// ref. 
+//   * https://material.io/guidelines/components/menus.html#menus-specs
+//   * https://material.io/components/web/catalog/menus/
+
+// observable attribute
+//  * visible
+
+// Requirements
+//   # observable attribute
+//     . visible
+//   # styling
+//     . z-index: 8
+//     . shadow: 1
+//     . padding: 8px 0px
+//   # positionalble: bottom-right, top-right,bottom-left(default), top-left
+//   # one DOM, one menu display
+//   # hide DOM, when DOM element clicked
+//   # TODO: multi-level meu
+//   # TODO: respond to menu item changed
+
+// Bug: 
+//   # css animation is not right
+
+
+
+
+
+( function() {
+  class Menu extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
+        if (attr == 'class' && this.classList.contains('visible')) {
+          this.open();
+        }
+      });
+      this.hideMenu = this.close.bind(this); // so that hideMenu can be done from outside
+      document.addEventListener('click', this.hideMenu);
+    }
+
+    disconnectedCallback() {
+      document.removeEventListener('click', this.hideMenu);
+    }
+
+    open() {
+      // show only this
+      if (!this.classList.contains('visible')) { //  without, infinite loop, add <-> observe
+        this.classList.add('visible');
+      }
+      // hide all other menus
+      Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
+        (this.isSameNode(menu) === false) && menu.classList.remove('visible');
+      });
+      // When document is clicked, it closes all menus, but this remained to open
+      this.justShown = true; // in case when attribute is changed by outside of this
+      setTimeout(_ => this.justShown = false, 100);
+    }
+
+    close() {
+      if (!this.justShown && !this.contains(event.target)) {
+        this.classList.remove('visible');
+      }
+    }
+  }
+  
+  customElements.define('a-menu', Menu);
+})();
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nav_item_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+( function() {
+  class NavDrawer extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
+        if (attr === 'class') {
+          // if drawer shown, disable body scroll
+          document.body.style.overflow = this.classList.contains('visible') ? 'hidden' : '';
+        }
+      });
+      this.regroupedOnce = false;
+      this._regroupElements();
+    }
+
+    open() {
+      this.classList.add('visible');
+    }
+
+    close() {
+      this.classList.remove('visible');
+    }
+
+    _regroupElements() {
+      if (!this.regroupedOnce) {
+        let pageBlockerEl, contentsEl;
+        pageBlockerEl = document.createElement('div');
+        pageBlockerEl.setAttribute('class', 'page-blocker');
+        pageBlockerEl.addEventListener('click', () => this.close());
+        this.appendChild(pageBlockerEl);
+
+        contentsEl = document.createElement('div');
+        contentsEl.setAttribute('class', 'contents');
+        this.appendChild(contentsEl);
+
+        Array.from(this.children).forEach(el => {
+          if (!el.isSameNode(contentsEl) && !el.isSameNode(pageBlockerEl)) {
+            contentsEl.appendChild(el)
+          }
+        });
+      }
+      this.regroupedOnce = true;
+    }
+
+  }
+  
+  customElements.define('a-nav-drawer', NavDrawer);
+})();
+
+
+/***/ }),
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+( function() {
+  //https://material.io/guidelines/layout/structure.html#structure-app-bar
+
+  var iconSVG = `
+    <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+      <path class="checked" d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+      <path class="unchecked" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+    </svg>`;
+
+  class RadioButton extends HTMLElement {
+    connectedCallback() {
+      this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this.inputEl = this._addRealInput();
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
+        val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
+      });
+    }
+
+    _addRealInput() {
+      let inputEl = document.createElement('input');
+      inputEl.setAttribute("type", "radio");
+      Array.from(this.attributes).forEach( attr => {
+        if (this.inputAttrs.includes(attr.name) && attr.value !== null) {
+         inputEl.setAttribute(attr.name, attr.value);
+         (attr.name === 'id') && this.setAttribute('id', 'a-radio-button-'+attr.value);
+        }
+      })
+      this.appendChild(inputEl);
+      this.insertAdjacentHTML('beforeend', iconSVG)
+      return inputEl;
+    }
+
+  }
+  
+  customElements.define('a-radio-button', RadioButton); //name, class
+})();
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+(function() {
+  var SVG = `
+  <svg viewBox="0 0 32 32" width="32" height="32">
+    <circle cx="16" cy="16" r="11"></circle>
+    <polygon points="21.75,16 32.25,16 27,21.25"></polygon>
+  </svg>`;
+
+  class RefreshIndicator extends HTMLElement {
+
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this.insertAdjacentHTML('beforeend', SVG);
+    }
+
+  }
+  
+  customElements.define('a-refresh-indicator', RefreshIndicator);
+})();
+
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+( function() {
+  const HTML = `
+    <label for="__ID__">
+      <an-icon>search</i>
+    </label>
+    <span class="input-wrapper">
+      <input id="__ID__" autocomplete="off" placeholder="Search">
+      <an-icon class="clear">clear</i>
+    </span>
+  `;
+
+  class Search extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this.regroupedOnce = false;
+      this._regroupElements();
+      this._addEventListeners();
+    }
+
+    search(event) {
+      let inputWrapper = this.querySelector('.input-wrapper');
+      let inputEl = this.querySelector('input');
+
+      if (inputWrapper.classList.contains('visible')) {
+        let customEvent = new CustomEvent('search', event);
+        this.dispatchEvent(customEvent);
+      } else {
+        inputWrapper.classList.add('visible');
+        setTimeout(_ => inputEl.focus());
+      }
+    }
+
+    close() {
+      let inputWrapper = this.querySelector('.input-wrapper');
+      let inputEl = this.querySelector('input');
+
+      inputEl.value = '';
+      inputWrapper.classList.remove('visible');
+    }
+
+    _regroupElements() {
+      if (!this.regroupedOnce) {
+        let id = 'a-search-' + Math.round(Math.random()*Math.pow(10,9));
+        this.innerHTML = HTML.replace('__ID__', id);
+      }
+      this.regroupedOnce = true;
+    }
+
+    _addEventListeners() {
+      let searchIcon = this.querySelector('label');
+      let clearIcon = this.querySelector('.clear');
+      let inputEl = this.querySelector('input');
+      let inputWrapper = this.querySelector('.input-wrapper');
+
+      // when search icon is clicked, show input field
+      searchIcon.addEventListener('mousedown', _ => this.search());
+      // when input is not focused, hide input field
+      inputEl.addEventListener('blur', _ => this.close());
+
+      // when clear is pressed, clear input field
+      clearIcon.addEventListener('mousedown', function(event) {
+        inputEl.focus();
+        inputEl.value='';
+        event.preventDefault();
+      });
+
+      inputEl.addEventListener('keydown', event => {
+        (event.keyCode === 13) && this._performSearch();
+      })
+
+      // execute custom search function
+      this.addEventListener('search', _ => this._performSearch());
+    }
+
+    _performSearch() {
+      let inputEl = this.querySelector('input');
+      if (inputEl.value) {
+        let onSearch = this.getAttribute('on-search');
+        let func = new Function('keyword', onSearch);
+        func(inputEl.value);
+      }
+    }
+
+  }
+  
+  customElements.define('a-search', Search);
+})();
+
+/***/ }),
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -461,419 +1118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-( function() {
-  class BottomNavBar extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
-    }
-  }
-  
-  customElements.define('a-bottom-nav-bar', BottomNavBar);
-})();
-
-
-/***/ }),
-/* 9 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-(function() {
-
-  class Card extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-    }
-  }
-  
-  customElements.define('a-card', Card);
-})();
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-// dependant on an-icon
-( function() {
-
-  class Chip extends HTMLElement {
-
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      this._buildHTML();
-    }
-
-    _buildHTML() {
-      let avatar = this.getAttribute('avatar');
-      let text = this.getAttribute('text');
-      let removable = this.getAttribute('removable');
-      let onRemove = this.getAttribute('on-remove');
-
-      if (avatar) {
-        this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
-      }
-      if (text) {
-        this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
-      }
-      if (removable !== null) {
-        let removeEl = document.createElement('an-icon');
-        removeEl.classList.add('delete');
-        removeEl.innerHTML = 'clear';
-
-        removeEl.addEventListener('click', event => {
-          let customEvent = new CustomEvent('remove', event);
-          this.dispatchEvent(customEvent);
-        })
-
-        this.appendChild(removeEl);
-
-        this.addEventListener('remove', function(event) {
-          let func = new Function(onRemove);
-          func();
-          this.remove();
-        });
-      }
-    }
-
-  }
-  
-  customElements.define('a-chip', Chip);
-})();
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-( function() {
-  class NavDrawer extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
-        if (attr === 'class') {
-          // if drawer shown, disable body scroll
-          document.body.style.overflow = this.classList.contains('visible') ? 'hidden' : '';
-        }
-      });
-      this._regroupElements();
-    }
-
-    open() {
-      this.classList.add('visible');
-    }
-
-    close() {
-      this.classList.remove('visible');
-    }
-
-    _regroupElements() {
-      let pageBlockerEl, contentsEl;
-      pageBlockerEl = document.createElement('div');
-      pageBlockerEl.setAttribute('class', 'page-blocker');
-      pageBlockerEl.addEventListener('click', () => this.close());
-      this.appendChild(pageBlockerEl);
-
-      contentsEl = document.createElement('div');
-      contentsEl.setAttribute('class', 'contents');
-      this.appendChild(contentsEl);
-
-      Array.from(this.children).forEach(el => {
-        if (!el.isSameNode(contentsEl) && !el.isSameNode(pageBlockerEl)) {
-          contentsEl.appendChild(el)
-        }
-      });
-    }
-
-  }
-  
-  customElements.define('a-nav-drawer', NavDrawer);
-})();
-
-
-/***/ }),
-/* 12 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-// ref. 
-//   * https://material.io/guidelines/components/menus.html#menus-specs
-//   * https://material.io/components/web/catalog/menus/
-
-// observable attribute
-//  * visible
-
-// Requirements
-//   # observable attribute
-//     . visible
-//   # styling
-//     . z-index: 8
-//     . shadow: 1
-//     . padding: 8px 0px
-//   # positionalble: bottom-right, top-right,bottom-left(default), top-left
-//   # one DOM, one menu display
-//   # hide DOM, when DOM element clicked
-//   # TODO: multi-level meu
-//   # TODO: respond to menu item changed
-
-// Bug: 
-//   # css animation is not right
-
-
-
-
-( function() {
-  class Menu extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["c" /* observeAttrChange */])(this, (attr, val) => {
-        if (attr == 'class' && this.classList.contains('visible')) {
-          this.open();
-        }
-      });
-      this.hideMenu = this.close.bind(this); // so that hideMenu can be done from outside
-      document.addEventListener('click', this.hideMenu);
-    }
-
-    disconnectedCallback() {
-      document.removeEventListener('click', this.hideMenu);
-    }
-
-    open() {
-      // show only this
-      if (!this.classList.contains('visible')) { //  without, infinite loop, add <-> observe
-        this.classList.add('visible');
-      }
-      // hide all other menus
-      Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
-        (this.isSameNode(menu) === false) && menu.classList.remove('visible');
-      });
-      // When document is clicked, it closes all menus, but this remained to open
-      this.justShown = true; // in case when attribute is changed by outside of this
-      setTimeout(_ => this.justShown = false, 100);
-    }
-
-    close() {
-      if (!this.justShown && !this.contains(event.target)) {
-        this.classList.remove('visible');
-      }
-    }
-  }
-  
-  customElements.define('a-menu', Menu);
-})();
-
-
-/***/ }),
-/* 13 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-// dependant on an-icon
-( function() {
-  class NavItem extends HTMLElement {
-    connectedCallback() {
-      if (this.innerHTML) {
-        this.innerHTML=`<span class='text'>${this.innerHTML}</span>`;
-      }
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-
-      this.addEventListener('click', this.setActiveItem.bind(this));
-      this.icon = this.getAttribute('icon');
-      this.shortcut = this.getAttribute('shortcut');
-      if (this.icon) {
-        let isMDIcon = this.icon.match(/^[a-z_]+$/);
-        this.iconEl = document.createElement('an-icon');
-        if (isMDIcon) {
-          this.iconEl.innerHTML = this.icon;
-        } else {
-          this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
-        }
-        this.insertBefore(this.iconEl, this.firstChild)
-      }
-      if (this.shortcut) {
-        this.shortcutEl = document.createElement('div');
-        this.shortcutEl.classList.add('shortcut');
-        this.shortcutEl.innerHTML = this.shortcut;
-        this.appendChild(this.shortcutEl);
-      }
-    }
-
-    setActiveItem(event) {
-      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
-        el.classList.remove('active');
-      }); 
-      this.classList.add('active');
-    }
-  }
-  
-  customElements.define('a-nav-item', NavItem);
-})();
-
-
-/***/ }),
-/* 14 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-//dependant on a-button
-( function() {
-
-  class Dialog extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      this._regroupElements();
-    }
-    
-    open(data) {
-      //replace title, content, actions with data given
-      data && this._updateContent(data);
-
-      // move to document-level for z-indexing to work
-      this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
-      document.body.appendChild(this);
-      document.body.style.overflow = 'hidden';
-      this.classList.add('visible');
-    }
-
-    close() {
-      // move back to the original position
-      this.originalPos.parent.insertBefore(this, this.originalPos.nextSibling);
-      document.body.style.overflow = '';
-      this.classList.remove('visible');
-    }
- 
-    _regroupElements() {
-      let pageBlockerEl, containerEl;
-      pageBlockerEl = document.createElement('div');
-      pageBlockerEl.setAttribute('class', 'page-blocker');
-      pageBlockerEl.addEventListener('click', () => {
-        this.close();
-      });
-      this.appendChild(pageBlockerEl);
-
-      containerEl = document.createElement('div');
-      containerEl.setAttribute('class', 'container');
-      this.appendChild(containerEl);
-
-      Array.from(this.children).forEach(el => {
-        if (el.tagName !== 'STYLE' && !el.isSameNode(containerEl) && !el.isSameNode(pageBlockerEl)) {
-          containerEl.appendChild(el)
-        }
-      });
-    }
-
-    _updateContent(data) {
-      let titleEl, contentEl, actionsEl;
-      let appendEl = className  => {
-        let el = document.createElement('div');
-        el.classList.add(className);
-        this.appendChild(el);
-        return el;
-      }
-      if (data.title !== undefined) {
-        titleEl = this.querySelector('.title') || appendEl('title');
-        titleEl.innerHTML = data.title;
-      }
-      if (data.contents !== undefined) {
-        contentEl = this.querySelector('.content') || appendEl('content');
-        contentEl.innerHTML = data.contents;
-      }
-      if (data.actions !== undefined) {
-        actionsEl = this.querySelector('.actions') || appendEl('actions');
-        actionsEl.innerHTML = '';
-        for (var key in data.actions) {
-          let buttonEl = document.createElement('a-button');
-          buttonEl.innerHTML = key;
-          buttonEl.addEventListener('click', _ => {
-            data.actions[key]();
-            this.close();
-          });
-          actionsEl.appendChild(buttonEl);
-        }
-      }
-    }
-  }
-  
-  customElements.define('a-dialog', Dialog);
-})();
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-(function() {
-  var SVG = `
-  <svg viewBox="0 0 32 32" width="32" height="32">
-    <circle cx="16" cy="16" r="11"></circle>
-    <polygon points="21.75,16 32.25,16 27,21.25"></polygon>
-  </svg>`;
-
-  class RefreshIndicator extends HTMLElement {
-
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      this.insertAdjacentHTML('beforeend', SVG);
-    }
-
-  }
-  
-  customElements.define('a-refresh-indicator', RefreshIndicator);
-})();
-
-
-/***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -898,7 +1143,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       let el = document.createElement('div');
       let thisWidth  = this.getBoundingClientRect().width;
       let left = (
-          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
           - this.getBoundingClientRect().left
         ) / thisWidth;
 
@@ -918,26 +1163,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
      * animate the indicator below the active tab
      */
     _animateIndicator() {
-      let indicatorEl = this.indicatorEl;
-      let numTab = this.querySelectorAll('a-nav-item').length;
-      let thisWidth  = this.getBoundingClientRect().width;
-      let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
-      let indicatorLeftTo = (
-          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
-          - this.getBoundingClientRect().left
-        ) / thisWidth;
-      let move = indicatorLeftTo*100 - indicatorLeftFrom;
+      setTimeout(_ => { // wait for a-nav-item.active changes
+        let indicatorEl = this.indicatorEl;
+        let numTab = this.querySelectorAll('a-nav-item').length;
+        let thisWidth  = this.getBoundingClientRect().width;
+        let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
+        let indicatorLeftTo = (
+            (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
+            - this.getBoundingClientRect().left
+          ) / thisWidth;
+        let move = indicatorLeftTo*100 - indicatorLeftFrom;
 
-      indicatorEl.style.width = parseFloat(100/numTab) + '%';
+        indicatorEl.style.width = parseFloat(100/numTab) + '%';
 
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["b" /* animate */])({
-        duration: 450,
-        timing: function(timeFraction) {
-          return 1 - Math.sin(Math.acos(timeFraction));
-        },
-        draw: function(progress) {
-          indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
-        }
+        Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["b" /* animate */])({
+          duration: 450,
+          timing: function(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+          },
+          draw: function(progress) {
+            indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
+          }
+        });
       });
     }
   
@@ -948,7 +1195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1130,7 +1377,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 18 */
+/* 23 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1140,6 +1387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
+// FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {
 
   class Tooltip extends HTMLElement {
@@ -1201,113 +1449,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   }
 
   customElements.define('a-tooltip', Tooltip);
-})();
-
-
-/***/ }),
-/* 19 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-( function() {
-  class Icon extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      let img = this.getAttribute('img');
-      if (img) {
-        this.style.backgroundImage = `url(${img})`;
-        this.innerHTML = 'favorite';
-      }
-    }
-  }
-
-  customElements.define('an-icon', Icon);
-})();
-
-
-/***/ }),
-/* 20 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-( function() {
-  class ExpansionPanel extends HTMLElement {
-    connectedCallback() {
-      let titleEl = this.querySelector('.title');
-
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
-      titleEl.addEventListener('click', _ => {
-        Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
-          if (panelEl.isSameNode(this)) {
-            panelEl.classList.toggle('expanded');
-          } else {
-            panelEl.classList.remove('expanded');
-          }
-        })
-      });
-    }
-
-    _showThisPanelOnly(event) {
-    }
-  }
-  
-  customElements.define('an-expansion-panel', ExpansionPanel);
-})();
-
-
-/***/ }),
-/* 21 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-(function() {
-  class GridList extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
-    }
-  }
-  
-  customElements.define('a-grid-list', GridList);
-})();
-
-
-/***/ }),
-/* 22 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
-
-
-
-(function() {
-  class List extends HTMLElement {
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-    }
-  }
-  
-  customElements.define('a-list', List);
 })();
 
 

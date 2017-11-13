@@ -24,8 +24,8 @@
 
       .demo { position: relative; }
       .view-source ~ label { padding: 12px 0; display: inline-block; }
-      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
-      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      .view-source ~ .code { max-height: 0; padding: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 0.4s ease-out; overflow: auto;}
       a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
     </style>
     <script>
@@ -38,6 +38,9 @@
 
     <script type="module" src="../search/main.js"></script>
     <link rel="stylesheet" class="search" href="../search/style.css">
+
+    <script type="module" src="../app-bar/main.js"></script>
+    <link rel="stylesheet" class="app-bar" href="../app-bar/style.css">
 
     <script type="module" src="../card/main.js"></script>
     <link rel="stylesheet" class="card" href="../card/style.css">
@@ -66,6 +69,20 @@
 
     <template class="dark">
       <a-search on-search="alert(keyword)" class="dark-bg"></a-search>
+    </template>
+
+    <template class="app-bar">
+      <an-app-bar>
+        <div class="nav-icon">
+          <i class="material-icons icon">menu</i>
+        </div>
+        <h1 class="title">App Bar</h1>
+        <div class="icons">
+          <a-search class="dark-bg" on-search="alert(keyword)"></a-search>
+          <i class="material-icons icon">favorite</i>
+          <i class="material-icons icon">more_vert</i>
+        </div>
+      </an-app-bar>
     </template>
 
     <div class="container">
@@ -111,7 +128,7 @@
 
       <a-card class="dark">
         <div class="title">
-          <h2>Right-Side Example</h2>
+          <h2>In Dark Background</h2>
         </div>
         <div class="text">
           <div class="demo dark-bg" style="padding: 12px"></div>
@@ -123,6 +140,21 @@
         </div>
       </a-card>
       <script>setDemo('template.dark', 'a-card.dark')</script>
+
+      <a-card class="app-bar">
+        <div class="title">
+          <h2>In App Bar</h2>
+        </div>
+        <div class="text">
+          <div class="demo" style="padding: 12px"></div>
+          <div>
+            <a-switch id="vs0004" class="view-source" checked></a-switch>
+            <label for="vs0004"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.app-bar', 'a-card.app-bar')</script>
     </div>
 
     <div class="container">

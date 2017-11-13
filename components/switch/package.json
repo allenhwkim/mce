@@ -1,6 +1,6 @@
 {
-  "name": "@custom-elements/switch",
-  "version": "0.2.1",
+  "name": "@custom-element/switch",
+  "version": "0.2.2",
   "description": "switch with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -20,7 +20,9 @@
     "design",
     "html"
   ],
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {

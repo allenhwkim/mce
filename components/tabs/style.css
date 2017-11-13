@@ -9,9 +9,7 @@ a-tabs {
   font-size: 0px;
   justify-content: space-between;
   width: 100%;
-}
-a-tabs > * {
-  flex: 1;
+  max-width: 1024px;
 }
 a-tabs > .indicator {
   position: absolute;
@@ -22,10 +20,10 @@ a-tabs > .indicator {
 }
 
 a-tabs > a-nav-item {
-  max-width: 264px;
   min-width: 72px; /* 160px for larger views */
   text-align: center;
   min-height: 48px;
+  flex: 1;
 }
 a-tabs > a-nav-item.active .icon,
 a-tabs > a-nav-item.active an-icon,

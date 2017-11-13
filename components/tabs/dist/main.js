@@ -90,7 +90,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       let el = document.createElement('div');
       let thisWidth  = this.getBoundingClientRect().width;
       let left = (
-          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
+          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
           - this.getBoundingClientRect().left
         ) / thisWidth;
 
@@ -110,26 +110,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
      * animate the indicator below the active tab
      */
     _animateIndicator() {
-      let indicatorEl = this.indicatorEl;
-      let numTab = this.querySelectorAll('a-nav-item').length;
-      let thisWidth  = this.getBoundingClientRect().width;
-      let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
-      let indicatorLeftTo = (
-          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
-          - this.getBoundingClientRect().left
-        ) / thisWidth;
-      let move = indicatorLeftTo*100 - indicatorLeftFrom;
+      setTimeout(_ => { // wait for a-nav-item.active changes
+        let indicatorEl = this.indicatorEl;
+        let numTab = this.querySelectorAll('a-nav-item').length;
+        let thisWidth  = this.getBoundingClientRect().width;
+        let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
+        let indicatorLeftTo = (
+            (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
+            - this.getBoundingClientRect().left
+          ) / thisWidth;
+        let move = indicatorLeftTo*100 - indicatorLeftFrom;
 
-      indicatorEl.style.width = parseFloat(100/numTab) + '%';
+        indicatorEl.style.width = parseFloat(100/numTab) + '%';
 
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["b" /* animate */])({
-        duration: 450,
-        timing: function(timeFraction) {
-          return 1 - Math.sin(Math.acos(timeFraction));
-        },
-        draw: function(progress) {
-          indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
-        }
+        Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["b" /* animate */])({
+          duration: 450,
+          timing: function(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+          },
+          draw: function(progress) {
+            indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
+          }
+        });
       });
     }
   
@@ -217,7 +219,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {

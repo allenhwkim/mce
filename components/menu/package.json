@@ -1,5 +1,5 @@
 {
-  "name": "@custom-elements/menu",
+  "name": "@custom-element/menu",
   "version": "0.2.2",
   "description": "menu with MD/CE",
   "main": "dist/main.min.js",

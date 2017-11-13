@@ -1,6 +1,6 @@
 {
-  "name": "@custom-elements/app-bar",
-  "version": "0.2.2",
+  "name": "@custom-element/app-bar",
+  "version": "0.2.3",
   "description": "app-bar with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -20,7 +20,9 @@
     "design",
     "html"
   ],
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {

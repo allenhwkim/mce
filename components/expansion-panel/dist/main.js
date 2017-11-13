@@ -81,14 +81,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       let titleEl = this.querySelector('.title');
 
       Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this);
-      titleEl.addEventListener('click', this._showThisPanelOnly.bind(this));
+      titleEl.addEventListener('click', _ => {
+        Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
+          if (panelEl.isSameNode(this)) {
+            panelEl.classList.toggle('expanded');
+          } else {
+            panelEl.classList.remove('expanded');
+          }
+        })
+      });
     }
 
     _showThisPanelOnly(event) {
-      Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
-        this.classList.add('expanded');
-        !panelEl.isSameNode(this) && panelEl.classList.remove('expanded');
-      })
     }
   }
   
@@ -174,7 +178,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {

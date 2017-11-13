@@ -67,4 +67,5 @@ an-app-bar an-icon:active:after {
 
 an-app-bar .icons > * {
   display: inline-block;
+  vertical-align: middle;
 }

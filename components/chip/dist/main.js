@@ -60,70 +60,11 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(2);
-
-
-
-// dependant on an-icon
-( function() {
-
-  class Chip extends HTMLElement {
-
-    connectedCallback() {
-      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
-      this._buildHTML();
-    }
-
-    _buildHTML() {
-      let avatar = this.getAttribute('avatar');
-      let text = this.getAttribute('text');
-      let removable = this.getAttribute('removable');
-      let onRemove = this.getAttribute('on-remove');
-
-      if (avatar) {
-        this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
-      }
-      if (text) {
-        this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
-      }
-      if (removable !== null) {
-        let removeEl = document.createElement('an-icon');
-        removeEl.classList.add('delete');
-        removeEl.innerHTML = 'clear';
-
-        removeEl.addEventListener('click', event => {
-          let customEvent = new CustomEvent('remove', event);
-          this.dispatchEvent(customEvent);
-        })
-
-        this.appendChild(removeEl);
-
-        this.addEventListener('remove', function(event) {
-          let func = new Function(onRemove);
-          func();
-          this.remove();
-        });
-      }
-    }
-
-  }
-  
-  customElements.define('a-chip', Chip);
-})();
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports) {
 
 /**
@@ -189,7 +130,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -200,7 +141,7 @@ function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
@@ -246,6 +187,100 @@ function animate({duration, draw, timing}) {
   });
 }
     
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__icon_main_js__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_js__ = __webpack_require__(1);
+
+
+
+
+// dependant on an-icon
+( function() {
+
+  class Chip extends HTMLElement {
+
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_2__util_js__["a" /* addStyleSheet */])(this); //id, url
+      this._buildHTML();
+    }
+
+    _buildHTML() {
+      let avatar = this.getAttribute('avatar');
+      let text = this.getAttribute('text');
+      let removable = this.getAttribute('removable');
+      let onRemove = this.getAttribute('on-remove');
+
+      if (avatar) {
+        if (avatar.match(/\.(png|jpg|gif|svg)$/)) {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar" style="background-image:url(${avatar})"></div>`);
+        } else {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
+        }
+      }
+
+      if (text) {
+        this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
+      }
+
+      if (removable !== null) {
+        let removeEl = document.createElement('an-icon');
+        removeEl.classList.add('delete');
+        removeEl.innerHTML = 'clear';
+
+        removeEl.addEventListener('click', event => {
+          let customEvent = new CustomEvent('remove', event);
+          this.dispatchEvent(customEvent);
+        })
+
+        this.appendChild(removeEl);
+
+        this.addEventListener('remove', function(event) {
+          let func = new Function(onRemove);
+          func();
+          this.remove();
+        });
+      }
+    }
+
+  }
+  
+  customElements.define('a-chip', Chip);
+})();
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ce_polyfill_js__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_js__ = __webpack_require__(1);
+
+
+
+( function() {
+  class Icon extends HTMLElement {
+    connectedCallback() {
+      Object(__WEBPACK_IMPORTED_MODULE_1__util_js__["a" /* addStyleSheet */])(this); //id, url
+      let img = this.getAttribute('img');
+      if (img) {
+        this.style.backgroundImage = `url(${img})`;
+        this.innerHTML = 'favorite';
+      }
+    }
+  }
+
+  customElements.define('an-icon', Icon);
+})();
+
 
 /***/ })
 /******/ ]);
