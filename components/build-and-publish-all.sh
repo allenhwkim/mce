@@ -1,0 +1,23 @@
+set -x
+cd app-bar           && npm run build && npm version patch && npm publish  && cd ..
+cd bottom-nav-bar    && npm run build && npm version patch && npm publish  && cd ..
+cd button            && npm run build && npm version patch && npm publish  && cd ..
+cd card              && npm run build && npm version patch && npm publish  && cd ..
+cd checkbox          && npm run build && npm version patch && npm publish  && cd ..
+cd chip              && npm run build && npm version patch && npm publish  && cd ..
+cd core              && npm run build && npm version patch && npm publish  && cd ..
+cd dialog            && npm run build && npm version patch && npm publish  && cd ..
+cd expansion-panel   && npm run build && npm version patch && npm publish  && cd ..
+cd grid-list         && npm run build && npm version patch && npm publish  && cd ..
+cd icon              && npm run build && npm version patch && npm publish  && cd ..
+cd list              && npm run build && npm version patch && npm publish  && cd ..
+cd menu              && npm run build && npm version patch && npm publish  && cd ..
+cd nav-drawer        && npm run build && npm version patch && npm publish  && cd ..
+cd nav-item          && npm run build && npm version patch && npm publish  && cd ..
+cd radio-button      && npm run build && npm version patch && npm publish  && cd ..
+cd refresh-indicator && npm run build && npm version patch && npm publish  && cd ..
+cd search            && npm run build && npm version patch && npm publish  && cd ..
+cd switch            && npm run build && npm version patch && npm publish  && cd ..
+cd tabs              && npm run build && npm version patch && npm publish  && cd ..
+cd text-field        && npm run build && npm version patch && npm publish  && cd ..
+cd tooltip           && npm run build && npm version patch && npm publish  && cd ..
