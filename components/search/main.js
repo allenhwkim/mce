@@ -4,7 +4,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
 
 ( function() {
   const HTML = `
-    <label for="__ID__">
+    <label for="__ID__" tabindex="0">
       <an-icon>search</i>
     </label>
     <span class="input-wrapper">
@@ -21,20 +21,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       this._addEventListeners();
     }
 
-    search(event) {
-      let inputWrapper = this.querySelector('.input-wrapper');
-      let inputEl = this.querySelector('input');
-
-      if (inputWrapper.classList.contains('visible')) {
-        let customEvent = new CustomEvent('search', event);
-        this.dispatchEvent(customEvent);
-      } else {
-        inputWrapper.classList.add('visible');
-        setTimeout(_ => inputEl.focus());
-      }
-    }
-
-    close() {
+   close() {
       let inputWrapper = this.querySelector('.input-wrapper');
       let inputEl = this.querySelector('input');
 
@@ -57,9 +44,27 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       let inputWrapper = this.querySelector('.input-wrapper');
 
       // when search icon is clicked, show input field
-      searchIcon.addEventListener('mousedown', _ => this.search());
+      searchIcon.addEventListener('mousedown', _ => {
+        let inputWrapper = this.querySelector('.input-wrapper');
+
+        if (inputWrapper.classList.contains('visible') && inputEl.value) {
+          let customEvent = new CustomEvent('search', event);
+          this.dispatchEvent(customEvent);
+        } else {
+          inputWrapper.classList.toggle('visible');
+          setTimeout(_ => inputEl.focus());
+        }
+      });
+
+      searchIcon.addEventListener('keydown', _ => {
+        (event.key === ' ' || event.key === 'Enter') && inputWrapper.classList.toggle('visible');
+      });
+
       // when input is not focused, hide input field
       inputEl.addEventListener('blur', _ => this.close());
+      inputEl.addEventListener('keydown', event => {
+        (event.key === 'Enter') && this._executeOnSearch();
+      })
 
       // when clear is pressed, clear input field
       clearIcon.addEventListener('mousedown', function(event) {
@@ -68,15 +73,11 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
         event.preventDefault();
       });
 
-      inputEl.addEventListener('keydown', event => {
-        (event.keyCode === 13) && this._performSearch();
-      })
-
       // execute custom search function
-      this.addEventListener('search', _ => this._performSearch());
+      this.addEventListener('search', _ => this._executeOnSearch());
     }
 
-    _performSearch() {
+    _executeOnSearch() {
       let inputEl = this.querySelector('input');
       if (inputEl.value) {
         let onSearch = this.getAttribute('on-search');

@@ -24,6 +24,7 @@ a-tabs > a-nav-item {
   text-align: center;
   min-height: 48px;
   flex: 1;
+  cursor: pointer;
 }
 a-tabs > a-nav-item.active .icon,
 a-tabs > a-nav-item.active an-icon,

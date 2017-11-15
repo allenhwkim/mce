@@ -54,6 +54,7 @@ a-chip > .delete {
   text-align: center;
   font-size: 12px;
   margin: 4px 4px 4px -8px;
+  cursor: pointer;
 }
 a-chip:hover > .delete {
   background-color: var(--theme-color-0, #FFFFFF);

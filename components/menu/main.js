@@ -35,7 +35,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
         }
       });
       this.hideMenu = this.close.bind(this); // so that hideMenu can be done from outside
-      document.addEventListener('click', this.hideMenu);
+      this._addEventListener();
     }
 
     disconnectedCallback() {
@@ -60,6 +60,13 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       if (!this.justShown && !this.contains(event.target)) {
         this.classList.remove('visible');
       }
+    }
+
+    _addEventListener() {
+      document.addEventListener('click', this.hideMenu);
+      this.addEventListener('close', _ => {
+        this.classList.remove('visible');
+      }); //child can fire close. then close it
     }
   }
   

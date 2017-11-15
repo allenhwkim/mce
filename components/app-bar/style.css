@@ -5,7 +5,7 @@
 }
 
 body > an-app-bar.fixed + * {
-  margin: 56px 0;
+  margin-top: 56px;
   padding: 16px;
   background-color: var(--theme-color-100, #f5f5f5);
 }
@@ -68,4 +68,15 @@ an-app-bar an-icon:active:after {
 an-app-bar .icons > * {
   display: inline-block;
   vertical-align: middle;
+}
+
+@media only screen and (min-width : 1024px) {
+  an-app-bar {
+    left: 320px;
+    right: 0;
+    width: auto; 
+  }
+  an-app-bar > .nav-icon {
+    visibility: hidden;
+  }
 }

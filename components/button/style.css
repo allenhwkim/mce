@@ -28,15 +28,15 @@ a-button {
   color: var(--theme-text-color-800, #424242);
 }
 
+a-button:focus {
+  outline: auto;
+}
+
 a-button button { /* make real button not-visible */
   padding: 0;
   border: none;
 }
 
-a-button:focus {
-  outline: none;
-  background-color: var(--theme-color-300, #e0e0e0);
-}
 a-button:active {
   background-color: var(--theme-color-400, #bdbdbd);
 }

@@ -8,11 +8,15 @@ a-nav-item {
   display: block;
   color: var(--theme-text-color-900, #212121); 
 }
+a-nav-item[href] {
+  cursor: pointer;
+}
 a-nav-item.disabled,
 a-nav-item.disabled an-icon,
 a-nav-item.disabled .icon,
 a-nav-item.disabled .text {
   color: var(--theme-text-color-500, #9e9e9e);
   pointer-events: none;
+  cursor: none;
 }
 

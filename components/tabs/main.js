@@ -1,5 +1,5 @@
 import '../ce-polyfill.js';
-import {addStyleSheet, animate} from '../util.js';
+import {addStyleSheet, animate, setTabbable} from '../util.js';
 
 ( function() {
   class Tabs extends HTMLElement {
@@ -29,6 +29,7 @@ import {addStyleSheet, animate} from '../util.js';
     _registerNavItemClick() {
       Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
         navItem.addEventListener('click', this._animateIndicator.bind(this));
+        //setTabbable(navItem, _ => navItem.click());
       })
     }
 

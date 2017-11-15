@@ -32,6 +32,7 @@ import {addStyleSheet} from '../util.js';
 
       if (removable !== null) {
         let removeEl = document.createElement('an-icon');
+        removeEl.setAttribute('tabindex', '0');
         removeEl.classList.add('delete');
         removeEl.innerHTML = 'clear';
 

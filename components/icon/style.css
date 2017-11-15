@@ -22,6 +22,9 @@ an-icon, .an-icon {
   user-select: none;
   vertical-align: middle;
 }
+an-icon[href] {
+  cursor: pointer;
+}
 
 an-icon.small { font-size: 18px; }
 an-icon.big { font-size: 36px; }

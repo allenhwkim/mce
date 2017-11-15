@@ -47,4 +47,18 @@ export function animate({duration, draw, timing}) {
     }
   });
 }
-    
+
+/** 
+ * set the given element tabbable by adding tabindex, and click/ENTER event
+ */
+export function setTabbable(el, fn) {
+  el.setAttribute('tabindex', '0');
+  el.addEventListener('keypress', function(event) {
+    console.log(event.key, event.key === ' ', event.key === 'Enter', fn);
+    if (event.key === ' ' || event.key === 'Enter') {
+      fn && fn();
+      event.preventDefault();
+    }
+  });
+}
+  

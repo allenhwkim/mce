@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="../../themes/grey.css"> <!-- theme -->
-    <link rel="stylesheet" href="./style.css"> <!-- my application styles -->
 
     <!-- For Development -->
     <!-- <script type="module" src="../core/index.js"></script> -->
@@ -112,9 +111,16 @@
         background-color: var(--theme-color-600, #757575);
         color: var(--theme-text-color-0, #ffffff);
       }
+
       main > * {
         max-width: 1024px;
         margin: 0 auto;
+      }
+
+      @media only screen and (min-width : 1024px) {
+        main {
+          margin-left: 320px;
+        }
       }
     </style>
   </head>
@@ -130,22 +136,23 @@
         <an-icon>favorite</an-icon>
         <an-icon onclick="showMenu()">more_vert</an-icon>
         <a-menu id="app-bar-menu" position="bottom-right">
-          <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+          <a-nav-item href="#" icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
           <hr>
-          <a-nav-item class="disabled">Disabled</a-nav-item>
-          <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
-          <a-nav-item icon="search">nav-item text</a-nav-item>
+          <a-nav-item href="#" class="disabled">Disabled</a-nav-item>
+          <a-nav-item href="#" shortcut="ctrl-d">nav-item text</a-nav-item>
+          <a-nav-item href="#" icon="search">nav-item text</a-nav-item>
         </a-menu>
       </div>
     </an-app-bar>
 
     <main>
       <a-nav-drawer id="nav-drawer">
-        <a-nav-item icon="favorite">Favourite</a-nav-item>
-        <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
-        <a-nav-item>Alarm</a-nav-item>
+        <h2 class="dark-bg" style="margin: 0; height:56px; line-height: 56px; padding: 0 18px">Custom Element</h2>
+        <a-nav-item href="#" icon="favorite">Favourite</a-nav-item>
+        <a-nav-item href="#" icon="search" class="disabled">Disabled</a-nav-item>
+        <a-nav-item href="#">Alarm</a-nav-item>
         <hr/>
-        <a-nav-item icon="music_note">Music</a-nav-item>
+        <a-nav-item href="#" icon="music_note">Music</a-nav-item>
       </a-nav-drawer>
 
       <a-card>
@@ -425,7 +432,7 @@
         </div>
         <div class="text">
           <h3>Light Background</h3>
-          Small: <an-icon class="small">face</an-icon>
+          Small: <an-icon class="small" href="#face">face</an-icon>
           Default: <an-icon>face</an-icon>
           Big: <an-icon class="big">face</an-icon>
           Double: <an-icon class="double">face</an-icon>

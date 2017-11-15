@@ -1,6 +1,6 @@
 import '../ce-polyfill.js';
 import '../icon/main.js';
-import {addStyleSheet} from '../util.js';
+import {addStyleSheet, setTabbable} from '../util.js';
 
 // dependant on an-icon
 ( function() {
@@ -9,6 +9,7 @@ import {addStyleSheet} from '../util.js';
       addStyleSheet(this); //id, url
       this.regroupedOnce = false;
       this._regroupElements();
+      // !this.classList.contains('disabled') && setTabbable(this, this.setActiveItem.bind(this));
     }
 
     setActiveItem(event) {
@@ -16,6 +17,16 @@ import {addStyleSheet} from '../util.js';
         el.classList.remove('active');
       }); 
       this.classList.add('active');
+
+      let href = this.getAttribute('href');
+      if (href) {
+        window.location.href = href; //with href, go to the given url, 
+        //with href, close it if the container is a-nav-drawer or a-menu
+        let customEvent = new CustomEvent('close', event);
+        this.dispatchEvent(customEvent);
+        event.preventDefault();
+        console.log('Why is this called twice????');
+      }
     }
 
     _regroupElements() {

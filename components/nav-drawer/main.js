@@ -41,6 +41,7 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
             contentsEl.appendChild(el)
           }
         });
+        this.addEventListener('close', _ => this.close()); //child can fire close. then close it
       }
       this.regroupedOnce = true;
     }

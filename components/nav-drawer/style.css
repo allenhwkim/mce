@@ -73,3 +73,18 @@ a-nav-drawer a-nav-item an-icon {
   color: var(--theme-text-color-500, #9e9e9e);
   vertical-align: middle;
 }
+
+@media only screen and (min-width : 1024px) {
+  a-nav-drawer .page-blocker {
+    display: none;
+  }
+  a-nav-drawer:not(.visible) {
+    visibility: visible;
+  }
+  a-nav-drawer:not(.visible) .contents {
+    left: 0;
+    transform: translateX(0);
+    transition: var(--theme-animation-in, all .3s ease-in);
+  }
+}
+ 
