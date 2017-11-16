@@ -97,6 +97,16 @@
         Image: <an-icon class="reactive double" img="ali.connors.jpg"></an-icon>
       </div>
     </template>
+    <template class="image">
+      <div>
+        Default: <an-icon class="" img="ali.connors.jpg"></an-icon>
+        Small: <an-icon img="ali.connors.jpg" class="small"></an-icon>
+        Big: <an-icon img="ali.connors.jpg" class="big"></an-icon>
+        Double: <an-icon img="ali.connors.jpg" class="double"></an-icon>
+        Circle: <an-icon img="ali.connors.jpg" class="circle"></an-icon>
+        Square: <an-icon img="ali.connors.jpg" class="square"></an-icon>
+      </div>
+    </template>
     <template class="dark">
       <div>
         Small: <an-icon class="dark-bg small">face</an-icon>
@@ -186,6 +196,19 @@
         </div>
       </a-card>
       <script>setDemo('template.reactive', 'a-card.reactive')</script>
+
+      <a-card class="image">
+        <div class="title"><h2>Reactive Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vsimg" class="view-source"></a-switch>
+            <label for="vsimg"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.image', 'a-card.image')</script>
 
       <a-card class="dark">
         <div class="title"><h2>Icons In Dark Background</h2></div>

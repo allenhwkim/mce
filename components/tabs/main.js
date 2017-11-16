@@ -1,4 +1,5 @@
 import '../ce-polyfill.js';
+import '../nav-item/main.js';
 import {addStyleSheet, animate, setTabbable} from '../util.js';
 
 ( function() {

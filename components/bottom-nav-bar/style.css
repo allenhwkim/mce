@@ -51,3 +51,14 @@ a-bottom-nav-bar a-nav-item .an-icon,
 a-bottom-nav-bar a-nav-item an-icon {
   display: block;
 }
+
+/**
+ * desktop size
+ */
+@media only screen and (min-width : 1024px) {
+  a-bottom-nav-bar {
+    left: 320px;
+    right: 0;
+    width: auto; 
+  }
+}

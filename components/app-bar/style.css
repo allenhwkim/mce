@@ -43,7 +43,7 @@ an-app-bar > .title {
 }
 an-app-bar .icon,
 an-app-bar an-icon {
-  padding: 16px;
+  margin: 16px;
 }
 an-app-bar .icon:after,
 an-app-bar an-icon:after {
@@ -70,6 +70,9 @@ an-app-bar .icons > * {
   vertical-align: middle;
 }
 
+/**
+ * desktop size
+ */
 @media only screen and (min-width : 1024px) {
   an-app-bar {
     left: 320px;

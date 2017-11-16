@@ -1,3 +1,14 @@
+## Regroupped Custom Elements
+
+  * dialog
+    . create a page-blocker, and move the main contents to container
+  * nav-drawer
+    . create a page-blocker, and move the main contents to container
+  * nav-item
+    . crete icon, text, and shortcut elements based on the attributes given 
+  * search
+    . create label, input field, and clear icon 
+
 When use custom element w/o shadow DOM, there must be a way to prevent style bleeding.
 
 FlexBox Examples

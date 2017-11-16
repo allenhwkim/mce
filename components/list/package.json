@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/list",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "list with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -20,7 +20,9 @@
     "design",
     "html"
   ],
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {

@@ -8,8 +8,13 @@ import {addStyleSheet, setTabbable} from '../util.js';
     connectedCallback() {
       addStyleSheet(this); //id, url
       this.regroupedOnce = false;
+      this.clickListener = this.setActiveItem.bind(this);
       this._regroupElements();
       // !this.classList.contains('disabled') && setTabbable(this, this.setActiveItem.bind(this));
+    }
+
+    disconnectedCallback() {
+      this.removeEventListener('click', this.clickListener);
     }
 
     setActiveItem(event) {
@@ -25,7 +30,6 @@ import {addStyleSheet, setTabbable} from '../util.js';
         let customEvent = new CustomEvent('close', event);
         this.dispatchEvent(customEvent);
         event.preventDefault();
-        console.log('Why is this called twice????');
       }
     }
 
@@ -34,7 +38,7 @@ import {addStyleSheet, setTabbable} from '../util.js';
         if (!this.querySelector('span.text')) {
           this.innerHTML = `<span class="text">${this.innerHTML}</span>`;
         }
-        this.addEventListener('click', this.setActiveItem.bind(this));
+        this.addEventListener('click', this.clickListener);
         this.icon = this.getAttribute('icon');
         this.shortcut = this.getAttribute('shortcut');
         if (this.icon && !this.querySelector('an-icon')) {

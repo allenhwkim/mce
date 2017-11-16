@@ -84,4 +84,9 @@ an-icon[img] {
   color: transparent !important;
   background-size: cover;
   border-radius: 50%;
+  background-color: transparent !important;
+  background-position: center center; 
+  background-repeat: no-repeat
 }
+an-icon[img].circle { border-radius: 50%; }
+an-icon[img].square { border-radius: 10%; }

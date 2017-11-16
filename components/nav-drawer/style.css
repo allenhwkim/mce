@@ -33,6 +33,9 @@ a-nav-drawer .contents {
   width: calc(100vw - var(--theme-height-app-bar, 56px));
   z-index: 16;
 }
+a-nav-drawer .contents .title {
+  padding: 8px 16px;
+}
 a-nav-drawer.visible .contents {
   left: 0;
   transform: translateX(0);
