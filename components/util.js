@@ -2,7 +2,7 @@ export function addStyleSheet(el, url) {
   let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
     return (index !== 0 ? '-' : '') + char.toLowerCase();
   });
-  url = url || `https://unpkg.com/@custom-elements/${id}/dist/style.css`;
+  url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
 
   // ce-core.js injects ce-core.css, so no need to load
   if (!document.querySelector(`script[src$="ce-core.js"], script[src$="ce-core.min.js"], link.${id}`)) {
@@ -47,4 +47,18 @@ export function animate({duration, draw, timing}) {
     }
   });
 }
-    
+
+/** 
+ * set the given element tabbable by adding tabindex, and click/ENTER event
+ */
+export function setTabbable(el, fn) {
+  el.setAttribute('tabindex', '0');
+  el.addEventListener('keypress', function(event) {
+    console.log(event.key, event.key === ' ', event.key === 'Enter', fn);
+    if (event.key === ' ' || event.key === 'Enter') {
+      fn && fn();
+      event.preventDefault();
+    }
+  });
+}
+  

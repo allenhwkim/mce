@@ -1,4 +1,5 @@
 /*https://material.io/guidelines/components/tooltips.html#tooltips-tooltips-mobile*/
+/* NOTE: ARIA implementation http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview */
 a-tooltip {
   position: absolute;
   visibility: hidden;
@@ -15,4 +16,5 @@ a-tooltip.visible {
   visibility: visible;
   transition: all .2s ease .1s;
   z-index: 24;
+  opacity: 0.9;
 }

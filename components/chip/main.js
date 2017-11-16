@@ -1,4 +1,5 @@
 import '../ce-polyfill.js';
+import '../icon/main.js';
 import {addStyleSheet} from '../util.js';
 
 // dependant on an-icon
@@ -18,13 +19,20 @@ import {addStyleSheet} from '../util.js';
       let onRemove = this.getAttribute('on-remove');
 
       if (avatar) {
-        this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
+        if (avatar.match(/\.(png|jpg|gif|svg)$/)) {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar" style="background-image:url(${avatar})"></div>`);
+        } else {
+          this.insertAdjacentHTML('beforeend', `<div class="avatar">${avatar}</div>`);
+        }
       }
+
       if (text) {
         this.insertAdjacentHTML('beforeend', `<div class="text">${text}</div>`);
       }
+
       if (removable !== null) {
         let removeEl = document.createElement('an-icon');
+        removeEl.setAttribute('tabindex', '0');
         removeEl.classList.add('delete');
         removeEl.innerHTML = 'clear';
 

@@ -7,8 +7,6 @@
   --theme-icon-font: 'Material Icons';
 
   /* colors  https://material.io/guidelines/style/color.html#color-color-palette */
-  --theme-color-accent: #FFFF00;
-  --theme-color-error:  #ff0000;
   --theme-color-0: #FFFFFF;
   --theme-color-50:  #FAFAFA; /* 98 +35 */
   --theme-color-100: #F5F5F5; /* 96 +33 */
@@ -20,6 +18,10 @@
   --theme-color-700: #616161; /* 38 -24 */
   --theme-color-800: #424242; /* 26 -36 */
   --theme-color-900: #212121; /* 13 -48*/
+  --theme-color-a100: #ffd180;
+  --theme-color-a200: #ffab40;
+  --theme-color-a400: #ff9100;
+  --theme-color-a700: #ff6d00;
   --theme-color-error: #ff0000;
 
   --theme-text-color-0: #FFFFFF;

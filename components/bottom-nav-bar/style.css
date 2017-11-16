@@ -13,10 +13,52 @@ a-bottom-nav-bar {
   height: var(--theme-height-bottom-nav-bar, 56px);
   justify-content: space-between;
   margin: 0 auto;
-  position: fixed;
   width: 100%;
   z-index: 8;
 }
+a-bottom-nav-bar.fixed {
+  position: fixed;
+}
 a-bottom-nav-bar > * {
   flex: 1;
+}
+
+a-bottom-nav-bar.dark-bg {
+  background-color: var(--theme-color-600, #757575);
+  color: var(--theme-text-color-50, #FAFAFA);
+}
+a-bottom-nav-bar.dark-bg a-nav-item,
+a-bottom-nav-bar.dark-bg an-icon,
+a-bottom-nav-bar.dark-bg .icon,
+a-bottom-nav-bar.dark-bg .text {
+  color: var(--theme-text-color-50, #FAFAFA);
+}
+
+a-bottom-nav-bar a-nav-item {
+  display: inline-block;
+  font-size: 16px;
+  text-align: center;
+}
+a-bottom-nav-bar a-nav-item.active {
+  padding: 6px 12px 10px 12px;
+  font-size: 14px;
+}
+a-bottom-nav-bar a-nav-item:not(.active) {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+a-bottom-nav-bar a-nav-item .an-icon,
+a-bottom-nav-bar a-nav-item an-icon {
+  display: block;
+}
+
+/**
+ * desktop size
+ */
+@media only screen and (min-width : 1024px) {
+  a-bottom-nav-bar {
+    left: 320px;
+    right: 0;
+    width: auto; 
+  }
 }

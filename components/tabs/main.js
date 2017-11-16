@@ -1,5 +1,6 @@
 import '../ce-polyfill.js';
-import {addStyleSheet, animate} from '../util.js';
+import '../nav-item/main.js';
+import {addStyleSheet, animate, setTabbable} from '../util.js';
 
 ( function() {
   class Tabs extends HTMLElement {
@@ -8,55 +9,86 @@ import {addStyleSheet, animate} from '../util.js';
       addStyleSheet(this); //id, url
 
       this.indicatorEl = this._addIndicatorEl();
-      this._registerNavItemClick();
-      setTimeout(this._animateIndicator.bind(this), 100);
+      this._addEventListener();
+      setTimeout(this._selectActiveTab.bind(this), 100);
+    }
+
+    get activeTab() {
+      return this.querySelector('a-nav-item.active') || this.querySelector('a-nav-item:first-child');
     }
 
     _addIndicatorEl() {
       let el = document.createElement('div');
-      let thisWidth  = this.getBoundingClientRect().width;
-      let left = (
-          (this.querySelector('a-nav-item[active]') || this).getBoundingClientRect().left
-          - this.getBoundingClientRect().left
-        ) / thisWidth;
+      let thisBCR  = this.getBoundingClientRect();
+      let activeTabBCR = this.activeTab.getBoundingClientRect();
 
       el.classList.add('indicator');
-      el.style.left = left*100 + '%';
+      el.style.left = (activeTabBCR.left - thisBCR.left) / thisBCR.Width*100 + '%';
       this.appendChild(el);
       return el;
-    }
-
-    _registerNavItemClick() {
-      Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
-        navItem.addEventListener('click', this._animateIndicator.bind(this));
-      })
     }
 
     /**
      * animate the indicator below the active tab
      */
-    _animateIndicator() {
+    _selectActiveTab() {
       let indicatorEl = this.indicatorEl;
       let numTab = this.querySelectorAll('a-nav-item').length;
-      let thisWidth  = this.getBoundingClientRect().width;
-      let indicatorLeftFrom = parseFloat(indicatorEl.style.left||0);
-      let indicatorLeftTo = (
-          (this.querySelector('a-nav-item.active') || this).getBoundingClientRect().left
-          - this.getBoundingClientRect().left
-        ) / thisWidth;
-      let move = indicatorLeftTo*100 - indicatorLeftFrom;
+      let activeTab = this.activeTab;
 
-      indicatorEl.style.width = parseFloat(100/numTab) + '%';
-
-      animate({
-        duration: 450,
-        timing: function(timeFraction) {
-          return 1 - Math.sin(Math.acos(timeFraction));
-        },
-        draw: function(progress) {
-          indicatorEl.style.left = indicatorLeftFrom + (progress*move) + '%';
-        }
+      Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
+        navItem.setAttribute('tabindex', navItem.isSameNode(activeTab) ? 0 : -1);
       });
+      activeTab.focus();
+
+      setTimeout(_ => { // wait for a-nav-item.active changes
+        let thisBCR = this.getBoundingClientRect();
+        let activeTabBCR = activeTab.getBoundingClientRect();
+
+        let indicatorFromPct = parseFloat(indicatorEl.style.left || 0);
+        let indicatorToPct = (activeTabBCR.left - thisBCR.left) / thisBCR.width;
+        let move = indicatorToPct * 100 - indicatorFromPct;
+
+        indicatorEl.style.width = parseFloat(100/numTab) + '%';
+
+        animate({
+          duration: 450,
+          timing: function(timeFraction) {
+            return 1 - Math.sin(Math.acos(timeFraction));
+          },
+          draw: function(progress) {
+            indicatorEl.style.left = indicatorFromPct + (progress*move) + '%';
+          }
+        });
+      });
+    }
+
+    _addEventListener() {
+      // for each tab, set click and keydown event listeners
+      Array.from(this.querySelectorAll('a-nav-item')).forEach( navItem => {
+        //when clicked, open the tab
+        navItem.addEventListener('click', this._selectActiveTab.bind(this));
+        // listen to keyboard up,down,next,right,space and enter
+        navItem.addEventListener('keydown', event => {
+          //with arrow keys, move tab
+          let tabMoveIndex = 
+            (event.key === "ArrowRight" || event.key === "ArrowUp") ? 1 :
+            (event.key === "ArrowLeft" || event.key === "ArrowDown") ? -1 : 0;
+          let tabToMove, activeTabIndex = 0;
+          let activeTab = this.activeTab;
+          let navItems = this.querySelectorAll('a-nav-item');
+
+          for(var i = 0; i < navItems.length; i++) {
+            navItems[i].isSameNode(activeTab) && (activeTabIndex = i);
+          }
+
+          tabToMove = navItems[(activeTabIndex + tabMoveIndex + navItems.length) % navItems.length];
+          tabToMove && !tabToMove.isSameNode(activeTab) && tabToMove.click();
+
+          //with space or enter, open tab
+          (event.key === "Enter") && navItem.click();
+        });
+      })
     }
   
   }

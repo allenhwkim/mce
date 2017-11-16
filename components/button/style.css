@@ -28,15 +28,15 @@ a-button {
   color: var(--theme-text-color-800, #424242);
 }
 
+a-button:focus {
+  outline: auto;
+}
+
 a-button button { /* make real button not-visible */
   padding: 0;
   border: none;
 }
 
-a-button:focus {
-  outline: none;
-  background-color: var(--theme-color-300, #e0e0e0);
-}
 a-button:active {
   background-color: var(--theme-color-400, #bdbdbd);
 }
@@ -74,21 +74,21 @@ a-button:focus:after {
   visibility: visible;
 }
 
-a-button[dark] {
+a-button.dark {
   background-color: var(--theme-color-600, #757575);
   color: var(--theme-color-0, #ffffff);
 }
-a-button[dark][disabled] {
+a-button.dark.disabled] {
   background-color: var(--theme-color-500, #9e9e9e);
 }
 
 /* raised button */
-a-button[raised] {
+a-button.raised {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
 }
 
 /* floating action button */
-a-button[fab] {
+a-button.fab {
   width: 56px;
   min-width: 56px;
   height: 56px;
@@ -99,10 +99,10 @@ a-button[fab] {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   z-index: 6;
 }
-a-button[fab][pressed] {
+a-button.fab.pressed {
   z-index: 12;
 }
-a-button[fab][mini] {
+a-button.mini {
   width: 40px;
   min-width: 40px;
   padding: 0 !important;

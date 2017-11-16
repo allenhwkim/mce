@@ -16,12 +16,12 @@
   --theme-color-700: #1976D2;
   --theme-color-800: #1565C0;
   --theme-color-900: #0D47A1;
-  --theme-color-A100: #82B1FF;
-  --theme-color-A200: #448AFF;
-  --theme-color-A400: #2979FF;
-  --theme-color-A700: #2962FF;
+  --theme-color-a100: #82B1FF;
+  --theme-color-a200: #448AFF;
+  --theme-color-a400: #2979FF;
+  --theme-color-a700: #2962FF;
 
-  --theme-color-accent: var(--theme-color-A100, #ffff00);
+  --theme-color-accent: var(--theme-color-a100, #ffff00);
   --theme-color-error:  #ff0000;
 
   --theme-text-color-0: #FFFFFF;

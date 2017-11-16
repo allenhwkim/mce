@@ -1,4 +1,5 @@
 import '../ce-polyfill.js';
+import '../icon/main.js';
 import {addStyleSheet} from '../util.js';
 
 (function() {

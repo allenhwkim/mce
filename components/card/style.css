@@ -6,6 +6,7 @@ a-card {
   box-shadow: var(--theme-shadow-2dp, 0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   padding-bottom: 8px;
   position: relative;
+  margin: 12px 0;
 }
 a-card.picked-up {
   top: -8px;
@@ -27,13 +28,13 @@ a-card > .title h1, a-card > .title h2, a-card > .title h3 {
   margin: 0;
   font-weight: normal;
 }
-a-card .media { /* 16*9 image */
+a-card > .media { /* 16*9 image */
   background-color: #000;
   width: 100%;
   padding-bottom: 56.25%;
   position: relative;
 }
-a-card .media img {
+a-card > .media img {
   position: absolute;
   width: 100%;
   top: 0;
@@ -50,18 +51,18 @@ a-card > .title.with-avatar {
   font-size: 14px;
   /* TODO */
 }
-a-card .actions {
+a-card > .actions {
   padding: 8px;
 }
-a-card .actions > * {
+a-card > .actions > * {
   padding: 8px;
   display: inline-block;
 }
-a-card .text {
+a-card > .text {
   padding: 16px;
   font-size: 14px;
   color: var(--theme-text-color-700, #444444);
 }
-a-card .text + .actions{
+a-card > .text + .actions{
   padding-top: 0;
 }

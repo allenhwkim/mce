@@ -1,6 +1,6 @@
 {
-  "name": "@custom-elements/nav-drawer",
-  "version": "0.2.1",
+  "name": "@custom-element/nav-drawer",
+  "version": "0.2.6",
   "description": "nav-drawer with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/allenhwkim/custom-elements/components"
+    "url": "https://github.com/allenhwkim/custom-element/components"
   },
   "keywords": [
     "customElement",
@@ -20,7 +20,9 @@
     "design",
     "html"
   ],
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {

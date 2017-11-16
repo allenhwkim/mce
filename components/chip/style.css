@@ -4,7 +4,6 @@ a-chip {
   border-radius:16px; 
   background-color: var(--theme-color-300, #E0E0E0);
   font-size: 0;
-  overflow: auto;
   vertical-align: middle;
 }
 
@@ -12,7 +11,7 @@ a-chip:hover {
   background-color: var(--theme-color-500, #9E9E9E);
 }
 
-a-chip .avatar {
+a-chip > .avatar {
   height: 32px;
   width: 32px;
   line-height: 32px;
@@ -22,10 +21,12 @@ a-chip .avatar {
   color: var(--theme-text-color-0, #FFFFFF);
   font-size: 14px;
   float: left;
-  overflow: hidden;
+  /*overflow: hidden;*/
+  background-size: cover;
+  margin-left: -1px; /* to hide annoying white border in dark background */
 }
 
-a-chip .text {
+a-chip > .text {
   color: var(--theme-text-color-800, #424242);
   display: inline-block;
   height: 32px;
@@ -35,14 +36,14 @@ a-chip .text {
   line-height: 32px;
   float: left;
 }
-a-chip:hover .text {
+a-chip:hover > .text {
   color: var(--theme-text-color-0, #FFFFFF);
 }
-a-chip .avatar ~ .text {
+a-chip > .avatar ~ .text {
   padding-left: 8px;
 }
 
-a-chip .delete {
+a-chip > .delete {
   display: inline-block;
   background-color: var(--theme-color-500, #9E9E9E);
   color: var(--theme-text-color-0, #FFFFFF);
@@ -53,8 +54,9 @@ a-chip .delete {
   text-align: center;
   font-size: 12px;
   margin: 4px 4px 4px -8px;
+  cursor: pointer;
 }
-a-chip:hover .delete {
+a-chip:hover > .delete {
   background-color: var(--theme-color-0, #FFFFFF);
   color: var(--theme-text-color-600, #757575);
 }

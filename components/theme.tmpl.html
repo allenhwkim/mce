@@ -1,0 +1,49 @@
+<template>
+  <style>
+    .theme-menu { float:right; position:relative }
+    .theme { text-decoration: none; cursor: pointer; float: right; }
+    .theme .theme-1 { background-color: #555; border-radius: 2px 0 0 2px; padding: 1px 1px 1px 5px; color: #fff; }
+    .theme .theme-2 { border: 1px solid #ccc; padding: 0 5px 0 0; border-radius: 0 2px 2px 0; }
+  </style>
+  <script>
+    function toggleThemeMenu() {
+      document.querySelector('#theme-menu').classList.toggle('visible');
+    }
+    function setTheme(color) {
+      document.querySelector('.theme').href = '../../themes/'+color+'.css';
+    }
+  </script>
+  <div class="theme-menu">
+    <a href="javascript:toggleThemeMenu()" class="theme">
+     <i class="theme-1">the</i><i class="theme-2">me</i>
+    </a>
+    <a-menu id="theme-menu" position="bottom-right">
+      <a-nav-item style="background-color:#F44336;" onclick="setTheme('red')">Red</a-nav-item>
+      <a-nav-item style="background-color:#9C27B0;" onclick="setTheme('purple')">Purple</a-nav-item>
+      <a-nav-item style="background-color:#673AB7;" onclick="setTheme('deep-purple')">Deep Purple</a-nav-item>
+      <a-nav-item style="background-color:#3F51B5;" onclick="setTheme('indigo')">Indigo</a-nav-item>
+      <a-nav-item style="background-color:#2196F3;" onclick="setTheme('blue')">Blue</a-nav-item>
+      <a-nav-item style="background-color:#03A9F4;" onclick="setTheme('light-blue')"> Light Blue</a-nav-item>
+      <a-nav-item style="background-color:#00BCD4;" onclick="setTheme('cyan')">Cyan</a-nav-item>
+      <a-nav-item style="background-color:#009688;" onclick="setTheme('teal')">Teal</a-nav-item>
+      <a-nav-item style="background-color:#4CAF50;" onclick="setTheme('green')">Green</a-nav-item>
+      <a-nav-item style="background-color:#8BC34A;" onclick="setTheme('light-green')"> Light Green</a-nav-item>
+      <a-nav-item style="background-color:#CDDC39;" onclick="setTheme('lime')">Lime</a-nav-item>
+      <a-nav-item style="background-color:#FFEB3B;" onclick="setTheme('yellow')">Yellow</a-nav-item>
+      <a-nav-item style="background-color:#FFC107;" onclick="setTheme('amber')">Amber</a-nav-item>
+      <a-nav-item style="background-color:#FF9800;" onclick="setTheme('orange')">Orange</a-nav-item>
+      <a-nav-item style="background-color:#FF5722;" onclick="setTheme('deep-orange')">Deep Orange</a-nav-item>
+      <a-nav-item style="background-color:#795548;" onclick="setTheme('brown')">Brown</a-nav-item>
+      <a-nav-item style="background-color:#607D8B;" onclick="setTheme('blue-grey')">Blue Grey</a-nav-item>
+      <a-nav-item style="background-color:#9e9e9e;" onclick="setTheme('grey')">Grey</a-nav-item>
+    </a-menu>
+  </div>
+</template>
+
+<script>
+  var currentScript = document.currentScript;
+  window.addEventListener('load', function(){
+    let tmpl = currentScript.ownerDocument.querySelector('template');
+    document.querySelector('#import-theme-tmpl').appendChild(tmpl.content.cloneNode(true));
+  });
+</script>

@@ -1,6 +1,7 @@
 import '../ce-polyfill.js';
 import {addStyleSheet} from '../util.js';
 
+// FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {
 
   class Tooltip extends HTMLElement {

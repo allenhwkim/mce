@@ -8,7 +8,7 @@ a-radio-button {
   width: 24px;
   height: 24px;
   vertical-align: middle;
-  fill: currentColor;
+  fill: var(--theme-color-a100, #F5BEA9);
 }
 
 a-radio-button[disabled] {

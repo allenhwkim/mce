@@ -1,5 +1,5 @@
 import '../ce-polyfill.js';
-import {addStyleSheet, observeAttrChange} from '../util.js';
+import {addStyleSheet, observeAttrChange, setTabbable} from '../util.js';
 
 ( function() {
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
@@ -14,11 +14,12 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
   class RadioButton extends HTMLElement {
     connectedCallback() {
       this.inputAttrs = ['id', 'name', 'value', 'disabled', 'checked'];
-      addStyleSheet(this); //id, url
       this.inputEl = this._addRealInput();
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
       });
+      addStyleSheet(this); //id, url
+      !this.classList.contains('disabled') && setTabbable(this, _ => this.inputEl.click());
     }
 
     _addRealInput() {
