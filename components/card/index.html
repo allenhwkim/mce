@@ -231,7 +231,9 @@
       window.addEventListener('load', _ => {
         Array.from(document.querySelectorAll('.demo > a-card')).forEach(card => {
           card.addEventListener('mousedown', _ => card.classList.add('picked-up'));
+          card.addEventListener('touchstart', _ => card.classList.add('picked-up'));
           card.addEventListener('mouseup', _ => card.classList.remove('picked-up'));
+          card.addEventListener('touchend', _ => card.classList.remove('picked-up'));
         })
       });
     </script>

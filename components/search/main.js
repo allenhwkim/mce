@@ -44,17 +44,8 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       let inputWrapper = this.querySelector('.input-wrapper');
 
       // when search icon is clicked, show input field
-      searchIcon.addEventListener('mousedown', _ => {
-        let inputWrapper = this.querySelector('.input-wrapper');
-
-        if (inputWrapper.classList.contains('visible') && inputEl.value) {
-          let customEvent = new CustomEvent('search', event);
-          this.dispatchEvent(customEvent);
-        } else {
-          inputWrapper.classList.toggle('visible');
-          setTimeout(_ => inputEl.focus());
-        }
-      });
+      searchIcon.addEventListener('mouseup', this._showInputField.bind(this));
+      searchIcon.addEventListener('touchend', this._showInputField.bind(this));
 
       searchIcon.addEventListener('keydown', _ => {
         (event.key === ' ' || event.key === 'Enter') && inputWrapper.classList.toggle('visible');
@@ -67,14 +58,31 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       })
 
       // when clear is pressed, clear input field
-      clearIcon.addEventListener('mousedown', function(event) {
-        inputEl.focus();
-        inputEl.value='';
-        event.preventDefault();
-      });
+      clearIcon.addEventListener('mouseup', _this._clearInputField.bind(this));
+      clearIcon.addEventListener('touchend', _this._clearInputField.bind(this));
 
       // execute custom search function
       this.addEventListener('search', _ => this._executeOnSearch());
+    }
+
+    _showInputField(event) {
+      let inputEl = this.querySelector('input');
+      let inputWrapper = this.querySelector('.input-wrapper');
+
+      if (inputWrapper.classList.contains('visible') && inputEl.value) {
+        let customEvent = new CustomEvent('search', event);
+        this.dispatchEvent(customEvent);
+      } else {
+        inputWrapper.classList.toggle('visible');
+        setTimeout(_ => inputEl.focus());
+      }
+    }
+
+    _clearInputField(event) {
+      let inputEl = this.querySelector('input');
+      inputEl.focus();
+      inputEl.value='';
+      event.preventDefault();
     }
 
     _executeOnSearch() {

@@ -11,7 +11,8 @@ import {addStyleSheet, setTabbable} from '../util.js';
     }
 
     disconnectedCallback() {
-      this.removeEventListener(this.clickListener);
+      this.removeEventListener('mouseup', this.clickListener);
+      this.removeEventListener('touchend', this.clickListener);
     }
 
     _onClick(event) {
@@ -22,8 +23,8 @@ import {addStyleSheet, setTabbable} from '../util.js';
     }
 
     _addEventListener() {
-      // !this.classList.contains('disabled') && setTabbable(this, this._onClick.bind(this));
-      this.addEventListener('click',  this.clickListener);
+      this.addEventListener('mouseup',  this.clickListener);
+      this.addEventListener('touchend',  this.clickListener);
     }
 
     _setImageIcon() {
