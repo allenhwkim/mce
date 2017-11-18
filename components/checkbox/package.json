@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/checkbox",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "checkbox with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/nav-item",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "nav-item with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/button",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "button with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
