@@ -112,13 +112,13 @@
         color: var(--theme-text-color-0, #ffffff);
       }
 
-      main > * {
+      core-main > * {
         max-width: 1024px;
         margin: 0 auto;
       }
 
       @media only screen and (min-width : 1024px) {
-        main {
+        core-main {
           margin-left: 320px;
         }
       }
@@ -145,7 +145,7 @@
       </div>
     </an-app-bar>
 
-    <main>
+    <core-main>
       <a-nav-drawer id="nav-drawer">
         <h2 class="dark-bg" style="margin: 0; height:56px; line-height: 56px; padding: 0 18px">Custom Element</h2>
         <a-nav-item href="#" icon="favorite">Favourite</a-nav-item>
@@ -737,7 +737,7 @@
         </ul>
       </a-list>
 
-    </main>
+    </core-main>
     <a-bottom-nav-bar class="fixed">
       <a-nav-item icon="favorite">Favourite</a-nav-item>
       <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
@@ -745,7 +745,7 @@
       <a-nav-item icon="music_note">Music</a-nav-item>
     </a-bottom-nav-bar>
     <script>
-      function showDrawer() {
+      function showDrawer(
         document.querySelector('a-nav-drawer').open();
       }
       function showMenu() {
