@@ -56,8 +56,8 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       setTimeout(_ => this.justShown = false, 100);
     }
 
-    close() {
-      if (!this.justShown && !this.contains(event.target)) {
+    close(event) {
+      if (!this.justShown && !this.contains(event.target)) { // if not clicked on menu
         this.classList.remove('visible');
       }
     }
