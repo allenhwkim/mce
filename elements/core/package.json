@@ -1,0 +1,36 @@
+{
+  "name": "@custom-element/core",
+  "version": "0.2.24",
+  "description": "core elements with MD/CE",
+  "main": "dist/ce-core.min.js",
+  "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "classes": "echo $(egrep -o 'class .* extends HTML' ../*/main.js | awk '{print $2}' | paste -sd',' -)",
+    "package": "webpack index.js --output-filename=dist/ce-core.js",
+    "min-css": "ls ../*/style.css && uglifycss ../*/style.css > dist/ce-core.css",
+    "min-js": "uglifyjs dist/ce-core.js -m reserved=[AppBar,BottomNavBar,Button,Card,Checkbox,Chip,Dialog,ExpansionPanel,GridList,Icon,List,Menu,NavDrawer,NavItem,RadioButton,RefreshIndicator,Switch,Tabs,TextField,Tooltip] -c > dist/ce-core.min.js",
+    "build": "npm-run-all clean min-css package min-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allenhwkim/custom-element"
+  },
+  "keywords": [
+    "customElement",
+    "material",
+    "design",
+    "html",
+    "core"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "allenhwkim@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "npm-run-all": "^4.1.1",
+    "uglify-es": "^3.1.7",
+    "uglifycss": "0.0.27",
+    "webpack": "^3.8.1"
+  }
+}
