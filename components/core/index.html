@@ -112,14 +112,10 @@
         color: var(--theme-text-color-0, #ffffff);
       }
 
-      core-main > * {
-        max-width: 1024px;
-        margin: 0 auto;
-      }
 
       @media only screen and (min-width : 1024px) {
-        core-main {
-          margin-left: 320px;
+        a-nav-drawer:not(.visible) {
+          visibility: hidden;
         }
       }
     </style>
@@ -136,31 +132,33 @@
       <p>
         Core package is collection of essential elements.
         <ul>
-          <li><a href="https://custom-element.github.io/#app-bar">App Bar</a>
-          <li><a href="https://custom-element.github.io/#bottom-nav-bar">Bottom Nav. Bar</a>
-          <li><a href="https://custom-element.github.io/#button">Button</a>
-          <li><a href="https://custom-element.github.io/#card">Card</a>
-          <li><a href="https://custom-element.github.io/#checkbox">Checkbox</a>
-          <li><a href="https://custom-element.github.io/#chip">Chip</a>
-          <li><a href="https://custom-element.github.io/#dialog">Dialog</a>
-          <li><a href="https://custom-element.github.io/#expansion-panel">Expansion Panel</a>
-          <li><a href="https://custom-element.github.io/#grid-list">Grid List</a>
-          <li><a href="https://custom-element.github.io/#icon">Icon</a>
-          <li><a href="https://custom-element.github.io/#list">List</a>
-          <li><a href="https://custom-element.github.io/#menu">Menu</a>
-          <li><a href="https://custom-element.github.io/#nav-drawer">Nav Drawer(Side Bar)</a>
-          <li><a href="https://custom-element.github.io/#radio-button">Radio Button</a>
-          <li><a href="https://custom-element.github.io/#refresh-indicator">Refresh Indicator</a>
-          <li><a href="https://custom-element.github.io/#search">Search</a>
-          <li><a href="https://custom-element.github.io/#switch">Switch</a>
-          <li><a href="https://custom-element.github.io/#tabs">Tabs</a>
-          <li><a href="https://custom-element.github.io/#text-field">Text Field</a>
-          <li><a href="https://custom-element.github.io/#tooltip">Tooltip</a>
+          <li><a href="#app-bar">App Bar</a>
+          <li><a href="#bottom-nav-bar">Bottom Nav. Bar</a>
+          <li><a href="#button">Button</a>
+          <li><a href="#card">Card</a>
+          <li><a href="#checkbox">Checkbox</a>
+          <li><a href="#chip">Chip</a>
+          <li><a href="#dialog">Dialog</a>
+          <li><a href="#expansion-panel">Expansion Panel</a>
+          <li><a href="#grid-list">Grid List</a>
+          <li><a href="#icon">Icon</a>
+          <li><a href="#list">List</a>
+          <li><a href="#menu">Menu</a>
+          <li><a href="#nav-drawer">Nav Drawer(Side Bar)</a>
+          <li><a href="#radio-button">Radio Button</a>
+          <li><a href="#refresh-indicator">Refresh Indicator</a>
+          <li><a href="#search">Search</a>
+          <li><a href="#switch">Switch</a>
+          <li><a href="#tabs">Tabs</a>
+          <li><a href="#text-field">Text Field</a>
+          <li><a href="#tooltip">Tooltip</a>
         </ul>
       </p>
 
       <h2> Examples </h2>
       
+      <a id="app-bar"></a>
+      <h3> App Bar </h3>
       <an-app-bar app-title="app-bar">
         <div class="nav-icon">
           <an-icon>menu</an-icon>
@@ -182,7 +180,7 @@
         </div>
       </an-app-bar>
 
-      <a-nav-drawer id="nav-drawer">
+      <a-nav-drawer id="nav-drawer" style="visibility: hidden">
         <h2 class="dark-bg" style="margin: 0; height:56px; line-height: 56px; padding: 0 18px">Custom Element</h2>
         <a-nav-item href="#" icon="favorite">Favourite</a-nav-item>
         <a-nav-item href="#" icon="search" class="disabled">Disabled</a-nav-item>
@@ -191,6 +189,13 @@
         <a-nav-item href="#" icon="music_note">Music</a-nav-item>
       </a-nav-drawer>
 
+      <a id="nav-drawer"></a>
+      <h3>Nav Drawer</h3>
+      <a href="javascript:document.querySelector('a-nav-drawer').open()">Open Drawer</a>
+
+
+      <a id="search"></a>
+      <h3>Search</h3>
       <a-card>
         <div class="title">
           <h1>Search</h1>
@@ -200,9 +205,10 @@
         </div>
       </a-card>
 
+      <a id="button"></a>
       <a-card>
         <div class="title">
-          <h1>Buttons</h1>
+          <h2>Buttons</h2>
           <h3 class="subtitle">Buttons communicate the action that will occur when the user touches them.</h3>
         </div>
         <div class="text">
@@ -230,9 +236,10 @@
         </div>
       </a-card>
 
+      <a id="dialog"></a>
       <a-card>
         <div class="title">
-          <h1>Dialog</h1>
+          <h2>Dialog</h2>
           <div class="subtitle">Dialogs inform users about a specific task and may contain critical information, require decisions, or involve multiple tasks.</div>
         </div>
         <div class="text">
@@ -261,9 +268,10 @@
         </div>
       </a-card>
 
+      <a id="refresh-indicator"></a>
       <a-card>
         <div class="title">
-          <h1>Refresh Indicator</h1>
+          <h2>Refresh Indicator</h2>
           <div class="subtitle">The refresh indicator is used when showing an item is loading</div>
         </div>
         <div class="text">
@@ -293,9 +301,10 @@
         </div>
       </a-card>
 
+      <a id="tabs"></a>
       <a-card>
         <div class="title">
-          <h1>Tabs</h1>
+          <h2>Tabs</h2>
           <div class="subtitle">Tabs make it easy to explore and switch between different views.</div>
         </div>
         <p class="text"> Text Only Tabs</p>
@@ -319,9 +328,10 @@
         <br/> <br/> <br/> <br/>
       </a-card>
 
+      <a id="text-field"></a>
       <a-card>
         <div class="title">
-          <h1>Text Field</h1>
+          <h2>Text Field</h2>
           <div class="subtitle">Text fields allow users to input, edit, and select text.</div>
         </div>
         <div class="text">
@@ -415,9 +425,10 @@
         </div>
       </a-card>
 
+      <a id="chip"></a>
       <a-card>
         <div class="title">
-          <h1>Chips</h1>
+          <h2>Chips</h2>
           <div class="subtitle">Chips represent complex entities in small blocks, such as a contact.</div>
         </div>
         <div class="text">
@@ -428,9 +439,10 @@
         </div>
       </a-card>
 
+      <a id="tooltip"></a>
       <a-card>
         <div class="title">
-          <h1>Tooltips</h1>
+          <h2>Tooltips</h2>
           <div class="subtitle">Chips represent complex entities in small blocks, such as a contact.</div>
         </div>
         <div class="text" class="clear-both">
@@ -461,9 +473,10 @@
         </div>
       </a-card>
 
+      <a id="icon"></a>
       <a-card id="icons">
         <div class="title">
-          <h1>Icons</h1>
+          <h2>Icons</h2>
           <div class="subtitle">Material icons use geometric shapes to visually represent core ideas, capabilities, or topics.</div>
         </div>
         <div class="text">
@@ -512,14 +525,15 @@
 
       <a-card>
         <div class="title">
-          <h1>Selection Controls</h1>
+          <h2>Selection Controls</h2>
           <div class="subtitle">Selection controls allow the user to select options.</div>
         </div>
         <div class="text">
           Spec: https://material.io/guidelines/components/selection-controls.html#selection-controls-switch
 
+          <a id="checkbox"></a>
           <div class="container">
-            <h3>Checkboxes</h3>
+            <h2>Checkboxes</h2>
             <a-checkbox id="checkbox1"></a-checkbox> <label for="checkbox1">Unchecked</label>
             <a-checkbox id="checkbox2" checked></a-checkbox> <label for="checkbox2">Checked</label>
             <a-checkbox id="checkbox3" disabled></a-checkbox> <label for="checkbox3">Disabled</label>
@@ -533,30 +547,32 @@
             <a-checkbox id="checkbox14" checked disabled></a-checkbox> <label for="checkbox14">Disabled</label>
           </div>
 
+          <a id="radio-button"></a>
           <div class="container">
-            <h3>Radio Buttons</h3>
+            <h2>Radio Buttons</h2>
             <a-radio-button name="radio1" id="radio1"></a-radio-button> <label for="radio1">Unchecked</label>
             <a-radio-button name="radio1" id="radio2" checked></a-radio-button> <label for="radio2">Checked</label>
             <a-radio-button name="radio2" id="radio3" disabled></a-radio-button> <label for="radio3">Disabled</label>
             <a-radio-button name="radio2" id="radio4" checked disabled></a-radio-button> <label for="radio4">Disabled</label>
           </div>
           <div class="container dark-bg">
-            <h3>Radio Button In Dark Background</h3>
+            <h2>Radio Button In Dark Background</h2>
             <a-radio-button name="radio3" id="radio11"></a-radio-button> <label for="radio11">Unchecked</label>
             <a-radio-button name="radio3" id="radio12" checked></a-radio-button> <label for="radio12">Checked</label>
             <a-radio-button name="radio4" id="radio13" disabled></a-radio-button> <label for="radio13">Disabled</label>
             <a-radio-button name="radio4" id="radio14" checked disabled></a-radio-button> <label for="radio14">Disabled</label>
           </div>
 
+          <a id="switch"></a>
           <div class="container">
-            <h3>Switches</h3>
+            <h2>Switches</h2>
             <a-switch id="checkbox21"></a-switch> <label for="checkbox21">Unchecked</label>
             <a-switch id="checkbox22" checked></a-switch> <label for="checkbox22">Checked</label>
             <a-switch id="checkbox23" disabled></a-switch> <label for="checkbox23">Disabled</label>
             <a-switch id="checkbox24" checked disabled></a-switch> <label for="checkbox24">Disabled</label>
           </div>
           <div class="container dark-bg">
-            <h3>Switches In Dark Background</h3>
+            <h2>Switches In Dark Background</h2>
             <a-switch id="checkbox31"></a-switch> <label for="checkbox31">Unchecked</label>
             <a-switch id="checkbox32" checked></a-switch> <label for="checkbox32">Checked</label>
             <a-switch id="checkbox33" disabled></a-switch> <label for="checkbox33">Disabled</label>
@@ -565,6 +581,7 @@
         </div>
       </a-card>
 
+      <a id="expansion-panel"></a>
       <h2>Expansion Panel</h2>
       <div>
         <an-expansion-panel>
@@ -609,6 +626,7 @@
         </an-expansion-panel>
       </div>
 
+      <a id="grid-list"></a>
       <h2>Grid List</h2>
       <a-grid-list>
         <div>
@@ -673,6 +691,7 @@
         </div>
       </a-grid-list>
 
+      <a id="card"></a>
       <h2>Card</h2>
       <a-card>
         <div class="title">
@@ -715,6 +734,7 @@
         </a-card>
       </a-card>
 
+      <a id="list"></a>
       <h3>List</h3>
       <a-list>
         <ul>
@@ -773,6 +793,8 @@
         </ul>
       </a-list>
 
+      <a id="bottom-nav-bar"></a>
+      <h2>Bottom Nav Bar</h2>
       <a-bottom-nav-bar>
         <a-nav-item icon="favorite">Favourite</a-nav-item>
         <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>

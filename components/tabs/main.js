@@ -42,7 +42,7 @@ import {addStyleSheet, animate, setTabbable} from '../util.js';
       let indicatorEl = this.indicatorEl;
       let numTab = this.querySelectorAll('a-nav-item').length;
       let activeTab = this.getActiveTab(event);
-      console.log('activeTab', activeTab, event && event.target);
+      // console.log('activeTab', activeTab, event && event.target);
 
       Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
         navItem.setAttribute('tabindex', navItem.isSameNode(activeTab) ? 0 : -1);
