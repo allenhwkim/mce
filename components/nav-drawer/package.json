@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/nav-drawer",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "nav-drawer with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {

@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/grid-list",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "grid-list with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {

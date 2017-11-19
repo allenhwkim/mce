@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/dialog",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "dialog with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {

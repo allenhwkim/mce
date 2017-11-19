@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/icon",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "icon with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
