@@ -13,14 +13,21 @@ import {addStyleSheet, animate, setTabbable} from '../util.js';
       setTimeout(this._selectActiveTab.bind(this), 100);
     }
 
-    get activeTab() {
-      return this.querySelector('a-nav-item.active') || this.querySelector('a-nav-item:first-child');
+    getActiveTab(event) {
+      let activeTab;
+      if (event) { // if clicked or tapped
+        activeTab = event.target.closest('a-nav-item');
+      } else {
+        activeTab = this.querySelector('a-nav-item.active');
+        activeTab = activeTab || this.querySelector('a-nav-item:first-child');
+      }
+      return activeTab;
     }
 
     _addIndicatorEl() {
       let el = document.createElement('div');
       let thisBCR  = this.getBoundingClientRect();
-      let activeTabBCR = this.activeTab.getBoundingClientRect();
+      let activeTabBCR = this.getActiveTab().getBoundingClientRect();
 
       el.classList.add('indicator');
       el.style.left = (activeTabBCR.left - thisBCR.left) / thisBCR.Width*100 + '%';
@@ -31,10 +38,11 @@ import {addStyleSheet, animate, setTabbable} from '../util.js';
     /**
      * animate the indicator below the active tab
      */
-    _selectActiveTab() {
+    _selectActiveTab(event) {
       let indicatorEl = this.indicatorEl;
       let numTab = this.querySelectorAll('a-nav-item').length;
-      let activeTab = this.activeTab;
+      let activeTab = this.getActiveTab(event);
+      console.log('activeTab', activeTab, event && event.target);
 
       Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
         navItem.setAttribute('tabindex', navItem.isSameNode(activeTab) ? 0 : -1);
@@ -75,7 +83,7 @@ import {addStyleSheet, animate, setTabbable} from '../util.js';
             (event.key === "ArrowRight" || event.key === "ArrowUp") ? 1 :
             (event.key === "ArrowLeft" || event.key === "ArrowDown") ? -1 : 0;
           let tabToMove, activeTabIndex = 0;
-          let activeTab = this.activeTab;
+          let activeTab = this.getActiveTab(event);
           let navItems = this.querySelectorAll('a-nav-item');
 
           for(var i = 0; i < navItems.length; i++) {
