@@ -47,7 +47,7 @@ import {addStyleSheet, animate, setTabbable} from '../util.js';
       Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
         navItem.setAttribute('tabindex', navItem.isSameNode(activeTab) ? 0 : -1);
       });
-      activeTab.focus();
+      // activeTab.focus();
 
       setTimeout(_ => { // wait for a-nav-item.active changes
         let thisBCR = this.getBoundingClientRect();
