@@ -1,3 +1,10 @@
+## Shadow Sketch
+https://material.io/guidelines/resources/shadows.html#shadows-sketch
+
+## Elevation 
+[image](https://storage.googleapis.com/material-design/publish/material_v_12/assets/0Bzhp5Z4wHba3VG9SaVpNbkpHb2s/whatismaterial-3d-elevation2.png)
+From [this page](https://material.io/guidelines/material-design/elevation-shadows.html#elevation-shadows-elevation-android)
+
 ## Regroupped Custom Elements
 
   * dialog

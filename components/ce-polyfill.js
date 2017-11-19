@@ -23,17 +23,20 @@
       __customElements[name] = klass;
       // this is called before or after window.onload. Define any tag found in HTML
       // this also may cause missing elements dynamically loaded before MutationObserver kicks in
+      // console.log('CustomElements.define.......................')
       Array.from(document.querySelectorAll(name)).forEach(function(el) {
         applyCustomElement(el, __customElements[name]);
       });
     }
   }
 
-  // window.customElement equivalent
+  // when document content is loaded, it checks all custom element and initialized it
   let checkAndApplyAllCustomElements = function(el) {
+    // console.log('checkAndApplyAllCustomElements..........', el);
     for(let name in __customElements) {
+      // console.log('checkAndApplyAllCustomElements..........', el.querySelectorAll(name));
       Array.from(el.querySelectorAll(name)).forEach(function(el) {
-        if (el.constructor.name === 'HTMLElement') {
+        if (el.constructor.name.match(/^HTML\w*Element$/)) {
           applyCustomElement(el, __customElements[name]);
         }
       });
@@ -42,7 +45,10 @@
 
   let checkAndApplyCustomElement = function(node) {
     let nodeName = node.nodeName.toLowerCase();
-    if (__customElements[nodeName] && node.constructor.name === 'HTMLElement') {
+    if (node.nodeType === Node.ELEMENT_NODE && 
+      __customElements[nodeName] &&                      // defined as a custom element
+      node.constructor.name.match(/^HTML\w*Element$/)) { // and not yet initialized
+      //console.log('observer....................... 2', node)
       applyCustomElement(node, __customElements[nodeName]);
     }
   };
@@ -58,6 +64,7 @@
 
           //initialize children of the node 
           if (node.nodeType === Node.ELEMENT_NODE) {
+            //console.log('observer....................... 1', node)
             Array.from(node.querySelectorAll('*')).forEach(function(el) {
               checkAndApplyCustomElement(el);
             })

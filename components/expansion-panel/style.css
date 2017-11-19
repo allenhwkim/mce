@@ -88,7 +88,6 @@ an-expansion-panel:not(.expanded) > .title:after {
 }
 an-expansion-panel:not(.expanded) > .text,
 an-expansion-panel:not(.expanded) > .actions {
-  height: -;
   line-height: 0;
   padding: 0;
   overflow: hidden;

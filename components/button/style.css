@@ -9,12 +9,11 @@
 
 a-button {
   display: inline-block;
-  min-width: 88px;
   height: 36px;
   border-radius: 2px;
   text-transform: uppercase;
   line-height: 36px;
-  padding: 0 16px !important;
+  padding: 0 16px;
   letter-spacing: 0px;
   position: relative;
   font-weight: 500;
@@ -90,22 +89,19 @@ a-button.raised {
 /* floating action button */
 a-button.fab {
   width: 56px;
-  min-width: 56px;
   height: 56px;
+  line-height: 24px;
   text-align: center;
-  line-height: 56px;
   border-radius: 50%;
-  padding: 0;
+  padding: 16px;
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   z-index: 6;
 }
 a-button.fab.pressed {
   z-index: 12;
 }
-a-button.mini {
+a-button.fab.mini {
   width: 40px;
-  min-width: 40px;
-  padding: 0 !important;
   height: 40px;
-  line-height: 40px;
+  padding: 8px;
 }

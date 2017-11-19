@@ -58,7 +58,7 @@
   </head>
 
   <body>
-    <template class="simple">
+    <template class="two-line">
       <a-grid-list>
         <div>
           <img src="nature2.jpg" />
@@ -80,6 +80,11 @@
             <an-icon class="float-right">favorite</an-icon>
           </div>
         </div>
+      </a-grid-list>
+    </template>
+
+    <template class="single-line">
+      <a-grid-list>
         <div>
           <img src="nature2.jpg" />
           <div class="text-with-icon">
@@ -94,6 +99,11 @@
             <an-icon class="float-right">favorite</an-icon>
           </div>
         </div>
+      </a-grid-list>
+    </template>
+
+    <template class="simple">
+      <a-grid-list>
         <div>
           <img src="nature2.jpg" />
           <div class="text-with-icon">
@@ -106,6 +116,12 @@
             <h1>Single Line</h1>
           </div>
         </div>
+        </div>
+      </a-grid-list>
+    </template>
+
+    <template class="numbered">
+      <a-grid-list>
         <div>
           <img src="nature2.jpg" />
           <div class="text-with-icon">
@@ -134,9 +150,63 @@
 
       <div id="import-theme-tmpl" class="clear-both"></div>
 
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/grid-list">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+      
+
       <a-card class="simple">
         <div class="title">
           <h2>Simple Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs-simple" class="view-source" checked></a-switch>
+            <label for="vs-simple"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="numbered">
+        <div class="title">
+          <h2>Grid List With Number</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs-numbered" class="view-source"></a-switch>
+            <label for="vs-numbered"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.numbered', 'a-card.numbered')</script>
+
+      <a-card class="single-line">
+        <div class="title">
+          <h2>Single Line Grid List</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source"></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.single-line', 'a-card.single-line')</script>
+
+      <a-card class="two-line">
+        <div class="title">
+          <h2>Two Line Grid List</h2>
         </div>
         <div class="text">
           <div class="demo"></div>
@@ -147,7 +217,7 @@
           </div>
         </div>
       </a-card>
-      <script>setDemo('template.simple', 'a-card.simple')</script>
+      <script>setDemo('template.two-line', 'a-card.two-line')</script>
 
     </div>
 

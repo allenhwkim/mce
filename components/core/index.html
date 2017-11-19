@@ -125,27 +125,63 @@
     </style>
   </head>
   <body>
-    <an-app-bar app-title="app-bar" class="fixed">
-      <div class="nav-icon">
-        <an-icon onclick="showDrawer()">menu</an-icon>
-      </div>
-      <span class="title">Custom Elements With Material Design</span>
-      <div class="icons">
-        <!-- <an-icon>search</an-icon> -->
-        <a-search class="dark-bg" on-search="alert('You are searching...'+keyword)"></a-search>
-        <an-icon>favorite</an-icon>
-        <an-icon onclick="showMenu()">more_vert</an-icon>
-        <a-menu id="app-bar-menu" position="bottom-right">
-          <a-nav-item href="#" icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
-          <hr>
-          <a-nav-item href="#" class="disabled">Disabled</a-nav-item>
-          <a-nav-item href="#" shortcut="ctrl-d">nav-item text</a-nav-item>
-          <a-nav-item href="#" icon="search">nav-item text</a-nav-item>
-        </a-menu>
-      </div>
-    </an-app-bar>
+    <div class="container">
 
-    <core-main>
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 6kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/core">&lt;/script></pre>
+      </p>
+
+      <p>
+        Core package is collection of essential elements.
+        <ul>
+          <li><a href="https://custom-element.github.io/#app-bar">App Bar</a>
+          <li><a href="https://custom-element.github.io/#bottom-nav-bar">Bottom Nav. Bar</a>
+          <li><a href="https://custom-element.github.io/#button">Button</a>
+          <li><a href="https://custom-element.github.io/#card">Card</a>
+          <li><a href="https://custom-element.github.io/#checkbox">Checkbox</a>
+          <li><a href="https://custom-element.github.io/#chip">Chip</a>
+          <li><a href="https://custom-element.github.io/#dialog">Dialog</a>
+          <li><a href="https://custom-element.github.io/#expansion-panel">Expansion Panel</a>
+          <li><a href="https://custom-element.github.io/#grid-list">Grid List</a>
+          <li><a href="https://custom-element.github.io/#icon">Icon</a>
+          <li><a href="https://custom-element.github.io/#list">List</a>
+          <li><a href="https://custom-element.github.io/#menu">Menu</a>
+          <li><a href="https://custom-element.github.io/#nav-drawer">Nav Drawer(Side Bar)</a>
+          <li><a href="https://custom-element.github.io/#radio-button">Radio Button</a>
+          <li><a href="https://custom-element.github.io/#refresh-indicator">Refresh Indicator</a>
+          <li><a href="https://custom-element.github.io/#search">Search</a>
+          <li><a href="https://custom-element.github.io/#switch">Switch</a>
+          <li><a href="https://custom-element.github.io/#tabs">Tabs</a>
+          <li><a href="https://custom-element.github.io/#text-field">Text Field</a>
+          <li><a href="https://custom-element.github.io/#tooltip">Tooltip</a>
+        </ul>
+      </p>
+
+      <h2> Examples </h2>
+      
+      <an-app-bar app-title="app-bar">
+        <div class="nav-icon">
+          <an-icon>menu</an-icon>
+        </div>
+
+        <span class="title">Custom Elements With Material Design</span>
+        <div class="icons">
+          <!-- <an-icon>search</an-icon> -->
+          <!-- <a-search class="dark-bg" on-search="alert('You are searching...'+keyword)"></a-search> -->
+          <an-icon>favorite</an-icon>
+          <an-icon onclick="showMenu()">more_vert</an-icon>
+          <a-menu id="app-bar-menu" position="bottom-right">
+            <a-nav-item href="#" icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+            <hr>
+            <a-nav-item href="#" class="disabled">Disabled</a-nav-item>
+            <a-nav-item href="#" shortcut="ctrl-d">nav-item text</a-nav-item>
+            <a-nav-item href="#" icon="search">nav-item text</a-nav-item>
+          </a-menu>
+        </div>
+      </an-app-bar>
+
       <a-nav-drawer id="nav-drawer">
         <h2 class="dark-bg" style="margin: 0; height:56px; line-height: 56px; padding: 0 18px">Custom Element</h2>
         <a-nav-item href="#" icon="favorite">Favourite</a-nav-item>
@@ -737,17 +773,15 @@
         </ul>
       </a-list>
 
-    </core-main>
-    <a-bottom-nav-bar class="fixed">
-      <a-nav-item icon="favorite">Favourite</a-nav-item>
-      <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
-      <a-nav-item icon="alarm">Alarm</a-nav-item>
-      <a-nav-item icon="music_note">Music</a-nav-item>
-    </a-bottom-nav-bar>
+      <a-bottom-nav-bar>
+        <a-nav-item icon="favorite">Favourite</a-nav-item>
+        <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
+        <a-nav-item icon="alarm">Alarm</a-nav-item>
+        <a-nav-item icon="music_note">Music</a-nav-item>
+      </a-bottom-nav-bar>
+    </div>
+
     <script>
-      function showDrawer(
-        document.querySelector('a-nav-drawer').open();
-      }
       function showMenu() {
         document.querySelector('#app-bar-menu').classList.toggle('visible');
       }
