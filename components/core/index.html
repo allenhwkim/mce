@@ -817,10 +817,6 @@
         let dialog = document.getElementById(id);
         dialog.open(data);
       }
-      // to prevent FOUC
-      var elm=document.querySelector('html');
-      elm.style.display="none";
-      document.addEventListener("DOMContentLoaded",_ => elm.style.display="block");
     </script>
   </body>
 </html>
