@@ -7,7 +7,7 @@
 body > an-app-bar.fixed + * {
   margin-top: 56px;
   padding: 16px;
-  background-color: var(--theme-color-100, #f5f5f5);
+  background-color: var(--theme-color-50, #fafafa);
 }
 an-app-bar {
   background-color: var(--theme-color-600, #757575);
