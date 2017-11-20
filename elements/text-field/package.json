@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/text-field",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "description": "text-field with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
