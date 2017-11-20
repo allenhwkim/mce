@@ -3,11 +3,11 @@
 
 ## Design Principle
 
-The browser gives us an excellent tool for structuring web applications. It's called HTML. `@custom-element` makes maximum use of HTML.
+The browser gives us an excellent tool for structuring web applications. It's called HTML. `@custom-element` makes maximum use of HTML with nothing else.
 
-1. Small and fast(Less than 6KB gzipped).
+1. Small and fast(Less than 2KB gzipped).
 2. No depenancy on framework or library. Vanilla JS only.
-3. Simple Engineering(Element itself(not JS object) has properties and functions).
+3. Common-sense engineering(Element itself(not JS object) has properties and functions).
 4. Synchronous reaction to attribute and DOM changes.
 5. Easy color settings using a theme, a collection of `:root` variables.
      
