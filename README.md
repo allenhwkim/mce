@@ -8,6 +8,8 @@ Custom Elements With Material Design
      
   2. Think Themable   
      * Use variables for a theme.
+     
+[DEMO](https://custom-element.github.io)
   
 ## Elements
 
