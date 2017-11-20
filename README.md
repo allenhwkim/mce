@@ -38,7 +38,7 @@ Just use it in your html. No other step is required.
 
     <a-text-field label="Simple"></a-text-field>
     
-    [Try it on plunker](http://embed.plnkr.co/fPJyo4/)
+[Try it on plunker](http://embed.plnkr.co/fPJyo4/)
 
 ## Elements
 
@@ -48,6 +48,7 @@ Just use it in your html. No other step is required.
   * [Card](https://custom-element.github.io/#card)
   * [Checkbox](https://custom-element.github.io/#checkbox)
   * [Chip](https://custom-element.github.io/#chip)
+  * [Core(collection)](https://custom-element.github.io/#core)
   * [Dialog](https://custom-element.github.io/#dialog)
   * [Expansion Panel](https://custom-element.github.io/#expansion-panel)
   * [Grid List](https://custom-element.github.io/#grid-list)
