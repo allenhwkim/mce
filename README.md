@@ -1,14 +1,45 @@
-# custom-elements
-Custom Elements With Material Design
+# @custom-element
+[Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) Implementation With Material Design
 
 ## Design Principle
 
-  1. Use Standard Only
-     * No dependancies on framework or library.
+The browser gives us an excellent tool for structuring web applications. It's called HTML. `@custom-element` makes maximum use of HTML with nothing else.
+
+1. Small and fast(Less than 2KB gzipped).
+2. No depenancy on framework or library. Vanilla JS only.
+3. Common-sense engineering(Element itself(not JS object) has properties and functions).
+4. Synchronous reaction to attribute and DOM changes.
+5. Easy color settings using a theme, a collection of `:root` variables.
      
-  2. Think Themable   
-     * Use variables for a theme.
+[DEMO](https://custom-element.github.io)
+
+## Installation
+
+Custom Element has many useful ready-to-go packages available on npm. You can use it individually, or collectively using `core` elements
+
+All are available through https://unpkg.com/@custom-element. For example,
+
+  * Text field, https://unpkg.com/@custom-elements/text-field
+  * Core, https://unpkg.com/@custom-elements/core
+  * and 20+ more custom element packages
   
+By simply adding the following `<script>` tag to you html, you are ready to use custom elements.
+
+    <script defer src="https://unpkg.com/@custom-element/core/dist/ce-core.min.js"></script>
+
+Although it's not mandatory, but for better use of custom element, it's recommended to use Google Roboto font and Material Design Icons by adding the following to `<head>` tag.
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+## Usage
+
+Just use it in your html. No other step is required.
+
+    <a-text-field label="Simple"></a-text-field>
+    
+[Try it on plunker](http://embed.plnkr.co/fPJyo4/)
+
 ## Elements
 
   * [App Bar](https://custom-element.github.io/#app-bar)
@@ -17,6 +48,7 @@ Custom Elements With Material Design
   * [Card](https://custom-element.github.io/#card)
   * [Checkbox](https://custom-element.github.io/#checkbox)
   * [Chip](https://custom-element.github.io/#chip)
+  * [Core(collection)](https://custom-element.github.io/#core)
   * [Dialog](https://custom-element.github.io/#dialog)
   * [Expansion Panel](https://custom-element.github.io/#expansion-panel)
   * [Grid List](https://custom-element.github.io/#grid-list)
