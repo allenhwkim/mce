@@ -14,14 +14,6 @@ The browser gives us an excellent tool for structuring web applications. It's ca
 [DEMO](https://custom-element.github.io)
 
 ## Installation
-
-Custom Element has many useful ready-to-go packages available on npm. You can use it individually, or collectively using `core` elements
-
-All are available through https://unpkg.com/@custom-element. For example,
-
-  * Text field, https://unpkg.com/@custom-elements/text-field
-  * Core, https://unpkg.com/@custom-elements/core
-  * and 20+ more custom element packages
   
 By simply adding the following `<script>` tag to you html, you are ready to use custom elements.
 
@@ -32,6 +24,14 @@ Although it's not mandatory, but for better use of custom element, it's recommen
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
+Custom Element has many  ready-to-go packages available on npm. You can use it individually, or collectively.
+
+All are available through https://unpkg.com/@custom-element. For example,
+
+  * Text field, https://unpkg.com/@custom-elements/text-field
+  * Core, https://unpkg.com/@custom-elements/core
+  * and 20+ more custom element packages
+  
 ## Usage
 
 Just use it in your html. No other step is required.

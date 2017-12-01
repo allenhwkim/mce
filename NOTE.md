@@ -1,6 +1,5 @@
-## Shadow Sketch
+## Material Design
 https://material.io/guidelines/resources/shadows.html#shadows-sketch
-
 http://www.e-vector.com.mx/img/js/angular/angular-material/modules/scss/angular-material.layouts.scss
 
 ## Elevation 
