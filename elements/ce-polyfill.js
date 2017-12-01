@@ -86,6 +86,7 @@
     })
   });
 
+  // polyfill window.customElements(obj)
   if (!window.customElements) {
     window.customElements = CustomElements;
     window.addEventListener('load', function() {
@@ -95,6 +96,7 @@
     });
   }
 
+  // polyfill Object.values(obj)
   if (!Object.values) { // Safari does not have this. hmm
     Object.values = function(obj) {
       return Object.keys(obj).map(function(key) {
@@ -102,4 +104,22 @@
       });
     }
   };
+
+  // polyfill el.matches(selector)
+  if (!Element.prototype.matches)
+    Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
+  // polyfill el.closest(selector)
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function(s) {
+      var el = this;
+      if (!document.documentElement.contains(el)) return null;
+      do {
+        if (el.matches(s)) return el;
+        el = el.parentElement;
+      } while (el !== null); 
+      return null;
+    };
+  }
+
 })();

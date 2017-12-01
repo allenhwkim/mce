@@ -61,4 +61,19 @@ export function setTabbable(el, fn) {
     }
   });
 }
+
+export function getScopedObj(scope, str) {
+  let obj=scope, arr;
+
+  try {
+    arr = str.split(/[\[\]\.]/) // split by [,],.
+      .filter(el => el)             // filter out empty one
+      .map(el => el.replace(/^['"]+|['"]+$/g, '')); // remove string quotation
+    arr.forEach(el => obj = obj[el])
+  } catch(e) {
+    obj = null;
+  }
+  
+  return obj;
+}
   
