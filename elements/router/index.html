@@ -22,6 +22,11 @@
       .view-source ~ label { padding: 12px 0; display: inline-block; }
       .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
       .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      a-card.demo {
+        display: inline-block;
+        width: 33%;
+        vertical-align: top;
+      }
     </style>
     <script>
       function setDemo(src, dest) {
@@ -52,10 +57,19 @@
 
     <template class="simple">
       <a-router>
-        <a-route path="/page1" import="page1.html" no-cache></a-route>
-        <a-route path="/page2" import="page2.html"></a-route>
+        <a-route path="page1" import="page1.html" no-cache></a-route>
+        <a-route path="page2" import="page2.html"></a-route>
         <a-route path="not-found" import="not-found.html"></a-route>
-        <a-route path="" redirect="/page1"></a-route>
+        <a-route path="" redirect="page1"></a-route>
+      </a-router>
+    </template>
+
+    <template class="base-path">
+      <a-router base-path="/">
+        <a-route path="page1" import="page1.html" no-cache></a-route>
+        <a-route path="page2" import="page2.html"></a-route>
+        <a-route path="not-found" import="not-found.html"></a-route>
+        <a-route path="" redirect="page1"></a-route>
       </a-router>
     </template>
 
@@ -74,6 +88,7 @@
         <a-route path="" redirect="/page1"></a-route>
       </a-router>
     </template>
+
     <script>
       function getPromiseFn(str, ret) {
         return function(param) {
@@ -110,11 +125,34 @@
 
       <h2> Examples </h2>
 
-      <a-card class="simple">
+      <a-card class="simple demo">
         <div class="title">
           <h2>Simple Router Example</h2>
           <p class="subtitle">
             Routing between page1 and page2
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a href="#page1">Page1</a>
+            <a href="#page2">page2</a>
+            <a href="#invalid">Invalid</a>
+          </div>
+          <div>
+            <a-switch id="demo-simple" class="view-source" checked></a-switch>
+            <label for="demo-simple"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="base-path demo">
+        <div class="title">
+          <h2>Router Example With Base Path</h2>
+          <p class="subtitle">
+            Routing between page1 and page2 with base path '/'
           </p>
         </div>
         <div class="text">
@@ -131,9 +169,9 @@
           </div>
         </div>
       </a-card>
-      <script>setDemo('template.simple', 'a-card.simple')</script>
+      <script>setDemo('template.base-path', 'a-card.base-path')</script>
 
-      <a-card class="callbacks">
+      <a-card class="callbacks demo">
         <div class="title">
           <h2>Router Example With Callbacks</h2>
           <p class="subtitle">
@@ -220,7 +258,7 @@
             <div><div>template-cached</div>
               <div class="text">
                 Optional, true or false,  default true. Indicates that the route view template is cached or not.
-                 if true, `<a-route>` will have `<template>` as its child after first remote call.
+                 if true, `&lt;a-route>` will have `<template>` as its child after first remote call.
                </div> 
             </div>
           </li>

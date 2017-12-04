@@ -12,7 +12,7 @@
 
 import '../ce-polyfill.js';
 import './route.js';
-import {getScopedObj, observeAttrChange} from '../util.js';
+import {getScopedObj} from '../util.js';
 
 ( function() {
   var loadingHTML = `
@@ -73,10 +73,11 @@ import {getScopedObj, observeAttrChange} from '../util.js';
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
   class Router extends HTMLElement {
     connectedCallback() {
-      this.basePath = this.getAttribute('base-path') || '/';
+      let aPromise = _ => Promise.resolve();
+
+      this.basePath = this.getAttribute('base-path') || '';
       this.debug = this.getAttribute('debug') === 'true';
 
-      let aPromise = _ => Promise.resolve();
       this.resolveFunc = aPromise;  // common resolve function route as parameter, and returning a Promise
       this.onHttpStart = aPromise ; // a callback function, route as parameter, and returning a Promise
       this.onHttpEnd   = aPromise;  // a callvack funciton, route as parameter, returning a Promise
@@ -88,10 +89,6 @@ import {getScopedObj, observeAttrChange} from '../util.js';
       this._setProperties();
       window.addEventListener('popstate', this.popStateHandler);
       this.popStateHandler();
-
-      observeAttrChange(this, (attr, val) => {
-        (attr === 'debug') && (this.debug = (val === 'true'));
-      });
     }
 
     disconnectedCallback() {
@@ -102,6 +99,14 @@ import {getScopedObj, observeAttrChange} from '../util.js';
       this.loadingEl.style.display = show ? 'flex' : 'none';
     }
 
+    get notFoundRoute() {
+      this._notFoundRoute = this._notFoundRoute ||
+        this._getUrlMatchingRoute(this.basePath + '/not-found') ||
+        this._getUrlMatchingRoute(this.basePath + 'not-found');
+
+      return this._notFoundRoute;
+    }
+
     _getUrlMatchingRoute(path) {
       let matchingRoute;
 
@@ -110,7 +115,7 @@ import {getScopedObj, observeAttrChange} from '../util.js';
 
       for(var i=0; i<this.routes.length; i++) {
         let route = this.routes[i];
-        let reStr = (this.basePath + '/' + route.path).replace(/[\/]{2,}/g, '/');
+        let reStr = (this.basePath + route.path).replace(/[\/]{2,}/g, '/');
         let re = new RegExp('^' + reStr + '$', 'i');
         this.debug && console.log('path', path, 're', re);
 
@@ -131,18 +136,18 @@ import {getScopedObj, observeAttrChange} from '../util.js';
       } else if (route) {
         route.activate();
       } else { // not-found
-        this.debug && console.log(`route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
-        route = this._getUrlMatchingRoute(this.basePath + '/not-found');
-        if (route) {
-          this._redirectTo(route.path);
+        this.debug && console.log(
+          `route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
+        if (this.notFoundRoute) {
+          this._redirectTo(this.notFoundRoute.path);
         } else {
-          this.debug && console.error(`route not found for 'not-found`);
+          this.debug && console.error(`route not found for '/not-found' or 'not-found'`);
         }
       }
     }
 
     _redirectTo(path) {
-      let url = this.basePath+path;
+      let url = this.basePath + path;
       let route = this._getUrlMatchingRoute(url);
       route ? route.activate() : console.error('route not found for', url);
     }
@@ -163,11 +168,20 @@ import {getScopedObj, observeAttrChange} from '../util.js';
     _getRouterPath(href) {
       href = href || window.location.href;
 
-      let parsed = new URL(href.replace(/[\/]{2,}/g, '/'));
+      let parsed = new URL(href.replace(/[\/]{2,}/g, '/')), routerPath;
+
       if (parsed.hash) {
-        parsed = new URL(parsed.hash.replace('#', ''), window.location.origin);
-      } 
-      return parsed.pathname;
+        if (this.basePath === '' && !parsed.hash.match(/\//)) { // pure hash reference
+          routerPath = parsed.hash.replace('#', '');
+        } else {
+          parsed = new URL(parsed.hash.replace('#', ''), window.location.origin);
+          routerPath = parsed.pathname;
+        } 
+      } else {
+        routerPath = '';
+      }
+
+      return routerPath;
     }
 
     _addLoadingEl() {
