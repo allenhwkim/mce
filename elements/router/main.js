@@ -11,36 +11,56 @@
  */
 
 import '../ce-polyfill.js';
-import '../route/main.js';
-import {getScopedObj} from '../util.js';
+import './route.js';
+import {getScopedObj, observeAttrChange} from '../util.js';
 
 ( function() {
   var loadingHTML = `
     <style>
-      @keyframes ce-rotate{from{transform:rotate(0)}to{transform:rotate(359deg)}}
-      a-router {display: block;}
-      a-router .loading {
+      @keyframes ce-rotate{
+        from{transform:rotate(0)}
+        to{transform:rotate(359deg)}
+      }
+      a-router {
+        display: block; 
+        overflow: hidden;
+      }
+      a-router > .loading {
         display: flex;
         align-items: center;
         justify-content: center;
-        position:absolute; top: 0; left: 0; width:100%; height: 100%; 
-        background-color: rgba(0,0,0,0.2); 
+        position:absolute; top: 0; left: 0; 
+        width:100%; height: 100%; 
+        min-height: 64px;
+        background-color: rgba(255,255,255,0.2); 
       }
-      a-router .loading svg {animation: ce-rotate 1.4s infinite linear; vertical-align: middle;}
-      a-router .loading svg circle {
+      a-router > .loading > svg {
+        animation: ce-rotate 1.4s infinite linear;
+        vertical-align: middle;
+      }
+      a-router > .loading > svg circle {
         stroke-dasharray: 44.2336, 200;
         stroke-dashoffset: -15;
-        stroke: var(--theme-color-0, #ffffff);
+        stroke: var(--theme-color-700, #616161);
         stroke-linecap: round;
         opacity: 1;
         stroke-width: 3;
         fill: none;
       }
-      a-router .loading svg polygon {
-        fill: var(--theme-color-0, #ffffff);
+      a-router > .loading > svg polygon {
+        fill: var(--theme-color-700, #616161);
         transform: rotate(314deg);
         transform-origin: 16px 16px 0px;
         opacity: 1;
+      }
+      a-router > .router-target {
+        opacity: 0;
+        margin-left: 100%;
+      }
+      a-router > .router-target.slide-in {
+        opacity: 1;
+        margin-left: 0%;
+        transition: all 0.5s;
       }
     </style>
     <div class="loading">
@@ -53,7 +73,8 @@ import {getScopedObj} from '../util.js';
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
   class Router extends HTMLElement {
     connectedCallback() {
-      this.basePath = this.getAttribute('base-path') || '';
+      this.basePath = this.getAttribute('base-path') || '/';
+      this.debug = this.getAttribute('debug') === 'true';
 
       let aPromise = _ => Promise.resolve();
       this.resolveFunc = aPromise;  // common resolve function route as parameter, and returning a Promise
@@ -64,9 +85,13 @@ import {getScopedObj} from '../util.js';
       this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
       this.style.position = 'relative'; //required to show loaing overlay
-      this._addEventListener();
       this._setProperties();
+      window.addEventListener('popstate', this.popStateHandler);
       this.popStateHandler();
+
+      observeAttrChange(this, (attr, val) => {
+        (attr === 'debug') && (this.debug = (val === 'true'));
+      });
     }
 
     disconnectedCallback() {
@@ -77,18 +102,17 @@ import {getScopedObj} from '../util.js';
       this.loadingEl.style.display = show ? 'flex' : 'none';
     }
 
-    _addEventListener() {
-      window.addEventListener('popstate', this.popStateHandler);
-    }
-
     _getUrlMatchingRoute(path) {
-      path = path || this._getRouterPath();
       let matchingRoute;
+
+      path = path || this._getRouterPath();
+      path = path.replace(/[\/]{2,}/g, '/');
 
       for(var i=0; i<this.routes.length; i++) {
         let route = this.routes[i];
-        let reStr = (this.basePath + '/' + route.path).replace(/\/\//g, '/');
+        let reStr = (this.basePath + '/' + route.path).replace(/[\/]{2,}/g, '/');
         let re = new RegExp('^' + reStr + '$', 'i');
+        this.debug && console.log('path', path, 're', re);
 
         if (path.match(re)) {
           matchingRoute = route;
@@ -107,45 +131,50 @@ import {getScopedObj} from '../util.js';
       } else if (route) {
         route.activate();
       } else { // not-found
-        console.error(`route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
-        route = this._getUrlMatchingRoute('/not-found');
+        this.debug && console.log(`route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
+        route = this._getUrlMatchingRoute(this.basePath + '/not-found');
         if (route) {
           this._redirectTo(route.path);
         } else {
-          console.error(`route not found for 'not-found`);
+          this.debug && console.error(`route not found for 'not-found`);
         }
       }
     }
 
-    _redirectTo(redirectPath) {
-      let redirectUrl = '#'+this.basePath+redirectPath;
-      window.location.href = redirectUrl;
+    _redirectTo(path) {
+      let url = this.basePath+path;
+      let route = this._getUrlMatchingRoute(url);
+      route ? route.activate() : console.error('route not found for', url);
     }
 
     _setProperties() {
-      let resolveFunc = this.getAttribute('resolv-func');
+      let resolveFunc = this.getAttribute('resolve-func');
       let onHttpStart = this.getAttribute('on-http-start');
       let onHttpEnd   = this.getAttribute('on-http-end');
-      let targetId    = this.getAttribute('target');
 
       this.routes = Array.from(this.querySelectorAll('a-route'));
       this.resolveFunc = getScopedObj(window, resolveFunc);
-      this.onHttpEnd   = getScopedObj(window, onHttpEnd);
+      this.onHttpSatrt = getScopedObj(window, onHttpStart);
       this.onHttpEnd   = getScopedObj(window, onHttpEnd);
       this.targetEl    = this._addTargetEl();
       this.loadingEl   = this._addLoadingEl();
     }
 
-    _getRouterPath() {
-      let url   = new URL(window.location.href);
-      return url.hash ? new URL(url.hash.replace('#', ''), window.location.origin).pathname : ''; 
+    _getRouterPath(href) {
+      href = href || window.location.href;
+
+      let parsed = new URL(href.replace(/[\/]{2,}/g, '/'));
+      if (parsed.hash) {
+        parsed = new URL(parsed.hash.replace('#', ''), window.location.origin);
+      } 
+      return parsed.pathname;
     }
 
     _addLoadingEl() {
       let loadingEl = this.querySelector('.loading');
       if (!loadingEl) {
         this.insertAdjacentHTML('beforeend', loadingHTML);
-        loadingEl = document.querySelector('div.loading');
+        loadingEl = this.querySelector('div.loading');
       }
       return loadingEl;
     }

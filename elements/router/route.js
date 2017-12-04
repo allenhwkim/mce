@@ -39,7 +39,7 @@
  */
 
 import '../ce-polyfill.js';
-import {getScopedObj} from '../util.js';
+import {getScopedObj, setInnerHTML} from '../util.js';
 
 (function() {
 
@@ -64,7 +64,7 @@ import {getScopedObj} from '../util.js';
     activate() {
       let aPromise = _ => Promise.resolve();
       let routerResolveFn = this.router.resolveFunc || aPromise;
-      let routeResolveFn = this.resolveVund || aPromise;
+      let routeResolveFn = this.resolveFunc || aPromise;
       let onRouteStartFn = this.onRouteStart || aPromise;
       let onRouteEndFn = this.onRouteEnd || aPromise;
 
@@ -78,7 +78,7 @@ import {getScopedObj} from '../util.js';
       }).then(routeData => {
         this.data = routeData;
         return onRouteStartFn(this); // run onRouteStart 
-      }).then(_ => {
+      }).then(result => {
         if (this.cachedTemplate) {
           return this.cachedTemplate;
         } else {  // fetch if not cached                       
@@ -94,18 +94,21 @@ import {getScopedObj} from '../util.js';
         }
       }).then(html => {
         !this.noCache && (this.cachedTemplate = html);
-        // TODO: make a transition here
-        //   by moving making the existing old, then sliding it in
-        this.router.targetEl.innerHTML = html; 
-        // TODO: execute <script> tags in html
-        //   https://stackoverflow.com/questions/2592092/executing-script-elements-inserted-with-innerhtml
+        // Transtion effect. slide in from left
+        this.router.targetEl.classList.remove('slide-in');
+        setTimeout(_ => {
+          // this.router.targetEl.innerHTML = html; 
+          setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
+          this.router.targetEl.classList.add('slide-in');
+        }, 50);
         this.router.showLoadingEl(false);
         return onRouteEndFn(this);
       }).catch(error => {
-        console.error('routing-error', error);
+        this.router.debug && console.error('routing-error', error);
         this.router.showLoadingEl(false);
       })
     }
+
   }
   customElements.define('a-route', Route); //name, class
 

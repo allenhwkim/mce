@@ -20,3 +20,4 @@ cd switch            && npm run build && npm version patch && npm publish --acce
 cd tabs              && npm run build && npm version patch && npm publish --access=public && cd ..
 cd text-field        && npm run build && npm version patch && npm publish --access=public && cd ..
 cd tooltip           && npm run build && npm version patch && npm publish --access=public && cd ..
+cd router            && npm run build && npm version patch && npm publish --access=public && cd ..

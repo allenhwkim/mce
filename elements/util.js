@@ -76,4 +76,15 @@ export function getScopedObj(scope, str) {
   
   return obj;
 }
-  
+
+export function setInnerHTML(elm, html) {
+  elm.innerHTML = html;
+  Array.from(elm.querySelectorAll("script")).forEach(function(el) {
+    let newEl = document.createElement("script");
+    Array.from(el.attributes).forEach(function(el) { 
+      newEl.setAttribute(el.name, el.value)
+    });
+    newEl.appendChild(document.createTextNode(el.innerHTML));
+    el.parentNode.replaceChild(newEl, el);
+  })
+}

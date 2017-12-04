@@ -32,7 +32,6 @@
     </script>
 
     <script type="module" src="../router/main.js"></script>
-    <script type="module" src="../route/main.js"></script>
 
     <script type="module" src="../card/main.js"></script>
     <link rel="stylesheet" class="card" href="../card/style.css">
@@ -59,6 +58,40 @@
         <a-route path="" redirect="/page1"></a-route>
       </a-router>
     </template>
+
+    <template class="callbacks">
+      <a-router
+        base-path="/base/path"
+        resolve-func="fn.routerResolve"
+        on-http-start="fn.onHttpStart"
+        on-http-end="fn.onHttpEnd">
+        <a-route path="/page1" import="page1.html" no-cache
+          resolve-func="fn.routeResolve"
+          on-route-start="fn.onRouteStart"
+          on-route-end="fn.onRouteEnd"></a-route>
+        <a-route path="/page2" import="page2.html"></a-route>
+        <a-route path="/not-found" import="not-found.html"></a-route>
+        <a-route path="" redirect="/page1"></a-route>
+      </a-router>
+    </template>
+    <script>
+      function getPromiseFn(str, ret) {
+        return function(param) {
+          console.log('starting function', str, 'with parameter', param);
+          return new Promise(function(resolve, reject) {
+            setTimeout(function() { resolve(ret); }, 1000);
+          });
+        }
+      };
+      var fn = {
+        routerResolve : getPromiseFn('routerResolveFn', {data:'router'}),
+        onHttpStart   : getPromiseFn('onHTTPStartFn', {method: 'GET'}),
+        onHttpEnd     : getPromiseFn('onHTTPEndFn', {method: 'GET'}),
+        routeResolve  : getPromiseFn('routeResolveFn', {data: 'route'}),
+        onRouteStart  : getPromiseFn('onRouteStartFn', null),
+        onRouteEnd    : getPromiseFn('onRouteEndFn', null)
+      }
+    </script>
 
     <div class="container">
       <h1>Router</h1>
@@ -100,41 +133,124 @@
       </a-card>
       <script>setDemo('template.simple', 'a-card.simple')</script>
 
+      <a-card class="callbacks">
+        <div class="title">
+          <h2>Router Example With Callbacks</h2>
+          <p class="subtitle">
+            Router/Route has promise and callback functions before or after http call and route.
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a href="#/base/path/page1">Page1</a>
+            <a href="#/base/path/page2">page2</a>
+            <a href="#/base/path/invalid">Invalid</a>
+          </div>
+          <div>
+            <a-switch id="demo-simple" class="view-source" checked></a-switch>
+            <label for="demo-simple"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.callbacks', 'a-card.callbacks')</script>
     </div>
 
-<!--
     <div class="container">
       <a-list>
         <ul>
-          <h3>Element Classes</h3>
+          <h3>`a-router` Element Attributes</h3>
           <li> 
             <an-icon>code</an-icon>
-            <div><div>dark</div>
-               <div class="text">A button with dark background color and light text</div> 
+            <div><div>base-path</div>
+               <div class="text">Optional. default '/', base path of this router. All route path will be prefixed with this base path.t</div> 
             </div>
           </li>
           <li> 
             <an-icon>code</an-icon>
-            <div><div>raised</div>
-               <div class="text">Rectulangular button with shadow effect</div> 
+            <div><div>debug</div>
+               <div class="text">Optional. if true, there will be a debug message. This attribute is monitored.</div> 
             </div>
           </li>
           <li> 
             <an-icon>code</an-icon>
-            <div><div>fab</div>
-               <div class="text">A floating action buttoin; a circular button with shadow effect</div> 
+            <div><div>resolve-func</div>
+               <div class="text">Optional, router level resolve function. e.g. security check, configuration, etc </div> 
             </div>
           </li>
           <li> 
             <an-icon>code</an-icon>
-            <div><div>mini</div>
-               <div class="text">A 40 pixel x 40 pixel.</div> 
+            <div><div>on-http-start</div>
+               <div class="text"> Optional, injector function to be executed before all http requests calls. This can change http request. </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>on-http-end</div>
+               <div class="text">Optional, injector function to be executed after all http responses. This can change http response.</div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+
+      <a-list>
+        <ul>
+          <h3>`a-route` Element Attributes</h3>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>path</div>
+               <div class="text"><i>required</i>path to respond</div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>import</div>
+               <div class="text">url to load, `import` or `redirect` is requird. </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>redirect</div>
+               <div class="text"> path to redirect. `import` or `redirect` is requird. </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>template-cached</div>
+              <div class="text">
+                Optional, true or false,  default true. Indicates that the route view template is cached or not.
+                 if true, `<a-route>` will have `<template>` as its child after first remote call.
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>resolve-func</div>
+               <div class="text">
+                 Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>on-route-start</div>
+               <div class="text">
+                 Optional, injector function to be executed before route starts.
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div>on-route-end</div>
+               <div class="text">
+                 Optional, injector function to be executed after route ends.
+               </div> 
             </div>
           </li>
         </ul>
       </a-list>
     </div>
--->
 
   </body>
 </html>
