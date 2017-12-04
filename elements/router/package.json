@@ -1,13 +1,14 @@
 {
   "name": "@custom-element/router",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a-router custom element",
   "main": "dist/main.min.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
     "package": "webpack main.js --output-filename=dist/main.js",
     "min-js": "uglifyjs dist/main.js -m reserved=[Router] -c > dist/main.min.js",
-    "build": "npm-run-all clean package min-js"
+    "build": "npm-run-all clean package min-js",
+    "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
   },
   "repository": {
     "type": "git",
