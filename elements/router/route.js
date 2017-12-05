@@ -124,8 +124,8 @@ import {getScopedObj, setInnerHTML} from '../util.js';
             setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
             this.router.targetEl.classList.add('slide-in');
           }, 50);
-          this.router.showLoadingEl(false);
         }
+        this.router.showLoadingEl(false);
         return onRouteEndFn(this);
       }).catch(error => {
         this.router.debug && console.error('routing-error', error);
