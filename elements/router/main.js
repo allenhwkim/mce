@@ -60,7 +60,7 @@ import {getScopedObj} from '../util.js';
       a-router > .router-target.slide-in {
         opacity: 1;
         margin-left: 0%;
-        transition: all 0.5s;
+        transition: all 0.25s;
       }
     </style>
     <div class="loading">

@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/list",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "list with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -8,7 +8,8 @@
     "package": "webpack main.js --output-filename=dist/main.js",
     "min-css": "uglifycss style.css > dist/style.css",
     "min-js": "uglifyjs dist/main.js -m reserved=[List] -c > dist/main.min.js",
-    "build": "npm-run-all clean min-css package min-js"
+    "build": "npm-run-all clean min-css package min-js",
+    "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
   },
   "repository": {
     "type": "git",
