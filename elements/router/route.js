@@ -96,29 +96,36 @@ import {getScopedObj, setInnerHTML} from '../util.js';
         if (this.cachedTemplate) {
           return this.cachedTemplate;
         } else {  // fetch if not cached                       
-          let options = this.router.onHttpStart && this.router.onHttpStart(this);
-          return fetch(this.import, options || {})
-            .then(response => {
-              if (!response.ok) {
-                throw Error(`url: ${this.import}, status: ${response.statusText}`);
-              }
-              if (this.router.onHttpEnd) {
-                return this.router.onHttpEnd(response);
-              } else {
-                return response.text();
-              }
-            });
+          let importUrl = this.import;
+          if (importUrl) { // only run fetch when import Url is given
+            let options = this.router.onHttpStart && this.router.onHttpStart(this);
+            return fetch(importUrl, options || {})
+              .then(response => {
+                if (!response.ok) {
+                  throw Error(`url: ${importUrl}, status: ${response.statusText}`);
+                }
+                if (this.router.onHttpEnd) {
+                  return this.router.onHttpEnd(response);
+                } else {
+                  return response.text();
+                }
+              });
+          } else {
+            return null;
+          }
         }
       }).then(html => {
-        !this.noCache && (this.cachedTemplate = html);
-        // Transtion effect. slide in from left
-        this.router.targetEl.classList.remove('slide-in');
-        setTimeout(_ => {
-          // this.router.targetEl.innerHTML = html; 
-          setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
-          this.router.targetEl.classList.add('slide-in');
-        }, 50);
-        this.router.showLoadingEl(false);
+        if (html) { // only replace HTML when it is fetched or cached properly
+          !this.noCache && (this.cachedTemplate = html);
+          // Transtion effect. slide in from left
+          this.router.targetEl.classList.remove('slide-in');
+          setTimeout(_ => {
+            // this.router.targetEl.innerHTML = html; 
+            setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
+            this.router.targetEl.classList.add('slide-in');
+          }, 50);
+          this.router.showLoadingEl(false);
+        }
         return onRouteEndFn(this);
       }).catch(error => {
         this.router.debug && console.error('routing-error', error);
