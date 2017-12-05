@@ -32,7 +32,7 @@ import {getScopedObj} from '../util.js';
         position:absolute; top: 0; left: 0; 
         width:100%; height: 100%; 
         min-height: 64px;
-        background-color: rgba(255,255,255,0.2); 
+        background-color: rgba(255,255,255,0.5); 
       }
       a-router > .loading > svg {
         animation: ce-rotate 1.4s infinite linear;
@@ -41,14 +41,14 @@ import {getScopedObj} from '../util.js';
       a-router > .loading > svg circle {
         stroke-dasharray: 44.2336, 200;
         stroke-dashoffset: -15;
-        stroke: var(--theme-color-700, #616161);
+        stroke: var(--theme-color-500, #9e9e9e);
         stroke-linecap: round;
         opacity: 1;
         stroke-width: 3;
         fill: none;
       }
       a-router > .loading > svg polygon {
-        fill: var(--theme-color-700, #616161);
+        fill: var(--theme-color-500, #9e9e9e);
         transform: rotate(314deg);
         transform-origin: 16px 16px 0px;
         opacity: 1;
@@ -164,7 +164,7 @@ import {getScopedObj} from '../util.js';
         (route.getAttribute('default') !== null) && (this.defaultRoute = route);
       });
       this.resolveFunc = getScopedObj(window, resolveFunc);
-      this.onHttpSatrt = getScopedObj(window, onHttpStart);
+      this.onHttpStart = getScopedObj(window, onHttpStart);
       this.onHttpEnd   = getScopedObj(window, onHttpEnd);
       this.targetEl    = this._addTargetEl();
       this.loadingEl   = this._addLoadingEl();

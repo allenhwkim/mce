@@ -99,11 +99,14 @@ import {getScopedObj, setInnerHTML} from '../util.js';
           let options = this.router.onHttpStart(this);
           return fetch(this.import, options || {})
             .then(response => {
-              this.router.onHttpEnd && this.router.onHttpEnd(response);
               if (!response.ok) {
                 throw Error(`url: ${this.import}, status: ${response.statusText}`);
               }
-              return response.text();
+              if (this.router.onHttpEnd) {
+                return this.router.onHttpEnd(response);
+              } else {
+                return response.text();
+              }
             });
         }
       }).then(html => {

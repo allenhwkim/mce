@@ -104,12 +104,32 @@
         }
       };
       var fn = {
-        routerResolve : getPromiseFn('routerResolveFn', {data:'router'}),
-        onHttpStart   : getPromiseFn('onHTTPStartFn', {method: 'GET'}),
-        onHttpEnd     : getPromiseFn('onHTTPEndFn', {method: 'GET'}),
-        routeResolve  : getPromiseFn('routeResolveFn', {data: 'route'}),
-        onRouteStart  : getPromiseFn('onRouteStartFn', null),
-        onRouteEnd    : getPromiseFn('onRouteEndFn', null)
+        routerResolve: function(route) {
+          console.log('executing router-resolve');
+          return new Promise(function(resolve, reject) {
+            setTimeout(function() { resolve({data: 'router'}); }, 1000);
+          });
+        },
+        routeResolve: function(route) { 
+          console.log('executing route-resolve');
+          return Promise.resolve({data: 'route'});
+        },
+        onRouteStart: function(route) { 
+          console.log('executing on-route-start');
+          return Promise.resolve({data: 'route'}); 
+        },
+        onHttpStart: function(route) {
+          console.log('executing on-http-start');
+          return {method: 'GET'}; // must return httpOptions
+        },
+        onHttpEnd: function(response) { 
+          console.log('executing on-http-end');
+          return response.text(); // must return a promise
+        },
+        onRouteEnd: function(route) { 
+          console.log('executing on-route-end');
+          return Promise.resolve(null); 
+        }
       }
     </script>
 
