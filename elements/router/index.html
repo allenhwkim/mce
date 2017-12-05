@@ -68,10 +68,15 @@
       <a-router base-path="/">
         <a-route path="page1" import="page1.html" no-cache></a-route>
         <a-route path="page2" import="page2.html"></a-route>
-        <a-route path="not-found" import="not-found.html"></a-route>
         <a-route path="" redirect="page1"></a-route>
+        <a-route default no-cache import="defaultUrl()"></a-route>
       </a-router>
     </template>
+    <script>
+      function defaultUrl() {
+        return 'default.html';
+      }
+    </script>
 
     <template class="callbacks">
       <a-router

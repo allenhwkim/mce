@@ -49,7 +49,6 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       // add this to the parent route
       this.router = this.closest('a-router');
       this.path = this.getAttribute('path');
-      this.import = this.getAttribute('import');
       this.redirect = this.getAttribute('redirect');
       this.noCache = (this.getAttribute('no-cache') !== null);
       this.cachedTemplate = null;
@@ -59,6 +58,20 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       if (!this.path && !(this.import || this.redirect)) {
         throw "Invalid attributes for a-route, required path and import"
       }
+    }
+
+    get import() {
+      let url, attrFn, attr = this.getAttribute('import');
+      if (attr) {
+        if (attr.match(/\.html$/)) {
+          url = attr;
+        } else {
+          attrFn = new Function('return ' +attr);
+          url = attrFn();
+          //console.log('attrFn', attrFn, 'attr', attr, 'url', url);
+        }
+      }
+      return url;
     }
 
     activate() {
@@ -71,6 +84,7 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       this.state = window.history.stae;
 
       this.router.showLoadingEl(true);
+
       routerResolveFn(this)    // resolve router resolveFunc
       .then(routerData => {
         this.router.data = routerData;

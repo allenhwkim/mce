@@ -83,6 +83,7 @@ import {getScopedObj} from '../util.js';
       this.onHttpEnd   = aPromise;  // a callvack funciton, route as parameter, returning a Promise
 
       this.routes;      // collection of <a-route> children
+      this.defaultRoute;
       this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
       this.style.position = 'relative'; //required to show loaing overlay
@@ -103,7 +104,6 @@ import {getScopedObj} from '../util.js';
       this._notFoundRoute = this._notFoundRoute ||
         this._getUrlMatchingRoute(this.basePath + '/not-found') ||
         this._getUrlMatchingRoute(this.basePath + 'not-found');
-
       return this._notFoundRoute;
     }
 
@@ -138,7 +138,9 @@ import {getScopedObj} from '../util.js';
       } else { // not-found
         this.debug && console.log(
           `route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
-        if (this.notFoundRoute) {
+        if (this.defaultRoute) {
+          this.defaultRoute.activate();
+        } else if (this.notFoundRoute) {
           this._redirectTo(this.notFoundRoute.path);
         } else {
           this.debug && console.error(`route not found for '/not-found' or 'not-found'`);
@@ -158,6 +160,9 @@ import {getScopedObj} from '../util.js';
       let onHttpEnd   = this.getAttribute('on-http-end');
 
       this.routes = Array.from(this.querySelectorAll('a-route'));
+      this.routes.forEach(route => {
+        (route.getAttribute('default') !== null) && (this.defaultRoute = route);
+      });
       this.resolveFunc = getScopedObj(window, resolveFunc);
       this.onHttpSatrt = getScopedObj(window, onHttpStart);
       this.onHttpEnd   = getScopedObj(window, onHttpEnd);
