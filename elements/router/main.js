@@ -73,14 +73,12 @@ import {getScopedObj} from '../util.js';
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
   class Router extends HTMLElement {
     connectedCallback() {
-      let aPromise = _ => Promise.resolve();
-
       this.basePath = this.getAttribute('base-path') || '';
       this.debug = this.getAttribute('debug') === 'true';
 
-      this.resolveFunc = aPromise;  // common resolve function route as parameter, and returning a Promise
-      this.onHttpStart = aPromise ; // a callback function, route as parameter, and returning a Promise
-      this.onHttpEnd   = aPromise;  // a callvack funciton, route as parameter, returning a Promise
+      this.resolveFunc;  // common resolve function route as parameter, and returning a Promise
+      this.onHttpStart; // a callback function, route as parameter, and returning a Promise
+      this.onHttpEnd;  // a callvack funciton, route as parameter, returning a Promise
 
       this.routes;      // collection of <a-route> children
       this.defaultRoute;
@@ -155,6 +153,7 @@ import {getScopedObj} from '../util.js';
     }
 
     _setProperties() {
+      let aPromise = _ => Promise.resolve();
       let resolveFunc = this.getAttribute('resolve-func');
       let onHttpStart = this.getAttribute('on-http-start');
       let onHttpEnd   = this.getAttribute('on-http-end');

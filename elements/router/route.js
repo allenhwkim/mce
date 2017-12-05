@@ -96,7 +96,7 @@ import {getScopedObj, setInnerHTML} from '../util.js';
         if (this.cachedTemplate) {
           return this.cachedTemplate;
         } else {  // fetch if not cached                       
-          let options = this.router.onHttpStart(this);
+          let options = this.router.onHttpStart && this.router.onHttpStart(this);
           return fetch(this.import, options || {})
             .then(response => {
               if (!response.ok) {
