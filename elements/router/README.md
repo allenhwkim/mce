@@ -7,6 +7,8 @@ To reinstante, `a-router` watches the url changes, find a proper route, and allo
  . monitors url change
  . find a `a-route`
  . then, ask `a-route` do the action
+ 
+ [demo](https://custom-element.github.io/#router)
 
 ## Features
 
