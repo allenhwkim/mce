@@ -10,7 +10,8 @@
     "min-css": "ls ../*/style.css && uglifycss ../*/style.css > dist/ce-core.css",
     "min-js": "uglifyjs dist/ce-core.js -m reserved=[AppBar,BottomNavBar,Button,Card,Checkbox,Chip,Dialog,ExpansionPanel,GridList,Icon,List,Menu,NavDrawer,NavItem,RadioButton,RefreshIndicator,Switch,Tabs,TextField,Tooltip] -c > dist/ce-core.min.js",
     "build": "npm-run-all clean min-css package min-js",
-    "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
+    "build-and-publish": "npm run build && npm version patch && npm publish --access=public",
+    "doc": "jsdoc2md main.js > DOC-GENERATED.md"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "jsdoc-to-markdown": "^3.0.2",
     "npm-run-all": "^4.1.1",
     "uglify-es": "^3.1.7",
     "uglifycss": "0.0.27",

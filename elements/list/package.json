@@ -1,6 +1,6 @@
 {
   "name": "@custom-element/list",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "list with MD/CE",
   "main": "dist/main.min.js",
   "scripts": {
@@ -9,24 +9,19 @@
     "min-css": "uglifycss style.css > dist/style.css",
     "min-js": "uglifyjs dist/main.js -m reserved=[List] -c > dist/main.min.js",
     "build": "npm-run-all clean min-css package min-js",
+    "doc": "jsdoc2md main.js > DOC-GENERATED.md",
     "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/allenhwkim/custom-element/elements"
   },
-  "keywords": [
-    "customElement",
-    "material",
-    "design",
-    "html"
-  ],
-  "files": [
-    "dist"
-  ],
+  "keywords": [ "customElement", "material", "design", "html", "leaflet", "map" ],
+  "files": ["dist"],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "jsdoc-to-markdown": "^3.0.2",
     "npm-run-all": "^4.1.1",
     "uglify-es": "^3.1.7",
     "uglifycss": "0.0.27",

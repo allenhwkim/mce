@@ -1,49 +1,47 @@
-/**
- *    * `matchingPath`, values to match the url, {startsWith: '/foo/bar', re: /fooz/ }
- *  # Route
- *    Active element of a router,`<a-router>`
- *
- *  ### Attributes
- *    * `path`
- *      _required_,  path to respond
- *    * `import`
- *      _required_,  url to load
- *    * `no-cache`
- *      Optional,Indicates that the route view template is not cached.
- *    * `resolve-func`
- *     Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
- *    * `on-route-start`
- *      Optional, injector function to be executed before route starts.
- *    * `on-route-end`
- *      Optional, injector function to be executed after route ends.
- *  
- *  ### Properties
- *    * `path`, attribute value.
- *    * `cachedTemplate`, template HTML cached
- *    * `noCache`, attribute value
- *    * `import`, attribute value
- *    * `resolveFunc`, attribute value
- *    * `onRouteStart`, attribute value
- *    * `onRouteEnd`, attribute value
- * ### Usage
- *  ```
- *  <a-router>
- *     <a-route path="/path1" import="path1.html">
- *       <a-router>    <!-- knows that parent path is /path1 -->
- *         <a-route path="/foo" import="foo.html" ></a-route> <!-- responds to /path1/foo -->
- *         <a-route path="/bar" import="bar.html"></a-route> <!-- responds to /path1/bar -->
- *       </a-router>
- *     </a-route>
- *  </a-router>
- *  ```
- */
-
 import '../ce-polyfill.js';
 import {getScopedObj, setInnerHTML} from '../util.js';
 
 (function() {
 
-  //https://material.io/guidelines/layout/structure.html#structure-app-bar
+  /**
+   * @description
+   *  Child element of a router,`<a-router>`
+   *
+   *  ### Attributes
+   *    * `path`
+   *      _required_,  path to respond
+   *    * `import`
+   *      _required_,  url to load
+   *    * `no-cache`
+   *      Optional,Indicates that the route view template is not cached.
+   *    * `resolve-func`
+   *     Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
+   *    * `on-route-start`
+   *      Optional, injector function to be executed before route starts.
+   *    * `on-route-end`
+   *      Optional, injector function to be executed after route ends.
+   *  
+   *  ### Properties
+   *    * `path`, attribute value.
+   *    * `cachedTemplate`, template HTML cached
+   *    * `noCache`, attribute value
+   *    * `import`, attribute value
+   *    * `resolveFunc`, attribute value
+   *    * `onRouteStart`, attribute value
+   *    * `onRouteEnd`, attribute value
+   * 
+   * ### Usage
+   *  ```
+   *  <a-router>
+   *     <a-route path="/path1" import="path1.html">
+   *       <a-router>    <!-- knows that parent path is /path1 -->
+   *         <a-route path="/foo" import="foo.html" ></a-route> <!-- responds to /path1/foo -->
+   *         <a-route path="/bar" import="bar.html"></a-route> <!-- responds to /path1/bar -->
+   *       </a-router>
+   *     </a-route>
+   *  </a-router>
+   *  ```
+   */
   class Route extends HTMLElement {
     connectedCallback() {
       // add this to the parent route
@@ -74,6 +72,19 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       return url;
     }
 
+    /**
+     * activate this route for the parent router. The activation sequence is;
+     * 
+     * 1. resolve router function which is given from `a-router[resolve-func]` 
+     * 2. resolve route function which is given from `a-route[resolve-func]` 
+     * 3. run route start callback if given from `a-route[on-route-start]` 
+     * 4. determine html contents
+     *   4.1 if html contents is cached, contents is cached one.
+     *   4.2 if not cached, run http start callback if given from `a-router[on-http-start]` 
+     *   4.3 fetch html contents, then run http end callback if given from `a-router[on-http-end]` 
+     * 5. show slide-in animation and replace contents
+     * 6. run route end callback if given from `a-router[on-route-end]` 
+     */
     activate() {
       let aPromise = _ => Promise.resolve();
       let routerResolveFn = this.router.resolveFunc || aPromise;

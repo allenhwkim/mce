@@ -4,6 +4,9 @@ import {addStyleSheet} from '../util.js';
 // FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {
 
+  /**
+   * Tooltips are text labels that appear when the user hovers over, focuses on, or touches an element.
+   */
   class Tooltip extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url
