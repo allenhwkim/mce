@@ -1,0 +1,242 @@
+<!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../theme.tmpl.html" />
+
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); padding: 12px; }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../dialog/main.js"></script>
+    <link rel="stylesheet" class="dialog" href="../dialog/style.css">
+
+    <script type="module" src="../expansion-panel/main.js"></script>
+    <link rel="stylesheet" class="expansion-panel" href="../expansion-panel/style.css">
+
+    <script type="module" src="../button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../button/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+  </head>
+  <body>
+
+    <template class="simple">
+      <div>
+        <a-button class="raised" onclick="openDialog('dialog-1')">Open A Dialog</a-button>
+        <a-dialog id="dialog-1">
+          <h3 class="title">Title</h3>
+          <div class="content">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+          sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          Duis aute irure dolor in reprehenderit in voluptate velit 
+          esse cillum dolore eu fugiat nulla pariatur. Excepteur 
+          sint occaecat cupidatat non proident, sunt in culpa qui 
+          officia deserunt mollit anim id est laborum.  
+          </div>
+          <hr class="divider"></hr>
+          <div class="actions">
+            <a-button onclick="closeDialog('dialog-1')">cancel</a-button>
+            <a-button onclick="closeDialog('dialog-1')">OK</a-button>
+          </div>
+        </a-dialog>
+      </div>
+    </template>
+
+    <template class="with-data">
+      <div>
+        <a-button class="raised"
+          onclick="openDialog('dialog-2',{
+            title: 'Custim Title', 
+            contents:'This is custom contents',
+            actions: {'Custom Button': () => alert('My Button is clicked.')}
+          })">Open A Dialog With Data</a-button>
+        <a-dialog id="dialog-2">
+          <h3 class="title">Default Title</h3>
+          <div class="content">Default contents</div>
+          <div class="actions"></div>
+        </a-dialog>
+      </div>
+    </template>
+
+    <div class="container">
+      <h1>Dialog</h1>
+      <a href="https://material.io/guidelines/components/dialogs.html#dialogs-specs">
+        Material Design Spec.
+      </a>
+      <p>
+        Dialogs contain text and UI controls. They retain focus until dismissed or a required action has been taken. Use dialogs sparingly because they are interruptive.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/dialog">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+      
+      <a-card class="simple">
+        <div class="title">
+          <h2>Simple Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source" checked></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="with-data">
+        <div class="title">
+          <h2>Dialog With User Data Example</h2>
+          <p class="subtitle">
+            You can provide your own tile, contents, and buttons for dialog.
+          </p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source"></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.with-data', 'a-card.with-data')</script>
+    </div>
+
+    <div class="container">
+      <h2> Element Functions</h2>
+      <an-expansion-panel class="expanded">
+        <div class="title">
+          <h3>function open(options)</h3>
+          <div>Opens the dialog.</div>
+        </div>
+        <div class="text">
+          Options:
+          <ul>
+            <li> <b>title</b>: Title of this dialog.
+            <li> <b>content</b>: Contents of this dialog as in string format.
+            <li> <b>actions</b>: Buttons for this dialog with callback function. e.g.,
+                 <pre>{'Custom Button': () => alert('My Button is clicked.')}</pre>
+          </ul>
+          Example: 
+  <pre>
+  document.getElementById('my-dialog').open({
+    title: 'Custim Title', 
+    contents:'This is custom contents',
+    actions: {'Custom Button': () => alert('My Button is clicked.')}
+  });
+  </pre>
+        </div>
+      </an-expansion-panel>
+
+      <an-expansion-panel>
+        <div class="title">
+          <h3>function close()</h3>
+          <div>Closes the dialog.</div>
+        </div>
+        <div class="text">
+          Example:
+          <pre>document.getElementById('my-dialog').close();</pre>
+        </div>
+      </an-expansion-panel>
+
+      <a-list>
+        <ul>
+          <h3>Element Classes</h3>
+          <li> <an-icon>code</an-icon>
+            <div><div>visible</div>
+               <div class="text">Indicates that the dialog is an open status</div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+      <a-list>
+        <ul>
+          <h3>Child Element Classes</h3>
+          <li> <an-icon>settings_ethernet</an-icon>
+            <div><div>divider</div>
+               <div class="text">Draw a line</div> 
+            </div>
+          </li>
+          <li> <an-icon>settings_ethernet</an-icon>
+            <div><div>title</div>
+               <div class="text">Title section of the dialog</div> 
+            </div>
+          </li>
+          <li> <an-icon>settings_ethernet</an-icon>
+            <div><div>content</div>
+               <div class="text">Title section of the dialog</div> 
+            </div>
+          </li>
+          <li> <an-icon>settings_ethernet</an-icon>
+            <div><div>actions</div>
+               <div class="text">Action buttons of the dialog.</div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+    </div>
+      
+    <script>
+      function closeDialog(id) {
+        document.getElementById(id).close();
+      }
+      function openDialog(id, data) {
+        document.getElementById(id).open(data);
+      }
+    </script>
+  </body>
+</html>
+
+</html>

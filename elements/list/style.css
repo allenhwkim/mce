@@ -1,0 +1,47 @@
+/*https://material.io/guidelines/components/lists.html#lists-specs*/
+a-list {
+  display: block;
+}
+a-list > ul,
+a-list > ol {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+a-list > ul > li,
+a-list > ol > li {
+  list-style-type: none;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  min-height: 48px;
+}
+a-list > ol > li > *,
+a-list > ul > li > * {
+  flex: 1;
+  color: var(--theme-text-color-900, #212121);
+}
+a-list > ol > li > .an-icon,
+a-list > ol > li > an-icon,
+a-list > ol > li > .icon,
+a-list > ul > li > .an-icon,
+a-list > ul > li > an-icon,
+a-list > ul > li > .icon {
+  color: var(--theme-text-color-600, #757575);
+  min-width: 72px;
+  flex: initial;
+}
+a-list > ol > li > .an-icon:last-child,
+a-list > ol > li > an-icon:last-child,
+a-list > ol > li > .icon:last-child,
+a-list > ol > li > .an-icon:last-child,
+a-list > ol > li > an-icon:last-child,
+a-list > ol > li > .icon:last-child {
+  width: initial;
+}
+a-list > ol > li .text,
+a-list > ul > li .text {
+  font-size: 14px;
+  color: var(--theme-text-color-600, #757575);
+}

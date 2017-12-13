@@ -1,0 +1,304 @@
+<!doctype html>
+<!-- This page is useful for development and testing. As of. Nov 2017. This page works well with Chrome browser. -->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      iframe {width: 100%; height: 480px; border: 0;}
+      a-list h3, a-list h4, a-list h5, a-list h6 {margin: 0;}
+      .container { padding: 12px; }
+    </style>
+
+    <script type="module" src="../router/main.js"></script>
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1>Router</h1>
+      <p>
+        `a-router` is an element that responds to url hash change.
+      </p>
+        a-router watches the url hash changes, find a proper route, and load html.
+
+      <h3>
+        <a href="https://github.com/allenhwkim/custom-element/tree/master/elements/router">Github</a>
+      </h3>
+
+      <h2>Features</h2>
+      <ul>
+        <li>Basic Routing</li>
+        <li>Dynamic Routing Using A Function</li>
+        <li>Nested Routing Using Base Path</li>
+        <li>Page Caching</li>
+        <li>Resolving Data Before Route</li>
+        <li>Loading Sign</li>
+        <li>Slide-In Page transition</li>
+        <li>Callbacks
+          <ul>
+            <li>Route start callback; on-route-start</li>
+            <li>Route End Callback; on-route-end</li>
+            <li>Http Start Callback; on-http-start</li>
+            <li>Http End Callback; on-http-end</li>
+          </ul>
+        </li>
+      </ul>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/router">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+
+      <h3>Simple Router Example</h3>
+      <iframe src="https://embed.plnkr.co/DiFMep"></iframe>
+
+      <h3>Router With Base Path</h3>
+      <iframe src="https://embed.plnkr.co/FOLOB9/"></iframe>
+
+      <h3>Router With Callbacks</h3>
+      <iframe src="https://embed.plnkr.co/iyCwi9/"></iframe>
+    </div>
+
+    <div class="container">
+      <a-list>
+        <ul>
+          <h3>`a-router` Element Attributes</h3>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>base-path</h4></div>
+               <div class="text">Optional. default '/', base path of this router. All route path will be prefixed with this base path.t</div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>resolve-func</h4></div>
+               <div class="text">
+                 Optional, router level resolve function. e.g. security check, configuration, etc 
+                  <ul>
+                    <li> function parameter: `a-router`</li>
+                    <li> returns: a Promise</li>
+                  </ul>
+                  <br/>Example.
+                  <pre><code>
+      &lt;a-router resolve-func="routerResolve">....&lt;/a-router>
+      &lt;script>
+        function routerResolve(route) {
+          console.log('executing router-resolve');
+          return new Promise(function(resolve, reject) {
+            setTimeout(function() { resolve({data: 'router'}); }, 1000);
+          });
+        },
+      &lt;/script>
+                </code></pre>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>on-http-start</h4></div>
+              <div class="text">
+                Optional, injector function to be executed before all http requests calls. This can change http request. 
+                <ul>
+                  <li> function parameter: `a-router`</li>
+                  <li> returns: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request">`fetch` call options</a></li>
+                </ul>
+                <br/>Example.
+                <pre><code>
+      &lt;a-router resolve-func="onHttpStart">....&lt;/a-router>
+      &lt;script>
+        function onHttpStart(route) {
+          console.log('executing on-http-start');
+          return {method: 'GET'}; // must return httpOptions
+        },
+      &lt;/script>
+                </code></pre>
+              </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>on-http-end</h4></div>
+               <div class="text">
+                 Optional, injector function to be executed after all http responses. This can change http response.
+                  <ul>
+                    <li> function parameter: `a-router`</li>
+                    <li> returns: a Promise</li>
+                  </ul>
+                  <br/>Example.
+                  <pre><code>
+      &lt;a-router on-http-end="onHttpEnd">....&lt;/a-router>
+      &lt;script>
+        function onHttpEnd(response) { 
+          console.log('executing on-http-end');
+          return response.text(); // must return a promise
+        }
+      &lt;/script>
+                </code></pre>
+               </div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+
+      <a-list>
+        <ul>
+          <h3>`a-route` Element Attributes</h3>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>path</h4></div>
+               <div class="text">
+                 <i>required</i> path to respond
+                 <br/>Example.
+                 <pre><code>
+    &lt;a-route path="page1" import="page1.html" no-cache>&lt;/a-route>
+    &lt;a-route path="/page2" import="page2.html">&lt;/a-route>
+    &lt;a-route path="not-found" import="not-found.html">&lt;/a-route>
+    &lt;a-route path="" redirect="page1">&lt;/a-route>
+    &lt;a-route path="/not-found" import="not-found.html">&lt;/a-route>
+                 </code></pre>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>import</h4></div>
+               <div class="text">
+                 url to load, `import` or `redirect` is requird. A function is acceptable for dynamic url generation.
+                 <br/>Example.
+                 <pre><code>
+    &lt;a-route path="page1" import="page1.html" no-cache>&lt;/a-route>
+    &lt;a-route path="not-found" import="not-found.html">&lt;/a-route>
+    &lt;a-route default import="getDynamicUrl()">&lt;/a-route>
+                 </code></pre>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>redirect</h4></div>
+               <div class="text"> path to redirect. `import` or `redirect` is requird. </div> 
+                 <br/>Example.
+                 <pre><code>
+    &lt;a-route path="page1" import="page1.html" no-cache>&lt;/a-route>
+    &lt;a-route path="" redirect="page1">&lt;/a-route>
+                 </code></pre>
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>default</h4></div>
+               <div class="text">default route.
+                 <br/>Example.
+                 <code>&lt;a-route default no-cache import="defaultUrl()"&gt;&lt;/a-route&gt;</code>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>no-cache</h4></div>
+              <div class="text">
+                 Optional, Indicates that the route view template is cached or not.
+                 if defined, the route will import the html every time when it is activated.
+                 <br/>Example.
+                 <pre><code>
+    &lt;a-route path="page1" import="page1.html" no-cache>&lt;/a-route>
+    &lt;a-route path="page2" import="page1.html">&lt;/a-route>
+                 </code></pre>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>resolve-func</h4></div>
+               <div class="text">
+                 Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
+                  <ul>
+                    <li> function parameter: `a-router`</li>
+                    <li> returns: a Promise</li>
+                  </ul>
+                  <br/>Example.
+                  <pre><code>
+      &lt;a-route path="page1" resolve-func="myResolveFunc">&lt;/a-route>
+      &lt;script>
+      function myResolveFunc(route) { 
+         console.log('executing route-resolve');
+         return Promise.resolve({data: 'route'});
+      }
+      &lt;/script>
+                  </code></pre>
+               </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>on-route-start</h4></div>
+              <div class="text">
+                Optional, injector function to be executed before route starts.
+                <ul>
+                  <li> function parameter: `a-router`</li>
+                  <li> returns: a Promise</li>
+                </ul>
+                <br/>Example.
+                <pre><code>
+      &lt;a-route path="page1" resolve-func="onRouteStart">&lt;/a-route>
+      &lt;script>
+      function onRouteStart(route) { 
+        console.log('executing on-route-start');
+        return Promise.resolve(null); 
+      }
+      &lt;/script>
+                </code></pre>
+              </div> 
+            </div>
+          </li>
+          <li> 
+            <an-icon>code</an-icon>
+            <div><div><h4>on-route-end</h4></div>
+               <div class="text">
+                Optional, injector function to be executed after route ends.
+                <ul>
+                  <li> function parameter: `a-router`</li>
+                  <li> returns: a Promise</li>
+                </ul>
+                <br/>Example.
+                <pre><code>
+      &lt;a-route path="page1" resolve-func="onRouteEnc">&lt;/a-route>
+      &lt;script>
+      function onRouteEnd(route) { 
+        console.log('executing on-route-end');
+        return Promise.resolve(null); 
+      }
+      &lt;/script>
+                </code></pre>
+               </div> 
+            </div>
+          </li>
+        </ul>
+      </a-list>
+    </div>
+
+  </body>
+</html>
