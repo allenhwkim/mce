@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="module" src="../leaflet.js"></script>
+    <script type="module" src="../marker.js"></script>
+    <style>a-leaflet {display: block; width: 400px; min-height: 200px;}</style>
+  </head>
+  <body>
+
+    <h3>Static Popup On Map</h3>
+    <a-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup">
+    </a-leaflet>
+    &lt;a-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup">&lt;/a-leaflet>
+    <script>
+      function openPopup(event) {
+        L.popup().setLatLng([51.505, -0.09])
+          .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+          .openOn(event.target)
+      }
+    </script>
+
+    <h3>Static Popup On Marker</h3>
+    <a-leaflet center="[51.505, -0.09]">
+      <a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1"></a-marker>
+      <a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2"></a-marker>
+    </a-leaflet>
+    &lt;a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1">&lt;/a-marker>
+    &lt;a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2">&lt;/a-marker>
+    <script>
+      function openMarkerPopup1(event) {
+        event.target.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+      }
+      function openMarkerPopup2(event) {
+        event.target.bindPopup("<b>Hello world!</b><br />I am a popup.");
+      }
+    </script>
+
+
+    <h3>Dynamic Popup On Map</h3>
+    click on map to see a  popup
+    <a-leaflet center="[51.505, -0.09]" on-click="openPopupLatLng"></a-leaflet>
+    <script>
+      function openPopupLatLng(e) {
+        L.popup().setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng)
+          .openOn(e.target);
+      }
+    </script>
+
+    <h3>Custom HTML Popup On Map</h3>
+    click on map to see a html element popup
+    <a-leaflet center="[51.505, -0.09]" on-click="openPopupElement"></a-leaflet>
+    <div id="container" style="display:none">
+      <div id="popup">This is html element</div>
+    </div>
+    <pre>
+    &lt;a-leaflet center="[51.505, -0.09]" on-click="openPopupElement">&lt;/a-leaflet>
+    &lt;div id="container" style="display:none">
+      &lt;div id="popup">This is html element&lt;/div>
+    &lt;/div>
+    </pre>
+    <style>#popup {padding: 10px; border: 1px dashed #ccc; background-color: red; color: #fff;}</style>
+    <script>
+      function openPopupElement(e) {
+        document.querySelector('#container #popup').innerHTML = ''+e.latlng;
+        L.popup().setLatLng(e.latlng)
+          .setContent(document.querySelector('#container #popup').cloneNode(true))
+          .openOn(e.target);
+      }
+    </script>
+  </body>
+</html>

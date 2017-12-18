@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="module" src="../leaflet.js"></script>
+    <script type="module" src="../marker.js"></script>
+    <style>a-leaflet {display: block; width: 400px; min-height: 200px;}</style>
+  </head>
+  <body>
+
+    <h3>Simple Marker with latlng="[51.505, -0.09]"</h3>
+    <a-leaflet center="[51.505, -0.09]">
+      <a-marker latlng="[51.505, -0.09]"></a-marker>
+    </a-leaflet>
+
+    <h3>Simple Marker with latlng="Brampton, Canada"</h3>
+    <a-leaflet center="Brampton, Canada">
+      <a-marker latlng="Brampton, Canada"></a-marker>
+    </a-leaflet>
+
+    <h3>Marker with an event, on-dragend="dragendHandler" </h3>
+    <a-leaflet center="[51.505, -0.09]" scroll-wheel-zoom="false">
+      <a-marker latlng="[51.505, -0.09]" draggable="true" on-dragend="dragendHandler"></a-marker>
+    </a-leaflet>
+    <script>
+      function dragendHandler(event) {
+        console.log('event', event);
+        alert(`lat: ${event.target.getLatLng().lat}, lng; ${event.target.getLatLng().lng}`)
+      }
+    </script>
+
+  </body>
+</html>

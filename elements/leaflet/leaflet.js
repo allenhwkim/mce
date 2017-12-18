@@ -1,6 +1,31 @@
 import {observeAttrChange} from '../util.js';
 import {util} from './util.js';
 
+/**
+ * @description
+ * leaflet map element, `a-leaflet`
+ * 
+ * ### example
+ * ```
+ * <a-leaflet center="Brampton, Canada"></a-leaflet>
+ * ```
+ * 
+ * ### `a-leaflet` Attributes 
+ * any options defined in leaflet, http://leafletjs.com/reference-1.2.0.html#map-option
+ * As an example, for center and zoom 
+ *  |name|value|description|
+ *  |---|---|---|
+ *  |center|Array or String| Initial geographic center of the map. [lat, lng], or an address. e.g. [0,0], "Brampton, Canada"
+ *  |zoom|number| initial map zoom level e.g. 13
+ *  |...|...| [more](http://leafletjs.com/reference-1.2.0.html#map-option)
+ * 
+ * any events defined in leaflet with `on-` prefixed; http://leafletjs.com/reference-1.2.0.html#map-event
+ * As an example, for click event, 
+ *  |name|value|description|
+ *  |---|---|---|
+ *  |on-click|function reference| e.g. on-click="myClickHandler"
+ *  |...|...| [more](http://leafletjs.com/reference-1.2.0.html#map-event)
+ */
 class LeafletMap extends HTMLElement{
   connectedCallback() {
     this.map;
@@ -8,8 +33,8 @@ class LeafletMap extends HTMLElement{
     this.events = {};
     this.childObjects = {};
 
-    // initiazlie separately when `no-init` is given
-    (this.getAttribute('no-init') === null) && this.initialize();
+    // initiazlie separately when `lazy-init` is given
+    (this.getAttribute('lazy-init') === null) && this.initialize();
   }
 
   initialize(){
@@ -25,26 +50,36 @@ class LeafletMap extends HTMLElement{
       .then(_ => util.resolveLatLng(this.options.center))
       .then(latlng => {
         this.options.center = latlng;
-        this.map = new L.map(this, this.options)
+
+        let mapOptions = Object.assign({}, this.options);
+        delete mapOptions.zoom;
+        delete mapOptions.center;
+        this.map = new L.map(this, mapOptions);
+        this.setEvents(); // load event must fire when set view
+        this.map.setView(latlng, this.options.zoom);
       })
       .then(_ => this.setChildObjects())   // read children elements and set default layer
-      .then(childObjects => {
+      .then(_ => {
         observeAttrChange(this, this.onAttrChange.bind(this));
         if (!this.childObjects.aTileLayer) { // if no tilelayer given, set default one
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
         }
-        this.setEvents();
+        for (let groupName in this.childObjects) {
+          this.childObjects[groupName].forEach(mapObject => {
+            mapObject.initialize(this.map)
+          });
+        }
       })
   }
 
   setChildObjects(map) {
     return new Promise(resolve =>  {
       setTimeout(_ => { // children are not immediatly visible
-        let childrenEls = Array.from(this.querySelectorAll('*'));
+        let childrenEls = Array.from(this.querySelectorAll('*')).filter(el => el.tagName.match(/-/));
         childrenEls.forEach(child => {
           let groupName = util.toCamelCase(child.tagName.toLowerCase());
           this.childObjects[groupName] = this.childObjects[groupName] || [];
-          this.childObjects[groupName].push(child.mapObject);
+          this.childObjects[groupName].push(child);
         })
         resolve(this.childObjects);
       });
@@ -93,4 +128,4 @@ class LeafletMap extends HTMLElement{
 
 }
 
-customElements.define('a-map', LeafletMap);
+customElements.define('a-leaflet', LeafletMap);

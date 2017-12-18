@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <script type="module" src="../leaflet.js"></script>
+    <script type="module" src="../marker.js"></script>
+    <style>a-leaflet {display: block; width: 50%; min-height: 200px;}</style>
+  </head>
+  <body>
+
+    <h3>Simple Default Map Example</h3>
+    <a-leaflet></a-leaflet>
+
+    <h3>Simple Map with zoom="12"</h3>
+    <a-leaflet zoom="12"></a-leaflet>
+
+    <h3>Simple Map with center="Brampton, Canada"</h3>
+    <a-leaflet center="Brampton, Canada"></a-leaflet>
+
+    <h3>Map attribute change</h3>
+     When you change attribute, it also changes the map when set function is defined.
+    <a-leaflet id="leaflet1" center="Brampton, Canada" scroll-wheel-zoom="false"></a-leaflet>
+    Enter Address: <input id="address" value="Brampton, Canada" onchange="updateMap(event)">
+    <script>
+      function updateMap(e) {
+        let map = document.querySelector('#leaflet1').setAttribute('center', e.target.value)
+      }
+    </script>
+
+    <h3>Lazy Initialization of Map</h3>
+    You can delay the initiazlie of the map. e.g. click
+    <a-leaflet id="leaflet2" center="Brampton, Canada" lazy-init
+      scroll-wheel-zoom="false"
+      on-click="mapClicked"
+      style="border: 1px solid #ccc"
+      onclick="this.initialize()">
+      This map is not initialized intentioally using `lazy-init`.<br/>
+      Click here to initialize this map.
+      Also click on the map to see latitude and longitute.
+    </a-leaflet>
+    <script>
+      function mapClicked(e) {
+        console.log('e', e);
+        alert(`You clicked latitude: ${e.latlng.lat}, longitute ${e.latlng.lng}`);
+      }
+    </script>
+
+  </body>
+</html>
