@@ -1,4 +1,4 @@
-# @custom-element
+# Custom Element
 [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements) Implementation With Material Design
 
 ## Design Principle
