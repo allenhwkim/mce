@@ -9,6 +9,8 @@ Just add the following script(< 2kb gzipped/polyfill in it) to your website. It 
 <script defer src="https://unpkg.com/@custom-element/leaflet"></script>
 ```
 
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Zhmm59u81X4/0.jpg)](https://www.youtube.com/watch?v=Zhmm59u81X4)
+
 ### For npm users
 ```
 $ npm install @custom-element/leaflet

@@ -33,8 +33,8 @@ function attrs2Events(attributes) {
   Array.from(attributes).forEach( function(attr) {
     if (attr.name.match(/^on-/)) {
       eventName = toCamelCase(attr.name.replace(/^on-/,''));
-      eventValue = getScopedObj(window, attr.value);
-      events[eventName] = eventValue;
+      // eventValue = getScopedObj(window, attr.value);
+      events[eventName] = event => (new Function(atte.value))();
     }
   })
   return events;

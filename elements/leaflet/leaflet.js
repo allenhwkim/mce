@@ -31,7 +31,6 @@ class LeafletMap extends HTMLElement{
     this.map;
     this.options = {center: [51.505, -0.09], zoom: 13};        // default options
     this.events = {};
-    this.childObjects = {};
 
     // initiazlie separately when `lazy-init` is given
     (this.getAttribute('lazy-init') === null) && this.initialize();
@@ -58,32 +57,16 @@ class LeafletMap extends HTMLElement{
         this.setEvents(); // load event must fire when set view
         this.map.setView(latlng, this.options.zoom);
       })
-      .then(_ => this.setChildObjects())   // read children elements and set default layer
       .then(_ => {
         observeAttrChange(this, this.onAttrChange.bind(this));
-        if (!this.childObjects.aTileLayer) { // if no tilelayer given, set default one
-          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
-        }
-        for (let groupName in this.childObjects) {
-          this.childObjects[groupName].forEach(mapObject => {
-            mapObject.initialize(this.map)
-          });
-        }
+        setTimeout(_ => { // children are not immediatly visible
+          let childEls = Array.from(this.querySelectorAll('*')).filter(el => el.tagName.match(/-/));
+          childEls.forEach(child => child.initialize(this.map));
+          if (!this.querySelector('a-tile-layer')) {
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
+          }
+        });
       })
-  }
-
-  setChildObjects(map) {
-    return new Promise(resolve =>  {
-      setTimeout(_ => { // children are not immediatly visible
-        let childrenEls = Array.from(this.querySelectorAll('*')).filter(el => el.tagName.match(/-/));
-        childrenEls.forEach(child => {
-          let groupName = util.toCamelCase(child.tagName.toLowerCase());
-          this.childObjects[groupName] = this.childObjects[groupName] || [];
-          this.childObjects[groupName].push(child);
-        })
-        resolve(this.childObjects);
-      });
-    })
   }
 
   setEvents() {

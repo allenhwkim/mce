@@ -29,24 +29,39 @@ import {util} from './util.js';
  */
 class LeafletMarker extends HTMLElement {
   connectedCallback() {
+    this._map;
+    this.mapObj;                                     // marker
     this.options = {latlng: [51.505, -0.09]};        // default options
     this.events = {};
+    this.initialize(this.map);
+  }
+
+  disconnectedCallback() {
+    this.map.removeLayer(this.mapObj);
+  }
+
+  get map() {
+    this._map = this._map || this.closest('a-leaflet').map;
+    return this._map;
   }
 
   initialize(map){
+    if (!map) return;
     let attrOptions = util.attrs2Options(this.attributes);
+
     this.options = Object.assign(this.options, attrOptions);
     this.events = util.attrs2Events(this.attributes);
     util.resolveLatLng(this.options.latlng)
-    .then(latlng => {
-      this.mapObj = new L.marker(latlng, this.options);    // set options
-      for(let eventName in this.events) {                  // set events
-        this.mapObj.on(eventName, this.events[eventName]);
-      }
+      .then(latlng => {
+        this.mapObj = new L.marker(latlng, this.options);    // set options
+        this.mapObj.customElement = this;
+        for(let eventName in this.events) {                  // set events
+          this.mapObj.on(eventName, this.events[eventName]);
+        }
 
-      this.mapObj.addTo(map);                              // add to map
-      observeAttrChange(this, this.onAttrChange.bind(this));
-    })
+        this.mapObj.addTo(map);                              // add to map
+        observeAttrChange(this, this.onAttrChange.bind(this));
+      })
   }
 
   // run setXXX if defined when attribute value changes

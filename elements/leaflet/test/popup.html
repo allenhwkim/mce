@@ -24,8 +24,10 @@
       <a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1"></a-marker>
       <a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2"></a-marker>
     </a-leaflet>
+    <pre>
     &lt;a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1">&lt;/a-marker>
     &lt;a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2">&lt;/a-marker>
+    </pre>
     <script>
       function openMarkerPopup1(event) {
         event.target.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();

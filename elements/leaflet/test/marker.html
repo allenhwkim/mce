@@ -13,9 +13,16 @@
     </a-leaflet>
 
     <h3>Simple Marker with latlng="Brampton, Canada"</h3>
-    <a-leaflet center="Brampton, Canada">
-      <a-marker latlng="Brampton, Canada"></a-marker>
+    <a-leaflet id="my-map" center="Brampton, Canada">
+      <a-marker id="my-marker" latlng="Brampton, Canada"></a-marker>
     </a-leaflet>
+    Enter Address: <input id="address" value="Brampton, Canada" onchange="updateMarker(event)">
+    <script>
+      function updateMarker(e) {
+        document.querySelector('#my-marker').setAttribute('latlng', e.target.value);
+        document.querySelector('#my-map').setAttribute('center', e.target.value);
+      }
+    </script>
 
     <h3>Marker with an event, on-dragend="dragendHandler" </h3>
     <a-leaflet center="[51.505, -0.09]" scroll-wheel-zoom="false">
@@ -23,8 +30,22 @@
     </a-leaflet>
     <script>
       function dragendHandler(event) {
-        console.log('event', event);
+        console.log('dragendHandler  event', event);
         alert(`lat: ${event.target.getLatLng().lat}, lng; ${event.target.getLatLng().lng}`)
+      }
+    </script>
+
+    <h3>Add/Remove Markers</h3>
+    click on map to add a marker, click on marker to remove it.
+    <a-leaflet id="dyn-map" center="[51.505, -0.09]" on-click="addMarker" style="height: 400px">
+    </a-leaflet>
+    <script>
+      function addMarker(event) {
+        document.querySelector('#dyn-map').insertAdjacentHTML('beforeend',
+          `<a-marker latlng="[${event.latlng.lat}, ${event.latlng.lng}]" on-click="removeMarker"></a-marker>`);
+      }
+      function removeMarker(event) {
+        event.target.customElement.remove();
       }
     </script>
 
