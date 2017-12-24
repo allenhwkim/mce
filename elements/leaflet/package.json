@@ -1,7 +1,7 @@
 {
-  "name": "@custom-element/list",
-  "version": "0.2.6",
-  "description": "list with MD/CE",
+  "name": "@custom-element/leaflet",
+  "version": "0.2.8",
+  "description": "leaflet map",
   "main": "dist/main.min.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
@@ -15,8 +15,15 @@
     "type": "git",
     "url": "https://github.com/allenhwkim/custom-element/elements"
   },
-  "keywords": [ "customElement", "material", "design", "html", "leaflet" ],
-  "files": ["dist"],
+  "keywords": [
+    "custom element",
+    "web component",
+    "html",
+    "leaflet"
+  ],
+  "files": [
+    "dist"
+  ],
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
