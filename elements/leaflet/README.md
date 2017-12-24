@@ -2,15 +2,20 @@
 
 Leaflet map implementation in the simplest and the most convenient way.
 
+![gif1](https://j.gifs.com/Xo7NyA.gif)
+
+![gif2](https://j.gifs.com/qYVyG2.gif)
+
+![gif3](https://j.gifs.com/9QpVqZ.gif)
+
+[Documentation](DOC-GENERATED.md)
+
 ## Installation
 
 Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
 ```
 <script defer src="https://unpkg.com/@custom-element/leaflet"></script>
 ```
-
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Zhmm59u81X4/0.jpg)](https://www.youtube.com/watch?v=Zhmm59u81X4)
-
 ### For npm users
 ```
 $ npm install @custom-element/leaflet
