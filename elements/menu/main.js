@@ -1,6 +1,6 @@
-import '../ce-polyfill.js';
+import '../mce-polyfill.js';
 import '../nav-item/main.js';
-import {addStyleSheet, observeAttrChange} from '../util.js';
+import {addStyleSheet, observeAttrChange} from '../mce-util.js';
 
 ( function() {
   /**

@@ -1,5 +1,5 @@
-import '../ce-polyfill.js';
-import {addStyleSheet, windowResizeHandler} from '../util.js';
+import '../mce-polyfill.js';
+import {addStyleSheet, windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**

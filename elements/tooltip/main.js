@@ -1,5 +1,5 @@
-import '../ce-polyfill.js';
-import {addStyleSheet} from '../util.js';
+import '../mce-polyfill.js';
+import {addStyleSheet} from '../mce-util.js';
 
 // FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {

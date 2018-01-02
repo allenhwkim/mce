@@ -1,6 +1,6 @@
-import '../ce-polyfill.js';
+import '../mce-polyfill.js';
 import '../nav-item/main.js';
-import {addStyleSheet, animate, setTabbable} from '../util.js';
+import {addStyleSheet, animate, setTabbable} from '../mce-util.js';
 
 ( function() {
   /**

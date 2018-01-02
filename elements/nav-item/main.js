@@ -1,6 +1,6 @@
-import '../ce-polyfill.js';
+import '../mce-polyfill.js';
 import '../icon/main.js';
-import {addStyleSheet, setTabbable} from '../util.js';
+import {addStyleSheet, setTabbable} from '../mce-util.js';
 
 // dependant on an-icon
 ( function() {

@@ -1,6 +1,6 @@
-import '../ce-polyfill.js';
+import '../mce-polyfill.js';
 import '../nav-item/main.js';
-import {addStyleSheet, observeAttrChange, windowResizeHandler} from '../util.js';
+import {addStyleSheet, observeAttrChange, windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**

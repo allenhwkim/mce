@@ -1,5 +1,5 @@
-import '../ce-polyfill.js';
-import {addStyleSheet, observeAttrChange, setTabbable} from '../util.js';
+import '../mce-polyfill.js';
+import {addStyleSheet, observeAttrChange, setTabbable} from '../mce-util.js';
 
 ( function() {
   /**

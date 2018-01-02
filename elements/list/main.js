@@ -1,6 +1,6 @@
-import '../ce-polyfill.js';
+import '../mce-polyfill.js';
 import '../icon/main.js';
-import {addStyleSheet} from '../util.js';
+import {addStyleSheet} from '../mce-util.js';
 
 (function() {
   /**

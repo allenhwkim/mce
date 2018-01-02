@@ -5,13 +5,17 @@
   "main": "dist/ce-core.min.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "classes": "echo $(egrep -o 'class .* extends HTML' ../*/main.js | awk '{print $2}' | paste -sd',' -)",
-    "package": "webpack index.js --output-filename=dist/ce-core.js",
-    "min-css": "ls ../*/style.css && uglifycss ../*/style.css > dist/ce-core.css",
-    "min-js": "uglifyjs dist/ce-core.js -m reserved=[AppBar,BottomNavBar,Button,Card,Checkbox,Chip,Dialog,ExpansionPanel,GridList,Icon,List,Menu,NavDrawer,NavItem,RadioButton,RefreshIndicator,Switch,Tabs,TextField,Tooltip] -c > dist/ce-core.min.js",
+    "classes": "echo $(egrep -o 'class .* extends HTML' elements/*/*.js elements/*/src/*.js | awk '{print $2}' | paste -sd',' -)",
+    "package": "webpack index.js --output-filename=dist/mce.js",
+    "min-css": "ls ../*/style.css && uglifycss ../*/style.css > dist/style.css",
+    "min-js": "uglifyjs dist/ce-core.js -m reserved=[AppBar,BottomNavBar,Button,Card,Checkbox,Chip,Dialog,ExpansionPanel,GridList,Icon,List,Menu,NavDrawer,NavItem,RadioButton,RefreshIndicator,Search,Switch,Tabs,TextField,Tooltip,LeafletMap,LeafletMarker,Route,Router] -c > dist/mce.min.js",
     "build": "npm-run-all clean min-css package min-js",
-    "build-and-publish": "npm run build && npm version patch && npm publish --access=public",
-    "doc": "jsdoc2md main.js > DOC-GENERATED.md"
+    "jsdoc2md": "rm -rf jsdoc2md && sh jsdoc2md.sh",
+    "doc": "npm-run-all doc:run doc:build doc:serve",
+    "doc:build": "gitbook build",
+    "doc:serve": "gitbook serve",
+    "doc:publish": "rm -rf node_modules/gh-pages/.cache && npm run doc:build && gh-pages -d _book",
+    "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
   },
   "repository": {
     "type": "git",
@@ -31,7 +35,7 @@
   "license": "MIT",
   "devDependencies": {
     "jsdoc-to-markdown": "^3.0.2",
-    "npm-run-all": "^4.1.1",
+    "npm-run-all": "^4.1.2",
     "uglify-es": "^3.1.7",
     "uglifycss": "0.0.27",
     "webpack": "^3.8.1"

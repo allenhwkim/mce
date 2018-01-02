@@ -21,6 +21,11 @@ import '../tabs/main.js';
 import '../text-field/main.js';
 import '../tooltip/main.js';
 
+import '../leaflet/src/leaflet.js';
+import '../leaflet/src/marker.js';
+import '../router/src/router.js';
+import '../router/src/route.js';
+
 (function() {
   // add css only if css not already added
   if (!document.querySelector('link[href$="ce-core.css"]')) {
