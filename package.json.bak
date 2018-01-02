@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "doc:build": "gitbook build",
+    "doc:serve": "gitbook serve",
+    "doc": "rm -rf node_modules/gh-pages/.cache && npm run doc:build && gh-pages -d _book"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0",
+    "gitbook-cli": "^2.3.2",
+    "jsdoc-to-markdown": "^3.0.2"
+  }
+}
