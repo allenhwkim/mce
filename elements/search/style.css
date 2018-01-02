@@ -6,6 +6,20 @@ a-search > label an-icon {
   vertical-align: initial;
   cursor: pointer;
 }
+an-app-bar .icons a-search an-icon {
+  margin: inherit;
+}
+
+an-app-bar .icons a-search {
+  margin: 16px;
+  position: absolute;
+  right: 0; 
+  z-index: 1; 
+  white-space:nowrap; 
+  background-color: var(--theme-color-600, #757575); 
+  box-shadow: -20px 0px 15px 0px var(--theme-color-600, #757575);
+}
+
 a-search .input-wrapper {
   position: relative;
   display: inline-block;
@@ -29,6 +43,7 @@ a-search .input-wrapper input {
   height: 24px;
   vertical-align: bottom;
   outline: none;
+  background-color: inherit;
 }
 a-search .input-wrapper .clear {
   vertical-align: bottom;

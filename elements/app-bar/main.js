@@ -1,5 +1,5 @@
 import '../ce-polyfill.js';
-import {addStyleSheet} from '../util.js';
+import {addStyleSheet, windowResizeHandler} from '../util.js';
 
 ( function() {
   /**
@@ -39,6 +39,21 @@ import {addStyleSheet} from '../util.js';
   class AppBar extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this);
+      if (window.ce && window.ce.resizeHandler) {} else {
+        window.ce = {resizeHandler: windowResizeHandler};
+        window.addEventListener('resize', window.ce.resizeHandler);
+      }
+      this._addFiller();
+    }
+
+    setTitle(title) {
+      this.querySelector('.title').innerHTML = title;
+    }
+
+    _addFiller() {
+      let el = document.createElement('div');
+      el.classList.add('an-app-bar-filler');
+      this.parentElement.insertBefore(el, this.nextSibling);
     }
   }
   

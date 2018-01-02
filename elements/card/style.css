@@ -6,7 +6,13 @@ a-card {
   box-shadow: var(--theme-shadow-2dp, 0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   padding-bottom: 8px;
   position: relative;
-  margin: 12px 0;
+  margin: 12px;
+}
+a-card.no-margin {
+  margin: 0;
+}
+a-card.no-shadow {
+  box-shadow: none;
 }
 a-card.picked-up {
   top: -8px;
@@ -14,7 +20,7 @@ a-card.picked-up {
   z-index: 8;
 }
 a-card + a-card {
-  margin-top: 16px;
+  /*margin-top: 16px;*/
 }
 a-card > a-card {
   margin: 16px;
@@ -34,7 +40,7 @@ a-card > .media { /* 16*9 image */
   padding-bottom: 56.25%;
   position: relative;
 }
-a-card > .media img {
+a-card > .media > * {
   position: absolute;
   width: 100%;
   top: 0;

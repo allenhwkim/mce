@@ -2,6 +2,7 @@
   https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
 */
 a-bottom-nav-bar {
+  position: absolute;
   background-color: var(--theme-color-50, #FAFAFA);
   border-radius: 2px;
   border: 1px solid #ccc;
@@ -15,9 +16,6 @@ a-bottom-nav-bar {
   margin: 0 auto;
   width: 100%;
   z-index: 8;
-}
-a-bottom-nav-bar.fixed {
-  position: fixed;
 }
 a-bottom-nav-bar > * {
   flex: 1;
@@ -55,10 +53,14 @@ a-bottom-nav-bar a-nav-item an-icon {
 /**
  * desktop size
  */
-@media only screen and (min-width : 1024px) {
-  a-bottom-nav-bar {
-    left: 320px;
-    right: 0;
-    width: auto; 
-  }
+.ce-desktop > a-bottom-nav-bar {
+  left: 320px;
+  right: 0;
+  width: auto; 
+}
+.ce-desktop > a-bottom-nav-bar {
+  width: 320px;
+  left: 0;
+  z-index: 16;
+  margin: 0 0;
 }

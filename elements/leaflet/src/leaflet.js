@@ -1,4 +1,4 @@
-import {observeAttrChange} from '../util.js';
+import {observeAttrChange} from '../../util.js';
 import {util} from './util.js';
 
 /**
@@ -73,6 +73,7 @@ class LeafletMap extends HTMLElement{
 
   setEvents() {
     for(let eventName in this.events) {
+      console.log('this.events[eventName]', eventName, this.events[eventName]);
       this.map.on(eventName, this.events[eventName]);
     }
   }

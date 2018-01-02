@@ -88,3 +88,11 @@ export function setInnerHTML(elm, html) {
     el.parentNode.replaceChild(newEl, el);
   })
 }
+
+export function windowResizeHandler() {
+  if (window.innerWidth >= 1024) {
+    document.body.classList.add('ce-desktop');
+  } else {
+    document.body.classList.remove('ce-desktop');
+  }
+}

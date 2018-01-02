@@ -14,7 +14,7 @@ a-list > ol > li {
   padding: 12px 16px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
   min-height: 48px;
 }
 a-list > ol > li > *,
@@ -31,6 +31,7 @@ a-list > ul > li > .icon {
   color: var(--theme-text-color-600, #757575);
   min-width: 72px;
   flex: initial;
+  align-self: flex-start;
 }
 a-list > ol > li > .an-icon:last-child,
 a-list > ol > li > an-icon:last-child,
@@ -39,6 +40,15 @@ a-list > ol > li > .an-icon:last-child,
 a-list > ol > li > an-icon:last-child,
 a-list > ol > li > .icon:last-child {
   width: initial;
+}
+a-list > ol > li .title,
+a-list > ul > li .title {
+  margin-top: 0;
+  color: var(--theme-text-color-600, #757575);
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 a-list > ol > li .text,
 a-list > ul > li .text {

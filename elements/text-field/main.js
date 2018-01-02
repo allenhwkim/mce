@@ -113,6 +113,7 @@ import {addStyleSheet} from '../util.js';
       let optionalText = this.getAttribute('optional') || '';
       let helperText = this.getAttribute('helper-text') || '';
       let requiredText = this.getAttribute('required') !== null ? ' *' : '';
+      let multiLine = this.getAttribute('multi-line') !== null ? true : false;
 
       let attrs = [];
       for (let i=0; i<this.attributes.length; i++) {
@@ -120,15 +121,18 @@ import {addStyleSheet} from '../util.js';
         (!attr.name.match(/-/)) && attrs.push(`${attr.name}="${attr.value}"`);
       }
       let attributes = attrs.join(' ');
+      let inputWrapperHTML = multiLine ? 
+        `<textarea class="input" id="${this.id}" ${attributes}>${this.getAttribute('value') || ''}</textarea>`:
+        `<div class="prefix">${prefix}</div>\n
+         <input class="input" type="${type}" id="${this.id}" ${attributes} />\n
+         <div class="suffix">${suffix}</div>\n`;
 
       let html = `
         <an-icon class="icon">${icon}</an-icon>
         <div class="container">
           <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
           <div class="input-wrapper">
-            <div class="prefix">${prefix}</div>
-            <input class="input" type="${type}" id="${this.id}" ${attributes} />
-            <div class="suffix">${suffix}</div>
+            ${inputWrapperHTML}
           </div>
           <hr />
           <div class="helper-text">${helperText}</div>
@@ -157,7 +161,7 @@ import {addStyleSheet} from '../util.js';
         let empty  = !this.inputEl.value;
         let error = Object.values(this._getErrors())[0];
         let errMsgEl = this.querySelector('.error-messages');
-        let dirty = this.getAttribute('dirty') !== null;
+        let dirty = this.classList.contains('dirty');
 
         empty ? this.classList.add('empty') : this.classList.remove('empty');
         if (dirty && error) {
@@ -180,9 +184,20 @@ import {addStyleSheet} from '../util.js';
       });
 
       this.inputEl.addEventListener('change', event => {
-        this.classList.remove('dirty');
+        this.classList.add('dirty');
         setStatus();
       });
+
+      if (this.querySelector('textarea')) { // if multiline, autoresize the input height
+        this.inputEl.closest('.container').style.transition = 'none';
+        this.inputEl.addEventListener('input', this._autoResizeTextarea.bind(this) );
+      }
+    }
+
+    _autoResizeTextarea(event){
+      let scrollHeight = this.inputEl.scrollHeight;
+      this.inputEl.style.height = scrollHeight + 'px';
+      this.inputEl.closest('.container').style.height = scrollHeight + 60 + 'px';
     }
   }
   

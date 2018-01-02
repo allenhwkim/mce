@@ -2,6 +2,10 @@
 a-dialog {
   position: absolute;
   display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 a-dialog.visible {
   visibility: visible;
@@ -11,7 +15,7 @@ a-dialog:not(.visible) {
   visibility: hidden;
 }
 a-dialog > .page-blocker {
-  position: fixed;
+  position: absolute; /* fixed */
   background-color: #000;
   left: 0;
   right: 0;
@@ -21,7 +25,7 @@ a-dialog > .page-blocker {
 }
 a-dialog > .container {
   padding: 24px;
-  position:fixed;
+  position: absolute; /* fixed */
   left: 50%;
   top: 50%;
   -ms-transform: translate(-50%,-50%);

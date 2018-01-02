@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <script type="module" src="../leaflet.js"></script>
-    <script type="module" src="../marker.js"></script>
+    <script type="module" src="../src/leaflet.js"></script>
+    <script type="module" src="../src/marker.js"></script>
     <style>a-leaflet {display: block; width: 50%; min-height: 200px;}</style>
   </head>
   <body>
@@ -30,7 +30,7 @@
     You can delay the initiazlie of the map. e.g. click
     <a-leaflet id="leaflet2" center="Brampton, Canada" lazy-init
       scroll-wheel-zoom="false"
-      on-click="mapClicked"
+      on-click="mapClicked(event)"
       style="border: 1px solid #ccc"
       onclick="this.initialize()">
       This map is not initialized intentioally using `lazy-init`.<br/>
@@ -39,7 +39,6 @@
     </a-leaflet>
     <script>
       function mapClicked(e) {
-        console.log('e', e);
         alert(`You clicked latitude: ${e.latlng.lat}, longitute ${e.latlng.lng}`);
       }
     </script>

@@ -40,17 +40,18 @@ a-text-field  > .container > .input-wrapper {
   display: flex;
 }
 
-a-text-field   > .container > .prefix {
+a-text-field   > .container > .input-wrapper > .prefix {
   color: var(--theme-text-color-500, #9e9e9e);
   padding-right: 8px;
 }
 
-a-text-field  > .container >  .suffix {
+a-text-field  > .container > .input-wrapper >  .suffix {
   padding-left: 8px;
   color: var(--theme-text-color-500, #9e9e9e);
 }
 
-a-text-field   > .container > input {
+a-text-field   > .container > .input-wrapper > input,
+a-text-field   > .container > .input-wrapper > textarea {
   flex: 1;
   padding: 0px;
   width: 100%;
@@ -70,6 +71,11 @@ a-text-field   > .container > input {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
+a-text-field   > .container > .input-wrapper > textarea {
+  height: 24px;
+  resize: none;
+  overflow: hidden;
+}
 
 a-text-field  > .container > hr {
   border: 2px solid var(--theme-color-800, #424242);
@@ -78,7 +84,7 @@ a-text-field  > .container > hr {
   margin: 0px;
   position: absolute;
   left: 12px;
-  right: 0;
+  right: 12px;
   transform: scaleX(1);
   transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }
@@ -159,7 +165,8 @@ a-text-field > .container > .error-messages:empty {
 a-text-field > an-icon:not(:empty) {
   color: var(--theme-text-color-700, #616161);
   position: relative;
-  bottom: 22px;
+  vertical-align: top;
+  top: 40px;
 }
 
 a-text-field > an-icon:not(:empty) ~ .container {

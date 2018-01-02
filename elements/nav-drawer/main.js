@@ -1,6 +1,6 @@
 import '../ce-polyfill.js';
 import '../nav-item/main.js';
-import {addStyleSheet, observeAttrChange} from '../util.js';
+import {addStyleSheet, observeAttrChange, windowResizeHandler} from '../util.js';
 
 ( function() {
   /**
@@ -42,6 +42,10 @@ import {addStyleSheet, observeAttrChange} from '../util.js';
       });
       this.regroupedOnce = false;
       this._regroupElements();
+      if (window.ce && window.ce.resizeHandler) {} else {
+        window.ce = {resizeHandler: windowResizeHandler};
+        window.addEventListener('resize', window.ce.resizeHandler);
+      }
     }
 
     /**

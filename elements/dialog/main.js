@@ -45,8 +45,14 @@ import {addStyleSheet} from '../util.js';
   class Dialog extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this); //id, url
-      this._regroupedOnce = false;
+      this.displayLevel = this.getAttribute('display-level') || 'root';
+      this._regroupedOnce = this._regroupedOnce || false;
       this._regroupElements();
+      if (this.displayLevel === 'root') { //document-level dialog
+        document.body.appendChild(this);
+        this.querySelector('.page-blocker').style.position = 'fixed';
+        this.querySelector('.container').style.position = 'fixed';
+      }
     }
     
     /**
@@ -67,11 +73,7 @@ import {addStyleSheet} from '../util.js';
     open(data) {
       //replace title, content, actions with data given
       data && this._updateContent(data);
-
-      // move to document-level for z-indexing to work
-      this.originalPos = {parent: this.parentElement, nextSibling: this.nextElementSibling};
-      document.body.appendChild(this);
-      document.body.style.overflow = 'hidden';
+      (this.displayLevel === 'root') && (document.body.style.overflow = 'hidden');
       this.classList.add('visible');
     }
 
@@ -79,9 +81,7 @@ import {addStyleSheet} from '../util.js';
      * Closes the dialog
      */
     close() {
-      // move back to the original position
-      this.originalPos.parent.insertBefore(this, this.originalPos.nextSibling);
-      document.body.style.overflow = '';
+      (this.displayLevel === 'root')  && (document.body.style.overflow = '');
       this.classList.remove('visible');
     }
  

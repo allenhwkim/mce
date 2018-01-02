@@ -49,6 +49,10 @@ import {addStyleSheet, observeAttrChange, setTabbable} from '../util.js';
         setTabbable(this, _ => this.buttonEl.click());  // set tabindex and click/ENTER function
     }
 
+    set disabled(bool) {
+      bool ? this.setAttribute('disabled','') : this.removeAttribute('disabled');
+    }
+
     _addRealButton() {
       let buttonEl = document.createElement('button');
       buttonEl.setAttribute('tabindex', '-1');

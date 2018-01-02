@@ -56,11 +56,27 @@ import {addStyleSheet, setTabbable} from '../util.js';
       this.addEventListener('touchend',  this.clickListener);
     }
 
+    // _setImageIcon() {
+    //   let img = this.getAttribute('img');
+    //   if (img) {
+    //     this.style.backgroundImage = `url(${img})`;
+    //     this.innerHTML = 'favorite';
+    //   }
+    // }
+
     _setImageIcon() {
-      let img = this.getAttribute('img');
-      if (img) {
-        this.style.backgroundImage = `url(${img})`;
-        this.innerHTML = 'favorite';
+      let iconText = this.innerHTML;
+      let isFAIcon = iconText.match(/^fa-[a-z\-]+$/);
+      let isMDIcon = iconText.match(/^[a-z_]+$/);
+      let imgSrc = this.getAttribute('img');
+
+      if (isMDIcon) {
+        this.innerHTML = iconText;
+      } else if (isFAIcon) {
+        this.innerHTML = `<i class="fa ${iconText}"></i>`;
+      } else if (imgSrc) {
+        this.innerHTML = 'photo';
+        this.style.backgroundImage = `url(${imgSrc})`;
       }
     }
   }

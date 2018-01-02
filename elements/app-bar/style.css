@@ -4,12 +4,8 @@
   100% { opacity: 0; transform: scale(2); }
 }
 
-body > an-app-bar.fixed + * {
-  margin-top: 56px;
-  padding: 16px;
-  background-color: var(--theme-color-50, #fafafa);
-}
 an-app-bar {
+  position: absolute;
   background-color: var(--theme-color-600, #757575);
   box-shadow: var(--theme-shadow-4dp, 0   4px  8px rgba(0,0,0,0.18), 0  4px  8px rgba(0,0,0,0.23));
   color: var(--theme-text-color-0, #ffffff);
@@ -20,8 +16,9 @@ an-app-bar {
   width: 100%;
   z-index: 4;
 }
-an-app-bar.fixed {
-  position: fixed;
+an-app-bar ~ .an-app-bar-filler {
+  display: block;
+  min-height: var(--theme-height-app-bar, 56px);
 }
 an-app-bar.light {
   color: var(--theme-text-color-600, #757575);
@@ -32,6 +29,7 @@ an-app-bar > .nav-icon {
 }
 an-app-bar > .icons {
   float: right;
+  position: relative;
 }
 an-app-bar > .title {
   display: inline-block;
@@ -40,6 +38,7 @@ an-app-bar > .title {
   font-weight: var(--theme-title-font-weight, 500);
   margin-left: 16px;
   margin: 0;
+  text-transform: capitalize;
 }
 an-app-bar .icon,
 an-app-bar an-icon {
@@ -73,13 +72,11 @@ an-app-bar .icons > * {
 /**
  * desktop size
  */
-@media only screen and (min-width : 1024px) {
-  an-app-bar {
-    left: 320px;
-    right: 0;
-    width: auto; 
-  }
-  an-app-bar > .nav-icon {
-    visibility: hidden;
-  }
+.ce-desktop > an-app-bar {
+  left: 320px;
+  right: 0;
+  width: auto; 
+}
+.ce-desktop > an-app-bar  > .nav-icon {
+  visibility: hidden;
 }

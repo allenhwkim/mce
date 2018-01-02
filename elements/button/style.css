@@ -40,7 +40,8 @@ a-button:active {
   background-color: var(--theme-color-400, #bdbdbd);
 }
 a-button[disabled] {
-  color: var(--theme-text-color-400, #BDBDBD);
+  background-color: var(--theme-color-400, #bdbdbd) !important;
+  color: var(--theme-text-color-400, #bdbdbd) !important;
   pointer-events: none;
 }
 a-button > * {
@@ -79,11 +80,16 @@ a-button.dark {
 }
 a-button.dark.disabled] {
   background-color: var(--theme-color-500, #9e9e9e);
+  color: var(--theme-text-color-400, #bdbdbd);
 }
 
 /* raised button */
 a-button.raised {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
+}
+a-button.raised[disabled]{
+  background-color: var(--theme-color-500, #9e9e9e);
+  color: var(--theme-text-color-400, #bdbdbd);
 }
 
 /* floating action button */
@@ -104,4 +110,8 @@ a-button.fab.mini {
   width: 40px;
   height: 40px;
   padding: 8px;
+}
+a-button.fab[disabled]{
+  background-color: var(--theme-color-500, #9e9e9e);
+  color: var(--theme-text-color-400, #bdbdbd);
 }

@@ -1,14 +1,14 @@
 {
   "name": "@custom-element/leaflet",
-  "version": "0.2.8",
+  "version": "0.2.10",
   "description": "leaflet map",
   "main": "dist/main.min.js",
   "scripts": {
     "clean": "rm -rf dist && mkdir dist",
-    "package": "webpack leaflet.js --output-filename=dist/main.js",
-    "min-js": "uglifyjs dist/main.js -m reserved=[List] -c > dist/main.min.js",
+    "package": "webpack main.js --output-filename=dist/main.js",
+    "min-js": "uglifyjs dist/main.js -m reserved=[LeafletMap,LeafletMarker] -c > dist/main.min.js",
     "build": "npm-run-all clean package min-js",
-    "doc": "jsdoc2md leaflet.js marker.js > DOC-GENERATED.md",
+    "doc": "jsdoc2md *.js > DOC-GENERATED.md",
     "build-and-publish": "npm run build && npm version patch && npm publish --access=public"
   },
   "repository": {

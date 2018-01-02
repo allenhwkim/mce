@@ -42,12 +42,16 @@ import {addStyleSheet, setTabbable} from '../util.js';
         this.icon = this.getAttribute('icon');
         this.shortcut = this.getAttribute('shortcut');
         if (this.icon && !this.querySelector('an-icon')) {
+          let isFAIcon = this.icon.match(/^fa-[a-z\-]+$/);
           let isMDIcon = this.icon.match(/^[a-z_]+$/);
+
           this.iconEl = document.createElement('an-icon');
           if (isMDIcon) {
             this.iconEl.innerHTML = this.icon;
+          } else if (isFAIcon) {
+            this.iconEl.insertAdjacentHTML('beforeend', `<i class="fa ${this.icon}"></i>`)
           } else {
-            this.iconEl.insertAdjacentHTML('beforeend', '<img src="'+this.icon+'" />')
+            this.iconEl.insertAdjacentHTML('beforeend', `<img src="${this.icon}" />`)
           }
           this.insertBefore(this.iconEl, this.firstChild)
         }

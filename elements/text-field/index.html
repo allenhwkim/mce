@@ -23,8 +23,8 @@
 
       .demo { position: relative; }
       .view-source ~ label { padding: 12px 0; display: inline-block; }
-      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
-      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0;}
+      .view-source[checked] ~ .code { max-height: 999px; overflow: auto;}
       a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
     </style>
     <script>
@@ -85,6 +85,16 @@
       </div>
     </template>
 
+    <template class="multi-line">
+      <a-text-field multi-line required
+        icon="comment"
+        label="Floating Label Text"
+        optional="(optional)"
+        placeholder="Enter multi line text"
+        helper-text="this is helper text">
+      </a-text-field>
+    </template>
+
     <template class="disabled">
       <div>
         <a-text-field disabled
@@ -110,21 +120,21 @@
       <div>
 
         <h4>Default Required Field Error</h4>
-        <a-text-field required dirty 
+        <a-text-field required class="dirty"
           label="Default required error" 
           helper-text="This is to show required error"
           />
         </a-text-field>
 
         <h4>Custom Required Field Error</h4>
-        <a-text-field required dirty 
+        <a-text-field required class="dirty" 
           label="Custom required error"
           helper-text="This is to show custom required error"
           required-error="Hey, don't be lazy, fill it up!!!" />
         </a-text-field>
 
         <h4>Length Error</h4>
-        <a-text-field dirty 
+        <a-text-field  class="dirty" 
           label="min/max length error"
           helper-text="Enter charaters between 3 to 5"
           maxlength="5"
@@ -135,7 +145,7 @@
         </a-text-field>
 
         <h4>Pattern Error</h4> 
-        <a-text-field dirty
+        <a-text-field  class="dirty"
           label="Pattern error"
           pattern-error="Please enter number only"
           helper-text="Enter any number"
@@ -144,7 +154,7 @@
         </a-text-field>
 
         <h4>Min/Max Value Error</h4>
-        <a-text-field required dirty 
+        <a-text-field required  class="dirty"
           label="min/max value error"
           helper-text="Enter your age"
           type="number"
@@ -156,7 +166,7 @@
         </a-text-field>
 
         <h4> Input Type Error</h4>
-        <a-text-field dirty
+        <a-text-field class="dirty"
           type="email"
           helper-text="Type an email"
           label="Type error"
@@ -205,6 +215,20 @@
         </div>
       </a-card><script>setDemo('template.simple', 'a-card.simple')</script>
 
+      <a-card class="multi-line">
+        <div class="title">
+          <h2>Multi-line Text Input Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="multi-line" class="view-source" checked></a-switch>
+            <label for="multi-line"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.multi-line', 'a-card.multi-line')</script>
+
       <a-card class="disabled">
         <div class="title">
           <h2>Disabled Text Field Example</h2>
@@ -226,8 +250,8 @@
         <div class="text">
           <div class="demo" style="padding: 12px"></div>
           <div>
-            <a-switch id="vs0002" class="view-source" checked></a-switch>
-            <label for="vs0002"> View Source</label>
+            <a-switch id="vs0003" class="view-source" checked></a-switch>
+            <label for="vs0003"> View Source</label>
             <pre class="code prettyprint"></pre>
           </div>
         </div>
@@ -238,12 +262,7 @@
     <div class="container">
       <a-list>
         <ul>
-          <h3>Element Attributes</h3>
-          <li> <an-icon>code</an-icon>
-            <div><div>disabled</div>
-               <div class="text">Disabled Status. No interaction is allowed with this status.</div> 
-            </div>
-          </li>
+          <h3>Element Classes (Representiong Its Status)</h3>
           <li> <an-icon>code</an-icon>
             <div><div>empty</div>
                <div class="text">Indicating that the field is empty. When empty, helper text is shown. When not empty and errorneous, error message is shown.</div> 
@@ -262,6 +281,15 @@
           <li> <an-icon>code</an-icon>
             <div><div>dirty</div>
                <div class="text">Indicating user has entered any input to this field. Error message is only displayed when it is dirty status.</div> 
+            </div>
+          </li>
+        </ul>
+
+        <ul>
+          <h3>Element Attributes</h3>
+          <li> <an-icon>code</an-icon>
+            <div><div>disabled</div>
+               <div class="text">Disabled Status. No interaction is allowed with this status.</div> 
             </div>
           </li>
           <li> <an-icon>code</an-icon>

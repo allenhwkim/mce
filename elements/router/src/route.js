@@ -1,8 +1,7 @@
-import '../ce-polyfill.js';
-import {getScopedObj, setInnerHTML} from '../util.js';
+import '../../ce-polyfill.js';
+import {getScopedObj, setInnerHTML} from '../../util.js';
 
 (function() {
-
   /**
    * @description
    *  Child element of a router,`<a-router>`
@@ -12,24 +11,13 @@ import {getScopedObj, setInnerHTML} from '../util.js';
    *      _required_,  path to respond
    *    * `import`
    *      _required_,  url to load
+   *    * `name`
+   *      Optional, name of this route. Default. the name of path
    *    * `no-cache`
    *      Optional,Indicates that the route view template is not cached.
    *    * `resolve-func`
-   *     Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
-   *    * `on-route-start`
-   *      Optional, injector function to be executed before route starts.
-   *    * `on-route-end`
-   *      Optional, injector function to be executed after route ends.
+   *      Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
    *  
-   *  ### Properties
-   *    * `path`, attribute value.
-   *    * `cachedTemplate`, template HTML cached
-   *    * `noCache`, attribute value
-   *    * `import`, attribute value
-   *    * `resolveFunc`, attribute value
-   *    * `onRouteStart`, attribute value
-   *    * `onRouteEnd`, attribute value
-   * 
    * ### Usage
    *  ```
    *  <a-router>
@@ -47,12 +35,13 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       // add this to the parent route
       this.router = this.closest('a-router');
       this.path = this.getAttribute('path');
+      this.name = this.getAttribute('name') || (this.path && this.path.replace('/', ' '));
       this.redirect = this.getAttribute('redirect');
       this.noCache = (this.getAttribute('no-cache') !== null);
       this.cachedTemplate = null;
-      this.resolveFunc = getScopedObj(window, this.getAttribute('resolve-func'));
-      this.onRouteStart =getScopedObj(window, this.getAttribute('on-route-start'));
-      this.onRouteEnd = getScopedObj(window, this.getAttribute('on-route-end'));
+      this.resolveFunc = this.getAttribute('resolve-func') && 
+        this._getPromiseFunc('route', this.getAttribute('resolve-func'));
+
       if (!this.path && !(this.import || this.redirect)) {
         throw "Invalid attributes for a-route, required path and import"
       }
@@ -89,8 +78,8 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       let aPromise = _ => Promise.resolve();
       let routerResolveFn = this.router.resolveFunc || aPromise;
       let routeResolveFn = this.resolveFunc || aPromise;
-      let onRouteStartFn = this.onRouteStart || aPromise;
-      let onRouteEndFn = this.onRouteEnd || aPromise;
+      let onRouteStartFn = this.router.onRouteStart || aPromise;
+      let onRouteEndFn = this.router.onRouteEnd || aPromise;
 
       this.state = window.history.stae;
 
@@ -98,10 +87,10 @@ import {getScopedObj, setInnerHTML} from '../util.js';
 
       routerResolveFn(this)    // resolve router resolveFunc
       .then(routerData => {
-        this.router.data = routerData;
+        routerData && (this.router.data = routerData);
         return routeResolveFn(this); // resolve route resolveFunc
       }).then(routeData => {
-        this.data = routeData;
+        routeData && (this.data = routeData);
         return onRouteStartFn(this); // run onRouteStart 
       }).then(result => {
         if (this.cachedTemplate) {
@@ -137,6 +126,7 @@ import {getScopedObj, setInnerHTML} from '../util.js';
           }, 50);
         }
         this.router.showLoadingEl(false);
+        this.router.currentRoute = this;
         return onRouteEndFn(this);
       }).catch(error => {
         this.router.debug && console.error('routing-error', error);
@@ -144,6 +134,13 @@ import {getScopedObj, setInnerHTML} from '../util.js';
       })
     }
 
+    /* returns a function which accepts paramName and returns a promise */
+    _getPromiseFunc(paramName, funcStr) {
+      return function(param) {
+        let func = new Function(paramName, `return ${funcStr}`);
+        return Promise.resolve(func(param));
+      }
+    }
   }
   customElements.define('a-route', Route); //name, class
 

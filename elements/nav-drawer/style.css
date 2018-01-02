@@ -10,7 +10,7 @@ a-nav-drawer:not(.visible) {
   visibility: hidden;
 }
 a-nav-drawer .page-blocker {
-  position: fixed;
+  position: absolute;
   background-color: #000;
   left: 0;
   right: 0;
@@ -28,10 +28,18 @@ a-nav-drawer .contents {
   left: 0;
   max-width: 320px;
   overflow: auto;
-  position: fixed;
+  position: absolute;
   top: 0;
   width: calc(100vw - var(--theme-height-app-bar, 56px));
   z-index: 16;
+}
+a-nav-drawer .contents .top-header {
+  margin: 0; 
+  height: var(--theme-height-app-bar, 56px);
+  line-height: 56px;
+  padding: 0 18px;
+  background-color: var(--theme-color-600, #757575);
+  color: var(--theme-text-color-0, #ffffff);
 }
 a-nav-drawer .contents .title {
   padding: 8px 16px;
@@ -77,17 +85,14 @@ a-nav-drawer a-nav-item an-icon {
   vertical-align: middle;
 }
 
-@media only screen and (min-width : 1024px) {
-  a-nav-drawer .page-blocker {
+.ce-desktop > a-nav-drawer .page-blocker {
     display: none;
   }
-  a-nav-drawer:not(.visible) {
-    visibility: visible;
-  }
-  a-nav-drawer:not(.visible) .contents {
-    left: 0;
-    transform: translateX(0);
-    transition: var(--theme-animation-in, all .3s ease-in);
-  }
+.ce-desktop > a-nav-drawer:not(.visible) {
+  visibility: visible;
 }
- 
+.ce-desktop > a-nav-drawer:not(.visible) .contents {
+  left: 0;
+  transform: translateX(0);
+  transition: var(--theme-animation-in, all .3s ease-in);
+}

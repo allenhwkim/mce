@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
   <head>
-    <script type="module" src="../leaflet.js"></script>
-    <script type="module" src="../marker.js"></script>
+    <script type="module" src="../src/leaflet.js"></script>
+    <script type="module" src="../src/marker.js"></script>
     <style>a-leaflet {display: block; width: 400px; min-height: 200px;}</style>
   </head>
   <body>
@@ -26,7 +26,7 @@
 
     <h3>Marker with an event, on-dragend="dragendHandler" </h3>
     <a-leaflet center="[51.505, -0.09]" scroll-wheel-zoom="false">
-      <a-marker latlng="[51.505, -0.09]" draggable="true" on-dragend="dragendHandler"></a-marker>
+      <a-marker latlng="[51.505, -0.09]" draggable="true" on-dragend="dragendHandler(event)"></a-marker>
     </a-leaflet>
     <script>
       function dragendHandler(event) {
@@ -37,12 +37,12 @@
 
     <h3>Add/Remove Markers</h3>
     click on map to add a marker, click on marker to remove it.
-    <a-leaflet id="dyn-map" center="[51.505, -0.09]" on-click="addMarker" style="height: 400px">
+    <a-leaflet id="dyn-map" center="[51.505, -0.09]" on-click="addMarker(event)" style="height: 400px">
     </a-leaflet>
     <script>
       function addMarker(event) {
         document.querySelector('#dyn-map').insertAdjacentHTML('beforeend',
-          `<a-marker latlng="[${event.latlng.lat}, ${event.latlng.lng}]" on-click="removeMarker"></a-marker>`);
+          `<a-marker latlng="[${event.latlng.lat}, ${event.latlng.lng}]" on-click="removeMarker(event)"></a-marker>`);
       }
       function removeMarker(event) {
         event.target.customElement.remove();

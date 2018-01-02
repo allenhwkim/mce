@@ -1,4 +1,4 @@
-import {observeAttrChange} from '../util.js';
+import {observeAttrChange} from '../../util.js';
 import {util} from './util.js';
 
 /**

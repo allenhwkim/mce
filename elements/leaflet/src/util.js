@@ -1,4 +1,4 @@
-import {getScopedObj} from '../util.js';
+import {getScopedObj} from '../../util.js';
 
 export let util = {
   attrs2Options,
@@ -34,7 +34,10 @@ function attrs2Events(attributes) {
     if (attr.name.match(/^on-/)) {
       eventName = toCamelCase(attr.name.replace(/^on-/,''));
       // eventValue = getScopedObj(window, attr.value);
-      events[eventName] = event => (new Function(atte.value))();
+      events[eventName] = function(event) {
+        let func = new Function('event', attr.value);
+        return func(event);
+      };
     }
   })
   return events;

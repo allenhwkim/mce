@@ -1,6 +1,6 @@
 import '../ce-polyfill.js';
 import '../nav-item/main.js';
-import {addStyleSheet} from '../util.js';
+import {addStyleSheet, windowResizeHandler} from '../util.js';
 
 ( function() {
   /**
@@ -25,6 +25,10 @@ import {addStyleSheet} from '../util.js';
   class BottomNavBar extends HTMLElement {
     connectedCallback() {
       addStyleSheet(this);
+      if (window.ce && window.ce.resizeHandler) {} else {
+        window.ce = {resizeHandler: windowResizeHandler};
+        window.addEventListener('resize', window.ce.resizeHandler);
+      }
     }
   }
   

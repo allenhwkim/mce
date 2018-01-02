@@ -1,0 +1,56 @@
+<script>
+  function openPopup(event) {
+    event.target.bindPopup("<b>Hello world!</b><br />We Are Here.").openPopup();
+  }
+</script>
+<a-card class="no-margin no-shadow">
+  <div class="media">
+    <a-leaflet center="London, England">
+      <a-marker latlng="London, England" on-add="openPopup(event)"></a-marker>
+    </a-leaflet>
+    <!-- <img src="nature.jpg"> -->
+  </div>
+
+  <div class="text">
+    <a-list>
+      <ol>
+        <li>
+          <div class="icon"><an-icon class="circle">schedule</an-icon></div>
+          <div>
+            <div class="title">Office Hours</div>
+            <div class="text">
+              Monday :&nbsp;8am–6pm<br>
+              Tuesday :&nbsp;8am–6pm<br>
+              Wednesday :&nbsp;8am–6pm<br>
+              Thursday :&nbsp;8am–6pm<br>
+              Friday :&nbsp;10am–4pm</p>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="icon"><an-icon class="circle">map</an-icon></div>
+          <div>
+            <div class="title">Location</div>
+            <div class="text">
+              14001 Fake Street NW<br/>
+              Washington, DC 20050<br/>
+              Metro: Dupont Circle
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="icon"><an-icon class="circle">mail</an-icon></div>
+          <div>
+            <div class="title">Email &amp; Phone</div>
+            <div class="text">
+              Customer Service<br/>
+              my.company@email.example.com<br/>
+              (202) 555-5555
+            </div>
+          </div>
+        </li>
+      </ol>
+    </a-list>
+  </div>
+
+</a-card>
