@@ -11,15 +11,16 @@ import {addStyleSheet, setTabbable} from '../mce-util.js';
    *   <an-icon>face</an-icon>
    *   <an-icon class="big">face</an-icon>
    *   <an-icon class="double">face</an-icon>
+   *   <an-icon class="double">fa-envelope</an-icon> <!-- for Font-Awesome icon -->
    *   <an-icon class="double" img="ali.connors.jpg"></an-icon>
    * ```
    *
-   * ### `an-icoin` atttibutes
+   * ### `an-icon` element atttibutes
    *  |name|value|description|
    *  |---|---|---|
    *  |img| image url | Show an image instead of font icon. e.g. img="ali.conors.jpg"
    * 
-   * ### `` elememe style classes
+   * ### `an-icon` element style classes
    *  |name|description|
    *  |---|---|
    *  |small | A smaller icon. 18px

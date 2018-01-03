@@ -8,11 +8,9 @@
     "build": "npm-run-all clean build:js build:css",
     "build:js": "sh scripts/build-js.sh",
     "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css",
-    "doc": "npm-run-all doc:prepare doc:build",
-    "doc:prepare": "rm -rf _jsdoc2md && sh scripts/jsdoc2md.sh",
-    "doc:build": "gitbook build",
-    "doc:serve": "gitbook serve",
-    "doc:publish": "gh-pages -d _book"
+    "build:doc": "sh scripts/jsdoc2md.sh && gitbook build",
+    "serve:doc": "gitbook serve",
+    "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
   },
   "repository": {
     "type": "git",
