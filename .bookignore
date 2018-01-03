@@ -1,9 +1,10 @@
 demo
-elements
+src
 themes
 .gitignore
 .bookignore
 index.js
-jsdoc2md.sh
+scripts
 NOTE.md
+!_jsdoc2md
 package.json

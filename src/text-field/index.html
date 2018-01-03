@@ -1,0 +1,263 @@
+<!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../mce-theme.tmpl.html" />
+
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0;}
+      .view-source[checked] ~ .code { max-height: 999px; overflow: auto;}
+      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../text-field/main.js"></script>
+    <link rel="stylesheet" class="text-field" href="../text-field/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+  </head>
+
+  <body>
+
+    <template class="simple">
+      <div>
+        <h4>Simple</h4>
+        <a-text-field label="Simple"></a-text-field>
+
+        <h4>With Options</h4>
+        <a-text-field
+          icon="credit_card"
+          label="Floating Label Text"
+          optional="(optional)"
+          placeholder="Hint Text."
+          prefix="$"
+          helper-text="this is helper text"
+          suffix="dollars">
+        </a-text-field>
+
+        <h4> Full Width Input Field </h4>
+        <a-text-field class="full-width"
+          required
+          icon="credit_card"
+          label="Floating Label Text"
+          placeholder="Hint Text."
+          prefix="$"
+          helper-text="This is with class='full-width'"
+          suffix="dollars">
+        </a-text-field>
+      </div>
+    </template>
+
+    <template class="multi-line">
+      <a-text-field multi-line required
+        icon="comment"
+        label="Floating Label Text"
+        optional="(optional)"
+        placeholder="Enter multi line text"
+        helper-text="this is helper text">
+      </a-text-field>
+    </template>
+
+    <template class="disabled">
+      <div>
+        <a-text-field disabled
+          icon="credit_card"
+          helper-text="this is helper text"
+          label="With Icon">
+        </a-text-field>
+        <a-text-field disabled
+          label="Without Icon">
+        </a-text-field>
+        <a-text-field disabled
+          icon="credit_card"
+          helper-text="this is helper text"
+          label="With value"
+          prefix="$"
+          suffix="dollars"
+          value="300">
+        </a-text-field>
+      </div>
+    </template>
+
+    <template class="error">
+      <div>
+
+        <h4>Default Required Field Error</h4>
+        <a-text-field required class="dirty"
+          label="Default required error" 
+          helper-text="This is to show required error"
+          />
+        </a-text-field>
+
+        <h4>Custom Required Field Error</h4>
+        <a-text-field required class="dirty" 
+          label="Custom required error"
+          helper-text="This is to show custom required error"
+          required-error="Hey, don't be lazy, fill it up!!!" />
+        </a-text-field>
+
+        <h4>Length Error</h4>
+        <a-text-field  class="dirty" 
+          label="min/max length error"
+          helper-text="Enter charaters between 3 to 5"
+          maxlength="5"
+          minlength="3"
+          value="too long"
+          minlength-error="It's less than 3. too short"
+          maxlength-error="It's more than 5. too long" />
+        </a-text-field>
+
+        <h4>Pattern Error</h4> 
+        <a-text-field  class="dirty"
+          label="Pattern error"
+          pattern-error="Please enter number only"
+          helper-text="Enter any number"
+          value="not a number"
+          pattern="[0-9]+">
+        </a-text-field>
+
+        <h4>Min/Max Value Error</h4>
+        <a-text-field required  class="dirty"
+          label="min/max value error"
+          helper-text="Enter your age"
+          type="number"
+          max="100"
+          min="50"
+          value="49"
+          min-error="It's less than 49. too young"
+          max-error="It's more than 100. too old" />
+        </a-text-field>
+
+        <h4> Input Type Error</h4>
+        <a-text-field class="dirty"
+          type="email"
+          helper-text="Type an email"
+          label="Type error"
+          value="not.an.email"
+          type-error="That is not an email">
+        </a-text-field>
+      </div>
+    </template>
+
+    <div class="container">
+      <h1>Text Field</h1>
+      <a href="https://material.io/guidelines/components/text-fields.html#text-fields-layout">
+        Material Design Spec
+      </a>
+      &nbsp;
+      <a href="https://allenhwkim.github.io/custom-element/">Documentation</a>
+
+      <p>
+        Text fields allow users to input, edit, and select text.
+        Text fields typically reside in forms but can appear in other places, like dialog boxes and search.
+        Text fields contain the following elements; label, input text field, placeholder text, helper text, required field indicator, icon, and error messages.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/text-field">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+      
+
+      <a-card class="simple">
+        <div class="title">
+          <h2>Simple Input Text Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source" checked></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="multi-line">
+        <div class="title">
+          <h2>Multi-line Text Input Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="multi-line" class="view-source" checked></a-switch>
+            <label for="multi-line"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.multi-line', 'a-card.multi-line')</script>
+
+      <a-card class="disabled">
+        <div class="title">
+          <h2>Disabled Text Field Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo" style="padding: 12px"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source" checked></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.disabled', 'a-card.disabled')</script>
+
+      <a-card class="error">
+        <div class="title">
+          <h2>Erroraneous Text Field Example</h2>
+        </div>
+        <div class="text">
+          <div class="demo" style="padding: 12px"></div>
+          <div>
+            <a-switch id="vs0003" class="view-source" checked></a-switch>
+            <label for="vs0003"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.error', 'a-card.error')</script>
+    </div>
+
+
+  </body>
+</html>
