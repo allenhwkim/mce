@@ -1,0 +1,239 @@
+<!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../mce-theme.tmpl.html" />
+
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); padding: 12px; }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../grid-list/main.js"></script>
+    <link rel="stylesheet" class="grid-list" href="../grid-list/style.css">
+
+    <script type="module" src="../button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../button/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+  </head>
+
+  <body>
+    
+    <template class="simple">
+      <div>
+        Small: <an-icon class="small">face</an-icon>
+        Default: <an-icon>face</an-icon>
+        Big: <an-icon class="big">face</an-icon>
+        Double: <an-icon class="double">face</an-icon>
+        Image: <an-icon class="double" img="ali.connors.jpg"></an-icon>
+      </div>
+    </template>
+    <template class="circle">
+      <div>
+        Small: <an-icon class="circle small">face</an-icon>
+        Default: <an-icon class="circle">face</an-icon>
+        big: <an-icon class="circle big">face</an-icon>
+      </div>
+    </template>
+    <template class="square">
+      <div>
+        Small: <an-icon class="square small">face</an-icon>
+        Default: <an-icon class="square">face</an-icon>
+        Big: <an-icon class="square big">face</an-icon>
+      </div>
+    </template>
+    <template class="disabled">
+      <div>
+        Default: <an-icon class="disabled">face</an-icon>
+        Circle: <an-icon class="disabled circle">face</an-icon>
+        Square: <an-icon class="disabled square">face</an-icon>
+      </div>
+    </template>
+    <template class="reactive">
+      <div>
+        Default: <an-icon class="reactive">face</an-icon>
+        Cicle: <an-icon class="reactive circle">face</an-icon>
+        Square: <an-icon class="reactive square">face</an-icon>
+        Image: <an-icon class="reactive double" img="ali.connors.jpg"></an-icon>
+      </div>
+    </template>
+    <template class="image">
+      <div>
+        Default: <an-icon class="" img="ali.connors.jpg"></an-icon>
+        Small: <an-icon img="ali.connors.jpg" class="small"></an-icon>
+        Big: <an-icon img="ali.connors.jpg" class="big"></an-icon>
+        Double: <an-icon img="ali.connors.jpg" class="double"></an-icon>
+        Circle: <an-icon img="ali.connors.jpg" class="circle"></an-icon>
+        Square: <an-icon img="ali.connors.jpg" class="square"></an-icon>
+      </div>
+    </template>
+    <template class="dark">
+      <div>
+        Small: <an-icon class="dark-bg small">face</an-icon>
+        Default: <an-icon class="dark-bg">face</an-icon>
+        Big: <an-icon class="dark-bg big">face</an-icon>
+        Double: <an-icon class="dark-bg double">face</an-icon>
+        Circle: <an-icon class="circle dark-bg">face</an-icon>
+        Square: <an-icon class="square dark-bg">face</an-icon>
+        Disabled: <an-icon class="disabled bark-bg">face</an-icon>
+        Reactive: <an-icon class="reactive dark-bg">face</an-icon>
+      </div>
+    </template>
+    <div class="container">
+      <h1>Icon</h1>
+      <a href="https://material.io/guidelines/style/icons.html#">
+        Material Design Spec.
+      </a>
+      &nbsp;
+      <a href="https://allenhwkim.github.io/custom-element/">Documentation</a>
+
+      <p>
+        Material icons use geometric shapes to visually represent core ideas, capabilities, or topics.
+        System icons represent a command, file, device, directory, or common actions.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/icon">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+      
+      <a-card class="simple">
+        <div class="title"><h2>Simple Example</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source"></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.simple', 'a-card.simple')</script>
+
+      <a-card class="circle">
+        <div class="title"><h2>Icons In Circle</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0002" class="view-source"></a-switch>
+            <label for="vs0002"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.circle', 'a-card.circle')</script>
+
+      <a-card class="square">
+        <div class="title"><h2>Icons In Square</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0003" class="view-source"></a-switch>
+            <label for="vs0003"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.square', 'a-card.square')</script>
+
+      <a-card class="disabled">
+        <div class="title"><h2>Disabled Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0004" class="view-source"></a-switch>
+            <label for="vs0004"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.disabled', 'a-card.disabled')</script>
+
+      <a-card class="reactive">
+        <div class="title"><h2>Reactive Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0005" class="view-source"></a-switch>
+            <label for="vs0005"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.reactive', 'a-card.reactive')</script>
+
+      <a-card class="image">
+        <div class="title"><h2>Image Icons</h2></div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vsimg" class="view-source"></a-switch>
+            <label for="vsimg"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.image', 'a-card.image')</script>
+
+      <a-card class="dark">
+        <div class="title"><h2>Icons In Dark Background</h2></div>
+        <div class="text">
+          <div class="demo dark-bg" style="padding: 12px"></div>
+          <div>
+            <a-switch id="vs0006" class="view-source"></a-switch>
+            <label for="vs0006"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card>
+      <script>setDemo('template.dark', 'a-card.dark')</script>
+
+    </div>
+
+  </body>
+</html>

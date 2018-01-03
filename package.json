@@ -1,12 +1,40 @@
 {
+  "name": "mce",
+  "version": "0.3.1",
+  "description": "Material Designed Custom Element",
+  "main": "dist/mce.min.js",
   "scripts": {
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "npm-run-all clean build:js build:css",
+    "build:js": "sh scripts/build-js.sh",
+    "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css",
+    "doc": "npm-run-all doc:prepare doc:build",
+    "doc:prepare": "rm -rf _jsdoc2md && sh scripts/jsdoc2md.sh",
     "doc:build": "gitbook build",
     "doc:serve": "gitbook serve",
-    "doc": "rm -rf node_modules/gh-pages/.cache && npm run doc:build && gh-pages -d _book"
+    "doc:publish": "gh-pages -d _book"
   },
+  "repository": {
+    "type": "git",
+    "url": "https:/github.com/allenhwkim/custom-element"
+  },
+  "keywords": [
+    "customElement",
+    "material",
+    "design",
+    "html",
+    "core"
+  ],
+  "files": [
+    "dist"
+  ],
+  "author": "allenhwkim@gmail.com",
+  "license": "MIT",
   "devDependencies": {
-    "gh-pages": "^1.1.0",
-    "gitbook-cli": "^2.3.2",
-    "jsdoc-to-markdown": "^3.0.2"
+    "jsdoc-to-markdown": "^3.0.2",
+    "npm-run-all": "^4.1.2",
+    "uglify-es": "^3.3.4",
+    "uglifycss": "0.0.27",
+    "webpack": "^3.10.0"
   }
 }

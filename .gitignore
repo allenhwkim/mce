@@ -2,4 +2,5 @@ node_modules
 tmp
 dist
 _book
+_jsdoc2md
 .DS_Store

@@ -1,0 +1,124 @@
+<!doctype html>
+<!-- 
+  This page is useful for development and testing.
+  As of. Nov 2017. This page works well with Chrome browser.
+-->
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
+    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
+    <link rel="import" href="../mce-theme.tmpl.html" />
+
+    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
+    <style>
+      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+
+      .demo { position: relative; }
+      .view-source ~ label { padding: 12px 0; display: inline-block; }
+      .view-source ~ .code { max-height: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
+      .view-source[checked] ~ .code { max-height: 999px;  transition: all 1s ease-out; overflow: auto;}
+      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
+    </style>
+    <script>
+      function setDemo(src, dest) {
+        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
+        document.querySelector(dest+' .demo').innerHTML = html;
+        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
+      }
+    </script>
+
+    <script type="module" src="../tooltip/main.js"></script>
+    <link rel="stylesheet" class="tooltip" href="../tooltip/style.css">
+
+    <script type="module" src="../button/main.js"></script>
+    <link rel="stylesheet" class="button" href="../button/style.css">
+
+    <script type="module" src="../card/main.js"></script>
+    <link rel="stylesheet" class="card" href="../card/style.css">
+
+    <script type="module" src="../switch/main.js"></script>
+    <link rel="stylesheet" class="switch" href="../switch/style.css">
+
+    <script type="module" src="../list/main.js"></script>
+    <link rel="stylesheet" class="list" href="../list/style.css">
+
+    <script type="module" src="../menu/main.js"></script>
+    <link rel="stylesheet" class="menu" href="../menu/style.css">
+
+    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
+    <link rel="stylesheet" class="icon" href="../icon/style.css">
+  </head>
+
+  <body>
+
+    <template class="simple">
+      <div>
+        <a-button class="raised">
+          <a-tooltip>This is a tooltip for a button</a-tooltip>
+          Mouse
+        </a-button>
+        <a-button class="raised">
+          <a-tooltip>This is a tooltip for a button</a-tooltip>
+          Over
+        </a-button>
+        <a-button class="raised">
+          <a-tooltip>This is a tooltip for a button</a-tooltip>
+          To See
+        </a-button>
+        <a-button class="raised" style="float: right">
+          <a-tooltip>This is a tooltip for a button</a-tooltip>
+          Tooltip
+        </a-button>
+      </div>
+    </template>
+
+    <div class="container">
+      <h1>Tooltip</h1>
+      <a href="https://material.io/guidelines/components/tooltips.html#tooltips-tooltips-mobile">
+        Material Design Spec
+      </a>
+      &nbsp;
+      <a href="https://allenhwkim.github.io/custom-element/">Documentation</a>
+
+      <p>
+        Tooltips are text labels that appear when the user hovers over, focuses on, or touches an element.
+      </p>
+
+      <div id="import-theme-tmpl" class="clear-both"></div>
+
+      <h2>Installation</h2>
+      <p>
+        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
+        <pre>&lt;script defer src="https://unpkg.com/@custom-element/tooltip">&lt;/script></pre>
+      </p>
+
+      <h2> Examples </h2>
+      
+
+      <a-card class="simple">
+        <div class="title">
+          <h2>Simple Input Text Example</h2>
+          <p class="subtitle">The parent element of the `a-tooltip` shows the given tooltip below it.</p>
+        </div>
+        <div class="text">
+          <div class="demo"></div>
+          <div>
+            <a-switch id="vs0001" class="view-source" checked></a-switch>
+            <label for="vs0001"> View Source</label>
+            <pre class="code prettyprint"></pre>
+          </div>
+        </div>
+      </a-card><script>setDemo('template.simple', 'a-card.simple')</script>
+    </div>
+
+
+  </body>
+</html>
