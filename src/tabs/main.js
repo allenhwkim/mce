@@ -18,9 +18,11 @@ import {animate, setTabbable} from '../mce-util.js';
   class Tabs extends HTMLElement {
 
     connectedCallback() {
-      this.indicatorEl = this._addIndicatorEl();
-      this._addEventListener();
-      setTimeout(this._selectActiveTab.bind(this), 100);
+      setTimeout(_ => {
+        this.indicatorEl = this._addIndicatorEl();
+        this._addEventListener();
+        setTimeout(this._selectActiveTab.bind(this), 100);
+      });
     }
 
     getActiveTab(event) {

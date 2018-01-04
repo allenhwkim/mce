@@ -4,7 +4,7 @@
     connectedCallback() {
       this.regroupedOnce = false;
       this.clickListener = this.setActiveItem.bind(this);
-      this._regroupElements();
+      setTimeout(this._regroupElements.bind(this));
     }
 
     disconnectedCallback() {

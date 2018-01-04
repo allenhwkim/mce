@@ -37,12 +37,14 @@ import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
           document.body.style.overflow = this.classList.contains('visible') ? 'hidden' : '';
         }
       });
-      this.regroupedOnce = false;
-      this._regroupElements();
       if (window.ce && window.ce.resizeHandler) {} else {
         window.ce = {resizeHandler: windowResizeHandler};
         window.addEventListener('resize', window.ce.resizeHandler);
       }
+      setTimeout(_ => {
+        this.regroupedOnce = false;
+        this._regroupElements();
+      });
     }
 
     /**
