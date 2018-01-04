@@ -10,6 +10,7 @@
     "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css",
     "build:doc": "sh scripts/jsdoc2md.sh && gitbook build",
     "serve:doc": "gitbook serve",
+    "start": "http-serve",
     "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
   },
   "repository": {
@@ -29,6 +30,7 @@
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "http-serve": "^1.0.1",
     "jsdoc-to-markdown": "^3.0.2",
     "npm-run-all": "^4.1.2",
     "uglify-es": "^3.3.4",

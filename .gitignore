@@ -1,5 +1,5 @@
 node_modules
 tmp
-dist
 _book
 .DS_Store
+dist
