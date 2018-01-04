@@ -1,6 +1,4 @@
-import '../mce-polyfill.js';
-import '../nav-item/main.js';
-import {addStyleSheet, animate, setTabbable} from '../mce-util.js';
+import {animate, setTabbable} from '../mce-util.js';
 
 ( function() {
   /**
@@ -20,8 +18,6 @@ import {addStyleSheet, animate, setTabbable} from '../mce-util.js';
   class Tabs extends HTMLElement {
 
     connectedCallback() {
-      addStyleSheet(this); //id, url
-
       this.indicatorEl = this._addIndicatorEl();
       this._addEventListener();
       setTimeout(this._selectActiveTab.bind(this), 100);

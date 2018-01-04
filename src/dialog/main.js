@@ -1,7 +1,3 @@
-import '../mce-polyfill.js';
-import '../button/main.js';
-import {addStyleSheet} from '../mce-util.js';
-
 ( function() {
 
   /**
@@ -44,7 +40,6 @@ import {addStyleSheet} from '../mce-util.js';
    */ 
   class Dialog extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this.displayLevel = this.getAttribute('display-level') || 'root';
       this._regroupedOnce = this._regroupedOnce || false;
       !this._regroupedOnce && this._regroupElements();

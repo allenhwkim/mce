@@ -1,6 +1,4 @@
-import '../mce-polyfill.js';
-import '../icon/main.js';
-import {addStyleSheet, observeAttrChange} from '../mce-util.js';
+import {observeAttrChange} from '../mce-util.js';
 
 ( function() {
   const HTML = `
@@ -30,7 +28,6 @@ import {addStyleSheet, observeAttrChange} from '../mce-util.js';
 
   class Search extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this.regroupedOnce = false;
       this._regroupElements();
       this._addEventListeners();

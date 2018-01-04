@@ -1,16 +1,10 @@
-import '../mce-polyfill.js';
-import '../icon/main.js';
-import {addStyleSheet, setTabbable} from '../mce-util.js';
-
 // dependant on an-icon
 ( function() {
   class NavItem extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this.regroupedOnce = false;
       this.clickListener = this.setActiveItem.bind(this);
       this._regroupElements();
-      // !this.classList.contains('disabled') && setTabbable(this, this.setActiveItem.bind(this));
     }
 
     disconnectedCallback() {

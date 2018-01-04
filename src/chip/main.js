@@ -1,7 +1,3 @@
-import '../mce-polyfill.js';
-import '../icon/main.js';
-import {addStyleSheet} from '../mce-util.js';
-
 // dependant on an-icon
 ( function() {
 
@@ -30,7 +26,6 @@ import {addStyleSheet} from '../mce-util.js';
   class Chip extends HTMLElement {
 
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this._buildHTML();
     }
 

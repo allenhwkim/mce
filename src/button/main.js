@@ -1,5 +1,4 @@
-import '../mce-polyfill.js';
-import {addStyleSheet, observeAttrChange, setTabbable} from '../mce-util.js';
+import {observeAttrChange, setTabbable} from '../mce-util.js';
 
 ( function() {
   /**
@@ -44,7 +43,6 @@ import {addStyleSheet, observeAttrChange, setTabbable} from '../mce-util.js';
       observeAttrChange(this, (attr, val) => {
         this.buttonAttrs.includes(attr) && this.buttonEl.setAttribute(attr, val);
       });
-      addStyleSheet(this); //id, url
       !this.classList.contains('disabled') && 
         setTabbable(this, _ => this.buttonEl.click());  // set tabindex and click/ENTER function
     }

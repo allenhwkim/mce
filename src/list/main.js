@@ -1,7 +1,3 @@
-import '../mce-polyfill.js';
-import '../icon/main.js';
-import {addStyleSheet} from '../mce-util.js';
-
 (function() {
   /**
    * Material Design Spec.
@@ -42,7 +38,6 @@ import {addStyleSheet} from '../mce-util.js';
    */
   class List extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
     }
   }
   

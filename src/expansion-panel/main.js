@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 ( function() {
   /**
    * [Material Design Spec.](https://material.io/guidelines/components/expansion-panels.html#expansion-panels-specs)
@@ -37,7 +34,6 @@ import {addStyleSheet} from '../mce-util.js';
     connectedCallback() {
       let titleEl = this.querySelector('.title');
 
-      addStyleSheet(this);
       titleEl.addEventListener('click', _ => {
         Array.from(document.querySelectorAll('an-expansion-panel')).forEach(panelEl => {
           if (panelEl.isSameNode(this)) {

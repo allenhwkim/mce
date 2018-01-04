@@ -1,6 +1,4 @@
-import '../mce-polyfill.js';
-import '../nav-item/main.js';
-import {addStyleSheet, observeAttrChange} from '../mce-util.js';
+import {observeAttrChange} from '../mce-util.js';
 
 ( function() {
   /**
@@ -36,7 +34,6 @@ import {addStyleSheet, observeAttrChange} from '../mce-util.js';
    */
   class Menu extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       observeAttrChange(this, (attr, val) => {
         if (attr == 'class' && this.classList.contains('visible')) {
           this.open();

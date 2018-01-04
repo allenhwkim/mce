@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 (function() {
   var SVG = `
   <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 32 32" width="32" height="32">
@@ -29,7 +26,6 @@ import {addStyleSheet} from '../mce-util.js';
   class RefreshIndicator extends HTMLElement {
 
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this.insertAdjacentHTML('beforeend', SVG);
     }
 

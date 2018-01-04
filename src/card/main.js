@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 (function() {
 
   /**
@@ -45,7 +42,6 @@ import {addStyleSheet} from '../mce-util.js';
    */
   class Card extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
     }
   }
   

@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet, setTabbable} from '../mce-util.js';
-
 ( function() {
   /**
    * [Material Design Spec.](https://material.io/guidelines/style/icons.html#)
@@ -34,7 +31,6 @@ import {addStyleSheet, setTabbable} from '../mce-util.js';
    */
   class Icon extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this._setImageIcon(); // if img attribute given, set image icon
       this.clickListener = this._onClick.bind(this);
       this._addEventListener();

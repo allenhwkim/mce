@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 (function() {
   /**
    * [Material Design Spec.](https://material.io/guidelines/components/grid-lists.html#grid-lists-specs)
@@ -34,7 +31,6 @@ import {addStyleSheet} from '../mce-util.js';
    */
   class GridList extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this);
     }
   }
   

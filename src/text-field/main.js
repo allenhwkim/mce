@@ -1,7 +1,3 @@
-
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 ( function() {
   /**
    * @description
@@ -57,8 +53,6 @@ import {addStyleSheet} from '../mce-util.js';
    */
   class TextField extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
-
       this.id = 'a-text-field-'+Math.round(Math.random()*Math.pow(10,9));
       this._buildHTML();
 

@@ -1,6 +1,4 @@
-import '../mce-polyfill.js';
-import '../nav-item/main.js';
-import {addStyleSheet, observeAttrChange, windowResizeHandler} from '../mce-util.js';
+import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**
@@ -33,7 +31,6 @@ import {addStyleSheet, observeAttrChange, windowResizeHandler} from '../mce-util
    */
   class NavDrawer extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       observeAttrChange(this, (attr, val) => {
         if (attr === 'class') {
           // if drawer shown, disable body scroll

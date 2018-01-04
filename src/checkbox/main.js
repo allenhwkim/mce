@@ -1,5 +1,4 @@
-import '../mce-polyfill.js';
-import {addStyleSheet, observeAttrChange, setTabbable} from '../mce-util.js';
+import {observeAttrChange, setTabbable} from '../mce-util.js';
 
 ( function() {
   //https://material.io/guidelines/layout/structure.html#structure-app-bar
@@ -41,7 +40,6 @@ import {addStyleSheet, observeAttrChange, setTabbable} from '../mce-util.js';
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
       });
-      addStyleSheet(this); 
       !this.classList.contains('disabled') && setTabbable(this, _ => this.inputEl.click())
     }
 

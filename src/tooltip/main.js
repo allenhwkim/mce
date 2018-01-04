@@ -1,6 +1,3 @@
-import '../mce-polyfill.js';
-import {addStyleSheet} from '../mce-util.js';
-
 // FYI, http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview. ARIA tooltip approach.
 ( function() {
 
@@ -9,7 +6,6 @@ import {addStyleSheet} from '../mce-util.js';
    */
   class Tooltip extends HTMLElement {
     connectedCallback() {
-      addStyleSheet(this); //id, url
       this._addEventListeners();
     }
 
