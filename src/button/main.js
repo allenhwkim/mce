@@ -41,12 +41,7 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
     
     connectedCallback() {
       this.buttonAttrs = ['name', 'value', 'disabled'];
-      this.buttonEl = this._addRealButton();
-      observeAttrChange(this, (attr, val) => {
-        this.buttonAttrs.includes(attr) && this.buttonEl.setAttribute(attr, val);
-      });
-      !this.classList.contains('disabled') && 
-        setTabbable(this, _ => this.buttonEl.click());  // set tabindex and click/ENTER function
+      setTimeout(this._addRealButton.bind(this));
     }
 
     set disabled(bool) {
@@ -59,8 +54,15 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
       Array.from(this.attributes).forEach(attr => {
         this.buttonAttrs.includes(attr.name) && buttonEl.setAttribute(attr.name, attr.value);
       })
+
+      observeAttrChange(this, (attr, val) => {
+        this.buttonAttrs.includes(attr) && buttonEl.setAttribute(attr, val);
+      });
+      
+      if (!this.classList.contains('disabled')) {
+        setTabbable(this, _ => buttonEl.click());  // set tabindex and click/ENTER function
+      } 
       this.appendChild(buttonEl);
-      return buttonEl;
     }
 
   }
