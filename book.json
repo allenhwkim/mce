@@ -1,6 +1,14 @@
 {
-  "gitbook":   "3.2.2",
-  "structure": { 
-    "summary": "book-summary.md" 
+  "gitbook": ">= 3.0.0",
+  "title": "MCE",
+  "description": "Material-Designed Custom Elements",
+  "author": "Allen Kim<allenhwkim@gmail.com>",
+  "language": "en",
+  "root": "./docs",
+  "plugins": ["scripts"],
+  "pluginsConfig": {
+    "scripts" : {
+      "files": []
+    }
   }
 }

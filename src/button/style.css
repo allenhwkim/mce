@@ -8,6 +8,7 @@
 }
 
 a-button {
+  box-sizing: border-box;
   display: inline-block;
   height: 36px;
   border-radius: 2px;

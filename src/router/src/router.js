@@ -101,9 +101,11 @@ import {defaultLoadingHTML} from './default-loading-html.js';
       this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
       this.style.position = 'relative'; //required to show loaing overlay
-      this._setProperties();
       window.addEventListener('popstate', this.popStateHandler);
-      this.popStateHandler();
+      setTimeout(_ => {
+        this._setProperties();
+        this.popStateHandler();
+      });
     }
 
     disconnectedCallback() {

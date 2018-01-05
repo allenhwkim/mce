@@ -2,11 +2,10 @@ import {windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**
-   * App Bar
-   * https://material.io/guidelines/layout/structure.html#structure-app-bar
-   * 
-   * <iframe src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
+   * The app bar is a special kind of toolbar that’s used for branding, navigation, search, and actions.
    *
+   * [Material Design Spec](https://material.io/guidelines/layout/structure.html#structure-app-bar)
+   * 
    * ### example
    * ```
    * <an-app-bar app-title="app-bar" class="light">
@@ -21,11 +20,12 @@ import {windowResizeHandler} from '../mce-util.js';
    *   </div>
    * </an-app-bar>
    * ```
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="EobYmr" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * ### `an-app-bar` style classes
    *  |name|value|description|
    *  |---|---|---|
-   *  |fixed| | if defined, the app-bar is fixed positioned on the top of the viewport
    *  |light| | if defined, light background with dark icons and text
    * 
    * 
@@ -46,6 +46,10 @@ import {windowResizeHandler} from '../mce-util.js';
       this._addFiller();
     }
 
+    /**
+     * sets the title of app bar
+     * @param {string} title title for the app bar
+     */
     setTitle(title) {
       this.querySelector('.title').innerHTML = title;
     }

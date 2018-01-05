@@ -4,12 +4,11 @@
   "description": "Material Designed Custom Element",
   "main": "dist/mce.min.js",
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "rm -rf dist",
     "build": "npm-run-all clean build:js build:css",
-    "build:js": "sh scripts/build-js.sh",
-    "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css",
-    "build:doc": "sh scripts/jsdoc2md.sh && gitbook build",
-    "serve:doc": "gitbook serve",
+    "build:js": "webpack src/index.js --output-filename=dist/mce.js && uglifyjs dist/mce.js -m -c > dist/mce.min.js ",
+    "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css && cp -r src/themes dist",
+    "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
     "start": "http-serve",
     "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
   },
@@ -30,6 +29,7 @@
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "gitbook-plugin-scripts": "^1.0.2",
     "http-serve": "^1.0.1",
     "jsdoc-to-markdown": "^3.0.2",
     "npm-run-all": "^4.1.2",

@@ -2,8 +2,7 @@ import {windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**
-   * Bottom Nav Bar
-   * https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
+   * [Material Design Spec.](https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs)
    * 
    * ## Example
    * ```
@@ -13,12 +12,15 @@ import {windowResizeHandler} from '../mce-util.js';
    *   <a-nav-item icon="alarm">Alarm</a-nav-item>
    *   <a-nav-item icon="music_note">Music</a-nav-item>
    * </a-bottom-nav-bar>
-   * ```
+   * ```   
+   * 
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="aEVowx" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>`
    *
    * ### `a-bottom-nav-bar` style classes
-   *  |name|value|description|
-   *  |---|---|---|
-   *  |fixed| | if defined, the nav bar is positioned at the bottom the viewport 
+   *  |name|description|
+   *  |---|---|
+   *  |dark-bg| dark background bottom bar
    */
   class BottomNavBar extends HTMLElement {
     connectedCallback() {

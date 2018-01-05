@@ -1,0 +1,25 @@
+jsdoc2md src/app-bar/main.js --partial docs/templates/*.hbs > docs/an-app-bar.md
+jsdoc2md src/bottom-nav-bar/main.js --partial docs/templates/*.hbs  > docs/a-bottom-nav-bar.md
+jsdoc2md src/button/main.js --partial docs/templates/*.hbs  > docs/a-button.md
+jsdoc2md src/card/main.js --partial docs/templates/*.hbs  > docs/a-card.md
+jsdoc2md src/checkbox/main.js --partial docs/templates/*.hbs > docs/a-checkbox.md
+jsdoc2md src/chip/main.js --partial docs/templates/*.hbs > docs/a-chip.md
+jsdoc2md src/dialog/main.js --partial docs/templates/*.hbs > docs/a-dialog.md
+jsdoc2md src/expansion-panel/main.js --partial docs/templates/*.hbs  > docs/an-expansion-panel.md
+jsdoc2md src/grid-list/main.js --partial docs/templates/*.hbs  > docs/a-grid-list.md
+jsdoc2md src/icon/main.js --partial docs/templates/*.hbs  > docs/an-icon.md
+jsdoc2md src/list/main.js  --partial docs/templates/*.hbs > docs/a-list.md
+jsdoc2md src/menu/main.js --partial docs/templates/*.hbs  > docs/a-manu.md
+jsdoc2md src/nav-drawer/main.js --partial docs/templates/*.hbs  > docs/a-nav-drawer.md
+jsdoc2md src/radio-button/main.js --partial docs/templates/*.hbs  > docs/a-radio-button.md
+jsdoc2md src/refresh-indicator/main.js --partial docs/templates/*.hbs  > docs/a-refresh-indicator.md
+jsdoc2md src/search/main.js --partial docs/templates/*.hbs  > docs/a-search.md
+jsdoc2md src/switch/main.js --partial docs/templates/*.hbs  > docs/a-switch.md
+jsdoc2md src/tabs/main.js --partial docs/templates/*.hbs  > docs/a-tabs.md
+jsdoc2md src/text-field/main.js --partial docs/templates/*.hbs  > docs/a-text-field.md
+jsdoc2md src/tooltip/main.js --partial docs/templates/*.hbs  > docs/a-tooltip.md
+
+jsdoc2md src/leaflet/src/leaflet.js --partial docs/templates/*.hbs  > docs/a-leaflet.md
+jsdoc2md src/leaflet/src/marker.js --partial docs/templates/*.hbs  > docs/a-marker.md
+jsdoc2md src/router/src/router.js --partial docs/templates/*.hbs  > docs/a-router.md
+jsdoc2md src/router/src/route.js --partial docs/templates/*.hbs  > docs/a-route.md

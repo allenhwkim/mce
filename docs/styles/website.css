@@ -1,0 +1,56 @@
+.book-header {
+  background-color: #3489B1;
+}
+.book-header .btn {
+  color :#fff;
+}
+.book-summary {
+  background-color: #3489b1;
+  color: #fff;
+  overflow: hidden;
+}
+.book-summary ul.summary li a, 
+.book-summary ul.summary li span {
+  color: #fff;
+}
+.book-summary ul.summary li.active {
+  background-color: #2A7394;
+}
+.book-summary ul.summary li.active>a {
+  color: inherit;
+}
+.book-summary ul.summary li a:hover {
+  text-decoration: none;
+  display: block;
+  background-color: #2A7394;
+}
+.book-summary nav {
+  height: calc(100% - 50px);
+  overflow: auto;
+  visibility: hidden;
+  transition: visibility 0.2s;
+}
+.book-summary .summary,
+.book-summary nav:hover,
+.book-summary nav:focus {
+  visibility: visible;
+  transition: visibility 0s 0.2s;
+}
+.book-summary #book-search-input {
+  background-color: #3489B1;
+  color: #fff;  
+}
+.page-wrapper {
+  height: calc(100% - 50px);
+  overflow: auto;
+}
+#book-search-input {
+  margin-bottom: 0;
+}
+#book-search-input:hover ::-webkit-input-placeholder {
+  color: #eee;
+}
+#book-search-input ::-webkit-input-placeholder {
+  color: #ccc;
+}
+
