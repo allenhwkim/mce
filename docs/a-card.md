@@ -1,10 +1,9 @@
 <a name="Card"></a>
 
 ## Card
-Card from Material Design
-[Material Design Spec](https://material.io/guidelines/components/cards.html#cards-content-blocks)
-
 A card is a sheet of material that serves as an entry point to more detailed information. 
+
+[Material Design Spec](https://material.io/guidelines/components/cards.html#cards-content-blocks)
 
 ### example
 ```
@@ -23,6 +22,10 @@ A card is a sheet of material that serves as an entry point to more detailed inf
   </div>
 </a-card>
 ```
+
+<p data-height="300" data-theme-id="32189" data-slug-hash="ZvaEez" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>`
+
 
 ### `a-card` elememe style classes
  |name|description|

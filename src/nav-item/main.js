@@ -1,4 +1,3 @@
-// dependant on an-icon
 ( function() {
   class NavItem extends HTMLElement {
     connectedCallback() {

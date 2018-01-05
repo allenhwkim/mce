@@ -1,9 +1,3 @@
-.book-header {
-  background-color: #3489B1;
-}
-.book-header .btn {
-  color :#fff;
-}
 .book-summary {
   background-color: #3489b1;
   color: #fff;
@@ -40,17 +34,16 @@
   background-color: #3489B1;
   color: #fff;  
 }
+.book-summary #book-search-input {
+  margin-bottom: 0;
+}
+.book-summary #book-search-input:hover ::-webkit-input-placeholder {
+  color: #eee;
+}
+.book-summary #book-search-input ::-webkit-input-placeholder {
+  color: #ccc;
+}
 .page-wrapper {
   height: calc(100% - 50px);
   overflow: auto;
 }
-#book-search-input {
-  margin-bottom: 0;
-}
-#book-search-input:hover ::-webkit-input-placeholder {
-  color: #eee;
-}
-#book-search-input ::-webkit-input-placeholder {
-  color: #ccc;
-}
-

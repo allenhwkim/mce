@@ -2,8 +2,9 @@ import {observeAttrChange} from '../mce-util.js';
 
 ( function() {
   /**
-   * [Material Design Spec.](https://material.io/guidelines/components/menus.html#menus-specs)
    * Menus display a list of choices on a transient sheet of material. 
+   *
+   * [Material Design Spec.](https://material.io/guidelines/components/menus.html#menus-specs)
    * 
    * ### example
    * ```
@@ -16,6 +17,10 @@ import {observeAttrChange} from '../mce-util.js';
    *    <a-nav-item icon="search">nav-item text</a-nav-item>
    *  </a-menu>
    * ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+   *
    * 
    * ### `a-button` Style Classes
    *  |name||description|

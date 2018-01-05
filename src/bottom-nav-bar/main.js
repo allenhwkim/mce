@@ -2,6 +2,8 @@ import {windowResizeHandler} from '../mce-util.js';
 
 ( function() {
   /**
+   * Bottom navigation bars make it easy to explore and switch between top-level views in a single tap.
+   *
    * [Material Design Spec.](https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs)
    * 
    * ## Example

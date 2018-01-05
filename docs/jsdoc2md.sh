@@ -9,7 +9,7 @@ jsdoc2md src/expansion-panel/main.js --partial docs/templates/*.hbs  > docs/an-e
 jsdoc2md src/grid-list/main.js --partial docs/templates/*.hbs  > docs/a-grid-list.md
 jsdoc2md src/icon/main.js --partial docs/templates/*.hbs  > docs/an-icon.md
 jsdoc2md src/list/main.js  --partial docs/templates/*.hbs > docs/a-list.md
-jsdoc2md src/menu/main.js --partial docs/templates/*.hbs  > docs/a-manu.md
+jsdoc2md src/menu/main.js --partial docs/templates/*.hbs  > docs/a-menu.md
 jsdoc2md src/nav-drawer/main.js --partial docs/templates/*.hbs  > docs/a-nav-drawer.md
 jsdoc2md src/radio-button/main.js --partial docs/templates/*.hbs  > docs/a-radio-button.md
 jsdoc2md src/refresh-indicator/main.js --partial docs/templates/*.hbs  > docs/a-refresh-indicator.md

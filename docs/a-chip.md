@@ -1,9 +1,10 @@
 <a name="Chip"></a>
 
 ## Chip
-Chip
-[Material Design Spec](https://material.io/guidelines/components/chips.html#chips-specs)
 Chips represent complex entities in small blocks, such as a contact.
+
+[Material Design Spec](https://material.io/guidelines/components/chips.html#chips-specs)
+
 ### Examples
 ```
 <div>
@@ -13,6 +14,10 @@ Chips represent complex entities in small blocks, such as a contact.
   <a-chip avatar="A" text="AMZ Bank" removable="" on-remove="alert('chip removal')"></a-chip>
 </div>
 ```
+
+<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
 
 ### `a-chip` atttibutes
  |name|value|description|

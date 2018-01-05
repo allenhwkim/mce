@@ -1,8 +1,8 @@
 ( function() {
   /**
-   * @description
-   * [Material Design Spec](https://material.io/guidelines/components/text-fields.html#text-fields-layout)
    * Text fields allow users to input, edit, and select text. Text fields typically reside in forms but can appear in other places, like dialog boxes and search. Text fields contain the following elements; label, input text field, placeholder text, helper text, required field indicator, icon, and error messages.
+   * 
+   * [Material Design Spec](https://material.io/guidelines/components/text-fields.html#text-fields-layout)
    *
    * ###  Example
    * ```
@@ -23,6 +23,10 @@
    *   required="this field is required"
    *   suffix="dollars"></a-text-field>
    * ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+   *
    * 
    * ### `a-text-field` Attributes 
    *  |name|value|description|

@@ -1,10 +1,11 @@
 <a name="NavDrawer"></a>
 
 ## NavDrawer
-[Material Design Spec.](https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs)
 The navigation drawer slides in from the left and contains the navigation destinations for your app.
 The nav drawer spans the height of the screen, with everything behind it visible but darkened by a scrim. 
 When nav drawer opens, the document does not scroll any more. When it's closed, scrolling is enabled again.
+
+[Material Design Spec.](https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs)
 
 ### example
 ```
@@ -17,6 +18,10 @@ When nav drawer opens, the document does not scroll any more. When it's closed, 
     <a-nav-item icon="music_note">Music</a-nav-item>
   </a-nav-drawer>
 ``` 
+
+<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
 
 ### `a-button` Style Classes
  |name||description|

@@ -1,7 +1,9 @@
 ( function() {
   /**
-   * [Material Design Spec.](https://material.io/guidelines/style/icons.html#)
    * Material icons use geometric shapes to visually represent core ideas, capabilities, or topics. System icons represent a command, file, device, directory, or common actions.
+   *
+   * [Material Design Spec.](https://material.io/guidelines/style/icons.html#)
+   *
    * ### example
    * ```
    *   <an-icon class="small">face</an-icon>
@@ -11,6 +13,10 @@
    *   <an-icon class="double">fa-envelope</an-icon> <!-- for Font-Awesome icon -->
    *   <an-icon class="double" img="ali.connors.jpg"></an-icon>
    * ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+   *
    *
    * ### `an-icon` element atttibutes
    *  |name|value|description|

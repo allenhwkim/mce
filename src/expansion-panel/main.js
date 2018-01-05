@@ -1,7 +1,8 @@
 ( function() {
   /**
-   * [Material Design Spec.](https://material.io/guidelines/components/expansion-panels.html#expansion-panels-specs)
    * Expansion panels contain creation flows and allow lightweight editing of an element.
+   *
+   * [Material Design Spec.](https://material.io/guidelines/components/expansion-panels.html#expansion-panels-specs)
    *
    * ### example
    * ```
@@ -15,6 +16,10 @@
    *    </div>
    *  </an-expansion-panel>
    * ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+   *
    *
    * ### `an-expansion-panel` elememe style classes
    *  |name|description|

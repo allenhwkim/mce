@@ -23,8 +23,8 @@
    * [a-tooltip](a-tooltip.md)
 
  * Custom Elements
-   * [a-router](router.md)
-   * [a-route](route.md)
+   * [a-router](a-router.md)
+   * [a-route](a-route.md)
    * [a-leaflet](a-leaflet.md)
    * [a-marker](a-marker.md)
 

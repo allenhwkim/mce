@@ -1,8 +1,6 @@
 import {observeAttrChange, setTabbable} from '../mce-util.js';
 
 ( function() {
-  //https://material.io/guidelines/layout/structure.html#structure-app-bar
-
   var iconSVG = `
     <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
       <path class="checked"   d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
@@ -11,9 +9,9 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
     </svg>`;
 
   /**
-   * Checkbox
-   * [Material Design Spec](https://material.io/guidelines/components/selection-controls.html#)
    * Checkboxes allow the selection of multiple options from a set.
+   *
+   * [Material Design Spec](https://material.io/guidelines/components/selection-controls.html#)
    * 
    * ### example
    * ```
@@ -28,6 +26,9 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
    *   <label for="checkbox4">Disabled</label>
    * </div> 
    * ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * ### `a-checkbox` atttibutes
    *  It accepts all `input` checkbox attributes. E.g., id, name, value, disaled, or checked

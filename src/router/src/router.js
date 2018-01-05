@@ -5,7 +5,6 @@ import {defaultLoadingHTML} from './default-loading-html.js';
 
 ( function() {
   /**
-   * @description
    * `a-router` is an element that responds to url hash change.
    * a-router watches the url hash changes, find a proper route, and load html.
    * On the other hand, a-route(without r) does fetch, template caching, transition, and replacing, and throws error if erroneous
@@ -20,6 +19,10 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    *   <a-route path="" redirect="page1"></a-route>
    * </a-router>
    * ``` 
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+   *
    *
    * ### `a-router` atttibutes
    *  |name          |value     |description                                                  |

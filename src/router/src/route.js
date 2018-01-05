@@ -3,8 +3,23 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
 
 (function() {
   /**
-   * @description
    *  Child element of a router,`<a-router>`
+   *
+   *  
+   * ### Example
+   *  ```
+   *  <a-router>
+   *     <a-route path="/path1" import="path1.html">
+   *       <a-router>    <!-- knows that parent path is /path1 -->
+   *         <a-route path="/foo" import="foo.html" ></a-route> <!-- responds to /path1/foo -->
+   *         <a-route path="/bar" import="bar.html"></a-route> <!-- responds to /path1/bar -->
+   *       </a-router>
+   *     </a-route>
+   *  </a-router>
+   *  ```
+   *
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    *  ### Attributes
    *    * `path`
@@ -17,18 +32,6 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
    *      Optional,Indicates that the route view template is not cached.
    *    * `resolve-func`
    *      Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
-   *  
-   * ### Usage
-   *  ```
-   *  <a-router>
-   *     <a-route path="/path1" import="path1.html">
-   *       <a-router>    <!-- knows that parent path is /path1 -->
-   *         <a-route path="/foo" import="foo.html" ></a-route> <!-- responds to /path1/foo -->
-   *         <a-route path="/bar" import="bar.html"></a-route> <!-- responds to /path1/bar -->
-   *       </a-router>
-   *     </a-route>
-   *  </a-router>
-   *  ```
    */
   class Route extends HTMLElement {
     connectedCallback() {
