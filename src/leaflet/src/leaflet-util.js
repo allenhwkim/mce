@@ -44,7 +44,7 @@ function attrs2Events(attributes) {
 }
 
 function geocode(address) {
-  let url = 'http://nominatim.openstreetmap.org/?format=json'+
+  let url = 'https://nominatim.openstreetmap.org/?format=json'+
     '&addressdetails=1&q='+address+'&format=json&limit=1'; 
   return fetch(url).then( function(response) {
     return response.json();
