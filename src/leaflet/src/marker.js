@@ -3,20 +3,20 @@ import {util} from './leaflet-util.js';
 
 /**
  * @description
- * leaflet marker element, `a-marker`
+ * leaflet marker element, `mce-marker`
  * 
  * ### example
  * ```
- * <a-leaflet center="[50.5, 30.5]">
- *   <a-marker lat-lng="[50.5, 30.5]"></marker>
- * </a-leaflet>
+ * <mce-leaflet center="[50.5, 30.5]">
+ *   <mce-marker lat-lng="[50.5, 30.5]"></marker>
+ * </mce-leaflet>
  * ```
  *
- * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+ * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
  *
  * 
- * ### `a-marker` Attributes 
+ * ### `mce-marker` Attributes 
  * any marker options defined in leaflet, http://leafletjs.com/reference-1.2.0.html#marker-option
  * As an example, for draggable 
  *
@@ -47,7 +47,7 @@ class LeafletMarker extends HTMLElement {
   }
 
   get map() {
-    this._map = this._map || this.closest('a-leaflet').map;
+    this._map = this._map || this.closest('mce-leaflet').map;
     return this._map;
   }
 
@@ -81,4 +81,4 @@ class LeafletMarker extends HTMLElement {
 
 }
 
-customElements.define('a-marker', LeafletMarker);
+customElements.define('mce-marker', LeafletMarker);

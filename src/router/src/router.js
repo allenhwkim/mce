@@ -5,32 +5,32 @@ import {defaultLoadingHTML} from './default-loading-html.js';
 
 ( function() {
   /**
-   * `a-router` is an element that responds to url hash change.
-   * a-router watches the url hash changes, find a proper route, and load html.
-   * On the other hand, a-route(without r) does fetch, template caching, transition, and replacing, and throws error if erroneous
+   * `mce-router` is an element that responds to url hash change.
+   * mce-router watches the url hash changes, find a proper route, and load html.
+   * On the other hand, mce-route(without r) does fetch, template caching, transition, and replacing, and throws error if erroneous
    * A router has div.router-html to show the path-related contents.
    * 
    * ### example
    * ```
-   * <a-router>
-   *   <a-route path="page1" import="page1.html" no-cache=""></a-route>
-   *   <a-route path="page2" import="page2.html"></a-route>
-   *   <a-route path="not-found" import="not-found.html"></a-route>
-   *   <a-route path="" redirect="page1"></a-route>
-   * </a-router>
+   * <mce-router>
+   *   <mce-route path="page1" import="page1.html" no-cache=""></mce-route>
+   *   <mce-route path="page2" import="page2.html"></mce-route>
+   *   <mce-route path="not-found" import="not-found.html"></mce-route>
+   *   <mce-route path="" redirect="page1"></mce-route>
+   * </mce-router>
    * ``` 
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    *
-   * ### `a-router` atttibutes
+   * ### `mce-router` atttibutes
    *  |name          |value     |description                                                  |
    *  |--------------|----------|-------------------------------------------------------------|
    *  |base-path     | url path | Optional. default '/', base path of this router. All route path will be prefixed with this base path.
    *  |import        | url      | **required**, url of partial html
    *  |no-cache      | boolean  | Optional,Indicates that the route view template is not cached.
-   *  |resolve-func  | function | Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
+   *  |resolve-func  | function | Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<mce-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
    *  |on-route-start| function | Optional, injector function to be executed before route starts.
    *  |on-route-end  | function | Optional, injector function to be executed after route ends.
    *  |on-http-start | function | Optional, injector function to be executed before all http requests calls. This can change http request. It must return `fetch` [call option](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request)
@@ -38,7 +38,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    *
    * #### `resolve-func` example
    * ```
-   *    &lt;a-router resolve-func="routerResolve()">....&lt;/a-router>
+   *    &lt;mce-router resolve-func="routerResolve()">....&lt;/mce-router>
    *    &lt;script>
    *      function routerResolve(route) {
    *        console.log('executing router-resolve');
@@ -50,7 +50,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    * ```
    * #### `on-http-start` example
    * ```
-   *    &lt;a-router resolve-func="onHttpStart">....&lt;/a-router>
+   *    &lt;mce-router resolve-func="onHttpStart">....&lt;/mce-router>
    *    &lt;script>
    *      function onHttpStart(route) {
    *        console.log('executing on-http-start');
@@ -60,7 +60,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    * ```
    * #### `on-http-end` example
    * ```
-   *    &lt;a-router on-http-end="onHttpEnd">....&lt;/a-router>
+   *    &lt;mce-router on-http-end="onHttpEnd">....&lt;/mce-router>
    *    &lt;script>
    *      function onHttpEnd(response) { 
    *        console.log('executing on-http-end');
@@ -70,7 +70,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    * ```
    * #### `on-route-start` example
    * ```
-   *   &lt;a-router on-route-start="onRouteStart">....&lt;/a-router>
+   *   &lt;mce-router on-route-start="onRouteStart">....&lt;/mce-router>
    *   &lt;script>
    *     function onRouteStart(route) { 
    *       console.log('executing on-route-start');
@@ -80,7 +80,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
    * ```
    * #### `on-route-end` example
    * ```
-   *    &lt;a-router on-route-end="onRouteEnd">....&lt;/a-router>
+   *    &lt;mce-router on-route-end="onRouteEnd">....&lt;/mce-router>
    *    &lt;script>
    *      function onRouteEnd(route) { 
    *        console.log('executing on-route-end');
@@ -99,7 +99,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
       this.onHttpStart;  // a callback function, route as parameter, and returning a Promise
       this.onHttpEnd;    // a callvack funciton, route as parameter, returning a Promise
 
-      this.routes;       // collection of <a-route> children
+      this.routes;       // collection of <mce-route> children
       this.defaultRoute;
       this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
@@ -185,7 +185,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
       this.onRouteStart = onRouteStart && this._getPromiseFunc('route', onRouteStart);
       this.onRouteEnd   = onRouteEnd && this._getPromiseFunc('route', onRouteEnd);
 
-      this.routes = Array.from(this.querySelectorAll('a-route'));
+      this.routes = Array.from(this.querySelectorAll('mce-route'));
       this.routes.forEach(route => {
         (route.getAttribute('default') !== null) && (this.defaultRoute = route);
       });
@@ -214,17 +214,17 @@ import {defaultLoadingHTML} from './default-loading-html.js';
     }
 
     _addLoadingEl() {
-      let loadingEl = this.querySelector('.loading');
+      let loadingEl = this.querySelector('.mce-loading');
       if (!loadingEl) {
         this.insertAdjacentHTML('beforeend', defaultLoadingHTML);
-        loadingEl = this.querySelector('div.loading');
+        loadingEl = this.querySelector('div.mce-loading');
       }
       return loadingEl;
     }
 
     _addTargetEl() {
-      this.insertAdjacentHTML('beforeend', '<div class="router-target"></div>');
-      return this.querySelector('div.router-target');
+      this.insertAdjacentHTML('beforeend', '<div class="mce-router-target"></div>');
+      return this.querySelector('div.mce-router-target');
     }
 
     /* returns a function which accepts paramName and returns a promise */
@@ -240,6 +240,6 @@ import {defaultLoadingHTML} from './default-loading-html.js';
       }
     }
   }
-  customElements.define('a-router', Router); //name, class
+  customElements.define('mce-router', Router); //name, class
 
 })();

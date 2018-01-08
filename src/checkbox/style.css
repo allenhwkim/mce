@@ -1,7 +1,7 @@
 /**
   https://material.io/guidelines/components/selection-controls.html
 */
-a-checkbox {
+mce-checkbox {
   position: relative;
   display: inline-block;
   margin: 0;
@@ -11,12 +11,12 @@ a-checkbox {
   fill: var(--theme-color-a100, #F5BEA9);
 }
 
-a-checkbox[disabled] {
+mce-checkbox[disabled] {
   pointer-events: none;
   fill: var(--theme-text-color-500, #9e9e9e);
 }
 
-a-checkbox:after { /* to show it's pressed down */
+mce-checkbox:after { /* to show it's pressed down */
   content: '';
   width: 48px;
   height: 48px;
@@ -33,13 +33,13 @@ a-checkbox:after { /* to show it's pressed down */
   visibility: hidden;
 }
 
-a-checkbox:active:after {
+mce-checkbox:active:after {
   transform: scale(1);
   visibility: visible;
   animation: ce-ripple 1s ease-out;
 }
 
-a-checkbox input {
+mce-checkbox input {
   margin: 0;
   position: absolute;
   opacity: 0;
@@ -50,17 +50,17 @@ a-checkbox input {
   z-index: 1;
 }
 
-a-checkbox input + svg {
+mce-checkbox input + svg {
   z-index: 0;
 }
 
-a-checkbox input + svg path {
+mce-checkbox input + svg path {
   visibility: hidden;
 }
-a-checkbox input:not(checked) + svg path.unchecked {
+mce-checkbox input:not(checked) + svg path.unchecked {
   visibility: visible;
 }
-a-checkbox input:checked + svg path.checked {
+mce-checkbox input:checked + svg path.checked {
   visibility: visible;
 }
 

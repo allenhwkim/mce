@@ -11,35 +11,35 @@ import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
    * ### example
    * ```
    *   <a href="javascript:document.getElementById('#drawer').open()">Show Navigation Drawer</a>
-   *   <a-nav-drawer id="drawer">
-   *     <a-nav-item icon="favorite">Favourite</a-nav-item>
-   *     <a-nav-item icon="search" class="disabled">Disabled</a-nav-item>
-   *     <a-nav-item>Alarm</a-nav-item>
+   *   <mce-nav-drawer id="drawer">
+   *     <mce-nav-item icon="favorite">Favourite</mce-nav-item>
+   *     <mce-nav-item icon="search" class="mce-disabled">Disabled</mce-nav-item>
+   *     <mce-nav-item>Alarm</mce-nav-item>
    *     <hr>
-   *     <a-nav-item icon="music_note">Music</a-nav-item>
-   *   </a-nav-drawer>
+   *     <mce-nav-item icon="music_note">Music</mce-nav-item>
+   *   </mce-nav-drawer>
    * ``` 
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
-   * ### `a-button` Style Classes
+   * ### `mce-nav-drawer` Style Classes
    *  |name||description|
    *  |---|---|
    *  |visible| indicates nav drawer is open state
    * 
-   * ### `a-button` Child Element Style Classes
+   * ### `mce-nav-drawer` Child Element Style Classes
    *  |name||description|
    *  |---|---|
-   *  |divider| An horizontal line that separates group of navigable items.
+   *  |mce-divider| An horizontal line that separates group of navigable items.
    */
   class NavDrawer extends HTMLElement {
     connectedCallback() {
       observeAttrChange(this, (attr, val) => {
         if (attr === 'class') {
           // if drawer shown, disable body scroll
-          document.body.style.overflow = this.classList.contains('visible') ? 'hidden' : '';
+          document.body.style.overflow = this.classList.contains('mce-visible') ? 'hidden' : '';
         }
       });
       if (window.ce && window.ce.resizeHandler) {} else {
@@ -56,26 +56,26 @@ import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
      * open the nav drawer by adding `visible` class
      */
     open() {
-      this.classList.add('visible');
+      this.classList.add('mce-visible');
     }
 
     /**
      * close the nav drawer by removing `visible` class
      */
     close() {
-      this.classList.remove('visible');
+      this.classList.remove('mce-visible');
     }
 
     _regroupElements() {
       if (!this.regroupedOnce) {
         let pageBlockerEl, contentsEl;
         pageBlockerEl = document.createElement('div');
-        pageBlockerEl.setAttribute('class', 'page-blocker');
+        pageBlockerEl.classList.add('mce-page-blocker');
         pageBlockerEl.addEventListener('click', () => this.close());
         this.appendChild(pageBlockerEl);
 
         contentsEl = document.createElement('div');
-        contentsEl.setAttribute('class', 'contents');
+        contentsEl.classList.add('mce-contents');
         this.appendChild(contentsEl);
 
         Array.from(this.children).forEach(el => {
@@ -90,5 +90,5 @@ import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
 
   }
   
-  customElements.define('a-nav-drawer', NavDrawer);
+  customElements.define('mce-nav-drawer', NavDrawer);
 })();

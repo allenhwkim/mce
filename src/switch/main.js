@@ -10,13 +10,13 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
    *
    * ## Examples
    * ```
-   * <a-switch id="checkbox21"></a-switch> <label for="checkbox21">Unchecked</label>
+   * <mce-switch id="checkbox21"></mce-switch> <label for="checkbox21">Unchecked</label>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
-   * ### `a-switch` Attributes 
+   * ### `mce-switch` Attributes 
    * It accepts all `input` checkbox attributes. E.g., id, name, value, disaled, or checked
    */
   class Switch extends HTMLElement {
@@ -36,7 +36,7 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
       Array.from(this.attributes).forEach( attr => {
         if (this.inputAttrs.includes(attr.name) && attr.value !== null) {
          inputEl.setAttribute(attr.name, attr.value);
-         (attr.name === 'id') && this.setAttribute('id', 'a-switch-'+attr.value);
+         (attr.name === 'id') && this.setAttribute('id', 'mce-switch-'+attr.value);
         }
       })
       inputEl.addEventListener('click', _ => {
@@ -48,5 +48,5 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
 
   }
   
-  customElements.define('a-switch', Switch); //name, class
+  customElements.define('mce-switch', Switch); //name, class
 })();

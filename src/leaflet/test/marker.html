@@ -3,19 +3,19 @@
   <head>
     <script type="module" src="../src/leaflet.js"></script>
     <script type="module" src="../src/marker.js"></script>
-    <style>a-leaflet {display: block; width: 400px; min-height: 200px;}</style>
+    <style>mce-leaflet {display: block; width: 400px; min-height: 200px;}</style>
   </head>
   <body>
 
     <h3>Simple Marker with latlng="[51.505, -0.09]"</h3>
-    <a-leaflet center="[51.505, -0.09]">
-      <a-marker latlng="[51.505, -0.09]"></a-marker>
-    </a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]">
+      <mce-marker latlng="[51.505, -0.09]"></mce-marker>
+    </mce-leaflet>
 
     <h3>Simple Marker with latlng="Brampton, Canada"</h3>
-    <a-leaflet id="my-map" center="Brampton, Canada">
-      <a-marker id="my-marker" latlng="Brampton, Canada"></a-marker>
-    </a-leaflet>
+    <mce-leaflet id="my-map" center="Brampton, Canada">
+      <mce-marker id="my-marker" latlng="Brampton, Canada"></mce-marker>
+    </mce-leaflet>
     Enter Address: <input id="address" value="Brampton, Canada" onchange="updateMarker(event)">
     <script>
       function updateMarker(e) {
@@ -25,9 +25,9 @@
     </script>
 
     <h3>Marker with an event, on-dragend="dragendHandler" </h3>
-    <a-leaflet center="[51.505, -0.09]" scroll-wheel-zoom="false">
-      <a-marker latlng="[51.505, -0.09]" draggable="true" on-dragend="dragendHandler(event)"></a-marker>
-    </a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]" scroll-wheel-zoom="false">
+      <mce-marker latlng="[51.505, -0.09]" draggable="true" on-dragend="dragendHandler(event)"></mce-marker>
+    </mce-leaflet>
     <script>
       function dragendHandler(event) {
         console.log('dragendHandler  event', event);
@@ -37,12 +37,12 @@
 
     <h3>Add/Remove Markers</h3>
     click on map to add a marker, click on marker to remove it.
-    <a-leaflet id="dyn-map" center="[51.505, -0.09]" on-click="addMarker(event)" style="height: 400px">
-    </a-leaflet>
+    <mce-leaflet id="dyn-map" center="[51.505, -0.09]" on-click="addMarker(event)" style="height: 400px">
+    </mce-leaflet>
     <script>
       function addMarker(event) {
         document.querySelector('#dyn-map').insertAdjacentHTML('beforeend',
-          `<a-marker latlng="[${event.latlng.lat}, ${event.latlng.lng}]" on-click="removeMarker(event)"></a-marker>`);
+          `<mce-marker latlng="[${event.latlng.lat}, ${event.latlng.lng}]" on-click="removeMarker(event)"></mce-marker>`);
       }
       function removeMarker(event) {
         event.target.customElement.remove();

@@ -4,14 +4,14 @@
 <a name="new_LeafletMap_new"></a>
 
 ### new LeafletMap()
-leaflet map element, `a-leaflet`
+leaflet map element, `mce-leaflet`
 
 ### example
 ```
-<a-leaflet center="Brampton, Canada"></a-leaflet>
+<mce-leaflet center="Brampton, Canada"></mce-leaflet>
 ```
 
-### `a-leaflet` Attributes 
+### `mce-leaflet` Attributes 
 any options defined in leaflet, http://leafletjs.com/reference-1.2.0.html#map-option
 As an example, for center and zoom 
 

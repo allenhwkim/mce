@@ -1,175 +1,41 @@
 
-<!doctype html>
-<!-- 
-  This page is useful for development and testing.
-  As of. Nov 2017. This page works well with Chrome browser.
--->
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.4/beautify-html.js"></script>
-    <script src="https://unpkg.com/code-prettify@0.1.0/src/run_prettify.js"></script>
-    <link rel="import" href="../mce-theme.tmpl.html" />
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="../themes/blue.css">
+<script type="module" src="../index.js"></script>
+<link id="mce-css" rel="stylesheet" href="../index.css">
+<style>
+body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
+.container {position: relative; padding: 12px; }
+.dark-bg { padding:8px; background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+</style>  
 
-    <link rel="stylesheet" class="theme" href="../../themes/grey.css">
-    <style>
-      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
-      *, *:before, *:after { box-sizing: border-box; }
-      .container { padding: 12px; }
-      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
-      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
-      .float-right { float: right; }
+<h3>Simple Search</h3>
+<div class="mce-container">
+  <mce-search on-search="alert('You are searching...'+keyword)"></mce-search>
+</div>
 
-      .demo { position: relative; }
-      .view-source ~ label { padding: 12px 0; display: inline-block; }
-      .view-source ~ .code { max-height: 0; padding: 0; overflow: hidden; border: none; margin: 0; transition: all .4s ease-out;}
-      .view-source[checked] ~ .code { max-height: 999px;  transition: all 0.4s ease-out; overflow: auto;}
-      a-card .demo > a-card {max-width: 480px; margin: 0 auto;}
-    </style>
-    <script>
-      function setDemo(src, dest) {
-        var html = document.querySelector(src).content.cloneNode(true).querySelector('*').outerHTML;
-        document.querySelector(dest+' .demo').innerHTML = html;
-        document.querySelector(dest+' .code').innerHTML = html_beautify(html, {indent_size: 2}).replace(/</g,'\&lt;');
-      }
-    </script>
-
-    <script type="module" src="../search/main.js"></script>
-    <link rel="stylesheet" class="search" href="../search/style.css">
-
-    <script type="module" src="../app-bar/main.js"></script>
-    <link rel="stylesheet" class="app-bar" href="../app-bar/style.css">
-
-    <script type="module" src="../card/main.js"></script>
-    <link rel="stylesheet" class="card" href="../card/style.css">
-
-    <script type="module" src="../switch/main.js"></script>
-    <link rel="stylesheet" class="switch" href="../switch/style.css">
-
-    <script type="module" src="../list/main.js"></script>
-    <link rel="stylesheet" class="list" href="../list/style.css">
-
-    <script type="module" src="../menu/main.js"></script>
-    <link rel="stylesheet" class="menu" href="../menu/style.css">
-
-    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
-    <link rel="stylesheet" class="icon" href="../icon/style.css">
-  </head>
-  <body>
-
-    <template class="simple">
-      <a-search on-search="alert('You are searching...'+keyword)"></a-search>
-    </template>
-
-    <template class="right-side">
-      <a-search on-search="alert(keyword)" style="float:right"></a-search>
-    </template>
-
-    <template class="dark">
-      <a-search on-search="alert(keyword)" class="dark-bg"></a-search>
-    </template>
-
-    <template class="app-bar">
-      <an-app-bar>
-        <div class="nav-icon">
-          <i class="material-icons icon">menu</i>
-        </div>
-        <h1 class="title">App Bar</h1>
-        <div class="icons">
-          <a-search class="dark-bg" on-search="alert(keyword)"></a-search>
-          <i class="material-icons icon">favorite</i>
-          <i class="material-icons icon">more_vert</i>
-        </div>
-      </an-app-bar>
-    </template>
-
-    <div class="container">
-      <h1>Search</h1>
-      <a href="https://material.io/guidelines/patterns/search.html#search-in-app-search">
-        Material Design Spec
-      </a>
-      &nbsp;
-      <a href="https://allenhwkim.github.io/custom-element/">Documentation</a>
-
-      <p>
-        Search allows users to locate app content quickly.
-      </p>
-
-      <div id="import-theme-tmpl" class="clear-both"></div>
-
-      <h2>Installation</h2>
-      <p>
-        Just add the following script(< 2kb gzipped/polyfill in it) to your website. It will add CSS only once if required.
-        <pre>&lt;script defer src="https://unpkg.com/@custom-element/search">&lt;/script></pre>
-      </p>
-
-      <h2> Examples </h2>
-      
-
-      <a-card class="simple">
-        <div class="title">
-          <h2>Simple Example</h2>
-        </div>
-        <div class="text">
-          <div class="demo"></div>
-          <div>
-            <a-switch id="vs0001" class="view-source" checked></a-switch>
-            <label for="vs0001"> View Source</label>
-            <pre class="code prettyprint"></pre>
-          </div>
-        </div>
-      </a-card>
-      <script>setDemo('template.simple', 'a-card.simple')</script>
-
-      <a-card class="right-side">
-        <div class="title">
-          <h2>Right-Side Example</h2>
-        </div>
-        <div class="text">
-          <div class="demo"></div>
-          <div>
-            <a-switch id="vs0002" class="view-source" checked></a-switch>
-            <label for="vs0002"> View Source</label>
-            <pre class="code prettyprint"></pre>
-          </div>
-        </div>
-      </a-card>
-      <script>setDemo('template.right-side', 'a-card.right-side')</script>
-
-      <a-card class="dark">
-        <div class="title">
-          <h2>In Dark Background</h2>
-        </div>
-        <div class="text">
-          <div class="demo dark-bg" style="padding: 12px"></div>
-          <div>
-            <a-switch id="vs0003" class="view-source" checked></a-switch>
-            <label for="vs0003"> View Source</label>
-            <pre class="code prettyprint"></pre>
-          </div>
-        </div>
-      </a-card>
-      <script>setDemo('template.dark', 'a-card.dark')</script>
-
-      <a-card class="app-bar">
-        <div class="title">
-          <h2>In App Bar</h2>
-        </div>
-        <div class="text">
-          <div class="demo" style="padding: 12px"></div>
-          <div>
-            <a-switch id="vs0004" class="view-source" checked></a-switch>
-            <label for="vs0004"> View Source</label>
-            <pre class="code prettyprint"></pre>
-          </div>
-        </div>
-      </a-card>
-      <script>setDemo('template.app-bar', 'a-card.app-bar')</script>
+<h3>Search - With App Bar</h3>
+<div class="container">
+  <mce-app-bar display-level="div">
+    <mce-icon>menu</mce-icon>
+    <h1 class="mce-title">App Bar</h1>
+    <div class="mce-icons">
+      <mce-search class="mce-dark-bg" on-search="alert(keyword)"></mce-search>
+      <mce-icon>favorite</mce-icon>
+      <mce-icon>more_vert</mce-icon>
     </div>
+  </mce-app-bar>
+</div>
 
+<h3>Search - Right Background</h3>
+<div class="container">
+  <mce-search class="mce-visible" on-search="alert(keyword)" style="float:right"></mce-search>
+</div>
 
-  </body>
-</html>
+<h3>Search - Dark-Background</h3>
+<div class="container dark-bg">
+  <mce-search on-search="alert(keyword)" class="mce-dark-bg"></mce-search>
+</div>
 

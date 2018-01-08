@@ -7,38 +7,29 @@
    * ## Examples
    *
    * ```
-   * <a-list>
+   * <mce-list>
    *   <ol>
    *     <li>
-   *       <div class="icon">
-   *         <an-icon class="circle">folder</an-icon>
+   *       <div class="mce-icon">
+   *         <mce-icon class="mce-circle">folder</mce-icon>
    *       </div>
    *       <span>Directory</span>
-   *       <an-icon>info</an-icon>
+   *       <mce-icon>info</mce-icon>
    *     </li>
    *     <li>
-   *       <div class="icon">
-   *         <an-icon class="circle">hotel</an-icon>
+   *       <div class="mce-icon">
+   *         <mce-icon class="mce-circle">hotel</mce-icon>
    *       </div>
    *       <span>Hotel</span>
-   *       <an-icon>info</an-icon>
+   *       <mce-icon>info</mce-icon>
    *     </li>
    *   </ol>
-   * </a-list>
+   * </mce-list>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
-   * 
-   * ### `a-list` child elements
-   *  a list, which is ul or ol
-   *  `an-icon` will be right-positioned
-   * 
-   * ### Child element of `a-list` style classes
-   *  |name|description|
-   *  |---|---|
-   *  |icon| Icon on the left or right side. 
    * 
 ```
    */
@@ -47,5 +38,5 @@
     }
   }
   
-  customElements.define('a-list', List);
+  customElements.define('mce-list', List);
 })();

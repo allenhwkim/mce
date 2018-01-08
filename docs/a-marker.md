@@ -4,16 +4,16 @@
 <a name="new_LeafletMarker_new"></a>
 
 ### new LeafletMarker()
-leaflet marker element, `a-marker`
+leaflet marker element, `mce-marker`
 
 ### example
 ```
-<a-leaflet center="[50.5, 30.5]">
-  <a-marker lat-lng="[50.5, 30.5]"></marker>
-</a-leaflet>
+<mce-leaflet center="[50.5, 30.5]">
+  <mce-marker lat-lng="[50.5, 30.5]"></marker>
+</mce-leaflet>
 ```
 
-### `a-marker` Attributes 
+### `mce-marker` Attributes 
 any marker options defined in leaflet, http://leafletjs.com/reference-1.2.0.html#marker-option
 As an example, for draggable 
 

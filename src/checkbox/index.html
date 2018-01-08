@@ -2,35 +2,36 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="../themes/blue.css">
-<script type="module" src="../index.js"></script>
 <link id="mce-css" rel="stylesheet" href="../index.css">
+<script type="module" src="../index.js"></script>
 <style>
 body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
 .container {position: relative; padding: 12px; min-height: 82px; }
 .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
 </style>  
 
+<!-- BJmaeb -->
 <h3> Simple </h3>
 <div class="container">
-  <a-checkbox id="checkbox1"></a-checkbox>
+  <mce-checkbox id="checkbox1"></mce-checkbox>
   <label for="checkbox1">Unchecked</label>
-  <a-checkbox id="checkbox2" checked></a-checkbox>
+  <mce-checkbox id="checkbox2" checked></mce-checkbox>
   <label for="checkbox2">Checked</label>
-  <a-checkbox id="checkbox3" disabled></a-checkbox>
+  <mce-checkbox id="checkbox3" disabled></mce-checkbox>
   <label for="checkbox3">Disabled</label>
-  <a-checkbox id="checkbox4" checked disabled></a-checkbox> 
+  <mce-checkbox id="checkbox4" checked disabled></mce-checkbox> 
   <label for="checkbox4">Disabled</label>
 </div>
 
 <h3> Dark Background </h3>
 <div class="container dark-bg">
-  <a-checkbox class="" id="checkbox11"></a-checkbox> 
+  <mce-checkbox class="mce-" id="checkbox11"></mce-checkbox> 
   <label for="checkbox11">Unchecked</label>
-  <a-checkbox id="checkbox12" checked></a-checkbox> 
+  <mce-checkbox id="checkbox12" checked></mce-checkbox> 
   <label for="checkbox12">Checked</label>
-  <a-checkbox id="checkbox13" disabled></a-checkbox> 
+  <mce-checkbox id="checkbox13" disabled></mce-checkbox> 
   <label for="checkbox13">Disabled</label>
-  <a-checkbox id="checkbox14" checked disabled></a-checkbox>
+  <mce-checkbox id="checkbox14" checked disabled></mce-checkbox>
   <label for="checkbox14">Disabled</label>
 </div>
 

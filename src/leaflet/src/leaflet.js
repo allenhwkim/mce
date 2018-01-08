@@ -3,18 +3,18 @@ import {util} from './leaflet-util.js';
 
 /**
  * @description
- * leaflet map element, `a-leaflet`
+ * leaflet map element, `mce-leaflet`
  * 
  * ### example
  * ```
- * <a-leaflet center="Brampton, Canada"></a-leaflet>
+ * <mce-leaflet center="Brampton, Canada"></mce-leaflet>
  * ```
  *
- * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+ * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
  *
  * 
- * ### `a-leaflet` Attributes 
+ * ### `mce-leaflet` Attributes 
  * any options defined in leaflet, http://leafletjs.com/reference-1.2.0.html#map-option
  * As an example, for center and zoom 
  *
@@ -68,7 +68,7 @@ class LeafletMap extends HTMLElement{
         setTimeout(_ => { // children are not immediatly visible
           let childEls = Array.from(this.querySelectorAll('*')).filter(el => el.tagName.match(/-/));
           childEls.forEach(child => child.initialize(this.map));
-          if (!this.querySelector('a-tile-layer')) {
+          if (!this.querySelector('mce-tile-layer')) {
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
           }
         });
@@ -98,17 +98,17 @@ class LeafletMap extends HTMLElement{
   }
 
   loadLibrary(){
-    if (!document.querySelector('link.a-map.leaflet')) {
+    if (!document.querySelector('link.mce-map.leaflet')) {
       let el = document.createElement('link');
-      el.setAttribute('class', 'a-map leaflet');
+      el.setAttribute('class', 'mce-map leaflet');
       el.setAttribute('rel', 'stylesheet');
       el.setAttribute('href', 'https://unpkg.com/leaflet@1.2.0/dist/leaflet.css');
       document.querySelector('head').appendChild(el);
     }
 
-    if (!document.querySelector('script.a-map.leaflet')) {
+    if (!document.querySelector('script.mce-map.leaflet')) {
       let el = document.createElement('script');
-      el.setAttribute('class', 'a-map leaflet');
+      el.setAttribute('class', 'mce-map leaflet');
       el.setAttribute('src', 'https://unpkg.com/leaflet@1.2.0/dist/leaflet.js');
       document.querySelector('head').appendChild(el);
     }
@@ -118,4 +118,4 @@ class LeafletMap extends HTMLElement{
 
 }
 
-customElements.define('a-leaflet', LeafletMap);
+customElements.define('mce-leaflet', LeafletMap);

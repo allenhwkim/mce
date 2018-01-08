@@ -1,10 +1,10 @@
 /*https://material.io/guidelines/components/grid-lists.html#grid-lists-specs*/
-a-grid-list {
+mce-grid-list {
   display: block;
   text-align: center;
 }
 
-a-grid-list > div {
+mce-grid-list > div {
   display: inline-block;
   position: relative;
   width: 50%;
@@ -12,44 +12,42 @@ a-grid-list > div {
   height: 230px;
 } 
 
-a-grid-list > div img {
+mce-grid-list > div img {
   max-width: 100%;
   max-height: 100%;
   height: auto
 }
 
-a-grid-list > div .text-with-icon {
+mce-grid-list > div .mce-text-with-icon {
   position: absolute;
   background-color: rgba(0,0,0,0.5);
   color: var(--theme-text-color-0, #ffffff);
   width: 100%;
 }
 
-a-grid-list > div .text-with-icon .text {
+mce-grid-list > div .mce-text-with-icon .mce-text {
   padding: 16px;
   font-size: 12px;
   text-align: left;
 }
 
-a-grid-list > div .text-with-icon .text > h1,
-a-grid-list > div .text-with-icon .text > h2,
-a-grid-list > div .text-with-icon .text > h3 {
+mce-grid-list > div .mce-text-with-icon .mce-text > h1,
+mce-grid-list > div .mce-text-with-icon .mce-text > h2,
+mce-grid-list > div .mce-text-with-icon .mce-text > h3 {
   font-size: 14px;
   margin: 0 0 6px 0;
 }
 
-a-grid-list > div .text-with-icon > h1,
-a-grid-list > div .text-with-icon > h2,
-a-grid-list > div .text-with-icon > h3 {
+mce-grid-list > div .mce-text-with-icon > h1,
+mce-grid-list > div .mce-text-with-icon > h2,
+mce-grid-list > div .mce-text-with-icon > h3 {
   text-align: left;
   padding: 16px;
   font-size: 14px;
   margin: 0;
 }
 
-a-grid-list > div .text-with-icon an-icon,
-a-grid-list > div .text-with-icon .an-icon, 
-a-grid-list > div .text-with-icon .icon {
+mce-grid-list > div .mce-text-with-icon * ~ * {
   height: 24px;
   top: 50%;
   position: absolute;
@@ -58,12 +56,12 @@ a-grid-list > div .text-with-icon .icon {
   line-height: 24px;
 }
 
-a-grid-list > div .text-with-icon.top {
+mce-grid-list > div .mce-text-with-icon.top {
   top: 0;
   bottom: inherit;
 }
 
-a-grid-list > div .text-with-icon:not(.top) {
+mce-grid-list > div .mce-text-with-icon:not(.top) {
   bottom: 0;
   top: inherit;
 }

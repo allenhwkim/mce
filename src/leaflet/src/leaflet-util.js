@@ -52,7 +52,7 @@ function geocode(address) {
 }
 
 function toCamelCase(str) {
-  return str.replace(/-([a-z])/gi, function(g) {
+  return str.replace(/-([mce-z])/gi, function(g) {
     return g[1].toUpperCase();
   });
 }

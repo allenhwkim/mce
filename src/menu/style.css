@@ -1,4 +1,4 @@
-a-menu {
+mce-menu {
   display: block;
   background-color: var(--theme-color-0, #ffffff);
   box-shadow: var(--theme-shadow-1dp,  0   1px  3px rgba(0,0,0,0.12), 0  1px  2px rgba(0,0,0,0.24));
@@ -10,39 +10,35 @@ a-menu {
   min-width: 200px;
   z-index: 8;
 }
-a-menu:not(.visible) {
+mce-menu:not(.mce-visible) {
   visibility: hidden;
 }
-a-menu.visible {
+mce-menu.mce-visible {
   display: block;
   visibility: visible;
 }
-a-menu.always-visible {
-  display: block;
-  visibility: visible;
-}
-a-menu[position=bottom-right] {
+mce-menu[position=bottom-right] {
   right: 0px
   /*right: 16px;*/
   /*top: 48px;*/
 }
-a-menu[position=bottom-left] {
+mce-menu[position=bottom-left] {
   left: 0px;
   /*left: 16px;*/
   /*top: 48px;*/
 }
-a-menu[position=top-right] {
+mce-menu[position=top-right] {
   right: 0px;
   /*right: 16px;*/
   /*bottom: 48px;*/
 }
-a-menu[position=top-left] {
+mce-menu[position=top-left] {
   left: 0px;
   /*left: 16px;*/
   /*bottom: 48px;*/
 }
-a-menu hr, 
-a-menu .divider {
+mce-menu hr, 
+mce-menu .mce-divider {
   display: block;
   margin: 4px 0px;
   height: 1px;
@@ -50,28 +46,27 @@ a-menu .divider {
   border-width: 0 0 1px 0;
 }
 
-a-menu a-nav-item {
+mce-menu mce-nav-item {
   line-height: 32px;
   padding: 8px 16px;
   font-size: 16px;
   display: block;
   min-width: 160px;
 }
-a-menu a-nav-item img {
+mce-menu mce-nav-item img {
   height: 16px;
 }
-a-menu a-nav-item:hover {
+mce-menu mce-nav-item:hover {
   background-color: var(--theme-color-200, #eeeeee);
 }
-a-menu a-nav-item:active {
+mce-menu mce-nav-item:active {
   background-color: var(--theme-color-50, #fafafa);
 }
-a-menu a-nav-item an-icon,
-a-menu a-nav-item .an-icon {
+mce-menu mce-nav-item mce-icon {
   vertical-align: middle;
   padding: 0 8px 0 0;
 }
-a-menu a-nav-item .shortcut {
+mce-menu mce-nav-item .mce-shortcut {
   padding-left: 16px;
   float: right;
 }

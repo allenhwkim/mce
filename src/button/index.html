@@ -5,30 +5,36 @@
 <script type="module" src="../index.js"></script>
 <link id="mce-css" rel="stylesheet" href="../index.css">
 <style>
-body {max-width: 1024px; margin: 0 auto;} 
+body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
 .container {position: relative; padding: 12px; min-height: 82px; }
 </style>
 
-<h3>Flat Buttons</h3>
+<!-- aEVoYg -->
+<h3>Normal Button</h3>
 <div>
-  <a-button> <an-icon>search</an-icon> Normal </a-button>
-  <a-button class="dark"> <an-icon>search</an-icon> Normal </a-button> 
-  <a-button disabled> <an-icon>search</an-icon> disabled </a-button>
-  <a-button disabled class="dark"> <an-icon>search</an-icon> disabled </a-button>
+  <button> <mce-icon>search</mce-icon> Normal </button>
+</div>
+
+<h3>MCE Buttons</h3>
+<div>
+  <mce-button> <mce-icon>search</mce-icon> Normal </mce-button>
+  <mce-button class="mce-dark"> <mce-icon>search</mce-icon> Normal </mce-button> 
+  <mce-button disabled> <mce-icon>search</mce-icon> disabled </mce-button>
+  <mce-button disabled class="mce-dark"> <mce-icon>search</mce-icon> disabled </mce-button>
 </div>
 
 <h3>Raised Buttons</h3>
 <div>
-  <a-button class="raised"> <an-icon>search</an-icon> Normal </a-button>
-  <a-button class="raised dark"> <an-icon>search</an-icon> Normal </a-button>
-  <a-button disabled class="raised"> <an-icon>search</an-icon> disabled </a-button>
-  <a-button disabled class="raised dark"> <an-icon>search</an-icon> disabled </a-button>
+  <mce-button class="mce-raised"> <mce-icon>search</mce-icon> Normal </mce-button>
+  <mce-button class="mce-raised dark"> <mce-icon>search</mce-icon> Normal </mce-button>
+  <mce-button disabled class="mce-raised"> <mce-icon>search</mce-icon> disabled </mce-button>
+  <mce-button disabled class="mce-raised mce-dark"> <mce-icon>search</mce-icon> disabled </mce-button>
 </div>
 
 <h3>Floating Action Buttons</h3>
 <div>
-  <a-button class="fab"> <an-icon>add</an-icon> </a-button> 
-  <a-button class="fab dark"> <an-icon>add</an-icon> </a-button>
-  <a-button class="fab mini"> <an-icon>add</an-icon> </a-button>
-  <a-button class="fab mini dark"> <an-icon>add</an-icon> </a-button>
+  <mce-button class="mce-fab"> <mce-icon>add</mce-icon> </mce-button> 
+  <mce-button class="mce-fab mce-dark"> <mce-icon>add</mce-icon> </mce-button>
+  <mce-button class="mce-fab mce-mini"> <mce-icon>add</mce-icon> </mce-button>
+  <mce-button class="mce-fab mce-mini mce-dark"> <mce-icon>add</mce-icon> </mce-button>
 </div>

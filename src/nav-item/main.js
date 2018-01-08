@@ -11,15 +11,15 @@
     }
 
     setActiveItem(event) {
-      Array.from(this.parentElement.querySelectorAll('a-nav-item')).forEach(function(el) {
-        el.classList.remove('active');
+      Array.from(this.parentElement.querySelectorAll('mce-nav-item')).forEach(function(el) {
+        el.classList.remove('mce-active');
       }); 
-      this.classList.add('active');
+      this.classList.add('mce-active');
 
       let href = this.getAttribute('href');
       if (href) {
         window.location.href = href; //with href, go to the given url, 
-        //with href, close it if the container is a-nav-drawer or a-menu
+        //with href, close it if the container is mce-nav-drawer or mce-menu
         let customEvent = new CustomEvent('close', event);
         this.dispatchEvent(customEvent);
         event.preventDefault();
@@ -29,16 +29,16 @@
     _regroupElements() {
       if (!this.regroupedOnce) {
         if (!this.querySelector('span.text')) {
-          this.innerHTML = `<span class="text">${this.innerHTML}</span>`;
+          this.innerHTML = `<span class="mce-text">${this.innerHTML}</span>`;
         }
         this.addEventListener('click', this.clickListener);
         this.icon = this.getAttribute('icon');
         this.shortcut = this.getAttribute('shortcut');
-        if (this.icon && !this.querySelector('an-icon')) {
+        if (this.icon && !this.querySelector('mce-icon')) {
           let isFAIcon = this.icon.match(/^fa-[a-z\-]+$/);
           let isMDIcon = this.icon.match(/^[a-z_]+$/);
 
-          this.iconEl = document.createElement('an-icon');
+          this.iconEl = document.createElement('mce-icon');
           if (isMDIcon) {
             this.iconEl.innerHTML = this.icon;
           } else if (isFAIcon) {
@@ -48,9 +48,9 @@
           }
           this.insertBefore(this.iconEl, this.firstChild)
         }
-        if (this.shortcut && !this.querySelector('an-icon')) {
+        if (this.shortcut && !this.querySelector('mce-icon')) {
           this.shortcutEl = document.createElement('div');
-          this.shortcutEl.classList.add('shortcut');
+          this.shortcutEl.classList.add('mce-shortcut');
           this.shortcutEl.innerHTML = this.shortcut;
           this.appendChild(this.shortcutEl);
         }
@@ -59,5 +59,5 @@
     }
   }
   
-  customElements.define('a-nav-item', NavItem);
+  customElements.define('mce-nav-item', NavItem);
 })();

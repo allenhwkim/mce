@@ -16,21 +16,21 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
    * ### example
    * ```
    * <div>
-   *   <a-checkbox id="checkbox1"></a-checkbox>
+   *   <mce-checkbox id="checkbox1"></mce-checkbox>
    *   <label for="checkbox1">Unchecked</label>
-   *   <a-checkbox id="checkbox2" checked=""></a-checkbox>
+   *   <mce-checkbox id="checkbox2" checked=""></mce-checkbox>
    *   <label for="checkbox2">Checked</label>
-   *   <a-checkbox id="checkbox3" disabled=""></a-checkbox>
+   *   <mce-checkbox id="checkbox3" disabled=""></mce-checkbox>
    *   <label for="checkbox3">Disabled</label>
-   *   <a-checkbox id="checkbox4" checked="" disabled=""></a-checkbox>
+   *   <mce-checkbox id="checkbox4" checked="" disabled=""></mce-checkbox>
    *   <label for="checkbox4">Disabled</label>
    * </div> 
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
-   * ### `a-checkbox` atttibutes
+   * ### `mce-checkbox` atttibutes
    *  It accepts all `input` checkbox attributes. E.g., id, name, value, disaled, or checked
    * 
    */
@@ -41,7 +41,9 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
       observeAttrChange(this, (attr, val) => {
         val === null ? this.inputEl.removeAttribute(attr) : this.inputEl.setAttribute(attr, val);
       });
-      !this.classList.contains('disabled') && setTabbable(this, _ => this.inputEl.click())
+      if(this.getAttribute('disabled') !== null) {
+        setTabbable(this, _ => this.inputEl.click());
+      }  
     }
 
     _addRealInput() {
@@ -51,7 +53,7 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
       Array.from(this.attributes).forEach( attr => {
         if (this.inputAttrs.includes(attr.name) && attr.value !== null) {
          inputEl.setAttribute(attr.name, attr.value);
-         (attr.name === 'id') && this.setAttribute('id', 'a-checkbox-'+attr.value);
+         (attr.name === 'id') && this.setAttribute('id', 'mce-checkbox-'+attr.value);
         }
       })
       this.appendChild(inputEl);
@@ -61,5 +63,5 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
 
   }
   
-  customElements.define('a-checkbox', Checkbox); //name, class
+  customElements.define('mce-checkbox', Checkbox); //name, class
 })();

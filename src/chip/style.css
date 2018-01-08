@@ -1,4 +1,4 @@
-a-chip {
+mce-chip {
   height: 32px;
   display: inline-block;
   border-radius:16px; 
@@ -7,11 +7,11 @@ a-chip {
   vertical-align: middle;
 }
 
-a-chip:hover {
+mce-chip:hover {
   background-color: var(--theme-color-500, #9E9E9E);
 }
 
-a-chip > .avatar {
+mce-chip > .mce-avatar {
   height: 32px;
   width: 32px;
   line-height: 32px;
@@ -26,7 +26,7 @@ a-chip > .avatar {
   margin-left: -1px; /* to hide annoying white border in dark background */
 }
 
-a-chip > .text {
+mce-chip > .mce-text {
   color: var(--theme-text-color-800, #424242);
   display: inline-block;
   height: 32px;
@@ -36,14 +36,14 @@ a-chip > .text {
   line-height: 32px;
   float: left;
 }
-a-chip:hover > .text {
+mce-chip:hover > .mce-text {
   color: var(--theme-text-color-0, #FFFFFF);
 }
-a-chip > .avatar ~ .text {
+mce-chip > .mce-avatar ~ .mce-text {
   padding-left: 8px;
 }
 
-a-chip > .delete {
+mce-chip > .mce-delete {
   display: inline-block;
   background-color: var(--theme-color-500, #9E9E9E);
   color: var(--theme-text-color-0, #FFFFFF);
@@ -56,7 +56,7 @@ a-chip > .delete {
   margin: 4px 4px 4px -8px;
   cursor: pointer;
 }
-a-chip:hover > .delete {
+mce-chip:hover > .mce-delete {
   background-color: var(--theme-color-0, #FFFFFF);
   color: var(--theme-text-color-600, #757575);
 }

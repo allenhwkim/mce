@@ -1,13 +1,13 @@
-a-text-field {
+mce-text-field {
   display: inline-block;
   min-width: 258px;
   height: 84px;
 }
-a-text-field.full-width {
+mce-text-field.mce-full-width {
   width: 100%;
 }
 
-a-text-field  > .container > label {
+mce-text-field > .mce-container > label {
   top: 38px;
   font-size: inherit;
   position: absolute;
@@ -20,7 +20,8 @@ a-text-field  > .container > label {
   color: var(--theme-text-color-700, #616161);
 }
 
-a-text-field > .container {
+mce-text-field > .mce-container {
+  box-sizing: border-box;
   padding: 0 12px;
   font-size: 16px;
   line-height: 24px;
@@ -32,7 +33,7 @@ a-text-field > .container {
   width: 100%;
 }
 
-a-text-field  > .container > .input-wrapper {
+mce-text-field > .mce-container > .mce-input-wrapper {
   width: 100%;
   padding: 0px;
   position: absolute;
@@ -40,18 +41,18 @@ a-text-field  > .container > .input-wrapper {
   display: flex;
 }
 
-a-text-field   > .container > .input-wrapper > .prefix {
+mce-text-field > .mce-container > .mce-input-wrapper > .mce-prefix {
   color: var(--theme-text-color-500, #9e9e9e);
   padding-right: 8px;
 }
 
-a-text-field  > .container > .input-wrapper >  .suffix {
+mce-text-field > .mce-container > .mce-input-wrapper >  .mce-suffix {
   padding-left: 8px;
   color: var(--theme-text-color-500, #9e9e9e);
 }
 
-a-text-field   > .container > .input-wrapper > input,
-a-text-field   > .container > .input-wrapper > textarea {
+mce-text-field > .mce-container > .mce-input-wrapper > input,
+mce-text-field > .mce-container > .mce-input-wrapper > textarea {
   flex: 1;
   padding: 0px;
   width: 100%;
@@ -71,13 +72,13 @@ a-text-field   > .container > .input-wrapper > textarea {
   -webkit-tap-highlight-color: transparent;
   box-sizing: border-box;
 }
-a-text-field   > .container > .input-wrapper > textarea {
+mce-text-field   > .mce-container > .mce-input-wrapper > textarea {
   height: 24px;
   resize: none;
   overflow: hidden;
 }
 
-a-text-field  > .container > hr {
+mce-text-field  > .mce-container > hr {
   border: 2px solid var(--theme-color-800, #424242);
   border-width: 0 0 2px 0;
   bottom: 20px;
@@ -88,7 +89,7 @@ a-text-field  > .container > hr {
   transform: scaleX(1);
   transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
 }
-a-text-field > .container > .helper-text {
+mce-text-field > .mce-container > .mce-helper-text {
   position: absolute;
   bottom: 0;
   font-size: 12px;
@@ -96,7 +97,7 @@ a-text-field > .container > .helper-text {
   color: var(--theme-text-color-600, #757575);
   transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms) 0ms;
 }
-a-text-field > .container > .error-messages {
+mce-text-field > .mce-container > .mce-error-messages {
   position: absolute;
   bottom: 0px;
   width: 100%;
@@ -107,68 +108,68 @@ a-text-field > .container > .error-messages {
 }
 
 /* disabled / empty / invalid / active */
-a-text-field.empty:not(.active) > .container > .input-wrapper {
+mce-text-field.mce-empty:not(.mce-active) > .mce-container > .mce-input-wrapper {
   visibility: hidden;
 }
 
-a-text-field:not(.empty) > .container > label,
-a-text-field.empty.active > .container > label {
+mce-text-field:not(.mce-empty) > .mce-container > label,
+mce-text-field.mce-empty.mce-active > .mce-container > label {
   top: 12px;
   font-size: 12px;
 }
 
-a-text-field[disabled] {
+mce-text-field[disabled] {
   pointer-events: none;
 }
-a-text-field[disabled] > .container > label,
-a-text-field[disabled] > .container > .input-wrapper > .prefix,
-a-text-field[disabled] > .container > .input-wrapper > .suffix,
-a-text-field[disabled] > .container > .input-wrapper > input,
-a-text-field[disabled] > .container > hr,
-a-text-field[disabled] > .container > .helper-text,
-a-text-field[disabled] > .container > .error-messages,
-a-text-field[disabled] >  an-icon:not(:empty) {
+mce-text-field[disabled] > .mce-container > label,
+mce-text-field[disabled] > .mce-container > .mce-input-wrapper > .mce-prefix,
+mce-text-field[disabled] > .mce-container > .mce-input-wrapper > .mce-suffix,
+mce-text-field[disabled] > .mce-container > .mce-input-wrapper > input,
+mce-text-field[disabled] > .mce-container > hr,
+mce-text-field[disabled] > .mce-container > .mce-helper-text,
+mce-text-field[disabled] > .mce-container > .mce-error-messages,
+mce-text-field[disabled] >  mce-icon:not(:empty) {
   color: var(--theme-text-color-500, #9e9e9e);
 }
-a-text-field[disabled] > .container > hr {
+mce-text-field[disabled] > .mce-container > hr {
   border-color: var(--theme-color-500, #9e9e9e);
 }
 
-a-text-field.invalid > .container > label,
-a-text-field.invalid > .container > hr,
-a-text-field.invalid > .container > .helper-text,
-a-text-field.invalid > .container > .error-messages,
-a-text-field.invalid > an-icon:not(:empty) {
+mce-text-field.mce-invalid > .mce-container > label,
+mce-text-field.mce-invalid > .mce-container > hr,
+mce-text-field.mce-invalid > .mce-container > .mce-helper-text,
+mce-text-field.mce-invalid > .mce-container > .mce-error-messages,
+mce-text-field.mce-invalid > mce-icon:not(:empty) {
   color: var(--theme-color-error, #ff0000);
 }
-a-text-field.invalid > .container > hr {
+mce-text-field.mce-invalid > .mce-container > hr {
   border-color: var(--theme-color-eroor, #ff0000);
 }
-a-text-field:not(.invalid) > .container > .error-messages {
+mce-text-field:not(.mce-invalid) > .mce-container > .mce-error-messages {
   visibility: hidden;
 }
 
-a-text-field:not(.empty, .active) > .container > .input-wrapper > .suffix,
-a-text-field:not(.empty, .active) > .container > .input-wrapper > .prefix,
-a-text-field[disabled] > .container > .input-wrapper > input {
+mce-text-field:not(.mce-empty, .mce-active) > .mce-container > .mce-input-wrapper > .mce-suffix,
+mce-text-field:not(.mce-empty, .mce-active) > .mce-container > .mce-input-wrapper > .mce-prefix,
+mce-text-field[disabled] > .mce-container > .mce-input-wrapper > input {
   display: inherit;
 }
-a-text-field > an-icon:empty,
-a-text-field > .container > label:empty,
-a-text-field > .container > .input-wrapper >  .prefix:empty,
-a-text-field > .container > .input-wrapper >  .suffix:empty,
-a-text-field > .container > .helper-text:empty,
-a-text-field > .container > .error-messages:empty {
+mce-text-field > mce-icon:empty,
+mce-text-field > .mce-container > label:empty,
+mce-text-field > .mce-container > .mce-input-wrapper >  .mce-prefix:empty,
+mce-text-field > .mce-container > .mce-input-wrapper >  .mce-suffix:empty,
+mce-text-field > .mce-container > .mce-helper-text:empty,
+mce-text-field > .mce-container > .mce-error-messages:empty {
   display: none;
 }
 
-a-text-field > an-icon:not(:empty) {
+mce-text-field > mce-icon:not(:empty) {
   color: var(--theme-text-color-700, #616161);
   position: relative;
   vertical-align: top;
   top: 40px;
 }
 
-a-text-field > an-icon:not(:empty) ~ .container {
+mce-text-field > mce-icon:not(:empty) ~ .mce-container {
   width: calc(100% - 40px);
 }

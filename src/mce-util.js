@@ -1,5 +1,5 @@
 export function addStyleSheet(el, url) {
-  // let id = el.constructor.name.replace(/[A-Z]/g, function(char, index) {
+  // let id = el.constructor.name.replace(/[mce-Z]/g, function(char, index) {
   //   return (index !== 0 ? '-' : '') + char.toLowerCase();
   // });
   // url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
@@ -52,14 +52,14 @@ export function animate({duration, draw, timing}) {
  * set the given element tabbable by adding tabindex, and click/ENTER event
  */
 export function setTabbable(el, fn) {
-  el.setAttribute('tabindex', '0');
-  el.addEventListener('keypress', function(event) {
-    console.log(event.key, event.key === ' ', event.key === 'Enter', fn);
-    if (event.key === ' ' || event.key === 'Enter') {
-      fn && fn();
-      event.preventDefault();
-    }
-  });
+  if (el.getAttribute('tabindex')) {
+    el.addEventListener('keypress', function(event) {
+      if (event.key === ' ' || event.key === 'Enter') {
+        fn && fn();
+        event.preventDefault();
+      }
+    });
+  }
 }
 
 export function getScopedObj(scope, str) {
@@ -91,8 +91,8 @@ export function setInnerHTML(elm, html) {
 
 export function windowResizeHandler() {
   if (window.innerWidth >= 1024) {
-    document.body.classList.add('ce-desktop');
+    document.body.classList.add('mce-desktop');
   } else {
-    document.body.classList.remove('ce-desktop');
+    document.body.classList.remove('mce-desktop');
   }
 }

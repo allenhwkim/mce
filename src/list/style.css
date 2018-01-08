@@ -1,15 +1,15 @@
 /*https://material.io/guidelines/components/lists.html#lists-specs*/
-a-list {
+mce-list {
   display: block;
 }
-a-list > ul,
-a-list > ol {
+mce-list > ul,
+mce-list > ol {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
-a-list > ul > li,
-a-list > ol > li {
+mce-list > ul > li,
+mce-list > ol > li {
   list-style-type: none;
   padding: 12px 16px;
   display: flex;
@@ -17,32 +17,20 @@ a-list > ol > li {
   align-items: center;
   min-height: 48px;
 }
-a-list > ol > li > *,
-a-list > ul > li > * {
+mce-list > ol > li > *,
+mce-list > ul > li > * {
   flex: 1;
   color: var(--theme-text-color-900, #212121);
 }
-a-list > ol > li > .an-icon,
-a-list > ol > li > an-icon,
-a-list > ol > li > .icon,
-a-list > ul > li > .an-icon,
-a-list > ul > li > an-icon,
-a-list > ul > li > .icon {
+mce-list > ul > li > mce-icon,
+mce-list > ol > li > mce-icon {
   color: var(--theme-text-color-600, #757575);
-  min-width: 72px;
   flex: initial;
+  margin-right: 24px;
   align-self: flex-start;
 }
-a-list > ol > li > .an-icon:last-child,
-a-list > ol > li > an-icon:last-child,
-a-list > ol > li > .icon:last-child,
-a-list > ol > li > .an-icon:last-child,
-a-list > ol > li > an-icon:last-child,
-a-list > ol > li > .icon:last-child {
-  width: initial;
-}
-a-list > ol > li .title,
-a-list > ul > li .title {
+mce-list > ol > li .mce-title,
+mce-list > ul > li .mce-title {
   margin-top: 0;
   color: var(--theme-text-color-600, #757575);
   font-size: 18px;
@@ -50,8 +38,8 @@ a-list > ul > li .title {
   font-weight: 700;
   margin-bottom: 10px;
 }
-a-list > ol > li .text,
-a-list > ul > li .text {
+mce-list > ol > li .mce-text,
+mce-list > ul > li .mce-text {
   font-size: 14px;
   color: var(--theme-text-color-600, #757575);
 }

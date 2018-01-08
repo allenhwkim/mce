@@ -3,14 +3,14 @@
   <head>
     <script type="module" src="../src/leaflet.js"></script>
     <script type="module" src="../src/marker.js"></script>
-    <style>a-leaflet {display: block; width: 400px; min-height: 200px;}</style>
+    <style>mce-leaflet {display: block; width: 400px; min-height: 200px;}</style>
   </head>
   <body>
 
     <h3>Static Popup On Map</h3>
-    <a-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup(event)">
-    </a-leaflet>
-    &lt;a-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup(event)">&lt;/a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup(event)">
+    </mce-leaflet>
+    &lt;mce-leaflet center="[51.505, -0.09]" zoom-control="false" on-load="openPopup(event)">&lt;/mce-leaflet>
     <script>
       function openPopup(event) {
         L.popup().setLatLng([51.505, -0.09])
@@ -20,13 +20,13 @@
     </script>
 
     <h3>Static Popup On Marker</h3>
-    <a-leaflet center="[51.505, -0.09]">
-      <a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1(event)"></a-marker>
-      <a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2(event)"></a-marker>
-    </a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]">
+      <mce-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1(event)"></mce-marker>
+      <mce-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2(event)"></mce-marker>
+    </mce-leaflet>
     <pre>
-    &lt;a-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1(event)">&lt;/a-marker>
-    &lt;a-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2(event)">&lt;/a-marker>
+    &lt;mce-marker latlng="[51.505, -0.09]" on-add="openMarkerPopup1(event)">&lt;/mce-marker>
+    &lt;mce-marker latlng="[51.505, -0.08]" on-add="openMarkerPopup2(event)">&lt;/mce-marker>
     </pre>
     <script>
       function openMarkerPopup1(event) {
@@ -40,7 +40,7 @@
 
     <h3>Dynamic Popup On Map</h3>
     click on map to see a  popup
-    <a-leaflet center="[51.505, -0.09]" on-click="openPopupLatLng(event)"></a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]" on-click="openPopupLatLng(event)"></mce-leaflet>
     <script>
       function openPopupLatLng(e) {
         L.popup().setLatLng(e.latlng)
@@ -51,12 +51,12 @@
 
     <h3>Custom HTML Popup On Map</h3>
     click on map to see a html element popup
-    <a-leaflet center="[51.505, -0.09]" on-click="openPopupElement(event)"></a-leaflet>
+    <mce-leaflet center="[51.505, -0.09]" on-click="openPopupElement(event)"></mce-leaflet>
     <div id="container" style="display:none">
       <div id="popup">This is html element</div>
     </div>
     <pre>
-    &lt;a-leaflet center="[51.505, -0.09]" on-click="openPopupElement(event)">&lt;/a-leaflet>
+    &lt;mce-leaflet center="[51.505, -0.09]" on-click="openPopupElement(event)">&lt;/mce-leaflet>
     &lt;div id="container" style="display:none">
       &lt;div id="popup">This is html element&lt;/div>
     &lt;/div>

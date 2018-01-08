@@ -5,18 +5,18 @@
 <script type="module" src="../index.js"></script>
 <link id="mce-css" rel="stylesheet" href="../index.css">
 <style>
-body {max-width: 1024px; margin: 0 auto;} 
+body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
 .container {position: relative; padding: 12px; min-height: 82px; }
 </style>
 
+<!-- ZvaEez -->
 <h3>Simple Card</h3>
-
-<a-card>
-  <div class="title">
+<mce-card>
+  <div class="mce-title">
     <h1>Title Goes Here</h1>
-    <div class="subtitle">Subtitle here</div>
+    <div class="mce-subtitle">Subtitle here</div>
   </div>
-  <div class="text">
+  <div class="mce-text">
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
     sed do eiusmod tempor incididunt ut labore et dolore magna
     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -26,34 +26,34 @@ body {max-width: 1024px; margin: 0 auto;}
     sint occaecat cupidatat non proident, sunt in culpa qui 
     officia deserunt mollit anim id est laborum.        
   </div>
-  <div class="actions">
+  <div class="mce-actions">
     <a href="javascript:void(0)">ACTION 1</a>
     <a href="javascript:void(0)">ACTION 2</a>
   </div>
-</a-card>
+</mce-card>
 
 <h3>Card with Media</h3>
-<a-card>
-  <div class="media">
+<mce-card>
+  <div class="mce-media">
     <img src="nature.jpg" />
   </div>
-  <div class="text">
+  <div class="mce-text">
     It's to show media is expanded to full width by ratio of 16x9
   </div>
-</a-card>
+</mce-card>
 
 <h3>Card Inside Card</h3>
-<a-card>
-  <div class="title">
+<mce-card>
+  <div class="mce-title">
     <h1>Title Goes Here</h1>
-    <div class="subtitle">Subtitle here</div>
+    <div class="mce-subtitle">Subtitle here</div>
   </div>
-  <a-card>
-    <div class="title">
+  <mce-card>
+    <div class="mce-title">
       <h1>Title Goes Here</h1>
-      <div class="subtitle">Subtitle here</div>
+      <div class="mce-subtitle">Subtitle here</div>
     </div>
-    <div class="text">
+    <div class="mce-text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
       sed do eiusmod tempor incididunt ut labore et dolore magna
       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
@@ -63,16 +63,16 @@ body {max-width: 1024px; margin: 0 auto;}
       sint occaecat cupidatat non proident, sunt in culpa qui 
       officia deserunt mollit anim id est laborum.        
     </div>
-  </a-card>
-</a-card>
+  </mce-card>
+</mce-card>
 
 <script>
   window.addEventListener('load', _ => {
-    Array.from(document.querySelectorAll('a-card')).forEach(card => {
-      card.addEventListener('mousedown', _ => card.classList.add('picked-up'));
-      card.addEventListener('touchstart', _ => card.classList.add('picked-up'));
-      card.addEventListener('mouseup', _ => card.classList.remove('picked-up'));
-      card.addEventListener('touchend', _ => card.classList.remove('picked-up'));
+    Array.from(document.querySelectorAll('mce-card')).forEach(card => {
+      card.addEventListener('mousedown', _ => card.classList.add('mce-picked-up'));
+      card.addEventListener('touchstart', _ => card.classList.add('mce-picked-up'));
+      card.addEventListener('mouseup', _ => card.classList.remove('mce-picked-up'));
+      card.addEventListener('touchend', _ => card.classList.remove('mce-picked-up'));
     })
   });
 </script>

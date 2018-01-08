@@ -9,33 +9,34 @@ import {observeAttrChange} from '../mce-util.js';
    * ### example
    * ```
    *  <a href="javascript:showDemoMenu()">Show/Hide Menu</a>
-   *  <a-menu id="demo-menu" position="bottom-left">
-   *    <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+   *  <mce-menu id="demo-menu" position="bottom-left">
+   *    <mce-nav-item icon="favorite" shortcut="ctrl-d">nav item text</mce-nav-item>
    *    <hr>
-   *    <a-nav-item class="disabled">Disabled</a-nav-item>
-   *    <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
-   *    <a-nav-item icon="search">nav-item text</a-nav-item>
-   *  </a-menu>
+   *    <mce-nav-item class="mce-disabled">Disabled</mce-nav-item>
+   *    <mce-nav-item shortcut="ctrl-d">nav-item text</mce-nav-item>
+   *    <mce-nav-item icon="search">nav-item text</mce-nav-item>
+   *  </mce-menu>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
-   * ### `a-button` Style Classes
+   * ### `mce-menu` Style Classes
    *  |name||description|
    *  |---|---|
-   *  |visible|Indicates menu is visible or not
+   *  |mce-visible|Indicates menu is visible or not
    * 
-   * ### `a-button` Child Element Attributes 
+   * ### `mce-menu` Child Element Attributes 
    *  |name|value|description|
    *  |---|---|---|
    *  |position| string| Indicates the position of menu. Value is one of bottom-right, bottom-left, top-left, or top-right
    *  
-   * ### `a-button` Child Element Style Classes
+   * ### `mce-menu` Child Element Style Classes
    *  |name||description|
    *  |---|---|
-   *  |divider| An horizontal line that separates group of menus.
+   *  |mce-divider| An horizontal line that separates group of menus.
+   *  |mce-shortcut| shortcut text to be right positioned.
    */
   class Menu extends HTMLElement {
     connectedCallback() {
@@ -59,12 +60,12 @@ import {observeAttrChange} from '../mce-util.js';
      */
     open() {
       // show only this
-      if (!this.classList.contains('visible')) { //  without, infinite loop, add <-> observe
-        this.classList.add('visible');
+      if (!this.classList.contains('mce-visible')) { //  without, infinite loop, add <-> observe
+        this.classList.add('mce-visible');
       }
       // hide all other menus
-      Array.from(document.querySelectorAll('a-menu')).forEach(menu => {
-        (this.isSameNode(menu) === false) && menu.classList.remove('visible');
+      Array.from(document.querySelectorAll('mce-menu')).forEach(menu => {
+        (this.isSameNode(menu) === false) && menu.classList.remove('mce-visible');
       });
       // When document is clicked, it closes all menus, but this remained to open
       this.justShown = true; // in case when attribute is changed by outside of this
@@ -76,17 +77,17 @@ import {observeAttrChange} from '../mce-util.js';
      */
     close(event) {
       if (!this.justShown && !this.contains(event.target)) { // if not clicked on menu
-        this.classList.remove('visible');
+        this.classList.remove('mce-visible');
       }
     }
 
     _addEventListener() {
       document.addEventListener('click', this.hideMenu);
       this.addEventListener('close', _ => {
-        this.classList.remove('visible');
+        this.classList.remove('mce-visible');
       }); //child can fire close. then close it
     }
   }
   
-  customElements.define('a-menu', Menu);
+  customElements.define('mce-menu', Menu);
 })();

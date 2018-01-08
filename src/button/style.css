@@ -7,7 +7,7 @@
   100% { opacity: 0; transform: scale(2); }
 }
 
-a-button {
+mce-button {
   box-sizing: border-box;
   display: inline-block;
   height: 36px;
@@ -28,27 +28,27 @@ a-button {
   color: var(--theme-text-color-800, #424242);
 }
 
-a-button:focus {
+mce-button:focus {
   outline: auto;
 }
 
-a-button button { /* make real button not-visible */
+mce-button button { /* make real button not-visible */
   padding: 0;
   border: none;
 }
 
-a-button:active {
+mce-button:active {
   background-color: var(--theme-color-400, #bdbdbd);
 }
-a-button[disabled] {
+mce-button[disabled] {
   background-color: var(--theme-color-400, #bdbdbd) !important;
-  color: var(--theme-text-color-400, #bdbdbd) !important;
+  color: var(--theme-text-color-800, #757575) !important;
   pointer-events: none;
 }
-a-button > * {
+mce-button > * {
   vertical-align: middle;
 }
-a-button:after { /* to show it's pressed down */
+mce-button:after { /* to show it's pressed down */
   background-color: var(--theme-color-500, #9e9e9e);
   border-radius: 50%;
   border: 1px solid #333;
@@ -66,35 +66,35 @@ a-button:after { /* to show it's pressed down */
   width: 120px;
 }
 
-a-button:active:after {
+mce-button:active:after {
   transform: scale(1);
   visibility: visible;
   animation: ce-ripple 1s ease-out;
 }
-a-button:focus:after {
+mce-button:focus:after {
   visibility: visible;
 }
 
-a-button.dark {
+mce-button.mce-dark {
   background-color: var(--theme-color-600, #757575);
   color: var(--theme-color-0, #ffffff);
 }
-a-button.dark.disabled] {
+mce-button.mce-dark[disabled] {
   background-color: var(--theme-color-500, #9e9e9e);
   color: var(--theme-text-color-400, #bdbdbd);
 }
 
 /* raised button */
-a-button.raised {
+mce-button.mce-raised {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
 }
-a-button.raised[disabled]{
+mce-button.mce-raised[disabled]{
   background-color: var(--theme-color-500, #9e9e9e);
   color: var(--theme-text-color-400, #bdbdbd);
 }
 
 /* floating action button */
-a-button.fab {
+mce-button.mce-fab {
   width: 56px;
   height: 56px;
   line-height: 24px;
@@ -104,15 +104,15 @@ a-button.fab {
   box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
   z-index: 6;
 }
-a-button.fab.pressed {
+mce-button.mce-fab.mce-pressed {
   z-index: 12;
 }
-a-button.fab.mini {
+mce-button.mce-fab.mce-mini {
   width: 40px;
   height: 40px;
   padding: 8px;
 }
-a-button.fab[disabled]{
+mce-button.mce-fab[disabled]{
   background-color: var(--theme-color-500, #9e9e9e);
   color: var(--theme-text-color-400, #bdbdbd);
 }

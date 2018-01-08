@@ -7,7 +7,7 @@ A card is a sheet of material that serves as an entry point to more detailed inf
 
 ### example
 ```
-<a-card>
+<mce-card>
   <div class="title">
     <h1>Title Goes Here</h1>
     <div class="subtitle">Subtitle here</div>
@@ -20,20 +20,20 @@ A card is a sheet of material that serves as an entry point to more detailed inf
     <a href="javascript:void(0)">ACTION 1</a>
     <a href="javascript:void(0)">ACTION 2</a>
   </div>
-</a-card>
+</mce-card>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="ZvaEez" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="ZvaEez" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>`
 
 
-### `a-card` elememe style classes
+### `mce-card` elememe style classes
  |name|description|
  |---|---|
  |picked-up| A raised card. Click a card on this document to see the effect. 
 
 
-### Child element of `a-card` style classes
+### Child element of `mce-card` style classes
  |name|description|
  |---|---|
  |title| Showing a raised card. click a card on this document to see the effect.

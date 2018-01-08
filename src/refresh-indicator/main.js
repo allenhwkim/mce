@@ -12,20 +12,20 @@
    * [Material Design Spec](https://material.io/guidelines/patterns/swipe-to-refresh.html#swipe-to-refresh-usage)
    * ### example
    * ```
-   * <a-refresh-indicator></a-refresh-indicator>
+   * <mce-refresh-indicator></mce-refresh-indicator>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
    * ### `refresh-indicator` Style Classes
    *  |name||description|
    *  |---|---|
-   *  |no-border| Without circle
-   *  |dark-bg| Dark background circle
-   *  |loading| Spining Animated Icon
-   *  |mini| Smaller Icon
+   *  |mce-no-border| Without circle
+   *  |mce-dark-bg| Dark background circle
+   *  |mce-loading| Spining Animated Icon
+   *  |mce-mini| Smaller Icon
    * 
    */
   class RefreshIndicator extends HTMLElement {
@@ -36,5 +36,5 @@
 
   }
   
-  customElements.define('a-refresh-indicator', RefreshIndicator);
+  customElements.define('mce-refresh-indicator', RefreshIndicator);
 })();

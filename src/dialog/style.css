@@ -1,5 +1,5 @@
 /*https://material.io/guidelines/components/dialogs.html#dialogs-specs*/
-a-dialog {
+mce-dialog {
   position: absolute;
   display: block;
   top: 0;
@@ -7,14 +7,14 @@ a-dialog {
   width: 100%;
   height: 100%;
 }
-a-dialog.visible {
+mce-dialog.mce-visible {
   visibility: visible;
   z-index: 24;
 }
-a-dialog:not(.visible) {
+mce-dialog:not(.mce-visible) {
   visibility: hidden;
 }
-a-dialog > .page-blocker {
+mce-dialog > .mce-page-blocker {
   position: absolute; /* fixed */
   background-color: #000;
   left: 0;
@@ -23,7 +23,7 @@ a-dialog > .page-blocker {
   opacity: .5;
   top: 0;
 }
-a-dialog > .container {
+mce-dialog > .mce-container {
   padding: 24px;
   position: absolute; /* fixed */
   left: 50%;
@@ -39,31 +39,31 @@ a-dialog > .container {
   border-radius: var(--theme-border-radius, 2px);
   background-color: var(--theme-color-0, #ffffff);
 }
-a-dialog > .container .divider {
+mce-dialog > .mce-container .mce-divider {
   display: block;
   margin: 0px -24px;
   height: 1px;
   border: 1px solid #ccc;
   border-width: 0 0 1px 0;
 }
-a-dialog > .container .title {
+mce-dialog > .mce-container .mce-title {
   color: var(--theme-text-color-900, #212121);
   padding-bottom: 20px;
   font-size: var(--theme-title-font-size, 20px);
   font-weight: var(--theme-title-font-weight, 500);
   margin: 0;
 }
-a-dialog > .container .content {
+mce-dialog > .mce-container .mce-content {
   padding-bottom: 24px;
   color: var(--theme-text-color-500, #9e9e9e);
 }
-a-dialog > .container .actions {
+mce-dialog > .mce-container .mce-actions {
   padding: 8px;
   margin-right: -16px;
   margin-bottom: -16px;
   text-align: right;
 }
-a-dialog > .container .actions > * {
+mce-dialog > .mce-container .mce-actions > * {
   display: inline-block;
   margin-left: 8px;
   padding: 8px 0px;

@@ -2,34 +2,39 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
 <link rel="stylesheet" href="../themes/blue.css">
+<link id="mce-css" rel="stylesheet" href="../index.css">
 <script type="module" src="../index.js"></script>
-<style> body {max-width: 1024px; margin: 0 auto;} .container {position: relative; padding: 12px; } </style>
+<style> 
+  body {max-width: 1024px; margin: 0 auto; font-family: Roboto;}
+ .container {position: relative; padding: 12px; }
+</style>
 
-<an-app-bar app-title="app-bar">
-  <div class="nav-icon">
-    <i class="material-icons icon">menu</i>
+<!--EobYmr-->
+<mce-app-bar app-title="app-bar">
+  <div class="mce-nav-icon">
+    <mce-icon>menu</mce-icon>
   </div>
-  <h1 class="title">App Bar</h1>
-  <div class="icons">
-    <i class="material-icons icon">favorite</i>
-    <i class="material-icons icon">search</i>
-    <i class="material-icons icon">more_vert</i>
+  <h1 class="mce-title">App Bar</h1>
+  <div class="mce-icons">
+    <mce-icon>favorite</mce-icon>
+    <mce-icon>search</mce-icon>
+    <mce-icon>more_vert</mce-icon>
   </div>
-</an-app-bar>
+</mce-app-bar>
 <p> Upper one is root-level app bar.</p>
-<p> Below one is a block-level app bar with display-level="block" and class="light"</p>
+<p> Below one is a block-level app bar with display-level="block" and class="mce-light"</p>
 
 <div class="container">
-  <an-app-bar app-title="app-bar" display-level="block" class="light">
-    <div class="nav-icon">
-      <i class="material-icons icon">menu</i>
+  <mce-app-bar app-title="app-bar" display-level="block" class="mce-light">
+    <div class="mce-nav-icon">
+      <mce-icon>menu</mce-icon>
     </div>
-    <span class="title">App Bar Light</span>
-    <div class="icons">
-      <i class="material-icons icon">favorite</i>
-      <i class="material-icons icon">search</i>
-      <i class="material-icons icon">more_vert</i>
+    <span class="mce-title">App Bar Light</span>
+    <div class="mce-icons">
+      <mce-icon>favorite</mce-icon>
+      <mce-icon>search</mce-icon>
+      <mce-icon>more_vert</mce-icon>
     </div>
-  </an-app-bar>
+  </mce-app-bar>
 </div>
 

@@ -8,30 +8,30 @@ Menus display a list of choices on a transient sheet of material.
 ### example
 ```
  <a href="javascript:showDemoMenu()">Show/Hide Menu</a>
- <a-menu id="demo-menu" position="bottom-left">
-   <a-nav-item icon="favorite" shortcut="ctrl-d">nav item text</a-nav-item>
+ <mce-menu id="demo-menu" position="bottom-left">
+   <mce-nav-item icon="favorite" shortcut="ctrl-d">nav item text</mce-nav-item>
    <hr>
-   <a-nav-item class="disabled">Disabled</a-nav-item>
-   <a-nav-item shortcut="ctrl-d">nav-item text</a-nav-item>
-   <a-nav-item icon="search">nav-item text</a-nav-item>
- </a-menu>
+   <mce-nav-item class="disabled">Disabled</mce-nav-item>
+   <mce-nav-item shortcut="ctrl-d">nav-item text</mce-nav-item>
+   <mce-nav-item icon="search">nav-item text</mce-nav-item>
+ </mce-menu>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
-### `a-button` Style Classes
+### `mce-button` Style Classes
  |name||description|
  |---|---|
  |visible|Indicates menu is visible or not
 
-### `a-button` Child Element Attributes 
+### `mce-button` Child Element Attributes 
  |name|value|description|
  |---|---|---|
  |position| string| Indicates the position of menu. Value is one of bottom-right, bottom-left, top-left, or top-right
  
-### `a-button` Child Element Style Classes
+### `mce-button` Child Element Style Classes
  |name||description|
  |---|---|
  |divider| An horizontal line that separates group of menus.

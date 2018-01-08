@@ -1,5 +1,5 @@
-<a-card class="no-margin no-shadow">
-  <div class="media">
+<mce-card class="mce-no-margin mce-no-shadow">
+  <div class="mce-media">
     <img src="images/nature.jpg">
   </div>
 
@@ -7,23 +7,23 @@
     <script>
       function validateForm(form) {
         let isInvalid = Array.from(form.elements).some(e => !e.validity.valid);
-        form.querySelector('a-button').disabled = isInvalid;
+        form.querySelector('mce-button').disabled = isInvalid;
       }
     </script>
     <form onchange="validateForm(this)">
-      <a-text-field required icon="person" name="first-name" label="First Name"></a-text-field>
-      <a-text-field required icon="person" name="last-name" label="Last Name"></a-text-field>
-      <a-text-field required icon="fa-envelope" type="email" name="email" label="Email"></a-text-field>
-      <a-text-field required icon="phone" type="phone" name="phone" label="phone"></a-text-field>
-      <a-text-field optional="(Optional)" multi-line style="width:100%"
+      <mce-text-field required icon="person" name="first-name" label="First Name"></mce-text-field>
+      <mce-text-field required icon="person" name="last-name" label="Last Name"></mce-text-field>
+      <mce-text-field required icon="email" type="email" name="email" label="Email"></mce-text-field>
+      <mce-text-field required icon="phone" type="phone" name="phone" label="phone"></mce-text-field>
+      <mce-text-field optional="(Optional)" multi-line style="width:100%"
         icon="comment" name="message" label="messasge"
         helper-text="Enter message(Max 2000 characters)"
         label="What is your message">
-      </a-text-field>
+      </mce-text-field>
       <div style="padding: 38px">
-        <a-button class="raised dark" disabled><an-icon>save</an-icon> Submit</a-button>
+        <mce-button class="raised dark" disabled><mce-icon>save</mce-icon> Submit</mce-button>
       </div>
     </form>
   </div>
 
-</a-card>
+</mce-card>

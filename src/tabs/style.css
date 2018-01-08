@@ -1,5 +1,5 @@
 /*https://material.io/guidelines/components/text-fields.html*/
-a-tabs {
+mce-tabs {
   position: relative;
   background-color: var(--theme-color-50, #FAFAFA);
   border-radius: 2px;
@@ -11,7 +11,7 @@ a-tabs {
   width: 100%;
   max-width: 1024px;
 }
-a-tabs > .indicator {
+mce-tabs > .mce-indicator {
   position: absolute;
   bottom: 0px;
   height: 2px;
@@ -19,44 +19,40 @@ a-tabs > .indicator {
   left: 0%;
 }
 
-a-tabs > a-nav-item {
+mce-tabs > mce-nav-item {
   min-width: 72px; /* 160px for larger views */
   text-align: center;
   min-height: 48px;
   flex: 1;
   cursor: pointer;
 }
-a-tabs > a-nav-item.active .icon,
-a-tabs > a-nav-item.active an-icon,
-a-tabs > a-nav-item.active .text {
+mce-tabs > mce-nav-item.mce-active mce-icon,
+mce-tabs > mce-nav-item.mce-active .mce-text {
   color: var(--theme-text-color-900, #212121);
 }
-a-tabs > a-nav-item an-icon,
-a-tabs > a-nav-item .icon {
+mce-tabs > mce-nav-item mce-icon {
   padding: 12px 0;
   color: var(--theme-text-color-700, #757575);
   display: block;
 }
-a-tabs > a-nav-item .text {
+mce-tabs > mce-nav-item .mce-text {
   display: block;
   text-transform: uppercase;
   font-size: 14px;
   line-height: 48px;
 }
-a-tabs > a-nav-item an-icon ~ .text:empty,
-a-tabs > a-nav-item .an-icon ~ .text:empty {
+mce-tabs > mce-nav-item mce-icon ~ .mce-text:empty {
   padding: 0;
   height: 0;
   font-size: 0;
 }
-a-tabs > a-nav-item an-icon ~ .text,
-a-tabs > a-nav-item .an-icon ~ .text {
+mce-tabs > mce-nav-item mce-icon ~ .mce-text {
   display: block;
   position: relative;
   top: -20px;
   height: 24px;
 }
-a-tabs > a-nav-item:after {
+mce-tabs > mce-nav-item:after {
   content: '';
   display: block;
   position: absolute;
@@ -72,22 +68,21 @@ a-tabs > a-nav-item:after {
   visibility: hidden;
   transform: scale(0);
 }
-a-tabs a-nav-item:active:after {
+mce-tabs mce-nav-item:active:after {
   animation: ce-ripple 1s ease-out;
 }
 
-a-tabs.dark-bg > .indicator {
+mce-tabs.dark-bg > .mce-indicator {
   background-color: var(--theme-color-a100, #ffff00);
 }
 
-a-tabs.dark-bg > a-nav-item.active .an-icon,
-a-tabs.dark-bg > a-nav-item.active an-icon,
-a-tabs.dark-bg > a-nav-item.active .text {
-  color: var(--theme-color-0, #fffff);
+mce-tabs.dark-bg > mce-nav-item mce-icon,
+mce-tabs.dark-bg > mce-nav-item .mce-text {
+  color: var(--theme-text-color-300, #e0e0e0);
 }
 
-a-tabs.dark-bg > a-nav-item an-icon,
-a-tabs.dark-bg > a-nav-item .icon,
-a-tabs.dark-bg > a-nav-item .text {
-  color: var(--theme-color-100, #fafafa);
+mce-tabs.dark-bg > mce-nav-item.active mce-icon,
+mce-tabs.dark-bg > mce-nav-item.active .mce-text {
+  color: var(--theme-text-color-0, #fffff);
 }
+

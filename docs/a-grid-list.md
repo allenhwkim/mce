@@ -7,7 +7,7 @@ Grid lists are an alternative to standard list views.
 
 ### Example
 ```
-<a-grid-list>
+<mce-grid-list>
   <div>
     <img src="nature2.jpg">
     <div class="text-with-icon">
@@ -20,13 +20,13 @@ Grid lists are an alternative to standard list views.
       <h1>Single Line</h1>
     </div>
   </div>
-</a-grid-list>
+</mce-grid-list>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-### Child element of `a-grid-list` style classes
+### Child element of `mce-grid-list` style classes
  |name|description|
  |---|---|
  |text-with-icon| A shady bottom section with text and an icon

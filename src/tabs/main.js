@@ -9,16 +9,21 @@ import {animate, setTabbable} from '../mce-util.js';
    * ### Example
    *
    * ```
-   * <a-tabs>
-   *   <a-nav-item icon="favorite"></a-nav-item>
-   *   <a-nav-item icon="search" class="active"></a-nav-item>
-   *   <a-nav-item icon="alarm"></a-nav-item>
-   * </a-tabs>
+   * <mce-tabs>
+   *   <mce-nav-item icon="favorite"></mce-nav-item>
+   *   <mce-nav-item icon="search" class="mce-active"></mce-nav-item>
+   *   <mce-nav-item icon="alarm"></mce-nav-item>
+   * </mce-tabs>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
+   * ### `mce-tabs` Style Classes
+   *  |name||description|
+   *  |---|---|
+   *  |mce-active| indicates currently active tab with indicator
+   * 
    */
 
   class Tabs extends HTMLElement {
@@ -34,10 +39,10 @@ import {animate, setTabbable} from '../mce-util.js';
     getActiveTab(event) {
       let activeTab;
       if (event) { // if clicked or tapped
-        activeTab = event.target.closest('a-nav-item');
+        activeTab = event.target.closest('mce-nav-item');
       } else {
-        activeTab = this.querySelector('a-nav-item.active');
-        activeTab = activeTab || this.querySelector('a-nav-item:first-child');
+        activeTab = this.querySelector('mce-nav-item.mce-active');
+        activeTab = activeTab || this.querySelector('mce-nav-item:first-child');
       }
       return activeTab;
     }
@@ -47,7 +52,7 @@ import {animate, setTabbable} from '../mce-util.js';
       let thisBCR  = this.getBoundingClientRect();
       let activeTabBCR = this.getActiveTab().getBoundingClientRect();
 
-      el.classList.add('indicator');
+      el.classList.add('mce-indicator');
       el.style.left = (activeTabBCR.left - thisBCR.left) / thisBCR.Width*100 + '%';
       this.appendChild(el);
       return el;
@@ -58,16 +63,16 @@ import {animate, setTabbable} from '../mce-util.js';
      */
     _selectActiveTab(event) {
       let indicatorEl = this.indicatorEl;
-      let numTab = this.querySelectorAll('a-nav-item').length;
+      let numTab = this.querySelectorAll('mce-nav-item').length;
       let activeTab = this.getActiveTab(event);
       // console.log('activeTab', activeTab, event && event.target);
 
-      Array.from(this.querySelectorAll('a-nav-item')).forEach(navItem => {
+      Array.from(this.querySelectorAll('mce-nav-item')).forEach(navItem => {
         navItem.setAttribute('tabindex', navItem.isSameNode(activeTab) ? 0 : -1);
       });
       // activeTab.focus();
 
-      setTimeout(_ => { // wait for a-nav-item.active changes
+      setTimeout(_ => { // wait for mce-nav-item.active changes
         let thisBCR = this.getBoundingClientRect();
         let activeTabBCR = activeTab.getBoundingClientRect();
 
@@ -91,7 +96,7 @@ import {animate, setTabbable} from '../mce-util.js';
 
     _addEventListener() {
       // for each tab, set click and keydown event listeners
-      Array.from(this.querySelectorAll('a-nav-item')).forEach( navItem => {
+      Array.from(this.querySelectorAll('mce-nav-item')).forEach( navItem => {
         //when clicked, open the tab
         navItem.addEventListener('click', this._selectActiveTab.bind(this));
         // listen to keyboard up,down,next,right,space and enter
@@ -102,7 +107,7 @@ import {animate, setTabbable} from '../mce-util.js';
             (event.key === "ArrowLeft" || event.key === "ArrowDown") ? -1 : 0;
           let tabToMove, activeTabIndex = 0;
           let activeTab = this.getActiveTab(event);
-          let navItems = this.querySelectorAll('a-nav-item');
+          let navItems = this.querySelectorAll('mce-nav-item');
 
           for(var i = 0; i < navItems.length; i++) {
             navItems[i].isSameNode(activeTab) && (activeTabIndex = i);
@@ -119,5 +124,5 @@ import {animate, setTabbable} from '../mce-util.js';
   
   }
   
-  customElements.define('a-tabs', Tabs);
+  customElements.define('mce-tabs', Tabs);
 })();

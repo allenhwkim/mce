@@ -6,7 +6,7 @@
    *
    * ###  Example
    * ```
-   * <a-text-field disabled
+   * <mce-text-field disabled
    *   icon="favorite"
    *   helper-text="this is helper text"
    *   label="this is label"
@@ -21,14 +21,14 @@
    *   prefix="$"
    *   readonly
    *   required="this field is required"
-   *   suffix="dollars"></a-text-field>
+   *   suffix="dollars"></mce-text-field>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
-   * ### `a-text-field` Attributes 
+   * ### `mce-text-field` Attributes 
    *  |name|value|description|
    *  |---|---|---|
    *  |disabled| |Disabled Status. No interaction is allowed with this status.
@@ -50,14 +50,14 @@
    *  |pattern-error| text |Error message when 'pattern' is given with regular expression but not valid. Default. 'invalid input text'
    *  |type-error| text |Error message when 'type' is given but not. Default. 'invalid input for type <type>'
    * 
-   *  `a-text-field` passes all attributes to `input` field, which means all standard input attributes are acceptable,
+   *  `mce-text-field` passes all attributes to `input` field, which means all standard input attributes are acceptable,
    *  and it affects the actual input. Sometime this can cause some strange behaviour, 
    *  but it's up to user without blocking it. For example `type="range"` is not for text field, but still
    *  working without error.
    */
   class TextField extends HTMLElement {
     connectedCallback() {
-      this.id = 'a-text-field-'+Math.round(Math.random()*Math.pow(10,9));
+      this.id = 'mce-text-field-'+Math.round(Math.random()*Math.pow(10,9));
       this._buildHTML();
 
       this.inputEl = this.querySelector('#'+this.id);
@@ -120,21 +120,21 @@
       }
       let attributes = attrs.join(' ');
       let inputWrapperHTML = multiLine ? 
-        `<textarea class="input" id="${this.id}" ${attributes}>${this.getAttribute('value') || ''}</textarea>`:
-        `<div class="prefix">${prefix}</div>\n
-         <input class="input" type="${type}" id="${this.id}" ${attributes} />\n
-         <div class="suffix">${suffix}</div>\n`;
+        `<textarea class="mce-input" id="${this.id}" ${attributes}>${this.getAttribute('value') || ''}</textarea>`:
+        `<div class="mce-prefix">${prefix}</div>\n
+         <input class="mce-input" type="${type}" id="${this.id}" ${attributes} />\n
+         <div class="mce-suffix">${suffix}</div>\n`;
 
       let html = `
-        <an-icon class="icon">${icon}</an-icon>
-        <div class="container">
+        <mce-icon class="mce-icon">${icon}</mce-icon>
+        <div class="mce-container">
           <label for="${this.id}" style="">${label}${optionalText}${requiredText}</label>
-          <div class="input-wrapper">
+          <div class="mce-input-wrapper">
             ${inputWrapperHTML}
           </div>
           <hr />
-          <div class="helper-text">${helperText}</div>
-          <div class="error-messages"></div>
+          <div class="mce-helper-text">${helperText}</div>
+          <div class="mce-error-messages"></div>
         </div>
       `;
       this.insertAdjacentHTML('beforeend', html);
@@ -158,36 +158,36 @@
       let setStatus = () => {
         let empty  = !this.inputEl.value;
         let error = Object.values(this._getErrors())[0];
-        let errMsgEl = this.querySelector('.error-messages');
-        let dirty = this.classList.contains('dirty');
+        let errMsgEl = this.querySelector('.mce-error-messages');
+        let dirty = this.classList.contains('mce-dirty');
 
-        empty ? this.classList.add('empty') : this.classList.remove('empty');
+        empty ? this.classList.add('mce-empty') : this.classList.remove('mce-empty');
         if (dirty && error) {
-          this.classList.add('invalid'); 
+          this.classList.add('mce-invalid'); 
           errMsgEl.innerHTML = error;
         } else {
-          this.classList.remove('invalid')
+          this.classList.remove('mce-invalid')
         }
       }
 
       setStatus();
 
       this.addEventListener('click', event => {
-        this.classList.add('active');
+        this.classList.add('mce-active');
         this.inputEl.focus();
       });
 
       this.inputEl.addEventListener('blur', event => {
-        this.classList.remove('active');
+        this.classList.remove('mce-active');
       });
 
       this.inputEl.addEventListener('change', event => {
-        this.classList.add('dirty');
+        this.classList.add('mce-dirty');
         setStatus();
       });
 
       if (this.querySelector('textarea')) { // if multiline, autoresize the input height
-        this.inputEl.closest('.container').style.transition = 'none';
+        this.inputEl.closest('.mce-container').style.transition = 'none';
         this.inputEl.addEventListener('input', this._autoResizeTextarea.bind(this) );
       }
     }
@@ -195,9 +195,9 @@
     _autoResizeTextarea(event){
       let scrollHeight = this.inputEl.scrollHeight;
       this.inputEl.style.height = scrollHeight + 'px';
-      this.inputEl.closest('.container').style.height = scrollHeight + 60 + 'px';
+      this.inputEl.closest('.mce-container').style.height = scrollHeight + 60 + 'px';
     }
   }
   
-  customElements.define('a-text-field', TextField);
+  customElements.define('mce-text-field', TextField);
 })();

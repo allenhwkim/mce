@@ -17,7 +17,7 @@ Text fields allow users to input, edit, and select text. Text fields typically r
 
 ###  Example
 ```
-<a-text-field disabled
+<mce-text-field disabled
   icon="favorite"
   helper-text="this is helper text"
   label="this is label"
@@ -32,14 +32,14 @@ Text fields allow users to input, edit, and select text. Text fields typically r
   prefix="$"
   readonly
   required="this field is required"
-  suffix="dollars"></a-text-field>
+  suffix="dollars"></mce-text-field>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
-### `a-text-field` Attributes 
+### `mce-text-field` Attributes 
  |name|value|description|
  |---|---|---|
  |disabled| |Disabled Status. No interaction is allowed with this status.
@@ -61,7 +61,7 @@ Text fields allow users to input, edit, and select text. Text fields typically r
  |pattern-error| text |Error message when 'pattern' is given with regular expression but not valid. Default. 'invalid input text'
  |type-error| text |Error message when 'type' is given but not. Default. 'invalid input for type <type>'
 
- `a-text-field` passes all attributes to `input` field, which means all standard input attributes are acceptable,
+ `mce-text-field` passes all attributes to `input` field, which means all standard input attributes are acceptable,
  and it affects the actual input. Sometime this can cause some strange behaviour, 
  but it's up to user without blocking it. For example `type="range"` is not for text field, but still
  working without error.

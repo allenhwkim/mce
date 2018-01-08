@@ -3,7 +3,7 @@
   to   { transform: rotate(359deg); }
 }
 
-a-refresh-indicator {
+mce-refresh-indicator {
   width: 56px;
   height: 56px;
   text-align: center;
@@ -15,48 +15,52 @@ a-refresh-indicator {
   display: inline-block;
   background-color: var(--theme-color-0, #fff); 
 }
-a-refresh-indicator.no-border {
+mce-refresh-indicator.mce-no-border {
   box-shadow: none;
   background-color: transparent; 
 }
-a-refresh-indicator svg {
-  width: 40px; 
-  height: 40px;
-  vertical-align: middle;
-}
-a-refresh-indicator.dark-bg {
+mce-refresh-indicator.mce-dark-bg {
   background-color: var(--theme-color-0, #fff); 
 }
-a-refresh-indicator.dark-bg svg circle {
+mce-refresh-indicator.mce-dark-bg svg circle {
   stroke: var(--theme-color-500, #9e9e9e); 
 }
-a-refresh-indicator.dark-bg svg polygon {
+mce-refresh-indicator.mce-dark-bg svg polygon {
   fill: var(--theme-color-500, #ffffff); 
 }
-a-refresh-indicator.dark-bg.no-border {
+mce-refresh-indicator.mce-dark-bg.mce-no-border {
   box-shadow: none;
   background-color: transparent; 
 }
-a-refresh-indicator.dark-bg.no-border svg circle {
+mce-refresh-indicator.mce-dark-bg.mce-no-border svg circle {
   stroke: var(--theme-color-0, #ffffff); 
 }
-a-refresh-indicator.dark-bg.no-border svg polygon {
+mce-refresh-indicator.mce-dark-bg.mce-no-border svg polygon {
   fill: var(--theme-color-0, #ffffff); 
 }
 
-a-refresh-indicator.loading svg {
-  animation: ce-rotate 1.4s infinite linear;
-}
-a-refresh-indicator.mini {
+mce-refresh-indicator.mce-mini {
   width: 40px;
   height: 40px;
   line-height: 40px;
 }
-a-refresh-indicator.mini svg {
+
+mce-refresh-indicator svg {
+  width: 40px; 
+  height: 40px;
+  vertical-align: middle;
+  padding: 8px;
+}
+mce-refresh-indicator.mce-mini svg {
   width: 32px; 
   height: 32px;
+  padding: 4px;
 }
-a-refresh-indicator svg circle {
+mce-refresh-indicator.mce-loading svg {
+  animation: ce-rotate 1.4s infinite linear;
+}
+
+mce-refresh-indicator svg circle {
   stroke-dasharray: 44.2336, 200;
   stroke-dashoffset: -15;
   stroke: var(--theme-color-500, #9e9e9e); 
@@ -66,7 +70,7 @@ a-refresh-indicator svg circle {
   fill: none; 
   transition: all 750ms ease-in-out 0ms;
 }
-a-refresh-indicator svg polygon {
+mce-refresh-indicator svg polygon {
   fill: var(--theme-color-500, #9e9e9e); 
   transform: rotate(314deg);
   transform-origin: 16px 16px 0px;

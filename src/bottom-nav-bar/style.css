@@ -1,7 +1,7 @@
 /*
   https://material.io/guidelines/components/bottom-navigation.html#bottom-navigation-specs
 */
-a-bottom-nav-bar {
+mce-bottom-nav-bar {
   position: absolute;
   background-color: var(--theme-color-50, #FAFAFA);
   border-radius: 2px;
@@ -18,48 +18,46 @@ a-bottom-nav-bar {
   left:0;
   right:0;
 }
-a-bottom-nav-bar > * {
+mce-bottom-nav-bar > * {
   flex: 1;
 }
 
-a-bottom-nav-bar.dark-bg {
+mce-bottom-nav-bar.mce-dark-bg {
   background-color: var(--theme-color-600, #757575);
   color: var(--theme-text-color-50, #FAFAFA);
 }
-a-bottom-nav-bar.dark-bg a-nav-item,
-a-bottom-nav-bar.dark-bg an-icon,
-a-bottom-nav-bar.dark-bg .icon,
-a-bottom-nav-bar.dark-bg .text {
+mce-bottom-nav-bar.mce-dark-bg mce-nav-item,
+mce-bottom-nav-bar.mce-dark-bg mce-icon,
+mce-bottom-nav-bar.mce-dark-bg .mce-text {
   color: var(--theme-text-color-50, #FAFAFA);
 }
 
-a-bottom-nav-bar a-nav-item {
+mce-bottom-nav-bar mce-nav-item {
   display: inline-block;
   font-size: 16px;
   text-align: center;
 }
-a-bottom-nav-bar a-nav-item.active {
+mce-bottom-nav-bar mce-nav-item.mce-active {
   padding: 6px 12px 10px 12px;
   font-size: 14px;
 }
-a-bottom-nav-bar a-nav-item:not(.active) {
+mce-bottom-nav-bar mce-nav-item:not(.mce-active) {
   padding: 8px 12px;
   font-size: 12px;
 }
-a-bottom-nav-bar a-nav-item .an-icon,
-a-bottom-nav-bar a-nav-item an-icon {
+mce-bottom-nav-bar mce-nav-item mce-icon {
   display: block;
 }
 
 /**
  * desktop size
  */
-.ce-desktop > a-bottom-nav-bar {
+.mce-desktop > mce-bottom-nav-bar {
   left: 320px;
   right: 0;
   width: auto; 
 }
-.ce-desktop > a-bottom-nav-bar {
+.mce-desktop > mce-bottom-nav-bar {
   width: 320px;
   left: 0;
   z-index: 16;

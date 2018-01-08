@@ -5,21 +5,22 @@
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="../themes/blue.css">
+    <link rel="stylesheet" href="../src/themes/blue.css">
 
-    <!--
     <script type="module" src="../src/index.js"></script>
     <link rel="stylesheet" href="../src/index.css">
-  -->
+    <!--
     <script src="../dist/mce.js"></script>
     <link rel="stylesheet" href="../dist/mce.min.css">
+    -->
 
     <style>
       body { font-family: var(--theme-main-font, 'Roboto'); margin: 0; }
-      *, *:before, *:after { box-sizing: border-box; } .container { padding: 12px; }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
       .page { position: relative; overflow: auto; width: 360px; height: 640px; border: 2px solid;}
-      a-router {height: calc(100% - 112px);overflow: auto;}
-      .ce-desktop > a-router { height: calc(100% - 56px); margin-left: 320px; }
+      mce-router {height: calc(100% - 112px);overflow: auto;}
+      .ce-desktop > mce-router { height: calc(100% - 56px); margin-left: 320px; }
       .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
       .float-right { float: right; }
       .float-left { float: left; }
@@ -36,7 +37,7 @@
       function onRouteEnd(route) {
         let backButton = document.querySelector('#back-button');
         backButton.style.display = route.id === 'home' ? 'none': 'inline-block';
-        document.querySelector('an-app-bar').setTitle(route.name);
+        document.querySelector('mce-app-bar').setTitle(route.name);
       }
       function goHome(){
         window.location.href='#';
@@ -59,40 +60,40 @@
     </p>
 
     <div id="page1" class="page">
-      <a-nav-drawer>
-        <h2 class="top-header">Side Nav Bar</h2>
-        <a-nav-item href="#home" icon="home">Home</a-nav-item>
-        <a-nav-item href="#services" icon="business">Services</a-nav-item>
-        <a-nav-item href="#location" icon="map">Location</a-nav-item>
-        <a-nav-item href="#contact" icon="comment">Contact</a-nav-item>
-      </a-nav-drawer>
-      <an-app-bar>
-        <div class="nav-icon">
-          <an-icon onclick="document.querySelector('a-nav-drawer').open()">menu</an-icon>
+      <mce-nav-drawer>
+        <h2 class="mce-top-header">Side Nav Bar</h2>
+        <mce-nav-item href="#home" icon="home">Home</mce-nav-item>
+        <mce-nav-item href="#services" icon="business">Services</mce-nav-item>
+        <mce-nav-item href="#location" icon="map">Location</mce-nav-item>
+        <mce-nav-item href="#contact" icon="comment">Contact</mce-nav-item>
+      </mce-nav-drawer>
+      <mce-app-bar>
+        <div class="mce-nav-icon">
+          <mce-icon onclick="document.querySelector('mce-nav-drawer').open()">menu</mce-icon>
         </div>
-        <h1 class="title">Company Name</h1>
-        <div class="icons">
-          <a-search on-search="openDialog(keyword)" class="dark-bg"></a-search>
+        <h1 class="mce-title">Company Name</h1>
+        <div class="mce-icons">
+          <mce-search on-search="openDialog(keyword)" class="mce-dark-bg"></mce-search>
         </div>
-      </an-app-bar>
-      <a-router on-route-end="onRouteEnd(route)">
-        <a-route id="home" path="home" name="Company Name" import="partials/home.html"></a-route>
-        <a-route path="services" import="partials/services.html"></a-route>
-        <a-route path="location" import="partials/location.html"></a-route>
-        <a-route path="contact" import="partials/contact.html"></a-route>
-        <a-route path="" redirect="home"></a-route>
-      </a-router>
-      <a-bottom-nav-bar>
-        <a-nav-item id="back-button" icon="chevron_left" onclick="goHome()">Back</a-nav-item>
-        <a-nav-item icon="fa-facebook" onclick="openDialog('Facebook')">Facebook</a-nav-item>
-        <a-nav-item icon="fa-twitter" onclick="openDialog('Twitter')">Twitter</a-nav-item>
-        <a-nav-item icon="fa-linkedin" onclick="openDialog('LinkedIn')">LinkedIn</a-nav-item>
-      </a-bottom-nav-bar>
-      <a-dialog id="dialog" display-level="block">
-        <h3 class="title"></h3>
-        <div class="content">Share This</div>
-        <div class="actions"></div>
-      </a-dialog>
+      </mce-app-bar>
+      <mce-router on-route-end="onRouteEnd(route)">
+        <mce-route id="home" path="home" name="Company Name" import="partials/home.html"></mce-route>
+        <mce-route path="services" import="partials/services.html"></mce-route>
+        <mce-route path="location" import="partials/location.html"></mce-route>
+        <mce-route path="contact" import="partials/contact.html"></mce-route>
+        <mce-route path="" redirect="home"></mce-route>
+      </mce-router>
+      <mce-bottom-nav-bar>
+        <mce-nav-item id="back-button" icon="chevron_left" onclick="goHome()">Back</mce-nav-item>
+        <mce-nav-item icon="fa-facebook" onclick="openDialog('Facebook')">Facebook</mce-nav-item>
+        <mce-nav-item icon="fa-twitter" onclick="openDialog('Twitter')">Twitter</mce-nav-item>
+        <mce-nav-item icon="fa-linkedin" onclick="openDialog('LinkedIn')">LinkedIn</mce-nav-item>
+      </mce-bottom-nav-bar>
+      <mce-dialog id="dialog" display-level="block">
+        <h3 class="mce-title"></h3>
+        <div class="mce-content">Share This</div>
+        <div class="mce-actions"></div>
+      </mce-dialog>
     </div>
 
   </body>

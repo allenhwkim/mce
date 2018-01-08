@@ -7,39 +7,39 @@
    * ### example
    * ```
    * <div>
-   *   <a-button class="raised" onclick="openDialog('dialog-1')">Open A Dialog</a-button>
-   *   <a-dialog id="dialog-1">
-   *     <h3 class="title">Title</h3>
-   *     <div class="content">
+   *   <mce-button class="mce-raised" onclick="openDialog('dialog-1')">Open A Dialog</mce-button>
+   *   <mce-dialog id="dialog-1">
+   *     <h3 class="mce-title">Title</h3>
+   *     <div class="mce-content">
    *       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
    *       in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
    *     </div>
-   *     <hr class="divider">
-   *     <div class="actions">
-   *       <a-button onclick="closeDialog('dialog-1')">cancel</a-button>
-   *       <a-button onclick="closeDialog('dialog-1')">OK</a-button>
+   *     <hr class="mce-divider">
+   *     <div class="mce-actions">
+   *       <mce-button onclick="closeDialog('dialog-1')">cancel</mce-button>
+   *       <mce-button onclick="closeDialog('dialog-1')">OK</mce-button>
    *     </div>
-   *   </a-dialog>
+   *   </mce-dialog>
    * </div>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    *
-   * ### `a-dialog` elememe style classes
+   * ### `mce-dialog` elememe style classes
    *  |name|description|
    *  |---|---|
-   *  |visible|Indicates that the dialog is an open status
+   *  |mce-visible|Indicates that the dialog is an open status
    * 
    * 
-   * ### Child element of `a-dialog` style classes
+   * ### Child element of `mce-dialog` style classes
    *  |name|description|
    *  |---|---|
-   *  |divider| Draw a line
-   *  |title| Title section of the dialog
-   *  |content| Content section of the dialog
-   *  |actions| The container of action buttons
+   *  |mce-divider| Draw a line
+   *  |mce-title| Title section of the dialog
+   *  |mce-content| Content section of the dialog
+   *  |mce-actions| The container of action buttons
    * 
    */ 
   class Dialog extends HTMLElement {
@@ -50,8 +50,8 @@
       this._regroupedOnce = true;
       if (this.displayLevel === 'root' && !this.parentElement.isSameNode(document.body)) { //document-level dialog
         document.body.appendChild(this);
-        this.querySelector('.page-blocker').style.position = 'fixed';
-        this.querySelector('.container').style.position = 'fixed';
+        this.querySelector('.mce-page-blocker').style.position = 'fixed';
+        this.querySelector('.mce-container').style.position = 'fixed';
       }
     }
     
@@ -74,7 +74,7 @@
       //replace title, content, actions with data given
       data && this._updateContent(data);
       (this.displayLevel === 'root') && (document.body.style.overflow = 'hidden');
-      this.classList.add('visible');
+      this.classList.add('mce-visible');
     }
 
     /**
@@ -82,20 +82,20 @@
      */
     close() {
       (this.displayLevel === 'root')  && (document.body.style.overflow = '');
-      this.classList.remove('visible');
+      this.classList.remove('mce-visible');
     }
  
     _regroupElements() {
       let pageBlockerEl, containerEl;
       pageBlockerEl = document.createElement('div');
-      pageBlockerEl.setAttribute('class', 'page-blocker');
+      pageBlockerEl.classList.add('mce-page-blocker');
       pageBlockerEl.addEventListener('click', () => {
         this.close();
       });
       this.appendChild(pageBlockerEl);
 
       containerEl = document.createElement('div');
-      containerEl.setAttribute('class', 'container');
+      containerEl.classList.add('mce-container');
       this.appendChild(containerEl);
 
       Array.from(this.children).forEach(el => {
@@ -114,18 +114,18 @@
         return el;
       }
       if (data.title !== undefined) {
-        titleEl = this.querySelector('.title') || appendEl('title');
+        titleEl = this.querySelector('.mce-title') || appendEl('mce-title');
         titleEl.innerHTML = data.title;
       }
       if (data.contents !== undefined) {
-        contentEl = this.querySelector('.content') || appendEl('content');
+        contentEl = this.querySelector('.mce-content') || appendEl('mce-content');
         contentEl.innerHTML = data.contents;
       }
       if (data.actions !== undefined) {
-        actionsEl = this.querySelector('.actions') || appendEl('actions');
+        actionsEl = this.querySelector('.mce-actions') || appendEl('mce-actions');
         actionsEl.innerHTML = '';
         for (var key in data.actions) {
-          let buttonEl = document.createElement('a-button');
+          let buttonEl = document.createElement('mce-button');
           buttonEl.innerHTML = key;
           buttonEl.addEventListener('click', _ => {
             data.actions[key]();
@@ -137,5 +137,5 @@
     }
   }
   
-  customElements.define('a-dialog', Dialog);
+  customElements.define('mce-dialog', Dialog);
 })();

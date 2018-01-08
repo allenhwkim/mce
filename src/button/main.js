@@ -9,34 +9,34 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
    * ### example
    * ```
    * <div>
-   *   <a-button>
-   *     <an-icon>search</an-icon> Normal </a-button>
-   *   <a-button class="dark">
-   *     <an-icon>search</an-icon> Normal </a-button>
-   *   <a-button disabled="">
-   *     <an-icon>search</an-icon> disabled </a-button>
-   *   <a-button disabled="" class="dark">
-   *     <an-icon>search</an-icon> disabled </a-button>
+   *   <mce-button>
+   *     <mce-icon>search</mce-icon> Normal </mce-button>
+   *   <mce-button class="mce-dark">
+   *     <mce-icon>search</mce-icon> Normal </mce-button>
+   *   <mce-button disabled="">
+   *     <mce-icon>search</mce-icon> disabled </mce-button>
+   *   <mce-button disabled="" class="mce-dark">
+   *     <mce-icon>search</mce-icon> disabled </mce-button>
    * </div>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="aEVoYg" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="aEVoYg" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>`
    * 
-   * ### `a-button` attributes 
+   * ### `mce-button` attributes 
    *  |name|value|description|
    *  |---|---|---|
    *  |nam| | name of button
    *  |value| | button value
    *  |disabled| | if defined, a button is disabled
    * 
-   * ### `a-button` style classes
+   * ### `mce-button` style classes
    *  |name|value|description|
    *  |---|---|---|
-   *  |dark| | A button with dark background color and light text
-   *  |raised| | if defined, light background with dark icons and text 
-   *  |fab| | if defined, A floating action buttoin; a circular button with shadow effect
-   *  |mini| | if defined, A 40 pixel x 40 pixel
+   *  |mce-dark| | A button with dark background color and light text
+   *  |mce-raised| | if defined, light background with dark icons and text 
+   *  |mce-fab| | if defined, A floating action buttoin; a circular button with shadow effect
+   *  |mce-mini| | if defined, A 40 pixel x 40 pixel
    */
   class Button extends HTMLElement {
     
@@ -60,7 +60,7 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
         this.buttonAttrs.includes(attr) && buttonEl.setAttribute(attr, val);
       });
       
-      if (!this.classList.contains('disabled')) {
+      if (!this.classList.contains('mce-disabled')) {
         setTabbable(this, _ => buttonEl.click());  // set tabindex and click/ENTER function
       } 
       this.appendChild(buttonEl);
@@ -68,5 +68,5 @@ import {observeAttrChange, setTabbable} from '../mce-util.js';
 
   }
   
-  customElements.define('a-button', Button); //name, class
+  customElements.define('mce-button', Button); //name, class
 })();

@@ -8,8 +8,8 @@ Dialogs contain text and UI controls. They retain focus until dismissed or a req
 ### example
 ```
 <div>
-  <a-button class="raised" onclick="openDialog('dialog-1')">Open A Dialog</a-button>
-  <a-dialog id="dialog-1">
+  <mce-button class="raised" onclick="openDialog('dialog-1')">Open A Dialog</mce-button>
+  <mce-dialog id="dialog-1">
     <h3 class="title">Title</h3>
     <div class="content">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
@@ -17,24 +17,24 @@ Dialogs contain text and UI controls. They retain focus until dismissed or a req
     </div>
     <hr class="divider">
     <div class="actions">
-      <a-button onclick="closeDialog('dialog-1')">cancel</a-button>
-      <a-button onclick="closeDialog('dialog-1')">OK</a-button>
+      <mce-button onclick="closeDialog('dialog-1')">cancel</mce-button>
+      <mce-button onclick="closeDialog('dialog-1')">OK</mce-button>
     </div>
-  </a-dialog>
+  </mce-dialog>
 </div>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
-### `a-dialog` elememe style classes
+### `mce-dialog` elememe style classes
  |name|description|
  |---|---|
  |visible|Indicates that the dialog is an open status
 
 
-### Child element of `a-dialog` style classes
+### Child element of `mce-dialog` style classes
  |name|description|
  |---|---|
  |divider| Draw a line

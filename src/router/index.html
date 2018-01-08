@@ -1,90 +1,71 @@
-<!doctype html>
-<!-- This page is useful for development and testing. As of. Nov 2017. This page works well with Chrome browser. -->
-<html>
-  <head>
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900italic,900">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <style>
-      body { font-family: 'Roboto'; margin: 0; color: var(--theme-text-color-900, #212121); background-color: var(--theme-color-50, #FAFAFA); }
-      *, *:before, *:after { box-sizing: border-box; }
-      iframe {width: 100%; height: 480px; border: 0;}
-      a-list h3, a-list h4, a-list h5, a-list h6 {margin: 0;}
-      .container { padding: 12px; }
-    </style>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
+<script type="module" src="./src/router.js"></script>
+<script type="module" src="./src/route.js"></script>
+<style>
+body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
+mce-router {display: block; height: 100px; border: 1px solid #ccc;}
+</style>  
 
-    <script type="module" src="../router/main.js"></script>
+<h3>Simple Router Example</h3>
+  <mce-router>
+    <mce-route path="page1" import="test/page1.html" no-cache=""></mce-route>
+    <mce-route path="page2" import="test/page2.html"></mce-route>
+    <mce-route path="not-found" import="test/not-found.html"></mce-route>
+    <mce-route path="" redirect="page1"></mce-route>
+  </mce-router>
+  <a href="#page1">page1</a>
+  <a href="#page2">page2</a>
+  <a href="#invalid">invalid</a>
 
-    <script type="module" src="../card/main.js"></script>
-    <link rel="stylesheet" class="card" href="../card/style.css">
+<h3>Router With Base Path</h3>
+<mce-router base-path="/base/path">
+  <mce-route path="/page1" import="test/page1.html" no-cache></mce-route>
+  <mce-route path="/page2" import="test/page2.html"></mce-route>
+  <mce-route path="" redirect="page1"></mce-route>
+  <mce-route default no-cache import="defaultUrl()"></mce-route>
+</mce-router>
+<div>
+  <a href="#/base/path/page1">#/base/path/page1</a>
+  <a href="#/base/path/page2">#/base/path/page2</a>
+  <a href="#/base/path/invalid">#/base/path/invalid</a>
+</div>
+<script>
+  var defaultUrl = _ => 'test/not-found.html';
+</script>
 
-    <script type="module" src="../switch/main.js"></script>
-    <link rel="stylesheet" class="switch" href="../switch/style.css">
+<h3>Router With Callbacks</h3>
+      <mce-router base-path="/callbacks"
+        resolve-func="fn.routerResolve(route)"
+        on-route-start="fn.onRouteStart(route)"
+        on-route-end="fn.onRouteEnd(route)"
+        on-http-start="fn.onHttpStart(route)"
+        on-http-end="fn.onHttpEnd(response)">
+        <mce-route path="/page1" import="test/page1.html" no-cache resolve-func="fn.routeResolve(route)"></mce-route>
+        <mce-route path="/page2" import="test/page2.html"></mce-route>
+        <mce-route path="/not-found" import="test/not-found.html"></mce-route>
+        <mce-route path="" redirect="/page1"></mce-route>
+      </mce-router>
+      <div>
+        <a href="#/callbacks/page1">#/callbacks/page1</a>
+        <a href="#/callbacks/page2">#/callbacks/page2</a>
+        <a href="#/callbacks/invalid">#/callbacks/invalid</a>
+      </div>
+      <script>
+        var fn = {
+          routerResolve: route => { console.log('router-resolve');},
+          routeResolve: route => { console.log('route-resolve');},
+          onRouteStart: route => { console.log('on-route-start');},
+          onHttpStart: route => { console.log('on-http-start');},
+          onHttpEnd: response => { console.log('on-http-end');},
+          onRouteEnd: route => { console.log('on-route-end');}
+        }
+      </script>
 
-    <script type="module" src="../list/main.js"></script>
-    <link rel="stylesheet" class="list" href="../list/style.css">
-
-    <script type="module" src="../menu/main.js"></script>
-    <link rel="stylesheet" class="menu" href="../menu/style.css">
-
-    <link rel="stylesheet" class="icon" href="../icon/style.css">
-    <link rel="stylesheet" class="nav-item" href="../nav-item/style.css">
-  </head>
-  <body>
-
-    <div class="container">
-      <h1>Router</h1>
-      <p>
-        `a-router` is an element that responds to url hash change.
-      </p>
-        a-router watches the url hash changes, find a proper route, and load html.
-      <br/>
-
-      &nbsp;
-      <a href="https://allenhwkim.github.io/custom-element/">Documentation</a>
-
-      <h3>
-        <a href="https://github.com/allenhwkim/custom-element/tree/master/elements/router">Github</a>
-      </h3>
-
-      <h2>Features</h2>
-      <ul>
-        <li>Basic Routing</li>
-        <li>Dynamic Routing Using A Function</li>
-        <li>Nested Routing Using Base Path</li>
-        <li>Page Caching</li>
-        <li>Resolving Data Before Route</li>
-        <li>Loading Sign</li>
-        <li>Slide-In Page transition</li>
-        <li>Callbacks
-          <ul>
-            <li>Route start callback; on-route-start</li>
-            <li>Route End Callback; on-route-end</li>
-            <li>Http Start Callback; on-http-start</li>
-            <li>Http End Callback; on-http-end</li>
-          </ul>
-        </li>
-      </ul>
-
-      <div id="import-theme-tmpl" class="clear-both"></div>
-
-      <h2>Installation</h2>
-      <p>
-        Just add the following script(< 2kb gzipped/polyfill in it) to your website.
-        <pre>&lt;script defer src="https://unpkg.com/@custom-element/router">&lt;/script></pre>
-      </p>
-
-      <h2> Examples </h2>
-
-      <h3>Simple Router Example</h3>
-      <iframe src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
-
-      <h3>Router With Base Path</h3>
-      <iframe src="https://embed.plnkr.co/FOLOB9?show=preview"></iframe>
-
-      <h3>Router With Callbacks</h3>
-      <iframe src="https://embed.plnkr.co/iyCwi9?show=preview"></iframe>
-    </div>
-
-  </body>
-</html>
+<!--
+<iframe src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
+<iframe src="https://embed.plnkr.co/FOLOB9?show=preview"></iframe>
+<iframe src="https://embed.plnkr.co/iyCwi9?show=preview"></iframe>
+-->

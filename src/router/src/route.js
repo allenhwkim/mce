@@ -3,22 +3,22 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
 
 (function() {
   /**
-   *  Child element of a router,`<a-router>`
+   *  Child element of a router,`<mce-router>`
    *
    *  
    * ### Example
    *  ```
-   *  <a-router>
-   *     <a-route path="/path1" import="path1.html">
-   *       <a-router>    <!-- knows that parent path is /path1 -->
-   *         <a-route path="/foo" import="foo.html" ></a-route> <!-- responds to /path1/foo -->
-   *         <a-route path="/bar" import="bar.html"></a-route> <!-- responds to /path1/bar -->
-   *       </a-router>
-   *     </a-route>
-   *  </a-router>
+   *  <mce-router>
+   *     <mce-route path="/path1" import="path1.html">
+   *       <mce-router>    <!-- knows that parent path is /path1 -->
+   *         <mce-route path="/foo" import="foo.html" ></mce-route> <!-- responds to /path1/foo -->
+   *         <mce-route path="/bar" import="bar.html"></mce-route> <!-- responds to /path1/bar -->
+   *       </mce-router>
+   *     </mce-route>
+   *  </mce-router>
    *  ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    *  ### Attributes
@@ -31,12 +31,12 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
    *    * `no-cache`
    *      Optional,Indicates that the route view template is not cached.
    *    * `resolve-func`
-   *      Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<a-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
+   *      Optional, route level resolve function. e.g. data loading. The resolved data will be set to `<mce-route>` element as a data. e.g. `$0.data.foo`, `$0.data.bar`
    */
   class Route extends HTMLElement {
     connectedCallback() {
       // add this to the parent route
-      this.router = this.closest('a-router');
+      this.router = this.closest('mce-router');
       this.path = this.getAttribute('path');
       this.name = this.getAttribute('name') || (this.path && this.path.replace('/', ' '));
       this.redirect = this.getAttribute('redirect');
@@ -46,7 +46,7 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
         this._getPromiseFunc('route', this.getAttribute('resolve-func'));
 
       if (!this.path && !(this.import || this.redirect)) {
-        throw "Invalid attributes for a-route, required path and import"
+        throw "Invalid attributes for mce-route, required path and import"
       }
     }
 
@@ -67,15 +67,15 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
     /**
      * activate this route for the parent router. The activation sequence is;
      * 
-     * 1. resolve router function which is given from `a-router[resolve-func]` 
-     * 2. resolve route function which is given from `a-route[resolve-func]` 
-     * 3. run route start callback if given from `a-route[on-route-start]` 
+     * 1. resolve router function which is given from `mce-router[resolve-func]` 
+     * 2. resolve route function which is given from `mce-route[resolve-func]` 
+     * 3. run route start callback if given from `mce-route[on-route-start]` 
      * 4. determine html contents
      *   4.1 if html contents is cached, contents is cached one.
-     *   4.2 if not cached, run http start callback if given from `a-router[on-http-start]` 
-     *   4.3 fetch html contents, then run http end callback if given from `a-router[on-http-end]` 
+     *   4.2 if not cached, run http start callback if given from `mce-router[on-http-start]` 
+     *   4.3 fetch html contents, then run http end callback if given from `mce-router[on-http-end]` 
      * 5. show slide-in animation and replace contents
-     * 6. run route end callback if given from `a-router[on-route-end]` 
+     * 6. run route end callback if given from `mce-router[on-route-end]` 
      */
     activate() {
       let aPromise = _ => Promise.resolve();
@@ -121,11 +121,11 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
         if (html) { // only replace HTML when it is fetched or cached properly
           !this.noCache && (this.cachedTemplate = html);
           // Transtion effect. slide in from left
-          this.router.targetEl.classList.remove('slide-in');
+          this.router.targetEl.classList.remove('mce-slide-in');
           setTimeout(_ => {
             // this.router.targetEl.innerHTML = html; 
             setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
-            this.router.targetEl.classList.add('slide-in');
+            this.router.targetEl.classList.add('mce-slide-in');
           }, 50);
         }
         this.router.showLoadingEl(false);
@@ -145,6 +145,6 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
       }
     }
   }
-  customElements.define('a-route', Route); //name, class
+  customElements.define('mce-route', Route); //name, class
 
 })();

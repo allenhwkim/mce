@@ -1,6 +1,6 @@
 /*https://material.io/guidelines/components/tooltips.html#tooltips-tooltips-mobile*/
 /* NOTE: ARIA implementation http://plnkr.co/edit/I9mfBNIKJtALHwKmS0CH?p=preview */
-a-tooltip {
+mce-tooltip {
   position: absolute;
   visibility: hidden;
   background: var(--theme-color-600, #757575);
@@ -12,7 +12,7 @@ a-tooltip {
   display: block;
   white-space: nowrap;
 }
-a-tooltip.visible {
+mce-tooltip.mce-visible {
   visibility: visible;
   transition: all .2s ease .1s;
   z-index: 24;

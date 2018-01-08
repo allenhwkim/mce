@@ -18,7 +18,7 @@
         this._showTooltip();
       });
       this.parentElement.addEventListener('mouseleave', _ => {
-        this.classList.remove('visible');
+        this.classList.remove('mce-visible');
         this.originalPos.parent.insertBefore(this, this.originalPos.nextSibling);
       });
     }
@@ -56,10 +56,10 @@
           this.style.left = left + 'px';
         }
 
-        this.classList.add('visible')
+        this.classList.add('mce-visible')
       }, 100);
     }
   }
 
-  customElements.define('a-tooltip', Tooltip);
+  customElements.define('mce-tooltip', Tooltip);
 })();

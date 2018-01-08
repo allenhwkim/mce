@@ -21,17 +21,17 @@ and [material design](https:/material.io/guidelines/components/).
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582497-04234a60-f162-11e7-8cb7-ca913c2fe416.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582519-17eb0812-f162-11e7-9f6f-9cce2de537ba.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582538-27e1e146-f162-11e7-8369-8c1eb0385de6.png">
-<img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582544-2ec5047a-f162-11e7-9a6e-ac5032f009fc.png">
+<img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582544-2ec5047mce-f162-11e7-9a6e-ac5032f009fc.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582547-353efc34-f162-11e7-98de-354f16092579.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582617-88a795d4-f162-11e7-944c-5ddc0913e0e4.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582452-d4dce9e6-f161-11e7-9130-70fe11636137.png">
 <img height="40" align="" src="https://user-images.githubusercontent.com/1437734/34582297-6c07a668-f161-11e7-963f-7bd0eeb6cb89.png">
 
-### NEW! a-router
-Do you want an element react to the url change dynamically? `<a-router>` does what you want.
+### NEW! mce-router
+Do you want an element react to the url change dynamically? `<mce-router>` does what you want.
 
-### Upcomming! map element `<a-leaflet>`
-You are going to be able to implement a fully working map with just an element, `<a-leaflet>`. 
+### Upcomming! map element `<mce-leaflet>`
+You are going to be able to implement a fully working map with just an element, `<mce-leaflet>`. 
     
 ## Installation
   
@@ -49,7 +49,7 @@ By simply adding the following `<script>` tag to your html, you are ready to go.
 
 Just use it in your html. No other step is required.
 
-    <a-text-field label="Simple"></a-text-field>
+    <mce-text-field label="Simple"></mce-text-field>
     
 [Try it on plunker](http://embed.plnkr.co/fPJyo4/)
 

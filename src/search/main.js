@@ -3,11 +3,11 @@ import {observeAttrChange} from '../mce-util.js';
 ( function() {
   const HTML = `
     <label for="__ID__" tabindex="0">
-      <an-icon>search</i>
+      <mce-icon>search</i>
     </label>
-    <span class="input-wrapper">
+    <span class="mce-input-wrapper">
       <input id="__ID__" autocomplete="off" placeholder="Search">
-      <an-icon class="clear">clear</i>
+      <mce-icon class="mce-clear">clear</i>
     </span>
   `;
 
@@ -18,14 +18,14 @@ import {observeAttrChange} from '../mce-util.js';
    *
    * ### example
    * ```
-   * <a-search on-search="alert('You are searching...'+keyword)"></a-search>
+   * <mce-search on-search="alert('You are searching...'+keyword)"></mce-search>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
-   * ### `a-button` Attributes 
+   * ### `mce-button` Attributes 
    *  |name|value|description|
    *  |---|---|---|
    *  |on-search|function| A Javascript code to execute for search with the keyword. e.g. `alert(keyword)`
@@ -40,16 +40,16 @@ import {observeAttrChange} from '../mce-util.js';
     }
 
    close() {
-      let inputWrapper = this.querySelector('.input-wrapper');
+      let inputWrapper = this.querySelector('.mce-input-wrapper');
       let inputEl = this.querySelector('input');
 
       inputEl.value = '';
-      inputWrapper.classList.remove('visible');
+      inputWrapper.classList.remove('mce-visible');
     }
 
     _regroupElements() {
       if (!this.regroupedOnce) {
-        let id = 'a-search-' + Math.round(Math.random()*Math.pow(10,9));
+        let id = 'mce-search-' + Math.round(Math.random()*Math.pow(10,9));
         this.innerHTML = HTML.replace('__ID__', id);
       }
       this.regroupedOnce = true;
@@ -57,9 +57,9 @@ import {observeAttrChange} from '../mce-util.js';
 
     _addEventListeners() {
       let searchIcon = this.querySelector('label');
-      let clearIcon = this.querySelector('.clear');
+      let clearIcon = this.querySelector('.mce-clear');
       let inputEl = this.querySelector('input');
-      let inputWrapper = this.querySelector('.input-wrapper');
+      let inputWrapper = this.querySelector('.mce-input-wrapper');
 
       // when search icon is clicked, show input field
       searchIcon.addEventListener('mouseup', this._showInputField.bind(this));
@@ -85,13 +85,13 @@ import {observeAttrChange} from '../mce-util.js';
 
     _showInputField(event) {
       let inputEl = this.querySelector('input');
-      let inputWrapper = this.querySelector('.input-wrapper');
+      let inputWrapper = this.querySelector('.mce-input-wrapper');
 
-      if (inputWrapper.classList.contains('visible') && inputEl.value) {
+      if (inputWrapper.classList.contains('mce-visible') && inputEl.value) {
         let customEvent = new CustomEvent('search', event);
         this.dispatchEvent(customEvent);
       } else {
-        inputWrapper.classList.toggle('visible');
+        inputWrapper.classList.toggle('mce-visible');
         setTimeout(_ => inputEl.focus());
       }
     }
@@ -114,5 +114,5 @@ import {observeAttrChange} from '../mce-util.js';
 
   }
   
-  customElements.define('a-search', Search);
+  customElements.define('mce-search', Search);
 })();
