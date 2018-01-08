@@ -1,7 +1,7 @@
 {
   "gitbook": ">= 3.0.0",
   "title": "MCE",
-  "description": "Material-Designed Custom Elements",
+  "description": "Materialized Custom Elements",
   "author": "Allen Kim<allenhwkim@gmail.com>",
   "language": "en",
   "root": "./docs",

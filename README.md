@@ -1,5 +1,5 @@
 <a href="https://mymce.github.io" target="_blank"><img src="logo.png" alt="MCE" height="200"></a>
-## Material-designed Custom Element 
+## Materialized Custom Element 
 
 1. Small and fast(Less than 6KB gzipped).
 2. No depenancy on framework or library. Vanilla JS only.

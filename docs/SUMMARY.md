@@ -1,6 +1,6 @@
 # Table of content 
 
- * Material-Designed Elements
+ * Materialized Elements
    * [mce-app-bar](mce-app-bar.md)
    * [mce-bottom-nav-bar](mce-bottom-nav-bar.md)
    * [mce-button](mce-button.md)
