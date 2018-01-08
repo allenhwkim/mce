@@ -27,11 +27,16 @@ and [material design](https:/material.io/guidelines/components/).
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582452-d4dce9e6-f161-11e7-9130-70fe11636137.png">
 <img height="40" align="" src="https://user-images.githubusercontent.com/1437734/34582297-6c07a668-f161-11e7-963f-7bd0eeb6cb89.png">
 
-### NEW! mce-router
-Do you want an element react to the url change dynamically? `<mce-router>` does what you want.
-
-### Upcomming! map element `<mce-leaflet>`
-You are going to be able to implement a fully working map with just an element, `<mce-leaflet>`. 
+### NEW! 
+ #### mce-router
+   You can build a SPA only with elemement with the help of `mce-router`. `mce-router` changes its contents dynamically
+   by url changes.   
+   [router example](https://mymce.github.io/mce-router.html)
+ #### mce-leaflet
+   Showing a map on your app is as easy as writing HTML with `<mce-leaflet>` tag.  
+   [map example](http://localhost:8080/_book/mce-leaflet.html)  
+   [marker example](http://localhost:8080/_book/mce-marker.html)
+   
     
 ## Installation
   
