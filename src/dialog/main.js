@@ -46,13 +46,15 @@
     connectedCallback() {
       this.displayLevel = this.getAttribute('display-level') || 'root';
       this._regroupedOnce = this._regroupedOnce || false;
-      !this._regroupedOnce && this._regroupElements();
-      this._regroupedOnce = true;
-      if (this.displayLevel === 'root' && !this.parentElement.isSameNode(document.body)) { //document-level dialog
-        document.body.appendChild(this);
-        this.querySelector('.mce-page-blocker').style.position = 'fixed';
-        this.querySelector('.mce-container').style.position = 'fixed';
-      }
+      setTimeout(_ => {
+        !this._regroupedOnce && this._regroupElements();
+        this._regroupedOnce = true;
+        if (this.displayLevel === 'root' && !this.parentElement.isSameNode(document.body)) { //document-level dialog
+          document.body.appendChild(this);
+          this.querySelector('.mce-page-blocker').style.position = 'fixed';
+          this.querySelector('.mce-container').style.position = 'fixed';
+        }
+      });
     }
     
     /**
