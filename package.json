@@ -29,6 +29,7 @@
   "author": "allenhwkim@gmail.com",
   "license": "MIT",
   "devDependencies": {
+    "gitbook-plugin-github-buttons": "^3.0.0",
     "gitbook-plugin-scripts": "^1.0.2",
     "http-serve": "^1.0.1",
     "jsdoc-to-markdown": "^3.0.2",

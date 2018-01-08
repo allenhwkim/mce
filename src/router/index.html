@@ -9,6 +9,11 @@ body {max-width: 1024px; margin: 0 auto; font-family: Roboto;}
 mce-router {display: block; height: 100px; border: 1px solid #ccc;}
 </style>  
 
+<!--
+<iframe src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
+<iframe src="https://embed.plnkr.co/FOLOB9?show=preview"></iframe>
+<iframe src="https://embed.plnkr.co/iyCwi9?show=preview"></iframe>
+-->
 <h3>Simple Router Example</h3>
   <mce-router>
     <mce-route path="page1" import="test/page1.html" no-cache=""></mce-route>
@@ -37,35 +42,30 @@ mce-router {display: block; height: 100px; border: 1px solid #ccc;}
 </script>
 
 <h3>Router With Callbacks</h3>
-      <mce-router base-path="/callbacks"
-        resolve-func="fn.routerResolve(route)"
-        on-route-start="fn.onRouteStart(route)"
-        on-route-end="fn.onRouteEnd(route)"
-        on-http-start="fn.onHttpStart(route)"
-        on-http-end="fn.onHttpEnd(response)">
-        <mce-route path="/page1" import="test/page1.html" no-cache resolve-func="fn.routeResolve(route)"></mce-route>
-        <mce-route path="/page2" import="test/page2.html"></mce-route>
-        <mce-route path="/not-found" import="test/not-found.html"></mce-route>
-        <mce-route path="" redirect="/page1"></mce-route>
-      </mce-router>
-      <div>
-        <a href="#/callbacks/page1">#/callbacks/page1</a>
-        <a href="#/callbacks/page2">#/callbacks/page2</a>
-        <a href="#/callbacks/invalid">#/callbacks/invalid</a>
-      </div>
-      <script>
-        var fn = {
-          routerResolve: route => { console.log('router-resolve');},
-          routeResolve: route => { console.log('route-resolve');},
-          onRouteStart: route => { console.log('on-route-start');},
-          onHttpStart: route => { console.log('on-http-start');},
-          onHttpEnd: response => { console.log('on-http-end');},
-          onRouteEnd: route => { console.log('on-route-end');}
-        }
-      </script>
+<mce-router base-path="/callbacks"
+  resolve-func="fn.routerResolve(route)"
+  on-route-start="fn.onRouteStart(route)"
+  on-route-end="fn.onRouteEnd(route)"
+  on-http-start="fn.onHttpStart(route)"
+  on-http-end="fn.onHttpEnd(response)">
+  <mce-route path="/page1" import="test/page1.html" no-cache resolve-func="fn.routeResolve(route)"></mce-route>
+  <mce-route path="/page2" import="test/page2.html"></mce-route>
+  <mce-route path="/not-found" import="test/not-found.html"></mce-route>
+  <mce-route path="" redirect="/page1"></mce-route>
+</mce-router>
+<div>
+  <a href="#/callbacks/page1">#/callbacks/page1</a>
+  <a href="#/callbacks/page2">#/callbacks/page2</a>
+  <a href="#/callbacks/invalid">#/callbacks/invalid</a>
+</div>
+<script>
+  var fn = {
+    routerResolve: route => { console.log('router-resolve');},
+    routeResolve: route => { console.log('route-resolve');},
+    onRouteStart: route => { console.log('on-route-start');},
+    onHttpStart: route => { console.log('on-http-start');},
+    onHttpEnd: response => { console.log('on-http-end');},
+    onRouteEnd: route => { console.log('on-route-end');}
+  }
+</script>
 
-<!--
-<iframe src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
-<iframe src="https://embed.plnkr.co/FOLOB9?show=preview"></iframe>
-<iframe src="https://embed.plnkr.co/iyCwi9?show=preview"></iframe>
--->

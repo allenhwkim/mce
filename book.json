@@ -5,10 +5,20 @@
   "author": "Allen Kim<allenhwkim@gmail.com>",
   "language": "en",
   "root": "./docs",
-  "plugins": ["scripts"],
+  "plugins": ["scripts", "github-buttons"],
   "pluginsConfig": {
     "scripts" : {
       "files": []
+    },
+    "github-buttons": {
+      "buttons": [
+        {
+          "user": "allenhwkim",
+          "repo": "mce",
+          "type": "star",
+          "size": "large"
+        }
+      ]    
     }
   }
 }

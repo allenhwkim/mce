@@ -50,8 +50,6 @@ By simply adding the following `<script>` tag to your html, you are ready to go.
 Just use it in your html. No other step is required.
 
     <mce-text-field label="Simple"></mce-text-field>
-    
-[Try it on plunker](http://embed.plnkr.co/fPJyo4/)
 
 <!--
   * TODO

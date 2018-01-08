@@ -16,9 +16,7 @@ A router has div.router-html to show the path-related contents.
 </mce-router>
 ``` 
 
-<p datmce-height="300" datmce-theme-id="32189" datmce-slug-hash="BJmaeb" datmce-default-tab="html,result" datmce-user="allenhwkim" datmce-embed-version="2" datmce-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-
+ <iframe frameborder="no" width="100%" height="300" src="https://embed.plnkr.co/DiFMep?show=preview"></iframe>
 
 ### `mce-router` atttibutes
  |name          |value     |description                                                  |
