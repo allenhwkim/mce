@@ -44,6 +44,10 @@ By simply adding the following `<script>` tag to your html, you are ready to go.
 
     <script defer src="https:/unpkg.com/mce"></script>
 
+**For NodeJS users**, install `mce` package 
+
+    npm install mce --save-dev
+
 **Optionally**, and for better design, you can add Google Roboto font, Material Design Icons, and/or, Font-Awesome icons.
 
     <link rel="stylesheet" href="https:/fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
