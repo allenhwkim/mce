@@ -20,7 +20,7 @@
       .container { padding: 12px; }
       .page { position: relative; overflow: auto; width: 360px; height: 640px; border: 2px solid;}
       mce-router {height: calc(100% - 112px);overflow: auto;}
-      .ce-desktop > mce-router { height: calc(100% - 56px); margin-left: 320px; }
+      .mce-desktop > mce-router { height: calc(100% - 56px); margin-left: 320px; }
       .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
       .float-right { float: right; }
       .float-left { float: left; }
@@ -31,7 +31,7 @@
         Array.from(document.querySelectorAll('.page')).forEach(el => {
           el.style.width = w + 'px'; 
           el.style.height = h + 'px';
-          (w >= 1024) ? el.classList.add('ce-desktop') : el.classList.remove('ce-desktop');
+          (w >= 1024) ? el.classList.add('mce-desktop') : el.classList.remove('mce-desktop');
         })
       }
       function onRouteEnd(route) {
