@@ -6,9 +6,10 @@
 <script type="module" src="../index.js"></script>
 <link id="mce-css" rel="stylesheet" href="../index.css">
 <style>
-body {max-width: 1024px; margin: 0 auto; font-family: Roboto;} 
+body {max-width: 600px; margin: 0 auto; font-family: Roboto, sans-serif} 
 .container {position: relative; padding: 12px; min-height: 82px; }
 .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+.positioned { width: 250px; display:inline-block; position: relative; height: 150px;}
 </style>  
 
 <!-- xppZrL -->
@@ -24,15 +25,39 @@ body {max-width: 1024px; margin: 0 auto; font-family: Roboto;}
   </mce-menu>
 </div>
 
-<h3>shortcut</h3>
-<div style="display:inline-block; position: relative">
-  <button onclick="this.nextElementSibling.open()">Show/Hide Menu</button>
-  <mce-menu id="demo-menu" position="bottom-left">
+<h3>Menu Positions</h3>
+
+<div class="positioned">
+  <button onclick="this.nextElementSibling.open()">Bottom Left</button>
+  <mce-menu id="demo-menu" position="bottom-left" class="mce-visible">
     <mce-nav-item shortcut="alt-a">nav item text</mce-nav-item>
-    <hr>
     <mce-nav-item class="mce-disabled" shortcut="alt-b">nav item text</mce-nav-item>
-    <mce-nav-item shortcut="alt-c">nav item text</mce-nav-item>
-    <mce-nav-item shortcut="alt-d">nav item text</mce-nav-item>
+  </mce-menu>
+</div>
+
+<div class="positioned" style="text-align: right">
+  <button onclick="this.nextElementSibling.open()">Bottom Right</button>
+  <mce-menu id="demo-menu" position="bottom-right" class="mce-visible">
+    <mce-nav-item shortcut="alt-a">nav item text</mce-nav-item>
+    <mce-nav-item class="mce-disabled" shortcut="alt-b">nav item text</mce-nav-item>
+  </mce-menu>
+</div>
+
+<div class="positioned"> 
+  <br/><br/><br/><br/><br/><br/><br/><br/>
+  <button onclick="this.nextElementSibling.open()">Top Left</button>
+  <mce-menu id="demo-menu" position="top-left" class="mce-visible">
+    <mce-nav-item shortcut="alt-a">nav item text</mce-nav-item>
+    <mce-nav-item class="mce-disabled" shortcut="alt-b">nav item text</mce-nav-item>
+  </mce-menu>
+</div>
+
+<div class="positioned" style="text-align: right">
+  <br/><br/><br/><br/><br/><br/><br/><br/>
+  <button onclick="this.nextElementSibling.open()">Top Right</button>
+  <mce-menu id="demo-menu" position="top-right" class="mce-visible">
+    <mce-nav-item shortcut="alt-a">nav item text</mce-nav-item>
+    <mce-nav-item class="mce-disabled" shortcut="alt-b">nav item text</mce-nav-item>
   </mce-menu>
 </div>
 

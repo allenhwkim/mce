@@ -19,23 +19,17 @@ mce-menu.mce-visible {
 }
 mce-menu[position=bottom-right] {
   right: 0px
-  /*right: 16px;*/
-  /*top: 48px;*/
 }
 mce-menu[position=bottom-left] {
   left: 0px;
-  /*left: 16px;*/
-  /*top: 48px;*/
 }
 mce-menu[position=top-right] {
   right: 0px;
-  /*right: 16px;*/
-  /*bottom: 48px;*/
+  bottom: 0px;
 }
 mce-menu[position=top-left] {
   left: 0px;
-  /*left: 16px;*/
-  /*bottom: 48px;*/
+  bottom: 0px;
 }
 mce-menu hr, 
 mce-menu .mce-divider {

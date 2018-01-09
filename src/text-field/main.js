@@ -6,17 +6,17 @@
    *
    * ###  Example
    * ```
-   * <mce-text-field disabled
+   * <mce-text-field disabled multi-line
    *   icon="favorite"
    *   helper-text="this is helper text"
    *   label="this is label"
-   *   maxlength -> word-counter
-   *   minlength -> word-counter
+   *   maxlength="100"
+   *   minlength="10"
    *   minlength-error="invalid text min. length"
    *   maxlength-error="invalid text max. length"
    *   optional="(optional)"
    *   pattern-error="invalid text pattern"
-   *   pattern=""
+   *   pattern="[a-z]+"
    *   placeholder="this is hint text"
    *   prefix="$"
    *   readonly
@@ -24,7 +24,7 @@
    *   suffix="dollars"></mce-text-field>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="BJJjwe" data-default-tab="html,result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p data-height="600" data-theme-id="32189" data-slug-hash="BJJjwe" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * 
@@ -32,10 +32,7 @@
    *  |name|value|description|
    *  |---|---|---|
    *  |disabled| |Disabled Status. No interaction is allowed with this status.
-   *  |empty | |Indicating that the field is empty. When empty, helper text is shown. When not empty and errorneous, error message is shown.
-   *  |invalid | |Indicating that the field is errorneous. With this status, error message is shown if given.
-   *  |active| |Indicating the input field is focused and active by minimizing label and showing placeholder text.
-   *  |dirty| |Indicating user has entered any input to this field. Error message is only displayed when it is dirty status.
+   *  |multi-line| | Allows multi-line input
    *  |icon| text |Icon name that will be located on the left-side. e.g. credit_card
    *  |label| text |Label text that will be displayed when not active, and minized when active.
    *  |optional| text |Text to be appended at the lable indicating it is optional. Default. "(optional)"
@@ -54,6 +51,14 @@
    *  and it affects the actual input. Sometime this can cause some strange behaviour, 
    *  but it's up to user without blocking it. For example `type="range"` is not for text field, but still
    *  working without error.
+   *  
+   * ### `mce-text-field` Classes
+   *  |name|description|
+   *  |---|---|
+   *  |mce-empty | Indicating that the field is empty. When empty, helper text is shown. When not empty and errorneous, error message is shown.
+   *  |mce-invalid | Indicating that the field is errorneous. With this status, error message is shown if given.
+   *  |mce-active| Indicating the input field is focused and active by minimizing label and showing placeholder text.
+   *  |mce-dirty| Indicating user has entered any input to this field. Error message is only displayed when it is dirty status.
    */
   class TextField extends HTMLElement {
     connectedCallback() {
@@ -65,7 +70,7 @@
     }
 
     /**
-     * @returns disabled status
+     * @returns {boolean} disabled status
      */
     get disabled() {
       return this.getAttribute('disabled') !== '';
@@ -74,13 +79,26 @@
     /**
      * set disabled status
      * @param {boolean} true of false
+     * @returns {void}
      */
     set disabled(disabled) {
       disabled ? this.setAttribute('disabled', '') : this.removeAttribute('disabled');
     }
 
     /**
-     * @returns registered error messages
+     * @returns {Object} registered error messages. e.g., <pre>
+     *  {
+     *    rangeUnderflow: 'invalid min.value',
+     *    rangeOverflow: 'invalid max.value',
+     *    stepMismatch: 'invalid value(step)',
+     *    tooShort:  'invalid min. length',
+     *    tooLong: 'invalid max. length',
+     *    patternMismatch: 'invalid input text',
+     *    valueMissing: 'this field is requierd',
+     *    typeMismatch:  'invalid input for type email',
+     *    customError: 'invaid input(custom error)',
+     *    invalidError: 'invaid input'
+     *  } </pre>
      */
     get errorMessages() {
       let errorMessages = this.__cachedErrorMessages || {

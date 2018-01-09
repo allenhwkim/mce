@@ -16,7 +16,8 @@
           "user": "allenhwkim",
           "repo": "mce",
           "type": "star",
-          "count": "true"
+          "count": true,
+          "size": "medium"
         }
       ]    
     }
