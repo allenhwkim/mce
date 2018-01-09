@@ -39,18 +39,17 @@ Menus display a list of choices on a transient sheet of material.
 
 
 * [Menu](#Menu)
-    * [.open()](#Menu+open) ⇒
-    * [.close()](#Menu+close)
+    * [.open()](#Menu+open) ⇒ void
+    * [.close()](#Menu+close) ⇒ void
 
 <a name="Menu+open"></a>
 
-### menu.open() ⇒
+### menu.open() ⇒ void
 open the menu by adding `visible` class
 when a menu is opening, all other menus are closed
 
-**Returns**: null  
 <a name="Menu+close"></a>
 
-### menu.close()
+### menu.close() ⇒ void
 close the menu by removing `visible` class
 

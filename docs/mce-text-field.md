@@ -63,14 +63,19 @@ Text fields allow users to input, edit, and select text. Text fields typically r
 
 
 * [TextField](#TextField)
-    * [.disabled](#TextField+disabled) ⇒ boolean
+    * [.disabled](#TextField+disabled)
     * [.disabled](#TextField+disabled) ⇒ void
     * [.errorMessages](#TextField+errorMessages) ⇒ Object
 
 <a name="TextField+disabled"></a>
 
-### textField.disabled ⇒ boolean
-**Returns**: boolean - disabled status  
+### textField.disabled
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| disabled | boolean | disabled status |
+
 <a name="TextField+disabled"></a>
 
 ### textField.disabled ⇒ void

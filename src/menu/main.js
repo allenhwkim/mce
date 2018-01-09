@@ -56,7 +56,7 @@ import {observeAttrChange} from '../mce-util.js';
     /**
      * open the menu by adding `visible` class
      * when a menu is opening, all other menus are closed
-     * @returns null
+     * @returns {void}
      */
     open() {
       // show only this
@@ -74,6 +74,7 @@ import {observeAttrChange} from '../mce-util.js';
 
     /**
      * close the menu by removing `visible` class
+     * @returns {void}
      */
     close(event) {
       if (!this.justShown && !this.contains(event.target)) { // if not clicked on menu

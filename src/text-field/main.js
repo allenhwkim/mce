@@ -70,7 +70,7 @@
     }
 
     /**
-     * @returns {boolean} disabled status
+     * @property {boolean} disabled - disabled status
      */
     get disabled() {
       return this.getAttribute('disabled') !== '';
