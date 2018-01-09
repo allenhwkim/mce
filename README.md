@@ -1,15 +1,17 @@
 <a href="https://mymce.github.io" target="_blank"><img src="logo.png" alt="MCE" height="200"></a>
 ## Materialized Custom Element 
 
-1. Small and fast(Less than 6KB gzipped).
+1. Small and fast(Less than 9KB gzipped).
 2. No depenancy on framework or library. Vanilla JS only.
 3. Common-sense engineering; Element itself(not JS object) has properties and functions.
-4. Synchronous reaction by element and its attributes changes.
-5. Easy theme settings by using a collection of `:root` variables.
 
 It follows specification of 
 [custom element](https:/developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)
 and [material design](https:/material.io/guidelines/components/).
+
+Articles
+  * [Back To Element](https://medium.com/allenhwkim/back-to-element-c4aecf3c6b64)
+  * [SPA Building with MCE](https://medium.com/allenhwkim/simple-spa-building-with-mce-f507e5f0236)
 
 <img width="200" align="left" src="https://user-images.githubusercontent.com/1437734/34587997-b9bf1a96-f178-11e7-9e4e-5c813b1f7a24.png">
 <img width="200" align="left" src="https://user-images.githubusercontent.com/1437734/34582267-58f40968-f161-11e7-8acc-c2a1406b1be2.png">
@@ -26,6 +28,7 @@ and [material design](https:/material.io/guidelines/components/).
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582617-88a795d4-f162-11e7-944c-5ddc0913e0e4.png">
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582452-d4dce9e6-f161-11e7-9130-70fe11636137.png">
 <img height="40" align="" src="https://user-images.githubusercontent.com/1437734/34582297-6c07a668-f161-11e7-963f-7bd0eeb6cb89.png">
+
 
 ### NEW! 
  #### mce-router
