@@ -52,14 +52,11 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
 
     get import() {
       let url, attrFn, attr = this.getAttribute('import');
-      if (attr) {
-        if (attr.match(/\.html$/)) {
-          url = attr;
-        } else {
-          attrFn = new Function('return ' +attr);
-          url = attrFn();
-          //console.log('attrFn', attrFn, 'attr', attr, 'url', url);
-        }
+      if (attr && attr.match(/\(.*\)/)) {
+        attrFn = new Function('return ' +attr);
+        url = attrFn();
+      } else {
+        url = attr;
       }
       return url;
     }
@@ -134,6 +131,7 @@ import {getScopedObj, setInnerHTML} from '../../mce-util.js';
       }).catch(error => {
         this.router.debug && console.error('routing-error', error);
         this.router.showLoadingEl(false);
+        throw error;
       })
     }
 
