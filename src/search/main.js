@@ -35,16 +35,19 @@ import {observeAttrChange} from '../mce-util.js';
   class Search extends HTMLElement {
     connectedCallback() {
       this.regroupedOnce = false;
+      this.inputEl;
+      this.inputWrapper;
       this._regroupElements();
-      this._addEventListeners();
+      setTimeout(_ => {
+        this.inputWrapper = this.querySelector('.mce-input-wrapper');
+        this.inputEl = this.querySelector('input');
+        this._addEventListeners();
+      })
     }
 
    close() {
-      let inputWrapper = this.querySelector('.mce-input-wrapper');
-      let inputEl = this.querySelector('input');
-
-      inputEl.value = '';
-      inputWrapper.classList.remove('mce-visible');
+      this.inputEl.value = '';
+      this.inputWrapper.classList.remove('mce-visible');
     }
 
     _regroupElements() {
@@ -58,20 +61,18 @@ import {observeAttrChange} from '../mce-util.js';
     _addEventListeners() {
       let searchIcon = this.querySelector('label');
       let clearIcon = this.querySelector('.mce-clear');
-      let inputEl = this.querySelector('input');
-      let inputWrapper = this.querySelector('.mce-input-wrapper');
 
       // when search icon is clicked, show input field
       searchIcon.addEventListener('mouseup', this._showInputField.bind(this));
       searchIcon.addEventListener('touchend', this._showInputField.bind(this));
 
       searchIcon.addEventListener('keydown', _ => {
-        (event.key === ' ' || event.key === 'Enter') && inputWrapper.classList.toggle('visible');
+        (event.key === ' ' || event.key === 'Enter') && this.inputWrapper.classList.toggle('visible');
       });
 
       // when input is not focused, hide input field
-      inputEl.addEventListener('blur', _ => this.close());
-      inputEl.addEventListener('keydown', event => {
+      this.inputEl.addEventListener('blur', _ => this.close());
+      this.inputEl.addEventListener('keydown', event => {
         (event.key === 'Enter') && this._executeOnSearch();
       })
 
@@ -84,31 +85,26 @@ import {observeAttrChange} from '../mce-util.js';
     }
 
     _showInputField(event) {
-      let inputEl = this.querySelector('input');
-      let inputWrapper = this.querySelector('.mce-input-wrapper');
-
-      if (inputWrapper.classList.contains('mce-visible') && inputEl.value) {
+      if (this.inputWrapper.classList.contains('mce-visible') && this.inputEl.value) {
         let customEvent = new CustomEvent('search', event);
         this.dispatchEvent(customEvent);
       } else {
-        inputWrapper.classList.toggle('mce-visible');
-        setTimeout(_ => inputEl.focus());
+        this.inputWrapper.classList.toggle('mce-visible');
+        setTimeout(_ => this.inputEl.focus());
       }
     }
 
     _clearInputField(event) {
-      let inputEl = this.querySelector('input');
-      inputEl.focus();
-      inputEl.value='';
+      this.inputEl.focus();
+      this.inputEl.value='';
       event.preventDefault();
     }
 
     _executeOnSearch() {
-      let inputEl = this.querySelector('input');
-      if (inputEl.value) {
+      if (this.inputEl.value) {
         let onSearch = this.getAttribute('on-search');
         let func = new Function('keyword', onSearch);
-        func(inputEl.value);
+        func(this.inputEl.value);
       }
     }
 

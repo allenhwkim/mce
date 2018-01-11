@@ -41,6 +41,9 @@ mce-nav-drawer .mce-contents .mce-top-header {
   background-color: var(--theme-color-600, #757575);
   color: var(--theme-text-color-0, #ffffff);
 }
+mce-nav-drawer .mce-contents .mce-top-header * {
+  vertical-align: middle;
+}
 mce-nav-drawer .mce-contents .mce-title {
   padding: 8px 16px;
 }
