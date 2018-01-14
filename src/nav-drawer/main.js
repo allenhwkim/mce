@@ -45,6 +45,7 @@ import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
       if (window.ce && window.ce.resizeHandler) {} else {
         window.ce = {resizeHandler: windowResizeHandler};
         window.addEventListener('resize', window.ce.resizeHandler);
+        window.addEventListener('load', window.ce.resizeHandler);
       }
       setTimeout(_ => {
         this.regroupedOnce = false;

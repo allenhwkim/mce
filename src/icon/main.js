@@ -37,9 +37,11 @@
    */
   class Icon extends HTMLElement {
     connectedCallback() {
-      this._setImageIcon(); // if img attribute given, set image icon
-      this.clickListener = this._onClick.bind(this);
-      this._addEventListener();
+      setTimeout(_ => {
+        this._setImageIcon(); // if img attribute given, set image icon
+        this.clickListener = this._onClick.bind(this);
+        this._addEventListener();
+      })
     }
 
     disconnectedCallback() {
@@ -66,11 +68,11 @@
       let imgSrc = this.getAttribute('img');
 
       if (isMDIcon) {
-        this.innerHTML = iconText;
+        this.innerHTML = `<i class="material-icons">${iconText}</i>`;
       } else if (isFAIcon) {
         this.innerHTML = `<i class="fa ${iconText}"></i>`;
       } else if (imgSrc) {
-        this.innerHTML = 'photo';
+        this.innerHTML = '<i>photo</i>';
         this.style.backgroundImage = `url(${imgSrc})`;
       }
     }

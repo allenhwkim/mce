@@ -7,7 +7,7 @@
     "clean": "rm -rf dist",
     "build": "npm-run-all clean build:js build:css",
     "build:js": "webpack src/index.js --output-filename=dist/mce.js && uglifyjs dist/mce.js -m -c > dist/mce.min.js ",
-    "build:css": "ls src/*/style.css && uglifycss src/*/style.css > dist/mce.min.css && cp -r src/themes dist",
+    "build:css": "ls src/*/style.css && cat src/*/style.css > dist/mce.css && uglifycss dist/mce.css > dist/mce.min.css && cp -r src/themes dist",
     "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
     "start": "http-serve",
     "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
