@@ -18,6 +18,7 @@ jsdoc2md src/switch/main.js --partial docs/templates/*.hbs  > docs/mce-switch.md
 jsdoc2md src/tabs/main.js --partial docs/templates/*.hbs  > docs/mce-tabs.md
 jsdoc2md src/text-field/main.js --partial docs/templates/*.hbs  > docs/mce-text-field.md
 jsdoc2md src/tooltip/main.js --partial docs/templates/*.hbs  > docs/mce-tooltip.md
+jsdoc2md src/blocker/main.js --partial docs/templates/*.hbs  > docs/mce-blocker.md
 
 jsdoc2md src/leaflet/src/leaflet.js --partial docs/templates/*.hbs  > docs/mce-leaflet.md
 jsdoc2md src/leaflet/src/marker.js --partial docs/templates/*.hbs  > docs/mce-marker.md
