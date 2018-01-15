@@ -22,6 +22,7 @@
    * [mce-text-field](mce-text-field.md)
    * [mce-tooltip](mce-tooltip.md)
    * [mce-blocker](mce-blocker.md)
+   * [mce-snackbar](mce-snackbar.md)
 
  * Custom Elements
    * [mce-router](mce-router.md)

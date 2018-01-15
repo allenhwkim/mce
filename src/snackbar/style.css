@@ -1,0 +1,31 @@
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: var(--theme-height-bottom-nav-bar, 56px); opacity: 1;}
+}
+
+@keyframes fadeout {
+  from {bottom: var(--theme-height-bottom-nav-bar, 56px); opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+mce-snackbar {
+  visibility: hidden;
+  display: block;
+  position: fixed;
+  padding: 14px 24px;
+  min-width: 288px;
+  max-width: 568px;
+  background-color: #323232;
+  font-size: 14px;
+  margin: 0 auto;
+  border-radius: 2px; /* Rounded borders */
+  color: #fff; /* White text color */
+  bottom: var(--theme-height-bottom-nav-bar, 56px);
+  z-index: 6;
+  text-align: center;
+}
+
+mce-snackbar.mce-visible {
+  visibility: visible;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}

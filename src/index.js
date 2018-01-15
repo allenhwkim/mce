@@ -20,6 +20,7 @@ import './switch/main.js';
 import './tabs/main.js';
 import './text-field/main.js';
 import './tooltip/main.js';
+import './snackbar/main.js';
 
 import './leaflet/src/leaflet.js';
 import './leaflet/src/marker.js';
