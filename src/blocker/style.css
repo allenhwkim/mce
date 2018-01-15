@@ -1,0 +1,8 @@
+mce-blocker {
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+mce-blocker.mce-visible {
+  display: flex;
+}

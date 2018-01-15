@@ -26,6 +26,8 @@ import './leaflet/src/marker.js';
 import './router/src/router.js';
 import './router/src/route.js';
 
+import './blocker/main.js';
+
 (function() {
   let cssIncluded = window.debug ||
     document.querySelector('link[href$="mce.min.css"]') ||
