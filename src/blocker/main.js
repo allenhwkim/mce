@@ -12,7 +12,7 @@
    * </div>
    * ```
    *
-   * <p data-height="300" data-theme-id="32189" data-slug-hash="EobYmr" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce an-app-bar" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/EobYmr/">mce an-app-bar</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+   * <p data-height="300" data-theme-id="32189" data-slug-hash="GyBeMz" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce an-app-bar" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/EobYmr/">mce an-app-bar</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
    *
    * ### `mce-blocker` classes
@@ -28,17 +28,19 @@
 
     open() {
       //works as a blocker
-      let position = window.getComputedStyle(this.parentElement).getPropertyValue("position");
-      let tmp = ['static'].includes(position); // static, relative, fixed, absolute, sticky
+      let elStyle = window.getComputedStyle(this.parentElement);
+      let position = elStyle.getPropertyValue("position");
+      let notPositioned = ['static'].includes(position); // static, relative, fixed, absolute, sticky
       let css = {
         position: 'absolute',
         backgroundColor: 'rgba(0,0,0,0.2)',
-        top: tmp ? this.parentElement.offsetTop + 'px' : '0px',
-        left: tmp ? this.parentElement.offsetLeft + 'px' : '0px',
+        top: notPositioned ? this.parentElement.offsetTop + 'px' : '0px',
+        left: notPositioned ? this.parentElement.offsetLeft + 'px' : '0px',
         width: this.parentElement.offsetWidth + 'px',
-        height: this.parentElement.offsetHeight + 'px'
+        height: this.parentElement.offsetHeight + 'px',
+        borderRadius: elStyle.borderRadius
       };
-      console.log('position', tmp, css);
+
       Object.assign(this.style, css);
       this.classList.add('mce-visible');
     }
