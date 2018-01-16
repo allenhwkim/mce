@@ -14,8 +14,13 @@ body {max-width: 1024px; margin: 0 auto; font-family: Roboto;}
 
 <!-- ?????? -->
 <h3>Simple Snackbar</h3>
-<button onclick="document.querySelector('mce-snackbar').open()">Show snackbar</button>
-<button onclick="document.querySelector('mce-snackbar').open('different message')">Show snackbar with a message</button>
+<button onclick="document.querySelector('mce-snackbar').open('Message has been updated')">
+  Show snackbar 1
+</button>
+<button onclick="document.querySelector('mce-snackbar').open('different message')">
+  Show snackbar with a message 1
+</button>
+
 <div class="mce-container">
-  <mce-snackbar>Message has been updated.</mce-snackbar>
+  <mce-snackbar bottom="0">Message has been updated.</mce-snackbar>
 </div>

@@ -1,11 +1,22 @@
-@keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: var(--theme-height-bottom-nav-bar, 56px); opacity: 1;}
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0,100%,0)  translate(-50%);
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateZ(0) translate(-50%);
+  }
 }
-
-@keyframes fadeout {
-  from {bottom: var(--theme-height-bottom-nav-bar, 56px); opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+@keyframes slideOutDown {
+  from {
+    opacity: 1;
+    transform: translateZ(0) translate(-50%);
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0,100%,0) translate(-50%);
+  }
 }
 
 mce-snackbar {
@@ -17,15 +28,16 @@ mce-snackbar {
   max-width: 568px;
   background-color: #323232;
   font-size: 14px;
-  margin: 0 auto;
   border-radius: 2px; /* Rounded borders */
   color: #fff; /* White text color */
   bottom: var(--theme-height-bottom-nav-bar, 56px);
   z-index: 6;
   text-align: center;
+  transform: translate(-50%);
+  left: 50%;
 }
 
 mce-snackbar.mce-visible {
   visibility: visible;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: slideInUp 0.5s, slideOutDown 0.5s 2.5s;
 }
