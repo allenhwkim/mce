@@ -35,12 +35,21 @@ Articles
    You can build a SPA only with elemement with the help of `mce-router`. `mce-router` changes its contents dynamically
    by url changes.   
    [router example](https://mymce.github.io/mce-router.html)
- #### mce-leaflet
-   Showing a map on your app is as easy as writing HTML with `<mce-leaflet>` tag.  
-   [map example](http://localhost:8080/_book/mce-leaflet.html)  
-   [marker example](http://localhost:8080/_book/mce-marker.html)
    
-    
+ #### mce-leaflet
+   Do you want to show a map with marker and popup. 
+   It's as easy as writing HTML with `<mce-leaflet>` tag.  
+   [map example](https://mymce.github.io/mce-leaflet.html)  
+   [marker example](https://mymce.github.io/mce-marker.html)
+   
+  #### mce-blocker
+   Do you show a loading sign on a specific section. Use `mce-blocker` to show loading sign exactly overlayed on an element.
+   [blocker example](https://mymce.github.io/mce-blocker.html) 
+   
+  #### mce-snackbar
+   Snackbars contain a single line of text directly related to the operation performed
+   [blocker example](https://mymce.github.io/mce-snackbar.html) 
+   
 ## Installation
   
 By simply adding the following `<script>` tag to your html, you are ready to go.
@@ -67,10 +76,10 @@ Just use it in your html. No other step is required.
   * TODO
 
     * Right Drawer(layer 15)
-    * Snackbar(layer 6)
     * Submenu(layer 9+)
     * Datetime Picker(layer 24) with variations of date, month, time, week, and datetime
     * Text Field with masks e.g. (416)222-3333 1,234,567
-    * Test Field with autocomplete(e.g., awesomeplete)
+    * Text Field with autocomplete(e.g., awesomeplete)
+    
 -->
 
