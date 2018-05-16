@@ -1,20 +1,3 @@
-export function addStyleSheet(el, url) {
-  // let id = el.constructor.name.replace(/[mce-Z]/g, function(char, index) {
-  //   return (index !== 0 ? '-' : '') + char.toLowerCase();
-  // });
-  // url = url || `https://unpkg.com/@custom-element/${id}/dist/style.css`;
-
-  // // ce-core.js injects ce-core.css, so no need to load
-  // if (!document.querySelector(`script[src$="mce-core.js"], script[src$="mce-core.min.js"], link.${id}`)) {
-  //   let linkEl = document.createElement('link');
-  //   linkEl.setAttribute('class', id);
-  //   linkEl.setAttribute('rel', "stylesheet");
-  //   linkEl.setAttribute('href', url);
-  //   el.appendChild(linkEl);  //caution, style will be broken if the element is removed
-  //   //document.head.appendChild(linkEl); 
-  // }
-}
-
 export function observeAttrChange(el, callback) {
   var observer = new MutationObserver(mutations => {
     mutations.forEach(mutation => {
@@ -80,13 +63,16 @@ export function getScopedObj(scope, str) {
 export function setInnerHTML(elm, html) {
   elm.innerHTML = html;
   Array.from(elm.querySelectorAll("script")).forEach(function(el) {
+
     let newEl = document.createElement("script");
     Array.from(el.attributes).forEach(function(el) { 
-      newEl.setAttribute(el.name, el.value)
+      newEl.setAttribute(el.name, el.value);
     });
+
     newEl.appendChild(document.createTextNode(el.innerHTML));
     el.parentNode.replaceChild(newEl, el);
-  })
+
+  });
 }
 
 export function windowResizeHandler() {

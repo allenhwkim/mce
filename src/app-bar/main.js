@@ -4,7 +4,7 @@ import {windowResizeHandler} from '../mce-util.js';
   /**
    * The app bar is a special kind of toolbar that’s used for branding, navigation, search, and actions.
    *
-   * [Material Design Spec](https://material.io/guidelines/layout/structure.html#structure-app-bar)
+   * [Material Design Spec](https://material-components.github.io/material-components-web-catalog/#/component/top-app-bar)
    * 
    * ### example
    * ```

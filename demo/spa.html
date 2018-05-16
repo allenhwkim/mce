@@ -7,12 +7,12 @@
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="../src/themes/blue.css">
 
-    <script type="module" src="../src/index.js"></script>
-    <link rel="stylesheet" href="../src/index.css">
-    <!--
+    <!-- <script type="module" src="../src/index.js"></script> -->
+    <!-- <link rel="stylesheet" href="../src/index.css"> -->
     <script src="../dist/mce.js"></script>
     <link rel="stylesheet" href="../dist/mce.min.css">
-    -->
+    <!-- <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.mce.css %>"> -->
+    <!-- <script src="<%= htmlWebpackPlugin.files.chunks.mce.entry %>"></script> -->
 
     <style>
       body { font-family: var(--theme-main-font, 'Roboto'); margin: 0; }
@@ -55,6 +55,7 @@
     <p>
       This is a demo page with custom elements.<br/>
       <button onclick="setDevice(360, 640)">Mobile</button>
+
       <button onclick="setDevice(768, 1024)">Tablet</button>
       <button onclick="setDevice(1024, 768)">Desktop</button>
     </p>

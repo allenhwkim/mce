@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="themes/blue.css">
+
+    <!-- <script type="module" src="index.js"></script> -->
+    <!-- <link rel="stylesheet" href="../src/index.css"> -->
+    <!-- <script src="../dist/mce.js"></script> -->
+    <!-- <link rel="stylesheet" href="../dist/mce.min.css"> -->
+    <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.mce.css %>">
+    <script src="<%= htmlWebpackPlugin.files.chunks.mce.entry %>"></script>
+
+    <style>
+      html, body {margin: 0;}
+      body { font-family: var(--theme-main-font, 'Roboto'); margin: 0; }
+      *, *:before, *:after { box-sizing: border-box; }
+      .container { padding: 12px; }
+      .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
+      .float-right { float: right; }
+      .float-left { float: left; }
+      .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
+      .positioned { width: 250px; display:inline-block; position: relative; height: 150px;}
+
+      #main { margin-left: 320px; position: relative; height: 100vh; overflow: auto;}
+      #view-source { font-size: 14px; background-color: #555; color: #fff; padding: 6px 12px; }
+      #nav-items, #main-contents {height: calc(100vh - 56px); overflow: auto;}
+    </style>
+
+    <script>
+      window.debug=true;
+      function viewSource() {
+        var source = document.querySelector('.mce-router-target').innerHTML;
+        var el = document.querySelector('#view-source pre');
+        el.innerHTML = '';
+        el.appendChild(document.createTextNode(source));
+        document.querySelector('#view-source').style.display='block';
+      }
+      function clearSource() {
+        var el = document.querySelector('#view-source').style.display='none';
+        window.scrollTo(0,0);
+      }
+    </script>
+
+  </head>
+  <body>
+
+    <mce-nav-drawer class="mce-visible">
+      <h2 class="mce-top-header">MCE</h2>
+      <div id="nav-items">
+        <mce-nav-item href="#app-bar" icon="code">App Bar</mce-nav-item>
+        <mce-nav-item href="#blocker" icon="code">Blocker</mce-nav-item>
+        <mce-nav-item href="#bottom-nav-bar" icon="code">Bottom Nav. Bar</mce-nav-item>
+        <mce-nav-item href="#button" icon="code">Buttons</mce-nav-item>
+        <mce-nav-item href="#card" icon="code">Card</mce-nav-item>
+        <mce-nav-item href="#checkbox" icon="code">Checkbox</mce-nav-item>
+        <mce-nav-item href="#chip" icon="code">Chip</mce-nav-item>
+        <mce-nav-item href="#dialog" icon="code">Dialog</mce-nav-item>
+        <mce-nav-item href="#expansion-panel" icon="code">Expansion Panel</mce-nav-item>
+        <mce-nav-item href="#grid-list" icon="code">Grid List</mce-nav-item>
+        <mce-nav-item href="#icon" icon="code">Icons</mce-nav-item>
+        <mce-nav-item href="#leaflet/map" icon="map">Leaflet: Map</mce-nav-item>
+        <mce-nav-item href="#leaflet/marker" icon="map">Leaflet: Marker</mce-nav-item>
+        <mce-nav-item href="#leaflet/popup" icon="map">Leaflet: Popup</mce-nav-item>
+        <mce-nav-item href="#list" icon="code">List</mce-nav-item>
+        <mce-nav-item href="#menu" icon="code">Menu</mce-nav-item>
+        <mce-nav-item href="#nav-drawer" icon="code">Nav. Drawer</mce-nav-item>
+        <mce-nav-item href="#radio-button" icon="code">Radio Button</mce-nav-item>
+        <mce-nav-item href="#refresh-indicator" icon="code">Refresh Indicator</mce-nav-item>
+        <mce-nav-item href="#router" icon="code">Router</mce-nav-item>
+        <mce-nav-item href="#search" icon="code">Search</mce-nav-item>
+        <mce-nav-item href="#snackbar" icon="code">Snackbar</mce-nav-item>
+        <mce-nav-item href="#switch" icon="code">Switch</mce-nav-item>
+        <mce-nav-item href="#tabs" icon="code">Tabs</mce-nav-item>
+        <mce-nav-item href="#text-field" icon="code">Text Field</mce-nav-item>
+        <mce-nav-item href="#tooltip" icon="code">Tooltip</mce-nav-item>
+        <mce-nav-item href="" redirect="app-bar"></mce-route>
+      </div>
+    </mce-nav-drawer>
+
+    <div id="main">
+
+      <mce-app-bar>
+        <div class="mce-nav-icon">
+          <mce-icon onclick="alert('TODO')">menu</mce-icon>
+        </div>
+        <h1 class="mce-title">Materialized Custom Element</h1>
+        <div class="mce-icons">
+          <mce-search on-search="alert('TODO, '+keyword)" class="mce-dark-bg"></mce-search>
+        </div>
+      </mce-app-bar>
+
+      <div id="main-contents" class="container">
+        <mce-router on-route-start="clearSource()">
+          <mce-route id="home" path="home" name="Company Name" import="partials/home.html"></mce-route>
+          <mce-route path="app-bar" import="partials/app-bar.html"></mce-route>
+          <mce-route path="blocker" import="partials/blocker.html"></mce-route>
+          <mce-route path="bottom-nav-bar" import="partials/bottom-nav-bar.html"></mce-route>
+          <mce-route path="button" import="partials/button.html"></mce-route>
+          <mce-route path="card" import="partials/card.html"></mce-route>
+          <mce-route path="checkbox" import="partials/checkbox.html"></mce-route>
+          <mce-route path="chip" import="partials/chip.html"></mce-route>
+          <mce-route path="dialog" import="partials/dialog.html"></mce-route>
+          <mce-route path="expansion-panel" import="partials/expansion-panel.html"></mce-route>
+          <mce-route path="grid-list" import="partials/grid-list.html"></mce-route>
+          <mce-route path="icon" import="partials/icon.html"></mce-route>
+          <mce-route path="/leaflet/map" import="partials/leaflet/map.html"></mce-route>
+          <mce-route path="/leaflet/marker" import="partials/leaflet/marker.html"></mce-route>
+          <mce-route path="/leaflet/popup" import="partials/leaflet/popup.html"></mce-route>
+          <mce-route path="list" import="partials/list.html"></mce-route>
+          <mce-route path="menu" import="partials/menu.html"></mce-route>
+          <mce-route path="nav-drawer" import="partials/nav-drawer.html"></mce-route>
+          <mce-route path="radio-button" import="partials/radio-button.html"></mce-route>
+          <mce-route path="refresh-indicator" import="partials/refresh-indicator.html"></mce-route>
+          <mce-route path="router" import="partials/router.html"></mce-route>
+          <mce-route path="search" import="partials/search.html"></mce-route>
+          <mce-route path="snackbar" import="partials/snackbar.html"></mce-route>
+          <mce-route path="switch" import="partials/switch.html"></mce-route>
+          <mce-route path="tabs" import="partials/tabs.html"></mce-route>
+          <mce-route path="text-field" import="partials/text-field.html"></mce-route>
+          <mce-route path="tooltip" import="partials/tooltip.html"></mce-route>
+          <mce-route path="" redirect="app-bar"></mce-route>
+        </mce-router>
+
+        <button onclick="viewSource()">View Source</button>
+        <div id="view-source"><pre></pre></div>
+      </div>
+    </div>
+
+  </body>
+</html>

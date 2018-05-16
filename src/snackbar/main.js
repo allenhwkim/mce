@@ -42,6 +42,11 @@ import {observeAttrChange} from '../mce-util.js';
       }
     }
 
+    /**
+     * show mce-snackbar by adding `mce-visible` class
+     * @param {string} msg message to show
+     * @returns {void}
+     */
     open(msg) {
       msg && (this.message = msg);
       this.style.bottom  = this.bottom + 'px';
@@ -51,6 +56,10 @@ import {observeAttrChange} from '../mce-util.js';
       }, 3000);
     } 
 
+    /**
+     * close mce-snackbar by removing `mce-visible` class
+     * @returns {void}
+     */
     close() {
       this.classList.remove('mce-visible');
     }

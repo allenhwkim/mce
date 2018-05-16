@@ -202,6 +202,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
           routerPath = parsed.hash.replace('#', '');
         } else {
           parsed = new URL(parsed.hash.replace('#', ''), window.location.origin);
+          // routerPath = parsed.pathname.replace(/^\//,'');
           routerPath = parsed.pathname;
         } 
       } else {

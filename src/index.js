@@ -1,3 +1,5 @@
+import "./index.css"; // it's for webpack
+
 import './mce-polyfill.js';
 import './app-bar/main.js';
 import './bottom-nav-bar/main.js';

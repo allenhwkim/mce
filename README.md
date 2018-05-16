@@ -30,25 +30,25 @@ Articles
 <img height="40" align="" src="https://user-images.githubusercontent.com/1437734/34582297-6c07a668-f161-11e7-963f-7bd0eeb6cb89.png">
 
 
-### NEW! 
- #### mce-router
-   You can build a SPA only with elemement with the help of `mce-router`. `mce-router` changes its contents dynamically
-   by url changes.   
-   [router example](https://mymce.github.io/mce-router.html)
+### Examples
+#### mce-router
+  You can build a SPA only with elemement with the help of `mce-router`. `mce-router` changes its contents dynamically
+  by url changes.   
+  [router example](https://mymce.github.io/mce-router.html)
    
- #### mce-leaflet
-   Do you want to show a map with marker and popup. 
-   It's as easy as writing HTML with `<mce-leaflet>` tag.  
-   [map example](https://mymce.github.io/mce-leaflet.html)  
-   [marker example](https://mymce.github.io/mce-marker.html)
+#### mce-leaflet
+  Do you want to show a map with marker and popup. 
+  It's as easy as writing HTML with `<mce-leaflet>` tag.  
+  [map example](https://mymce.github.io/mce-leaflet.html)  
+  [marker example](https://mymce.github.io/mce-marker.html)
+    
+#### mce-blocker
+  Do you show a loading sign on a specific section. Use `mce-blocker` to show loading sign exactly overlayed on an element.
+  [blocker example](https://mymce.github.io/mce-blocker.html) 
    
-  #### mce-blocker
-   Do you show a loading sign on a specific section. Use `mce-blocker` to show loading sign exactly overlayed on an element.
-   [blocker example](https://mymce.github.io/mce-blocker.html) 
-   
-  #### mce-snackbar
-   Snackbars contain a single line of text directly related to the operation performed
-   [blocker example](https://mymce.github.io/mce-snackbar.html) 
+#### mce-snackbar
+  Snackbars contain a single line of text directly related to the operation performed
+  [blocker example](https://mymce.github.io/mce-snackbar.html) 
    
 ## Installation
   
@@ -72,14 +72,10 @@ Just use it in your html. No other step is required.
 
     <mce-text-field label="Simple"></mce-text-field>
 
-<!--
-  * TODO
+## For Whom With Curiousity
 
-    * Right Drawer(layer 15)
-    * Submenu(layer 9+)
-    * Datetime Picker(layer 24) with variations of date, month, time, week, and datetime
-    * Text Field with masks e.g. (416)222-3333 1,234,567
-    * Text Field with autocomplete(e.g., awesomeplete)
-    
--->
+    $ git clone  https://github.com/allenhwkim/mce.git
+    $ cd mce
+    $ npm i
+    $ npm start # to see all components in development. mode
 
