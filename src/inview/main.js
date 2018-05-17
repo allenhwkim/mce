@@ -74,12 +74,13 @@ import {parseAttributes} from '../utils/index.js';
     /** fires (inview) and (notInview) events when this component is visible or not visible  */
     __handleIntersect(entries, observer) {
       entries.forEach(entry => {
+        console.log('entry.isIntersecting', entry.isIntersecting);
+        let detail = {entry};
         if (entry.isIntersecting) {
           this.__activateTemplate();
-          let event = {target: entry.target, intersectionRatio: entry.intersectionRatio};
-          this.dispatchEvent(new CustomEvent('inview', event));
+          this.dispatchEvent(new CustomEvent('inview', {detail}));
         } else {
-          this.dispatchEvent(new CustomEvent('outview', event));
+          this.dispatchEvent(new CustomEvent('outview', {detail}));
         }
       });
     }
@@ -97,15 +98,16 @@ import {parseAttributes} from '../utils/index.js';
     /**
      * default intersection handler, which sets blur dependes on intersection ratio
      */
-    __defaultInviewHandler(entry) {
+    __defaultInviewHandler(event) {
       if (this.once80PctVisible)        return false;
-        console.log('entry', entry, entry.intersectionRatio);
+      const entry = event.detail.entry;
 
       if (entry.intersectionRatio < 0.8) {
         const opacity = entry.intersectionRatio * (1 / 0.8);
         const blur = 20 - Math.floor(entry.intersectionRatio * 10) * 4;
         const filter = `blur(${blur}px)`;
-        Object.assign(entry.target.style, {opacity, filter});
+        // Object.assign(entry.target.style, {opacity, filter});
+        Object.assign(entry.target.style, {opacity});
       } else {
         entry.target.style.opacity = 1;
         entry.target.style.filter = 'unset';
