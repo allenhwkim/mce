@@ -34,6 +34,7 @@ export function parseAttributes(attributes,  eventsRE = /^on-/) {
   Array.from(attributes).forEach( function(attr) {
     if (attr.name.match(eventsRE)) {
       let eventName = toCamelCase(attr.name.replace(/^on-/,''));
+      console.log('xxxxxxxxxxxxxxxxx', attr);
       events[eventName] = function(event) {
         let func = new Function('event', attr.value);
         return func(event);

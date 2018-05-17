@@ -17,6 +17,7 @@
     <style>
       html, body {margin: 0;}
       body { font-family: var(--theme-main-font, 'Roboto'); margin: 0; }
+      mce-inview {display: block; min-height: 400px; border: 1px dashed #ccc;}
       *, *:before, *:after { box-sizing: border-box; }
       .container { padding: 12px; }
       .clear-both:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0; }
@@ -62,6 +63,7 @@
         <mce-nav-item href="#expansion-panel" icon="code">Expansion Panel</mce-nav-item>
         <mce-nav-item href="#grid-list" icon="code">Grid List</mce-nav-item>
         <mce-nav-item href="#icon" icon="code">Icons</mce-nav-item>
+        <mce-nav-item href="#inview" icon="code">Inview</mce-nav-item>
         <mce-nav-item href="#leaflet/map" icon="map">Leaflet: Map</mce-nav-item>
         <mce-nav-item href="#leaflet/marker" icon="map">Leaflet: Marker</mce-nav-item>
         <mce-nav-item href="#leaflet/popup" icon="map">Leaflet: Popup</mce-nav-item>
@@ -107,6 +109,7 @@
           <mce-route path="expansion-panel" import="partials/expansion-panel.html"></mce-route>
           <mce-route path="grid-list" import="partials/grid-list.html"></mce-route>
           <mce-route path="icon" import="partials/icon.html"></mce-route>
+          <mce-route path="inview" import="partials/inview.html"></mce-route>
           <mce-route path="/leaflet/map" import="partials/leaflet/map.html"></mce-route>
           <mce-route path="/leaflet/marker" import="partials/leaflet/marker.html"></mce-route>
           <mce-route path="/leaflet/popup" import="partials/leaflet/popup.html"></mce-route>

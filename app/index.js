@@ -28,6 +28,7 @@ import '../src/router/src/router.js';
 import '../src/router/src/route.js';
 
 import '../src/blocker/main.js';
+import '../src/inview/main.js';
 
 (function() {
   let cssIncluded = window.debug ||

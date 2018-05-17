@@ -30,6 +30,7 @@ import './router/src/router.js';
 import './router/src/route.js';
 
 import './blocker/main.js';
+import './inview/main.js';
 
 (function() {
   let cssIncluded = window.debug ||
