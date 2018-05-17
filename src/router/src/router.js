@@ -1,6 +1,5 @@
 import '../../mce-polyfill.js';
 import './route.js';
-import {getScopedObj} from '../../mce-util.js';
 import {defaultLoadingHTML} from './default-loading-html.js';
 
 ( function() {

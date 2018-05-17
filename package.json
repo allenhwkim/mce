@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
   },
   "repository": {

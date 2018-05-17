@@ -1,5 +1,5 @@
 import '../../mce-polyfill.js';
-import {getScopedObj, setInnerHTML} from '../../mce-util.js';
+import {setInnerHTML} from '../../utils/index.js';
 
 (function() {
   /**

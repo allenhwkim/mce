@@ -1,4 +1,4 @@
-import {observeAttrChange} from '../mce-util.js';
+import {observeAttrChange} from '../utils/index.js';
 
 ( function() {
   const HTML = `

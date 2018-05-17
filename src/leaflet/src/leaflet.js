@@ -1,5 +1,5 @@
-import {observeAttrChange} from '../../mce-util.js';
-import {util} from './leaflet-util.js';
+import {observeAttrChange, parseAttributes, callSetMethod, waitUntil} from '../../utils/index.js'
+import {resolveLatLng} from './leaflet-util.js';
 
 /**
  * @description
@@ -48,11 +48,11 @@ class LeafletMap extends HTMLElement{
     }
     this.loadLibrary()
       .then(L => { // set options and events
-        let attrOptions = util.attrs2Options(this.attributes);
-        this.options = Object.assign(this.options, attrOptions);
-        this.events = util.attrs2Events(this.attributes);
+        let parsedAttrs = parseAttributes(this.attributes);
+        this.options = Object.assign(this.options, parsedAttrs.options);
+        this.events = parsedAttrs.events;
       })
-      .then(_ => util.resolveLatLng(this.options.center))
+      .then(_ => resolveLatLng(this.options.center))
       .then(latlng => {
         this.options.center = latlng;
 
@@ -84,17 +84,17 @@ class LeafletMap extends HTMLElement{
 
   // run setXXX if defined when attribute value changes
   onAttrChange(name, val) {
-    util.handleAttrChange(name, val, this.map, {
-      center: val => {
-        if (typeof val === 'string') {
-          util.resolveLatLng(val).then(latlng => {
-            this.map.setView(latlng, this.map.getZoom())
-          });
-        } else {
-          this.map.setView(val, this.map.getZoom())
-        }
+    if (name === 'center') {
+      if (typeof val === 'string') {
+        resolveLatLng(val).then(latlng => {
+          this.map.setView(latlng, this.map.getZoom())
+        });
+      } else {
+        this.map.setView(val, this.map.getZoom())
       }
-    });
+    } else if (!['class', 'tabindex', 'style'].includes(name)) {
+      callSetMethod(this.map, name, val);
+    };
   }
 
   loadLibrary(){
@@ -113,7 +113,7 @@ class LeafletMap extends HTMLElement{
       document.querySelector('head').appendChild(el);
     }
 
-    return util.waitUntil(_ => window.L); // this returns a promisse
+    return waitUntil(_ => window.L); // this returns a promisse
   }
 
 }

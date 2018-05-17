@@ -1,4 +1,4 @@
-import {windowResizeHandler} from '../mce-util.js';
+import {windowResizeHandler} from '../utils/index.js';
 
 ( function() {
   /**

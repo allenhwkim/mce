@@ -1,4 +1,4 @@
-import {observeAttrChange, setTabbable} from '../mce-util.js';
+import {observeAttrChange, setTabbable} from '../utils/index.js';
 
 ( function() {
   var iconSVG = `

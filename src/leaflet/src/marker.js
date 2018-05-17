@@ -1,5 +1,5 @@
-import {observeAttrChange} from '../../mce-util.js';
-import {util} from './leaflet-util.js';
+import {observeAttrChange, parseAttributes, callSetMethod} from '../../utils/index.js'
+import {resolveLatLng} from './leaflet-util.js';
 
 /**
  * @description
@@ -57,11 +57,11 @@ class LeafletMarker extends HTMLElement {
 
   initialize(map){
     if (!map) return;
-    let attrOptions = util.attrs2Options(this.attributes);
+    let attrParsed = parseAttributes(this.attributes);
 
-    this.options = Object.assign(this.options, attrOptions);
-    this.events = util.attrs2Events(this.attributes);
-    util.resolveLatLng(this.options.latlng)
+    this.options = Object.assign(this.options, attrParsed.options);
+    this.events = attrParsed.events;
+    resolveLatLng(this.options.latlng)
       .then(latlng => {
         this.mapObj = new L.marker(latlng, this.options);    // set options
         this.mapObj.customElement = this;
@@ -76,11 +76,11 @@ class LeafletMarker extends HTMLElement {
 
   // run setXXX if defined when attribute value changes
   onAttrChange(name, val) {
-    util.handleAttrChange(name, val, this.map, {
-      'latlng': val => {
-        util.resolveLatLng(val).then(latlng => this.mapObj.setLatLng(latlng));
-      }
-    });
+    if (name === 'latlng') {
+      resolveLatLng(val).then(latlng => this.mapObj.setLatLng(latlng));
+    } else if (!['class', 'tabindex', 'style'].includes(name)) {
+      callSetMethod(this.map, name, val);
+    }
   }
 
 }

@@ -1,4 +1,4 @@
-import {animate, setTabbable} from '../mce-util.js';
+import {animate, setTabbable} from '../utils/index.js';
 
 ( function() {
   /**

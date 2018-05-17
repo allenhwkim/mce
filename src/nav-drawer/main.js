@@ -1,4 +1,4 @@
-import {observeAttrChange, windowResizeHandler} from '../mce-util.js';
+import {observeAttrChange, windowResizeHandler} from '../utils/index.js';
 
 ( function() {
   /**

@@ -8,6 +8,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: { mce: './src/index.js' },
+  devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     // filename: '[name].[chunkhash].js'
