@@ -1,4 +1,4 @@
-import '../../mce-polyfill.js';
+import '../mce-polyfill.js';
 import './route.js';
 import {defaultLoadingHTML} from './default-loading-html.js';
 

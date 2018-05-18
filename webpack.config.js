@@ -7,7 +7,10 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: { mce: './src/index.js' },
+  entry: { 
+    mce: './src/index.js',
+    style: './src/index.css' 
+  },
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),

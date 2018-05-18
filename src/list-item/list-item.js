@@ -1,4 +1,4 @@
-import {} from '../utils/index.js';
+import {str2Val} from '../utils/index.js';
 
 (function() {
   /**
@@ -25,6 +25,7 @@ import {} from '../utils/index.js';
     connectedCallback() {
       this.item = null; 
       this.parentListEl = null;
+      this.initialize();
     }
 
     initialize() {
@@ -35,12 +36,13 @@ import {} from '../utils/index.js';
       this.addEventListener('keyup', this.__keyupHandler.bind(this));
       this.addEventListener('focus', this.__focusHandler.bind(this));
       this.addEventListener('blur', this.__blurHandler.bind(this));
+      debugger;
     }
 
     __keydownHandler(event) {
       const keyCode = event.which || event.keyCode;
       const listItems = this.parentListEl.querySelectorAll('mce-list-item');
-      const listItemNdx = listItems.indexOf(this);
+      const listItemNdx = Array.from(listItems).indexOf(this);
       const nextListItem = listItems[listItemNdx + 1] || listItems[0];
       const prevListItem = listItems[listItemNdx - 1] || listItems[listItems.length - 1];
 
@@ -78,15 +80,11 @@ import {} from '../utils/index.js';
     }
 
     __focusHandler(event) {
-      if (this.parentListEl['setFocused']) {
-        this.parentListComp['setFocused']('listItem', true);
-      }
+      this.parentListEl.setFocused && this.parentListEl.setFocused('listItem', true);
     }
 
     __blurHandler(event) {
-      if (this.parentListEl['setFocused']) {
-        this.parentListComp['setFocused']('listItem', blur);
-      }
+      this.parentListEl.setFocused && this.parentListEl.setFocused('listItem', false);
     }
 
   }

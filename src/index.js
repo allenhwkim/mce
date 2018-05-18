@@ -1,37 +1,35 @@
-import "./index.css"; // it's for webpack
-
 import './mce-polyfill.js';
-import './app-bar/main.js';
-import './bottom-nav-bar/main.js';
-import './button/main.js';
-import './card/main.js';
-import './checkbox/main.js';
-import './chip/main.js';
-import './dialog/main.js';
-import './expansion-panel/main.js';
-import './grid-list/main.js';
-import './icon/main.js';
-import './list/main.js';
-import './menu/main.js';
-import './nav-drawer/main.js';
-import './nav-item/main.js';
-import './radio-button/main.js';
-import './refresh-indicator/main.js';
-import './search/main.js';
-import './switch/main.js';
-import './tabs/main.js';
-import './text-field/main.js';
-import './tooltip/main.js';
-import './snackbar/main.js';
+import './app-bar/app-bar.js';
+import './bottom-nav-bar/bottom-nav-bar.js';
+import './button/button.js';
+import './card/card.js';
+import './checkbox/checkbox.js';
+import './chip/chip.js';
+import './dialog/dialog.js';
+import './expansion-panel/expansion-panel.js';
+import './grid-list/grid-list.js';
+import './icon/icon.js';
+import './list/list.js';
+import './menu/menu.js';
+import './nav-drawer/nav-drawer.js';
+import './nav-item/nav-item.js';
+import './radio-button/radio-button.js';
+import './refresh-indicator/refresh-indicator.js';
+import './search/search.js';
+import './switch/switch.js';
+import './tabs/tabs.js';
+import './text-field/text-field.js';
+import './tooltip/tooltip.js';
+import './snackbar/snackbar.js';
 
-import './leaflet/src/leaflet.js';
-import './leaflet/src/marker.js';
-import './router/src/router.js';
-import './router/src/route.js';
+import './leaflet/leaflet.js';
+import './leaflet/marker.js';
+import './router/router.js';
+import './router/route.js';
 
-import './blocker/main.js';
-import './inview/main.js';
-import './list-item/main.js';
+import './blocker/blocker.js';
+import './inview/inview.js';
+import './list-item/list-item.js';
 
 (function() {
   let cssIncluded = window.debug ||

@@ -1,5 +1,5 @@
-import '../../mce-polyfill.js';
-import {setInnerHTML} from '../../utils/index.js';
+import '../mce-polyfill.js';
+import {setInnerHTML} from '../utils/index.js';
 
 (function() {
   /**

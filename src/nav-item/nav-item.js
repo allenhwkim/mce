@@ -2,12 +2,7 @@
   class NavItem extends HTMLElement {
     connectedCallback() {
       this.regroupedOnce = false;
-      this.clickListener = this.setActiveItem.bind(this);
       setTimeout(this._regroupElements.bind(this));
-    }
-
-    disconnectedCallback() {
-      this.removeEventListener('click', this.clickListener);
     }
 
     setActiveItem(event) {
@@ -31,7 +26,7 @@
         if (!this.querySelector('span.text')) {
           this.innerHTML = `<span class="mce-text">${this.innerHTML}</span>`;
         }
-        this.addEventListener('click', this.clickListener);
+        this.addEventListener('click', this.setActiveItem.bind(this));
         this.icon = this.getAttribute('icon');
         this.shortcut = this.getAttribute('shortcut');
         if (this.icon && !this.querySelector('mce-icon')) {

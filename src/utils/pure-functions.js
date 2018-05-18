@@ -13,6 +13,7 @@ export function toCamelCase(str) {
  * 'foo["bar"]' -> 123
  */
 export function str2Val(str, scope=window) {
+  if (!str) return str;
 
   // return JSON-like string value from the given string {a: 1} -> {"a": 1};
   function __jsonize(str) {
@@ -46,7 +47,8 @@ export function str2Val(str, scope=window) {
 
   // Normalize string value
   let expr = str;
-  if (str.match(/^[\+\-]?[0-9\.]+,[ ]*\ ?[\+\-]?[0-9\.]+$/)) {
+  console.log('expr...', expr);
+  if (expr.match(/^[\+\-]?[0-9\.]+,[ ]*\ ?[\+\-]?[0-9\.]+$/)) {
     expr = '[' + str + ']';
   }
   expr = __jsonize(expr);

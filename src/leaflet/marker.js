@@ -1,4 +1,4 @@
-import {observeAttrChange, parseAttributes, callSetMethod} from '../../utils/index.js';
+import {observeAttrChange, parseAttributes, callSetMethod} from '../utils/index.js';
 import {resolveLatLng} from './leaflet-util.js';
 
 /**
