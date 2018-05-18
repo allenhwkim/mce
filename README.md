@@ -4,6 +4,7 @@
 1. Small and fast(Less than 9KB gzipped).
 2. No depenancy on framework or library. Vanilla JS only.
 3. Common-sense engineering; Element itself(not JS object) has properties and functions.
+4. Miniman coding, Very easy to maintain. Take a look at [code](https://github.com/allenhwkim/mce/blob/master/src/app-bar/app-bar.js)
 
 It follows specification of 
 [custom element](https:/developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)
