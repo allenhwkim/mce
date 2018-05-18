@@ -6,7 +6,9 @@
 3. Common-sense engineering; Element itself(not JS object) has properties and functions.
 4. Miniman coding, Very easy to maintain. Take a look at [code](https://github.com/allenhwkim/mce/blob/master/src/app-bar/app-bar.js)
 
-It follows specification of 
+[DEMO](https://rawgit.com/allenhwkim/mce/master/dist/)
+
+It follows specification of
 [custom element](https:/developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements)
 and [material design](https:/material.io/guidelines/components/).
 
@@ -30,36 +32,34 @@ Articles
 <img height="40" align="left" src="https://user-images.githubusercontent.com/1437734/34582452-d4dce9e6-f161-11e7-9130-70fe11636137.png">
 <img height="40" align="" src="https://user-images.githubusercontent.com/1437734/34582297-6c07a668-f161-11e7-963f-7bd0eeb6cb89.png">
 
-
 ### Examples
 #### mce-router
-  You can build a SPA only with elemement with the help of `mce-router`. `mce-router` changes its contents dynamically
-  by url changes.   
+  You don't need Angular, React, or Vue to create a simple SPA with routing capability.
   [router example](https://mymce.github.io/mce-router.html)
    
 #### mce-leaflet
   Do you want to show a map with marker and popup. 
   It's as easy as writing HTML with `<mce-leaflet>` tag.  
-  [map example](https://mymce.github.io/mce-leaflet.html)  
+  [map example](https://mymce.github.io/mce-leaflet.html)
   [marker example](https://mymce.github.io/mce-marker.html)
     
 #### mce-blocker
   Do you show a loading sign on a specific section. Use `mce-blocker` to show loading sign exactly overlayed on an element.
   [blocker example](https://mymce.github.io/mce-blocker.html) 
+
+#### mce-inview
+  Your page scrolls, and you don't want to load all elements that are not inviewport.
+  [inview example](https://rawgit.com/allenhwkim/mce/master/dist/#inview)
    
-#### mce-snackbar
-  Snackbars contain a single line of text directly related to the operation performed
-  [blocker example](https://mymce.github.io/mce-snackbar.html) 
-   
+#### mce-list-item
+  You have list, and you want to click, navigate, select with keyboard/mouse.
+  [list item example](https://rawgit.com/allenhwkim/mce/master/dist/#list-item)
+
 ## Installation
   
 By simply adding the following `<script>` tag to your html, you are ready to go.
 
     <script defer src="https:/unpkg.com/mce"></script>
-
-**For NodeJS users**, install `mce` package 
-
-    npm install mce --save-dev
 
 **Optionally**, and for better design, you can add Google Roboto font, Material Design Icons, and/or, Font-Awesome icons.
 
@@ -80,3 +80,6 @@ Just use it in your html. No other step is required.
     $ npm i
     $ npm start # to see all components in development. mode
 
+**For NodeJS users**, install `mce` package 
+
+    npm install mce --save-dev
