@@ -235,7 +235,7 @@ import {defaultLoadingHTML} from './default-loading-html.js';
       return function(param) {
         let func = new Function(paramName, funcStr);
         return Promise.resolve(func(param));
-      }
+      };
     }
   }
   customElements.define('mce-router', Router); //name, class

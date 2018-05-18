@@ -45,9 +45,9 @@ import {observeAttrChange, setTabbable} from '../utils/index.js';
          inputEl.setAttribute(attr.name, attr.value);
          (attr.name === 'id') && this.setAttribute('id', 'mce-radio-button-'+attr.value);
         }
-      })
+      });
       this.appendChild(inputEl);
-      this.insertAdjacentHTML('beforeend', iconSVG)
+      this.insertAdjacentHTML('beforeend', iconSVG);
       return inputEl;
     }
 

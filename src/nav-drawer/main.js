@@ -81,7 +81,7 @@ import {observeAttrChange, windowResizeHandler} from '../utils/index.js';
 
         Array.from(this.children).forEach(el => {
           if (!el.isSameNode(contentsEl) && !el.isSameNode(pageBlockerEl)) {
-            contentsEl.appendChild(el)
+            contentsEl.appendChild(el);
           }
         });
         this.addEventListener('close', _ => this.close()); //child can fire close. then close it

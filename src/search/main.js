@@ -42,7 +42,7 @@ import {observeAttrChange} from '../utils/index.js';
         this.inputWrapper = this.querySelector('.mce-input-wrapper');
         this.inputEl = this.querySelector('input');
         this._addEventListeners();
-      })
+      });
     }
 
    close() {
@@ -74,7 +74,7 @@ import {observeAttrChange} from '../utils/index.js';
       this.inputEl.addEventListener('blur', _ => this.close());
       this.inputEl.addEventListener('keydown', event => {
         (event.key === 'Enter') && this._executeOnSearch();
-      })
+      });
 
       // when clear is pressed, clear input field
       clearIcon.addEventListener('mouseup', this._clearInputField.bind(this));

@@ -37,18 +37,6 @@ import {parseAttributes} from '../utils/index.js';
    */
   class Inview extends HTMLElement {
     connectedCallback() {
-      this.options = {};
-      this.events = {};
-      observeAttrChange(this, (attr, val) => {
-        if (attr == 'class' && this.classList.contains('visible')) {
-          this.open();
-        }
-      });
-      this.hideMenu = this.close.bind(this); // so that hideMenu can be done from outside
-      this._addEventListener();
-    }
-
-    connectedCallback() {
       this.options = {threshold: [.1, .2, .3, .4, .5, .6, .7, .8]}; // default IntersetionObserver options
       this.events = {};
       this.once80PctVisible = false;

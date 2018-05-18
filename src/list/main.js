@@ -1,3 +1,5 @@
+import {parseAttributes} from '../utils/index.js';
+
 (function() {
   /**
    * Lists present multiple line items vertically as a single continuous element.
@@ -35,6 +37,31 @@
    */
   class List extends HTMLElement {
     connectedCallback() {
+      this._focused = {};
+      this._focusTimer;
+      this.events = {};
+      this.initialize();
+    }
+
+    initialize() {
+      let parsedAttrs = parseAttributes(this.attributes);
+      this.events = parsedAttrs.events;
+      
+      for(let eventName in this.events) {
+        this.addEventListener(eventName, this.events[eventName]);
+      }
+    }
+
+    setFocused(elType, focused) {
+      if (focused) {
+        clearTimeout(this._focusTimer);
+        this._focused = {input: false, listItem: false};
+        this._focused[elType] = true;
+      } else { // set blur in a delayed manner;3
+        this._focusTimer = setTimeout(_ => {
+          this._focused[elType] = false;
+        }, 100);
+      }
     }
   }
   

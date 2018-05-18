@@ -1,0 +1,20 @@
+<!-- MrrKoy -->
+<h3>Simle List Item</h3>
+<mce-list on-selected="selected(event)" on-escaped="escaped(event)">
+  <mce-list-item>Hello</mce-list-item>
+  <mce-list-item>World</mce-list-item>
+  <mce-list-item>This</mce-list-item>
+  <mce-list-item>Is</mce-list-item>
+  <mce-list-item>MCE</mce-list-item>
+  <mce-list-item>List</mce-list-item>
+  <mce-list-item>Item</mce-list-item>
+</mce-list>
+
+<script>
+  selected(event) {
+    console.log('selected', event);
+  }
+  escaped(event) {
+    console.log('escaped', event);
+  }
+</script>

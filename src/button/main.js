@@ -54,7 +54,7 @@ import {observeAttrChange, setTabbable} from '../utils/index.js';
       buttonEl.setAttribute('tabindex', '-1');
       Array.from(this.attributes).forEach(attr => {
         this.buttonAttrs.includes(attr.name) && buttonEl.setAttribute(attr.name, attr.value);
-      })
+      });
 
       observeAttrChange(this, (attr, val) => {
         this.buttonAttrs.includes(attr) && buttonEl.setAttribute(attr, val);

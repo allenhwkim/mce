@@ -46,7 +46,7 @@ import {setInnerHTML} from '../../utils/index.js';
         this._getPromiseFunc('route', this.getAttribute('resolve-func'));
 
       if (!this.path && !(this.import || this.redirect)) {
-        throw "Invalid attributes for mce-route, required path and import"
+        throw "Invalid attributes for mce-route, required path and import";
       }
     }
 
@@ -132,7 +132,7 @@ import {setInnerHTML} from '../../utils/index.js';
         this.router.debug && console.error('routing-error', error);
         this.router.showLoadingEl(false);
         throw error;
-      })
+      });
     }
 
     /* returns a function which accepts paramName and returns a promise */
@@ -140,7 +140,7 @@ import {setInnerHTML} from '../../utils/index.js';
       return function(param) {
         let func = new Function(paramName, `return ${funcStr}`);
         return Promise.resolve(func(param));
-      }
+      };
     }
   }
   customElements.define('mce-route', Route); //name, class

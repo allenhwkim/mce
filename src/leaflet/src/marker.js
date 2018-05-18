@@ -1,4 +1,4 @@
-import {observeAttrChange, parseAttributes, callSetMethod} from '../../utils/index.js'
+import {observeAttrChange, parseAttributes, callSetMethod} from '../../utils/index.js';
 import {resolveLatLng} from './leaflet-util.js';
 
 /**
@@ -71,7 +71,7 @@ class LeafletMarker extends HTMLElement {
 
         this.mapObj.addTo(map);                              // add to map
         observeAttrChange(this, this.onAttrChange.bind(this));
-      })
+      });
   }
 
   // run setXXX if defined when attribute value changes

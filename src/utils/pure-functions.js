@@ -37,7 +37,7 @@ export function str2Val(str, scope=window) {
       .filter(el => el)         // filter out empty one
       .map(el => el.replace(/^['"]+|['"]+$/g, '')); // remove string quotation
     if (arr.length > 1 && arr[0] !== str) {
-      arr.forEach(el => obj = obj[el])
+      arr.forEach(el => obj = obj[el]);
       return obj;
     } else {
       return str;

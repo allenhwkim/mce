@@ -1,4 +1,4 @@
-import {observeAttrChange, parseAttributes, callSetMethod, waitUntil} from '../../utils/index.js'
+import {observeAttrChange, parseAttributes, callSetMethod, waitUntil} from '../../utils/index.js';
 import {resolveLatLng} from './leaflet-util.js';
 
 /**
@@ -72,7 +72,7 @@ class LeafletMap extends HTMLElement{
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(this.map);
           }
         });
-      })
+      });
   }
 
   setEvents() {
@@ -87,10 +87,10 @@ class LeafletMap extends HTMLElement{
     if (name === 'center') {
       if (typeof val === 'string') {
         resolveLatLng(val).then(latlng => {
-          this.map.setView(latlng, this.map.getZoom())
+          this.map.setView(latlng, this.map.getZoom());
         });
       } else {
-        this.map.setView(val, this.map.getZoom())
+        this.map.setView(val, this.map.getZoom());
       }
     } else if (!['class', 'tabindex', 'style'].includes(name)) {
       callSetMethod(this.map, name, val);

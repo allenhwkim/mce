@@ -50,7 +50,7 @@
         } else {
           panelEl.classList.remove('mce-expanded');
         }
-      })
+      });
     }
   }
   

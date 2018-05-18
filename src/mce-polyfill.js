@@ -13,7 +13,7 @@
       el._init && el._init();
       setTimeout(function(){
         el.connectedCallback && el.connectedCallback();
-      })
+      });
     }
   };
 
@@ -23,12 +23,12 @@
       __customElements[name] = klass;
       // this is called before or after window.onload. Define any tag found in HTML
       // this also may cause missing elements dynamically loaded before MutationObserver kicks in
-      debug && console.log('CustomElements.define.......................')
+      debug && console.log('CustomElements.define.......................');
       Array.from(document.querySelectorAll(name)).forEach(function(el) {
         applyCustomElement(el, __customElements[name]);
       });
     }
-  }
+  };
 
   // when document content is loaded, it checks all custom element and initialized it
   let checkAndApplyAllCustomElements = function(el) {
@@ -48,7 +48,7 @@
     if (node.nodeType === Node.ELEMENT_NODE && 
       __customElements[nodeName] &&                      // defined as a custom element
       node.constructor.name.match(/^HTML\w*Element$/)) { // and not yet initialized
-      debug && console.log('observer....................... 2', node)
+      debug && console.log('observer....................... 2', node);
       applyCustomElement(node, __customElements[nodeName]);
     }
   };
@@ -64,10 +64,10 @@
 
           //initialize children of the node 
           if (node.nodeType === Node.ELEMENT_NODE) {
-            debug && console.log('observer....................... 1', node)
+            debug && console.log('observer....................... 1', node);
             Array.from(node.querySelectorAll('*')).forEach(function(el) {
               checkAndApplyCustomElement(el);
-            })
+            });
           }
         });
 
@@ -79,11 +79,11 @@
           if (node.nodeType === Node.ELEMENT_NODE) {
             Array.from(node.querySelectorAll('*')).forEach(function(el) {
               el.disconnectedCallback && el.disconnectedCallback();
-            })
+            });
           }
         });
       }
-    })
+    });
   });
 
   // polyfill window.customElements(obj)
@@ -102,7 +102,7 @@
       return Object.keys(obj).map(function(key) {
         return obj[key];
       });
-    }
+    };
   };
 
   // polyfill el.matches(selector)

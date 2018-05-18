@@ -113,7 +113,7 @@
           'invalid input for type, '+this.getAttribute('type'),
         customError: this.getAttribute('custom-error') || 'invaid input(custom error)',
         invalidError: this.getAttribute('invalid-error') || 'invaid input'
-      }
+      };
       this.__cachedErrorMessages = errorMessages;
       return errorMessages;
     }
@@ -184,9 +184,9 @@
           this.classList.add('mce-invalid'); 
           errMsgEl.innerHTML = error;
         } else {
-          this.classList.remove('mce-invalid')
+          this.classList.remove('mce-invalid');
         }
-      }
+      };
 
       setStatus();
 

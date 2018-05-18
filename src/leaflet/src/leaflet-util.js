@@ -12,7 +12,7 @@ export function geocode(address) {
     '&addressdetails=1&q='+address+'&format=json&limit=1'; 
   return fetch(url).then( function(response) {
     return response.json();
-  })
+  });
 }
 
 export function resolveLatLng(latlng) {
@@ -24,7 +24,7 @@ export function resolveLatLng(latlng) {
         } else {
           reject(`Invalid address, "${latlng}"`);
         }
-      })
+      });
     } else if (isLatLng(latlng)) {
       resolve(latlng);
     } else {

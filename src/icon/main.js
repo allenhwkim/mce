@@ -41,7 +41,7 @@
         this._setImageIcon(); // if img attribute given, set image icon
         this.clickListener = this._onClick.bind(this);
         this._addEventListener();
-      })
+      });
     }
 
     disconnectedCallback() {

@@ -74,7 +74,7 @@
           this.style.left = left + 'px';
         }
 
-        this.classList.add('mce-visible')
+        this.classList.add('mce-visible');
       }, 100);
     }
   }

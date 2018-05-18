@@ -59,7 +59,7 @@
         removeEl.addEventListener('click', event => {
           let customEvent = new CustomEvent('remove', event);
           this.dispatchEvent(customEvent);
-        })
+        });
 
         this.appendChild(removeEl);
 

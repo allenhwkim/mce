@@ -38,7 +38,7 @@ import {observeAttrChange, setTabbable} from '../utils/index.js';
          inputEl.setAttribute(attr.name, attr.value);
          (attr.name === 'id') && this.setAttribute('id', 'mce-switch-'+attr.value);
         }
-      })
+      });
       inputEl.addEventListener('click', _ => {
         inputEl.checked ? this.setAttribute('checked', '') : this.removeAttribute('checked');
       });

@@ -42,11 +42,11 @@
           if (isMDIcon) {
             this.iconEl.innerHTML = this.icon;
           } else if (isFAIcon) {
-            this.iconEl.insertAdjacentHTML('beforeend', `<i class="fa ${this.icon}"></i>`)
+            this.iconEl.insertAdjacentHTML('beforeend', `<i class="fa ${this.icon}"></i>`);
           } else {
-            this.iconEl.insertAdjacentHTML('beforeend', `<img src="${this.icon}" />`)
+            this.iconEl.insertAdjacentHTML('beforeend', `<img src="${this.icon}" />`);
           }
-          this.insertBefore(this.iconEl, this.firstChild)
+          this.insertBefore(this.iconEl, this.firstChild);
         }
         if (this.shortcut && !this.querySelector('mce-icon')) {
           this.shortcutEl = document.createElement('div');

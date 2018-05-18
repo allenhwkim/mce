@@ -59,7 +59,7 @@ export function animate({duration, draw, timing}) {
     let timeFraction = (time - start) / duration;
     if (timeFraction > 1) timeFraction = 1;
 
-    let progress = timing(timeFraction)
+    let progress = timing(timeFraction);
 
     draw(progress);
 

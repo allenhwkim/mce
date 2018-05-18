@@ -119,7 +119,7 @@ import {animate, setTabbable} from '../utils/index.js';
           //with space or enter, open tab
           (event.key === "Enter") && navItem.click();
         });
-      })
+      });
     }
   
   }

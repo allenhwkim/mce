@@ -102,7 +102,7 @@
 
       Array.from(this.children).forEach(el => {
         if (!el.isSameNode(containerEl) && !el.isSameNode(pageBlockerEl)) {
-          containerEl.appendChild(el)
+          containerEl.appendChild(el);
         }
       });
     }
@@ -114,7 +114,7 @@
         el.classList.add(className);
         this.appendChild(el);
         return el;
-      }
+      };
       if (data.title !== undefined) {
         titleEl = this.querySelector('.mce-title') || appendEl('mce-title');
         titleEl.innerHTML = data.title;
