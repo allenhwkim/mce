@@ -37,7 +37,7 @@ import {resolveLatLng} from './leaflet-util.js';
  *  |on-move|function reference| e.g. on-move="myMoveHandler"
  *  |...|...| [more](http://leafletjs.com/reference-1.2.0.html#marker-event)
  */
-class LeafletMarker extends HTMLElement {
+export class LeafletMarker extends HTMLElement {
   connectedCallback() {
     this._map;
     this.mapObj;                                     // marker
@@ -84,5 +84,3 @@ class LeafletMarker extends HTMLElement {
   }
 
 }
-
-customElements.define('mce-marker', LeafletMarker);

@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
     "lint": "eslint src --fix",
-    "start": "webpack-dev-server --open",
+    "start": "webpack-dev-server --mode development --open",
     "prepublishOnly": "webpack",
     "publish:doc": "gh-pages -d _book -r https://github.com/mymce/mymce.github.io.git -b master"
   },

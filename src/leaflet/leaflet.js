@@ -32,7 +32,7 @@ import {resolveLatLng} from './leaflet-util.js';
  *  |on-click|function reference| e.g. on-click="myClickHandler"
  *  |...|...| [more](http://leafletjs.com/reference-1.2.0.html#map-event)
  */
-class LeafletMap extends HTMLElement{
+export class LeafletMap extends HTMLElement{
   connectedCallback() {
     this.map;
     this.options = {center: [51.505, -0.09], zoom: 13};        // default options
@@ -118,4 +118,3 @@ class LeafletMap extends HTMLElement{
 
 }
 
-customElements.define('mce-leaflet', LeafletMap);

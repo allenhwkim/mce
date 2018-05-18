@@ -47,7 +47,6 @@ export function str2Val(str, scope=window) {
 
   // Normalize string value
   let expr = str;
-  console.log('expr...', expr);
   if (expr.match(/^[\+\-]?[0-9\.]+,[ ]*\ ?[\+\-]?[0-9\.]+$/)) {
     expr = '[' + str + ']';
   }
