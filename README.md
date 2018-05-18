@@ -4,7 +4,7 @@
 1. Small and fast(Less than 9KB gzipped).
 2. No depenancy on framework or library. Vanilla JS only.
 3. Common-sense engineering; Element itself(not JS object) has properties and functions.
-4. Miniman coding, Very easy to maintain. Take a look at [code](https://github.com/allenhwkim/mce/blob/master/src/app-bar/app-bar.js)
+4. Minimal coding, easy to maintain. Take a look at [code](https://github.com/allenhwkim/mce/blob/master/src/app-bar/app-bar.js)
 
 [DEMO](https://rawgit.com/allenhwkim/mce/master/dist/)
 
