@@ -61,7 +61,6 @@ export class Inview extends HTMLElement {
   /** fires (inview) and (notInview) events when this component is visible or not visible  */
   __handleIntersect(entries, observer) {
     entries.forEach(entry => {
-      console.log('entry.isIntersecting', entry.isIntersecting);
       let detail = {entry};
       if (entry.isIntersecting) {
         this.__activateTemplate();

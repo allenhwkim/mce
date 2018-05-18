@@ -77,7 +77,7 @@ export class LeafletMap extends HTMLElement{
 
   setEvents() {
     for(let eventName in this.events) {
-      console.log('this.events[eventName]', eventName, this.events[eventName]);
+      window.debug && console.log('this.events[eventName]', eventName, this.events[eventName]);
       this.map.on(eventName, this.events[eventName]);
     }
   }
