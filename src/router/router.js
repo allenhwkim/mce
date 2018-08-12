@@ -134,8 +134,10 @@ export class Router extends HTMLElement {
       let re = new RegExp('^' + reStr + '$', 'i');
       this.debug && console.log('path', path, 're', re);
 
-      if (path.match(re)) {
+      let matches = path.match(re);
+      if (matches) {
         matchingRoute = route;
+        matchingRoute.matches = matches;
         break;
       }
     }
@@ -144,6 +146,7 @@ export class Router extends HTMLElement {
 
   _popStateHandler(event) {
     let route = this._getUrlMatchingRoute();
+    this.routerPath = this._getRouterPath();
 
     if (route && route.redirect) {
       route = this._getUrlMatchingRoute(route.redirect);
@@ -153,6 +156,7 @@ export class Router extends HTMLElement {
     } else { // not-found
       this.debug && console.log(
         `route not found for '${this._getRouterPath()}', redirecting to 'not-found'`);
+      
       if (this.defaultRoute) {
         this.defaultRoute.activate();
       } else if (this.notFoundRoute) {

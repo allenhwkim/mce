@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="themes/blue.css">
 
     <link rel="stylesheet" href="">
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-                                                                        
-    <script src="mce.min.js?828fbf5d8e2a469987c9"></script>
+    <script src="mce.min.js?20557ab8bfbae98da696"></script>
 
     <style>
       html, body {margin: 0;}
@@ -97,34 +95,8 @@
       <div id="main-contents" class="container">
         <mce-router on-route-start="clearSource()">
           <mce-route id="home" path="home" name="Company Name" import="partials/home.html"></mce-route>
-          <mce-route path="app-bar" import="partials/app-bar.html"></mce-route>
-          <mce-route path="blocker" import="partials/blocker.html"></mce-route>
-          <mce-route path="bottom-nav-bar" import="partials/bottom-nav-bar.html"></mce-route>
-          <mce-route path="button" import="partials/button.html"></mce-route>
-          <mce-route path="card" import="partials/card.html"></mce-route>
-          <mce-route path="checkbox" import="partials/checkbox.html"></mce-route>
-          <mce-route path="chip" import="partials/chip.html"></mce-route>
-          <mce-route path="dialog" import="partials/dialog.html"></mce-route>
-          <mce-route path="expansion-panel" import="partials/expansion-panel.html"></mce-route>
-          <mce-route path="grid-list" import="partials/grid-list.html"></mce-route>
-          <mce-route path="icon" import="partials/icon.html"></mce-route>
-          <mce-route path="inview" import="partials/inview.html"></mce-route>
-          <mce-route path="/leaflet/map" import="partials/leaflet/map.html"></mce-route>
-          <mce-route path="/leaflet/marker" import="partials/leaflet/marker.html"></mce-route>
-          <mce-route path="/leaflet/popup" import="partials/leaflet/popup.html"></mce-route>
-          <mce-route path="list" import="partials/list.html"></mce-route>
-          <mce-route path="list-item" import="partials/list-item.html"></mce-route>
-          <mce-route path="menu" import="partials/menu.html"></mce-route>
-          <mce-route path="nav-drawer" import="partials/nav-drawer.html"></mce-route>
-          <mce-route path="radio-button" import="partials/radio-button.html"></mce-route>
-          <mce-route path="refresh-indicator" import="partials/refresh-indicator.html"></mce-route>
-          <mce-route path="router" import="partials/router.html"></mce-route>
-          <mce-route path="search" import="partials/search.html"></mce-route>
-          <mce-route path="snackbar" import="partials/snackbar.html"></mce-route>
-          <mce-route path="switch" import="partials/switch.html"></mce-route>
-          <mce-route path="tabs" import="partials/tabs.html"></mce-route>
-          <mce-route path="text-field" import="partials/text-field.html"></mce-route>
-          <mce-route path="tooltip" import="partials/tooltip.html"></mce-route>
+          <mce-route path="app-bar" no-cache import="partials/app-bar.html"></mce-route>
+          <mce-route path="([a-z\-0-9\/]+)" no-cache import="partials/:element.html"></mce-route>
           <mce-route path="" redirect="app-bar"></mce-route>
         </mce-router>
 

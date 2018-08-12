@@ -84,6 +84,16 @@ export class Route extends HTMLElement {
 
     this.router.showLoadingEl(true);
 
+    function buildImportUrl(importURL, matches) {
+      let url = importURL;
+      if (matches.length > 1) {
+        for(var i=1; i<matches.length; i++) {
+          url = url.replace(/:[a-zA-Z_]+/, matches[i]);
+        }
+      }
+      return url;
+    }
+
     routerResolveFn(this)    // resolve router resolveFunc
     .then(routerData => {
       routerData && (this.router.data = routerData);
@@ -95,13 +105,17 @@ export class Route extends HTMLElement {
       if (this.cachedTemplate) {
         return this.cachedTemplate;
       } else {  // fetch if not cached                       
-        let importUrl = this.import;
-        if (importUrl) { // only run fetch when import Url is given
-          let options = this.router.onHttpStart && this.router.onHttpStart(this);
-          return fetch(importUrl, options || {})
+        if (this.import) { // only run fetch when import Url is given
+          let url = buildImportUrl(this.import, this.matches), options;
+          if (this.router.onHttpStart) {
+            let cbResp = this.router.onHttpStart(this); //callback response
+            url = cbResp.url || url;
+            options = cbResp.options || {};
+          }
+          return fetch(url, options)
             .then(response => {
               if (!response.ok) {
-                throw Error(`url: ${importUrl}, status: ${response.statusText}`);
+                throw Error(`url: ${url}, status: ${response.statusText}`);
               }
               if (this.router.onHttpEnd) {
                 return this.router.onHttpEnd(response);
