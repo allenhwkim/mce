@@ -206,6 +206,7 @@ export class TextField extends HTMLElement {
     if (this.querySelector('textarea')) { // if multiline, autoresize the input height
       this.inputEl.closest('.mce-container').style.transition = 'none';
       this.inputEl.addEventListener('input', this._autoResizeTextarea.bind(this) );
+      this._autoResizeTextarea();
     }
   }
 
