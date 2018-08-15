@@ -204,16 +204,27 @@ export class TextField extends HTMLElement {
     });
 
     if (this.querySelector('textarea')) { // if multiline, autoresize the input height
-      this.inputEl.closest('.mce-container').style.transition = 'none';
-      this.inputEl.addEventListener('input', this._autoResizeTextarea.bind(this) );
-      this._autoResizeTextarea();
+      let textarea = this.inputEl;
+      textarea.style.height = 'auto';
+      function delayedResize () {
+        window.setTimeout(function() {
+          textarea.style.height = textarea.scrollHeight+'px';
+          textarea.closest('.mce-container').style.height = textarea.scrollHeight + 60 + 'px';
+        }, 200);
+      }
+      textarea.addEventListener('change',  delayedResize, false);
+      textarea.addEventListener('cut',     delayedResize, false);
+      textarea.addEventListener('paste',   delayedResize, false);
+      textarea.addEventListener('drop',    delayedResize, false);
+      textarea.addEventListener('keydown', delayedResize, false);
+
+      textarea.focus();
+      textarea.select();
+      delayedResize();
     }
   }
 
-  _autoResizeTextarea(event){
-    let scrollHeight = this.inputEl.scrollHeight;
-    this.inputEl.style.height = scrollHeight + 'px';
-    this.inputEl.closest('.mce-container').style.height = scrollHeight + 60 + 'px';
+  _autoResizeTextarea(){
   }
 }
 
