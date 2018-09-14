@@ -207,9 +207,9 @@ export class TextField extends HTMLElement {
       let textarea = this.inputEl;
       textarea.style.height = 'auto';
       function delayedResize () {
-        try {
-          textarea.value = JSON.stringify(JSON.parse(textarea.value), null, '  ');
-        } catch(e) {}
+        // try {
+        //   textarea.value = JSON.stringify(JSON.parse(textarea.value), null, '  ');
+        // } catch(e) {}
         window.setTimeout(function() {
           textarea.style.height = textarea.scrollHeight+'px';
           textarea.closest('.mce-container').style.height = textarea.scrollHeight + 60 + 'px';
