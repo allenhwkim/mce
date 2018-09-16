@@ -242,3 +242,4 @@ export class Router extends HTMLElement {
   }
 }
 
+customElements.define('mce-router', Router); 

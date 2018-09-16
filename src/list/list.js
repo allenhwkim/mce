@@ -64,3 +64,5 @@ export class List extends HTMLElement {
   }
 }
 
+customElements.define('mce-list', List);
+

@@ -90,4 +90,4 @@ export class ListItem extends HTMLElement {
 
 }
 
-
+customElements.define('mce-list-item', ListItem);

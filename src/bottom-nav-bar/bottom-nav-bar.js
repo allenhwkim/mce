@@ -32,3 +32,5 @@ export class BottomNavBar extends HTMLElement {
     }
   }
 }
+
+customElements.define('mce-bottom-nav-bar', BottomNavBar);

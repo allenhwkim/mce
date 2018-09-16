@@ -90,3 +90,4 @@ export class NavDrawer extends HTMLElement {
 
 }
 
+customElements.define('mce-nav-drawer', NavDrawer);

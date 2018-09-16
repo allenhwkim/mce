@@ -52,3 +52,4 @@ export class RadioButton extends HTMLElement {
 
 }
 
+customElements.define('mce-radio-button', RadioButton);

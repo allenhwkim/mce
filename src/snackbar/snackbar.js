@@ -64,3 +64,4 @@ export class Snackbar extends HTMLElement {
 
 }
 
+customElements.define('mce-snackbar', Snackbar);

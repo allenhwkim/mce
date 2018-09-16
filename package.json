@@ -4,7 +4,7 @@
   "description": "Material Designed Custom Element",
   "main": "dist/mce.min.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack && rm -rf dist/style.*",
     "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
     "lint": "eslint src --fix",
     "start": "webpack-dev-server --mode development --open",

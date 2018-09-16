@@ -61,3 +61,4 @@ export class Checkbox extends HTMLElement {
   }
 
 }
+customElements.define('mce-checkbox', Checkbox);

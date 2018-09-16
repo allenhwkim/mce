@@ -52,3 +52,5 @@ export class ExpansionPanel extends HTMLElement {
     });
   }
 }
+
+customElements.define('mce-expansion-panel', ExpansionPanel);

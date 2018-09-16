@@ -108,3 +108,4 @@ export class Search extends HTMLElement {
 
 }
 
+customElements.define('mce-search', Search);

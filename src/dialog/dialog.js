@@ -138,3 +138,4 @@ export class Dialog extends HTMLElement {
   }
 }
 
+customElements.define('mce-dialog', Dialog);

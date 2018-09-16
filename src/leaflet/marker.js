@@ -84,3 +84,5 @@ export class LeafletMarker extends HTMLElement {
   }
 
 }
+
+customElements.define('mce-marker', LeafletMarker);

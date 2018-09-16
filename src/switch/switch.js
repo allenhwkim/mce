@@ -47,3 +47,4 @@ export class Switch extends HTMLElement {
 
 }
 
+customElements.define('mce-switch', Switch);

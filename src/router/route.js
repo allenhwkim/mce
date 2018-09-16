@@ -157,3 +157,4 @@ export class Route extends HTMLElement {
   }
 }
 
+customElements.define('mce-route', Route);

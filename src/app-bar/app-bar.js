@@ -61,3 +61,5 @@ export class AppBar extends HTMLElement {
     this.parentElement.insertBefore(el, this.nextSibling);
   }
 }
+
+customElements.define('mce-app-bar', AppBar);

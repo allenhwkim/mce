@@ -231,3 +231,4 @@ export class TextField extends HTMLElement {
   }
 }
 
+customElements.define('mce-text-field', TextField);

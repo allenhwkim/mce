@@ -31,48 +31,28 @@ import {Blocker} from './blocker/blocker.js';
 import {Inview} from './inview/inview.js';
 import {ListItem} from './list-item/list-item.js';
 
-customElements.define('mce-app-bar', AppBar);
-customElements.define('mce-bottom-nav-bar', BottomNavBar);
-customElements.define('mce-button', Button);
-customElements.define('mce-card', Card);
-customElements.define('mce-checkbox', Checkbox);
-customElements.define('mce-chip', Chip);
-customElements.define('mce-dialog', Dialog);
-customElements.define('mce-expansion-panel', ExpansionPanel);
-customElements.define('mce-grid-list', GridList);
-customElements.define('mce-icon', Icon);
-customElements.define('mce-list', List);
-customElements.define('mce-menu', Menu);
-customElements.define('mce-nav-drawer', NavDrawer);
-customElements.define('mce-nav-item', NavItem);
-customElements.define('mce-radio-button', RadioButton);
-customElements.define('mce-refresh-indicator', RefreshIndicator);
-customElements.define('mce-search', Search);
-customElements.define('mce-snackbar', Snackbar);
-customElements.define('mce-switch', Switch);
-customElements.define('mce-tabs', Tabs);
-customElements.define('mce-text-field', TextField);
-customElements.define('mce-tooltip', Tooltip);
-
-customElements.define('mce-blocker', Blocker);
-customElements.define('mce-inview', Inview);
-customElements.define('mce-list-item', ListItem);
-customElements.define('mce-marker', LeafletMarker);
-customElements.define('mce-leaflet', LeafletMap);
-customElements.define('mce-route', Route);
-customElements.define('mce-router', Router); 
-
 // include css if not already there with "*mce.mincss" or id="mce-css"
 (function() {
   let cssIncluded = window.debug ||
-    document.querySelector('link[href$="mce.min.css"]') ||
-    document.querySelector('link[id="mce-css"]');
+    document.querySelector('link[href$="mce.min.css"]') || document.querySelector('link[id="mce-css"]');
 
   if (!cssIncluded) {
-    var cssUrl = 'https://unpkg.com/mce/dist/mce.min.css';
-    let linkEl = document.createElement('link');
-    linkEl.setAttribute('rel', "stylesheet");
-    linkEl.setAttribute('href', cssUrl);
-    document.head.appendChild(linkEl);
+    let mdIconEl = document.createElement('link');
+    mdIconEl.setAttribute('rel', 'stylesheet');
+    mdIconEl.setAttribute('auto-added-by-mce', '');
+    mdIconEl.setAttribute('href', 'https://fonts.googleapis.com/icon?family=Material+Icons');
+    document.head.appendChild(mdIconEl);
+
+    let mceCssEl = document.createElement('link');
+    mceCssEl.setAttribute('rel', 'stylesheet');
+    mceEssEl.setAttribute('auto-added-by-mce', '');
+    mceCssEl.setAttribute('href', 'https://unpkg.com/mce/dist/mce.min.css');
+    document.head.appendChild(mceCssEl);
+
+    let mceThemeEl = document.createElement('link');
+    mceThemeEl.setAttribute('rel', 'stylesheet');
+    mceThemeEl.setAttribute('auto-added-by-mce', '');
+    mceThemeEl.setAttribute('href', 'https://unpkg.com/mce/dist/themes/blue.css');
+    document.head.appendChild(mceThemeEl);
   }
 })();

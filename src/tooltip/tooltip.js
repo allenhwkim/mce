@@ -78,3 +78,4 @@ export class Tooltip extends HTMLElement {
   }
 }
 
+customElements.define('mce-tooltip', Tooltip);

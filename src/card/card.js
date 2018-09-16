@@ -45,3 +45,5 @@ export class Card extends HTMLElement {
   connectedCallback() {
   }
 }
+
+customElements.define('mce-card', Card);

@@ -71,3 +71,5 @@ export class Chip extends HTMLElement {
   }
 
 }
+
+customElements.define('mce-chip', Chip);

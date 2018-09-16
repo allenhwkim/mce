@@ -14,8 +14,8 @@ module.exports = {
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    // filename: '[name].[chunkhash].js'
-    filename: '[name].min.js'
+    filename: '[name].min.js',
+    //libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -47,13 +47,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       inject: false,
       hash: true,
-      template: 'app/index.html',
+      template: 'demo/index.html',
       filename: 'index.html'
     }),
     new WebpackMd5Hash(),
     new CopyWebpackPlugin([
         {from: 'src/themes/*', to: 'themes', flatten: true },
-        {from: 'app', to: ''}
+        {from: 'demo', to: ''}
       ], {ignore: []})
   ]
 };

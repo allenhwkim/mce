@@ -104,3 +104,5 @@ export class Inview extends HTMLElement {
 
 }
 
+
+customElements.define('mce-inview', Inview);

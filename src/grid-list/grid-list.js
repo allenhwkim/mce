@@ -36,3 +36,4 @@ export class GridList extends HTMLElement {
   }
 }
 
+customElements.define('mce-grid-list', GridList);

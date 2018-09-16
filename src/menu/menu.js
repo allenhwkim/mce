@@ -89,3 +89,4 @@ export class Menu extends HTMLElement {
   }
 }
 
+customElements.define('mce-menu', Menu);

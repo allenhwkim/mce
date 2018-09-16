@@ -53,3 +53,4 @@ export class NavItem extends HTMLElement {
   }
 }
 
+customElements.define('mce-nav-item', NavItem);

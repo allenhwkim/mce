@@ -118,3 +118,5 @@ export class LeafletMap extends HTMLElement{
 
 }
 
+customElements.define('mce-leaflet', LeafletMap);
+

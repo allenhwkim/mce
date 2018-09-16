@@ -48,3 +48,5 @@ export class Blocker extends HTMLElement {
     this.classList.remove('mce-visible');
   }
 }
+
+customElements.define('mce-blocker', Blocker);

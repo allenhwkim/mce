@@ -67,3 +67,4 @@ export class Button extends HTMLElement {
 
 }
   
+customElements.define('mce-button', Button);

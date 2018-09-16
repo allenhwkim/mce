@@ -76,3 +76,5 @@ export class Icon extends HTMLElement {
     }
   }
 }
+
+customElements.define('mce-icon', Icon);

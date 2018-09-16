@@ -35,3 +35,4 @@ export class RefreshIndicator extends HTMLElement {
 
 }
 
+customElements.define('mce-refresh-indicator', RefreshIndicator);

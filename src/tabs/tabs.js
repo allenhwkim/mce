@@ -123,3 +123,4 @@ export class Tabs extends HTMLElement {
 
 }
 
+customElements.define('mce-tabs', Tabs);
