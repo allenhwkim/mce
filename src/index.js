@@ -45,7 +45,7 @@ import {ListItem} from './list-item/list-item.js';
 
     let mceCssEl = document.createElement('link');
     mceCssEl.setAttribute('rel', 'stylesheet');
-    mceEssEl.setAttribute('auto-added-by-mce', '');
+    mceCssEl.setAttribute('auto-added-by-mce', '');
     mceCssEl.setAttribute('href', 'https://unpkg.com/mce/dist/mce.min.css');
     document.head.appendChild(mceCssEl);
 
