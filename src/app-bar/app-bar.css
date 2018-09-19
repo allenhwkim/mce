@@ -76,6 +76,11 @@ mce-app-bar .icons > * {
   right: 0;
   width: auto; 
 }
+
+.mce-desktop > mce-app-bar.full-width {
+  left: 0;
+}
+
 .mce-desktop > mce-app-bar  > .mce-nav-icon {
   visibility: hidden;
 }
