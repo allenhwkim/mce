@@ -35,9 +35,10 @@ mce-snackbar {
   text-align: center;
   transform: translate(-50%);
   left: 50%;
+  
+  &.mce-visible {
+    visibility: visible;
+    animation: slideInUp 0.5s, slideOutDown 0.5s 2.5s;
+  }
 }
 
-mce-snackbar.mce-visible {
-  visibility: visible;
-  animation: slideInUp 0.5s, slideOutDown 0.5s 2.5s;
-}

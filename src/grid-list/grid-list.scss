@@ -1,0 +1,67 @@
+/*https://material.io/guidelines/components/grid-lists.html#grid-lists-specs*/
+mce-grid-list {
+  display: block;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+    max-width: 180px;
+    height: 230px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      height: auto
+    }
+
+    .mce-text-with-icon {
+      position: absolute;
+      background-color: rgba(0,0,0,0.5);
+      color: var(--theme-text-color-0, #ffffff);
+      width: 100%;
+    }
+
+    .mce-text-with-icon .mce-text {
+      padding: 16px;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .mce-text-with-icon .mce-text > h1,
+    .mce-text-with-icon .mce-text > h2,
+    .mce-text-with-icon .mce-text > h3 {
+      font-size: 14px;
+      margin: 0 0 6px 0;
+    }
+
+    .mce-text-with-icon > h1,
+    .mce-text-with-icon > h2,
+    .mce-text-with-icon > h3 {
+      text-align: left;
+      padding: 16px;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .mce-text-with-icon * ~ * {
+      height: 24px;
+      top: 50%;
+      position: absolute;
+      right: 12px;
+      margin-top: -12px;
+      line-height: 24px;
+    }
+
+    .mce-text-with-icon.top {
+      top: 0;
+      bottom: inherit;
+    }
+
+    .mce-text-with-icon:not(.top) {
+      bottom: 0;
+      top: inherit;
+    }
+  } 
+}
