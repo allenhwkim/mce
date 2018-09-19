@@ -25,9 +25,8 @@ Text fields allow users to input, edit, and select text. Text fields typically r
   suffix="dollars"></mce-text-field>
 ```
 
-<p data-height="600" data-theme-id="32189" data-slug-hash="BJJjwe" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-
+<iframe height='265' scrolling='no' title='BJJjwe' src='//codepen.io/allenhwkim/embed/BJJjwe/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/allenhwkim/pen/BJJjwe/'>BJJjwe</a> by Allen kim (<a href='https://codepen.io/allenhwkim'>@allenhwkim</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ### `mce-text-field` Attributes 
  |name|value|description|

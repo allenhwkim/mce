@@ -3,7 +3,7 @@
 ## AppBar
 The app bar is a special kind of toolbar that’s used for branding, navigation, search, and actions.
 
-[Material Design Spec](https://material.io/guidelines/layout/structure.html#structure-app-bar)
+[Material Design Spec](https://material-components.github.io/material-components-web-catalog/#/component/top-app-bar)
 
 ### example
 ```
@@ -20,8 +20,8 @@ The app bar is a special kind of toolbar that’s used for branding, navigation,
 </mce-app-bar>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="EobYmr" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce an-app-bar" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/EobYmr/">mce an-app-bar</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<iframe height='265' scrolling='no' title='mce an-app-bar' src='//codepen.io/allenhwkim/embed/EobYmr/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/allenhwkim/pen/EobYmr/'>mce an-app-bar</a> by Allen kim (<a href='https://codepen.io/allenhwkim'>@allenhwkim</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ### `mce-app-bar` style classes
  |name|value|description|

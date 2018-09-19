@@ -19,8 +19,8 @@ Checkboxes allow the selection of multiple options from a set.
 </div> 
 ```
 
-<p data-height="400" data-theme-id="32189" data-slug-hash="BJmaeb" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<iframe height='265' scrolling='no' title='mce a-checkbox' src='//codepen.io/allenhwkim/embed/BJmaeb/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/allenhwkim/pen/BJmaeb/'>mce a-checkbox</a> by Allen kim (<a href='https://codepen.io/allenhwkim'>@allenhwkim</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ### `mce-checkbox` atttibutes
  It accepts all `input` checkbox attributes. E.g., id, name, value, disaled, or checked

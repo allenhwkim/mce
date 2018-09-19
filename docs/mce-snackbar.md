@@ -11,8 +11,8 @@ They may contain a text action, but no icons.
 <mce-snackbar>Message has been processed.</mce-snackbar>
 ```
 
-<p data-height="300" data-theme-id="32189" data-slug-hash="PEJKKo" data-default-tab="result" data-user="allenhwkim" data-embed-version="2" data-pen-title="mce template" class="codepen">See the Pen <a href="https://codepen.io/allenhwkim/pen/PEJKKo/">mce template</a> by Allen kim (<a href="https://codepen.io/allenhwkim">@allenhwkim</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+<iframe height='265' scrolling='no' title='mce template' src='//codepen.io/allenhwkim/embed/PEJKKo/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/allenhwkim/pen/PEJKKo/'>mce template</a> by Allen kim (<a href='https://codepen.io/allenhwkim'>@allenhwkim</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 ### `mce-snackbar` attributes
  |name|value|description|
@@ -23,4 +23,24 @@ They may contain a text action, but no icons.
  |name|description|
  |---|---|
  |mce-visible| show this snackbar|
+
+
+* [Snackbar](#Snackbar)
+    * [.open(msg)](#Snackbar+open) ⇒ void
+    * [.close()](#Snackbar+close) ⇒ void
+
+<a name="Snackbar+open"></a>
+
+### snackbar.open(msg) ⇒ void
+show mce-snackbar by adding `mce-visible` class
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| msg | string | message to show |
+
+<a name="Snackbar+close"></a>
+
+### snackbar.close() ⇒ void
+close mce-snackbar by removing `mce-visible` class
 

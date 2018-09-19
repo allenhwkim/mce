@@ -5,6 +5,7 @@
   "main": "dist/mce.min.js",
   "scripts": {
     "build": "webpack && rm -rf dist/style.*",
+    "doc": "npm run build:doc && npm run publish:doc",
     "build:doc": "sh docs/jsdoc2md.sh && cp -r src/themes docs && gitbook build",
     "lint": "eslint src --fix",
     "start": "webpack-dev-server --mode development --open",
@@ -40,6 +41,9 @@
     "csso-webpack-plugin": "^1.0.0-beta.12",
     "eslint": "^4.19.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "gh-pages": "^2.0.0",
+    "gitbook": "^3.2.3",
+    "gitbook-cli": "^2.3.2",
     "gitbook-plugin-github-buttons": "^3.0.0",
     "gitbook-plugin-scripts": "^1.0.2",
     "html-webpack-plugin": "^3.2.0",
