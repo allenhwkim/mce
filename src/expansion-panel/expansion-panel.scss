@@ -1,0 +1,106 @@
+/*https://material.io/guidelines/components/expansion-panels.html#*/
+mce-expansion-panel {
+  display: block;
+  border-radius: 2px;
+  z-index: 2;
+  background-color: var(--theme-color-0, #ffffff);
+  box-shadow: var(--theme-shadow-2dp,  0   2px  4px rgba(0,0,0,0.16), 0  2px  4px rgba(0,0,0,0.23));
+  margin: 16px 0px;
+
+  &.mce-expanded {
+    transition: all 450ms var(--theme-animation-ease, cubic-bezier(0.23, 1, 0.32, 1) 0ms);
+  }
+
+  &:not(.mce-expanded) {
+    border-radius: 0;
+    margin: 0;
+    border-bottom: 1px solid var(--theme-text-color-100, #f5f5f5);
+    max-height: 48px;
+    overflow: hidden;
+
+    &:first-child {
+      border-radius: 2px 2px 0 0;
+    }
+    &:last-child {
+      border-radius: 0 0 2px 2px;
+    }
+
+    > .mce-title {
+      position: relative;
+      padding: 0 24px;
+      line-height: 48px;
+    }
+
+    > .mce-title:after {
+      content: '\e5cf';
+    }
+
+    > .mce-text,
+    > .mce-actions {
+      line-height: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+  }
+
+  > .mce-title {
+    position: relative;
+    padding: 20px 24px;
+    height: 64px;
+    cursor: pointer;
+  }
+
+  > .mce-title:after {
+    content: '\e5ce';
+    display: inline-block;
+    position: absolute;
+    font-family: 'Material Icons';
+    right: 24px;
+    top: 0;
+    font-size: 24px;
+    line-height: 64px;
+  }
+
+  > .mce-title h1,
+  > .mce-title h2,
+  > .mce-title h3 {
+    font-size: var(--theme-title-font-size, 20px);
+    font-weight: var(--theme-title-font-weight, 500);
+    margin: 0;
+    min-width: 148px;
+    font-weight: normal;
+    display: inline-block;
+  }
+
+  > .mce-title > div {
+    padding-left: 16px;
+    display: inline-block;
+  }
+
+  > .mce-title .mce-indicator {
+    display: inline-block;
+  }
+
+  > .mce-text {
+    padding: 0 24px 16px 24px;
+    font-size: 14px;
+    color: var(--theme-text-color-700, #616161);
+    overflow-x: auto;
+  }
+
+  > .mce-actions {
+    padding: 16px 8px 16px 24px;
+    font-size: 14px;
+    height: 68px;
+    text-align: right;
+    line-height: 32px;
+  }
+  
+  > .mce-actions > * {
+    margin-left: 8px;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+  }
+
+}

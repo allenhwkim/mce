@@ -1,21 +1,24 @@
 // webpack v4
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+const env = process.env.WEBPACK_MODE || process.env.NODE_ENV || 'development';
+console.log('env', env);
+
 module.exports = {
   entry: { 
     mce: './src/index.js',
-    style: './src/index.css' 
+    style: './src/index.scss' 
   },
   devtool: 'source-map',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].min.js',
-    //libraryTarget: 'umd'
   },
   module: {
     rules: [
@@ -32,16 +35,14 @@ module.exports = {
           'style-loader', 
           MiniCssExtractPlugin.loader,
           'css-loader', 
-          // 'postcss-loader',
-          // 'sass-loader'
+          'sass-loader'
         ]
       }
     ]
   },
   plugins: [ 
-    new CleanWebpackPlugin('dist', {} ),
+    (env !== 'development' ?  new CleanWebpackPlugin('dist', {}) : new webpack.DefinePlugin({})),
     new MiniCssExtractPlugin({
-      // filename: 'mce.[contenthash].css'
        filename: 'mce.min.css'
     }),
     new HtmlWebpackPlugin({
