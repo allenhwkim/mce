@@ -131,11 +131,11 @@ export class Route extends HTMLElement {
       if (html) { // only replace HTML when it is fetched or cached properly
         !this.noCache && (this.cachedTemplate = html);
         // Transtion effect. slide in from left
-        this.router.targetEl.classList.remove('mce-slide-in');
+        // this.router.targetEl.classList.remove('mce-slide-in');
         setTimeout(_ => {
           // this.router.targetEl.innerHTML = html; 
           setInnerHTML(this.router.targetEl, html); // replace html and run <script> in html
-          this.router.targetEl.classList.add('mce-slide-in');
+          // this.router.targetEl.classList.add('mce-slide-in');
         }, 50);
       }
       this.router.showLoadingEl(false);

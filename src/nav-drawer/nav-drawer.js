@@ -26,7 +26,7 @@ import {observeAttrChange, windowResizeHandler} from '../utils/index.js';
  * ### `mce-nav-drawer` Style Classes
  *  |name||description|
  *  |---|---|
- *  |visible| indicates nav drawer is open state
+ *  |mce-visible| indicates nav drawer is open state
  * 
  * ### `mce-nav-drawer` Child Element Style Classes
  *  |name||description|

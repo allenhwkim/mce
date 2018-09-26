@@ -36,6 +36,7 @@ var defaultLoadingCSS = `
         transform-origin: 16px 16px 0px;
         opacity: 1;
       }
+      /*
       mce-router > .mce-router-target {
         opacity: 0;
         margin-left: 100%;
@@ -45,6 +46,7 @@ var defaultLoadingCSS = `
         margin-left: 0%;
         transition: all 0.25s;
       }
+      */
     </style>`;
 
 var defaultLoadingHTML = defaultLoadingCSS + `

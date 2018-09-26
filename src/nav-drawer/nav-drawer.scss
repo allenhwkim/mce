@@ -1,11 +1,20 @@
 /*https://material.io/guidelines/patterns/navigation-drawer.html#navigation-drawer-specs*/
 .mce-desktop {
+  > mce-nav-drawer {
+    right: inherit;
+  }
+
   > mce-nav-drawer .mce-page-blocker {
     display: none;
   }
 
   > mce-nav-drawer:not(.mce-visible) {
     visibility: visible;
+
+    + * { /* adjavent-sibling, main contents */
+      margin-left: 280px;
+    }
+
     .mce-contents {
       left: 0;
       transform: translateX(0);
@@ -16,13 +25,40 @@
 
 mce-nav-drawer {
   display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 13;
 
   &.mce-visible {
     visibility: visible;
+
+    + * { /* adjavent-sibling, main contents */
+      margin-left: 280px;
+    }
+
+    .mce-contents {
+      left: 0;
+      transform: translateX(0);
+      transition: var(--theme-animation-in, all .3s ease-in);
+    }
   }
 
   &:not(.mce-visible) {
     visibility: hidden;
+    + * { /* adjavent-sibling, main contents */
+      margin-left: 0;
+    }
+    .mce-contents {
+      left: -241px;
+      transform: translateX(0);
+      transition: var(--theme-animation-out, all .2s ease-out);
+    }
+    .mce-page-blocker {
+      display: none;
+    }
   }
 
   .mce-page-blocker {
@@ -42,7 +78,7 @@ mce-nav-drawer {
     display: block;
     height: 100%; 
     left: 0;
-    max-width: 320px;
+    max-width: 280px;
     overflow: auto;
     position: absolute;
     top: 0;
@@ -63,16 +99,6 @@ mce-nav-drawer {
   }
   .mce-contents .mce-title {
     padding: 8px 16px;
-  }
-  mce-nav-drawer.mce-visible .mce-contents {
-    left: 0;
-    transform: translateX(0);
-    transition: var(--theme-animation-in, all .3s ease-in);
-  }
-  mce-nav-drawer:not(.mce-visible) .mce-contents {
-    left: -241px;
-    transform: translateX(0);
-    transition: var(--theme-animation-out, all .2s ease-out);
   }
 
   .mce-contents hr, 
