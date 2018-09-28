@@ -16,6 +16,7 @@ module.exports = (env, argv) => {
     entry: { 
       mce: [
         'core-js/fn/reflect/construct', 
+        'core-js/es6/array',
         './src/index.js'
       ],
       style: './src/index.scss' 
