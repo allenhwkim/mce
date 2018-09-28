@@ -1,4 +1,3 @@
-import 'whatwg-fetch';
 import './mce-polyfill.js';
 
 import {AppBar} from './app-bar/app-bar.js';

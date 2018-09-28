@@ -29,7 +29,6 @@ export function waitUntil(condition) {
  * @example
  *   window.ce = {resizeHandler: windowResizeHandler};
  *   window.addEventListener('resize', window.ce.resizeHandler);
- *   window.addEventListener('load', window.ce.resizeHandler);v
  */
 export function windowResizeHandler() {
   if (window.innerWidth >= 1024) {

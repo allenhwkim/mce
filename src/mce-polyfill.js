@@ -130,6 +130,7 @@ cssVars({});
     };
 
     window.addEventListener('load', function() {
+      console.log('[mce window.load] polyfill for window.customElements, adding observers');
       let options = {childList: true, subtree: true};
       observer.observe(document.body, options);
       checkAndApplyAllCustomElements(document.body);

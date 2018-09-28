@@ -12992,7 +12992,9 @@ var AppBar = exports.AppBar = function (_CustomElement2) {
       if (window.ce && window.ce.resizeHandler) {} else {
         window.ce = { resizeHandler: _index.windowResizeHandler };
         window.addEventListener('resize', window.ce.resizeHandler);
-        window.addEventListener('load', window.ce.resizeHandler);
+
+        var func = window.innerWidth >= 1024 ? 'add' : 'remove';
+        document.body.classList[func]('mce-desktop');
       }
       this._addFiller();
     }
@@ -13194,7 +13196,9 @@ var BottomNavBar = exports.BottomNavBar = function (_CustomElement2) {
       if (window.ce && window.ce.resizeHandler) {} else {
         window.ce = { resizeHandler: _index.windowResizeHandler };
         window.addEventListener('resize', window.ce.resizeHandler);
-        window.addEventListener('load', window.ce.resizeHandler);
+
+        var func = window.innerWidth >= 1024 ? 'add' : 'remove';
+        document.body.classList[func]('mce-desktop');
       }
     }
   }]);
@@ -14233,8 +14237,6 @@ customElements.define('mce-icon', Icon);
 "use strict";
 
 
-__webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
-
 __webpack_require__(/*! ./mce-polyfill.js */ "./src/mce-polyfill.js");
 
 var _appBar = __webpack_require__(/*! ./app-bar/app-bar.js */ "./src/app-bar/app-bar.js");
@@ -14996,7 +14998,7 @@ var ListItem = exports.ListItem = function (_CustomElement2) {
   }, {
     key: '__clickHandler',
     value: function __clickHandler(event) {
-      var customEvent = new CustomEvent('selected', { detail: this.item });
+      var customEvent = (0, _createCustomEvent.createCustomEvent)('selected', { detail: this.item });
       this.parentListEl.dispatchEvent(customEvent);
     }
   }, {
@@ -15290,6 +15292,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
     };
 
     window.addEventListener('load', function () {
+      console.log('[mce window.load] polyfill for window.customElements, adding observers');
       var options = { childList: true, subtree: true };
       observer.observe(document.body, options);
       checkAndApplyAllCustomElements(document.body);
@@ -15544,7 +15547,9 @@ var NavDrawer = exports.NavDrawer = function (_CustomElement2) {
       if (window.ce && window.ce.resizeHandler) {} else {
         window.ce = { resizeHandler: _index.windowResizeHandler };
         window.addEventListener('resize', window.ce.resizeHandler);
-        window.addEventListener('load', window.ce.resizeHandler);
+
+        var func = window.innerWidth >= 1024 ? 'add' : 'remove';
+        document.body.classList[func]('mce-desktop');
       }
       setTimeout(function (_) {
         _this2.regroupedOnce = false;
@@ -16161,8 +16166,6 @@ exports.Router = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-__webpack_require__(/*! ../mce-polyfill.js */ "./src/mce-polyfill.js");
-
 __webpack_require__(/*! ./route.js */ "./src/router/route.js");
 
 var _defaultLoadingHtml = __webpack_require__(/*! ./default-loading-html.js */ "./src/router/default-loading-html.js");
@@ -16291,7 +16294,11 @@ var Router = exports.Router = function (_CustomElement2) {
       this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
       this.style.position = 'relative'; //required to show loaing overlay
-      window.addEventListener('popstate', this.popStateHandler);
+
+      var supportsPopState = window.navigator.userAgent.indexOf('Trident') === -1;
+      var popstate = supportsPopState ? 'popstate' : 'hashchange';
+      window.addEventListener(popstate, this.popStateHandler);
+
       setTimeout(function (_) {
         _this2._setProperties();
         _this2.popStateHandler();
@@ -16300,7 +16307,9 @@ var Router = exports.Router = function (_CustomElement2) {
   }, {
     key: 'disconnectedCallback',
     value: function disconnectedCallback() {
-      window.removeEventListener('popstate', this.popStateHandler);
+      var supportsPopState = window.navigator.userAgent.indexOf('Trident') === -1;
+      var popstate = supportsPopState ? 'popstate' : 'hashchange';
+      window.removeEventListener(popstate, this.popStateHandler);
     }
   }, {
     key: 'showLoadingEl',
@@ -17818,7 +17827,6 @@ function waitUntil(condition) {
  * @example
  *   window.ce = {resizeHandler: windowResizeHandler};
  *   window.addEventListener('resize', window.ce.resizeHandler);
- *   window.addEventListener('load', window.ce.resizeHandler);v
  */
 function windowResizeHandler() {
   if (window.innerWidth >= 1024) {

@@ -77,7 +77,7 @@ export class ListItem extends HTMLElement {
   }
 
   __clickHandler(event) {
-    let customEvent = new CustomEvent('selected', {detail: this.item});
+    let customEvent = createCustomEvent('selected', {detail: this.item});
     this.parentListEl.dispatchEvent(customEvent);
   }
 

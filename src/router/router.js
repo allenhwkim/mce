@@ -1,4 +1,3 @@
-import '../mce-polyfill.js';
 import './route.js';
 import {defaultLoadingHTML} from './default-loading-html.js';
 
@@ -100,7 +99,11 @@ export class Router extends HTMLElement {
     this.popStateHandler = this._popStateHandler.bind(this); // saving it to be used by add/remove
 
     this.style.position = 'relative'; //required to show loaing overlay
-    window.addEventListener('popstate', this.popStateHandler);
+
+    const supportsPopState = window.navigator.userAgent.indexOf('Trident') === -1;
+    const popstate = supportsPopState ? 'popstate' : 'hashchange';
+    window.addEventListener(popstate, this.popStateHandler);
+
     setTimeout(_ => {
       this._setProperties();
       this.popStateHandler();
@@ -108,7 +111,9 @@ export class Router extends HTMLElement {
   }
 
   disconnectedCallback() {
-    window.removeEventListener('popstate', this.popStateHandler);
+    const supportsPopState = window.navigator.userAgent.indexOf('Trident') === -1;
+    const popstate = supportsPopState ? 'popstate' : 'hashchange';
+    window.removeEventListener(popstate, this.popStateHandler);
   }
 
   showLoadingEl(show) {

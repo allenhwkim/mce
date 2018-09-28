@@ -44,7 +44,9 @@ export class NavDrawer extends HTMLElement {
     if (window.ce && window.ce.resizeHandler) {} else {
       window.ce = {resizeHandler: windowResizeHandler};
       window.addEventListener('resize', window.ce.resizeHandler);
-      window.addEventListener('load', window.ce.resizeHandler);
+      
+      const func = window.innerWidth >= 1024 ? 'add' : 'remove';
+      document.body.classList[func]('mce-desktop');
     }
     setTimeout(_ => {
       this.regroupedOnce = false;
