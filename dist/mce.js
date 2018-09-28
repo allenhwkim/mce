@@ -4486,16 +4486,6 @@ customElements.define('mce-list', List);
     return objMatch ? objMatch[1] : funcMatch[1];
   };
 
-  // polyfill window.customElements(obj)
-  if (!window.customElements) {
-    window.customElements = CustomElements;
-    window.addEventListener('load', function () {
-      var options = { childList: true, subtree: true };
-      observer.observe(document.body, options);
-      checkAndApplyAllCustomElements(document.body);
-    });
-  }
-
   // change a HTMLElement to a custom element by applying its prototype
   var applyCustomElement = function applyCustomElement(el, klass) {
     if (el.tagName.match(/-/)) {
@@ -4504,19 +4494,6 @@ customElements.define('mce-list', List);
       el._init && el._init();
       setTimeout(function () {
         el.connectedCallback && el.connectedCallback();
-      });
-    }
-  };
-
-  // window.customElement equivalent
-  var CustomElements = {
-    define: function define(name, klass) {
-      __customElements[name] = klass;
-      // this is called before or after window.onload. Define any tag found in HTML
-      // this also may cause missing elements dynamically loaded before MutationObserver kicks in
-      debug && console.log('CustomElements.define.......................');
-      Array.from(document.querySelectorAll(name)).forEach(function (el) {
-        applyCustomElement(el, __customElements[name]);
       });
     }
   };
@@ -4581,6 +4558,27 @@ customElements.define('mce-list', List);
       }
     });
   });
+
+  // polyfill window.customElements(obj)
+  if (!window.customElements) {
+    window.customElements = {
+      define: function define(name, klass) {
+        __customElements[name] = klass;
+        // this is called before or after window.onload. Define any tag found in HTML
+        // this also may cause missing elements dynamically loaded before MutationObserver kicks in
+        debug && console.log('CustomElements.define.......................');
+        Array.from(document.querySelectorAll(name)).forEach(function (el) {
+          applyCustomElement(el, __customElements[name]);
+        });
+      }
+    };
+
+    window.addEventListener('load', function () {
+      var options = { childList: true, subtree: true };
+      observer.observe(document.body, options);
+      checkAndApplyAllCustomElements(document.body);
+    });
+  }
 })();
 
 /***/ }),

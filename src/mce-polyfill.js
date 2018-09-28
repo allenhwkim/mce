@@ -43,15 +43,6 @@
     return objMatch ? objMatch[1] : funcMatch[1];
   };
 
-  // polyfill window.customElements(obj)
-  if (!window.customElements) {
-    window.customElements = CustomElements;
-    window.addEventListener('load', function() {
-      let options = {childList: true, subtree: true};
-      observer.observe(document.body, options);
-      checkAndApplyAllCustomElements(document.body);
-    });
-  }
 
   // change a HTMLElement to a custom element by applying its prototype
   let applyCustomElement = function(el, klass) {
@@ -61,19 +52,6 @@
       el._init && el._init();
       setTimeout(function(){
         el.connectedCallback && el.connectedCallback();
-      });
-    }
-  };
-
-  // window.customElement equivalent
-  let CustomElements = { 
-    define: function(name, klass) {
-      __customElements[name] = klass;
-      // this is called before or after window.onload. Define any tag found in HTML
-      // this also may cause missing elements dynamically loaded before MutationObserver kicks in
-      debug && console.log('CustomElements.define.......................');
-      Array.from(document.querySelectorAll(name)).forEach(function(el) {
-        applyCustomElement(el, __customElements[name]);
       });
     }
   };
@@ -100,7 +78,6 @@
       applyCustomElement(node, __customElements[nodeName]);
     }
   };
-
 
   let observer = new MutationObserver(function(mutationRecords) {
 
@@ -133,5 +110,26 @@
       }
     });
   });
+
+  // polyfill window.customElements(obj)
+  if (!window.customElements) {
+    window.customElements = { 
+      define: function(name, klass) {
+        __customElements[name] = klass;
+        // this is called before or after window.onload. Define any tag found in HTML
+        // this also may cause missing elements dynamically loaded before MutationObserver kicks in
+        debug && console.log('CustomElements.define.......................');
+        Array.from(document.querySelectorAll(name)).forEach(function(el) {
+          applyCustomElement(el, __customElements[name]);
+        });
+      }
+    };
+
+    window.addEventListener('load', function() {
+      let options = {childList: true, subtree: true};
+      observer.observe(document.body, options);
+      checkAndApplyAllCustomElements(document.body);
+    });
+  }
 
 })();
