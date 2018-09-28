@@ -1,6 +1,6 @@
 {
   "name": "mce",
-  "version": "0.10.13",
+  "version": "0.10.14",
   "description": "Material Designed Custom Element",
   "main": "dist/mce.js",
   "scripts": {
