@@ -1,0 +1,15 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "ie >= 11"]
+      },
+      "useBuiltIns": true
+    }],
+    "stage-3"
+  ],
+  "plugins": [
+    "transform-custom-element-classes",
+    "transform-es2015-classes"
+  ]
+}

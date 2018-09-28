@@ -1,33 +1,37 @@
 // webpack v4
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = (env, argv) => {
-  console.log('mode', argv.mode);
 
   const config = {
     entry: { 
-      mce: './src/index.js',
+      mce: [
+        'core-js/fn/reflect/construct', 
+        './src/index.js'
+      ],
       style: './src/index.scss' 
     },
+    devtool: 'source-map',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js'
+      filename: '[name].js',
+      libraryTarget: 'umd'
     },
     module: {
       rules: [
-        {
+        { 
           test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: "babel-loader"
-          }
+          loader: 'babel-loader',
+          exclude: /node_modules/
         },
         {
           test: /\.scss$/,
