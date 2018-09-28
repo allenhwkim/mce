@@ -1,6 +1,10 @@
 /**
  * Allen's Custom Element Polyfill for better performance
  */
+import 'whatwg-fetch';
+import cssVars from 'css-vars-ponyfill';
+cssVars({});
+
 (function(){
   let __customElements = {};
   let debug = !!window.location.search.match(/\?debug=true/);
