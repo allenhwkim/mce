@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="themes/blue.css">
 
-    <link rel="stylesheet" href="mce.min.css?db2ee8739bd610aeeff8" />
-    <script src="mce.min.js?db2ee8739bd610aeeff8"></script>
+    <link rel="stylesheet" id="mce-css" href="mce.css?ed5373fda6379fb5cee2" />
+    <script src="mce.js?ed5373fda6379fb5cee2"></script>
 
     <style>
       html, body {margin: 0;}
@@ -22,9 +22,9 @@
       .dark-bg { background-color: var(--theme-color-600, #757575); color: var(--theme-text-color-0, #ffffff); }
       .positioned { width: 250px; display:inline-block; position: relative; height: 150px;}
 
-      #main { margin-left: 320px; position: relative; height: 100vh; overflow: auto;}
+      /*#main { position: relative; height: 100%; overflow: auto;}*/
       #view-source { font-size: 14px; background-color: #555; color: #fff; padding: 6px 12px; }
-      #nav-items, #main-contents {height: calc(100vh - 56px); overflow: auto;}
+      /*#nav-items, #main-contents {height: calc(100vh - 56px); overflow: auto;}*/
     </style>
 
     <script>
@@ -39,6 +39,9 @@
       function clearSource() {
         var el = document.querySelector('#view-source').style.display='none';
         window.scrollTo(0,0);
+      }
+      function toggleNavDrawer() {
+        document.querySelector('mce-nav-drawer').classList.toggle('mce-visible');
       }
     </script>
 
@@ -84,7 +87,7 @@
 
       <mce-app-bar>
         <div class="mce-nav-icon">
-          <mce-icon onclick="alert('TODO')">menu</mce-icon>
+          <mce-icon onclick="toggleNavDrawer()">menu</mce-icon>
         </div>
         <h1 class="mce-title">Materialized Custom Element</h1>
         <div class="mce-icons">

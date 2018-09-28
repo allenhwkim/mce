@@ -4,57 +4,74 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMd5Hash = require('webpack-md5-hash');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const env = process.env.WEBPACK_MODE || process.env.NODE_ENV || 'development';
-console.log('env', env);
+module.exports = (env, argv) => {
+  console.log('mode', argv.mode);
 
-module.exports = {
-  entry: { 
-    mce: './src/index.js',
-    style: './src/index.scss' 
-  },
-  devtool: 'source-map',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].min.js',
-  },
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader"
+  const config = {
+    entry: { 
+      mce: './src/index.js',
+      style: './src/index.scss' 
+    },
+    output: {
+      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+          test: /\.scss$/,
+          use:  [ 
+            'style-loader',
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
+          ]
         }
-      },
-      {
-        test: /\.scss$/,
-        use:  [ 
-          'style-loader',
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
-      }
+      ]
+    },
+    plugins: [ 
+      new MiniCssExtractPlugin({
+         filename: 'mce'+ (argv.mode === 'development' ? '':'.min')+'.css'
+      }),
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: true,
+        template: 'demo/index.html',
+        filename: 'index.html'
+      }),
+      new WebpackMd5Hash(),
+      new CopyWebpackPlugin([
+          {from: 'src/themes/*', to: 'themes', flatten: true },
+          {from: 'demo', to: ''}
+        ], {ignore: []})
     ]
-  },
-  plugins: [ 
-    (env !== 'development' ?  new CleanWebpackPlugin('dist', {}) : new webpack.DefinePlugin({})),
-    new MiniCssExtractPlugin({
-       filename: 'mce.min.css'
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      hash: true,
-      template: 'demo/index.html',
-      filename: 'index.html'
-    }),
-    new WebpackMd5Hash(),
-    new CopyWebpackPlugin([
-        {from: 'src/themes/*', to: 'themes', flatten: true },
-        {from: 'demo', to: ''}
-      ], {ignore: []})
-  ]
+  };
+
+  if (argv.mode === 'production') {
+    config.devtool = 'source-map';
+    config.optimization = {
+      minimizer: [
+        new UglifyJsPlugin({
+          cache: true,
+          parallel: true,
+          sourceMap: true // set to true if you want JS source maps
+        }),
+        new OptimizeCSSAssetsPlugin({})
+      ]
+    };
+    config.output.filename = '[name].min.js';
+  }
+
+  return config;
 };
