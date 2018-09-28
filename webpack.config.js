@@ -15,8 +15,7 @@ module.exports = (env, argv) => {
   const config = {
     entry: { 
       mce: [
-        'core-js/fn/reflect/construct', 
-        'core-js/es6/array',
+        'babel-polyfill', 
         'url-polyfill',
         './src/index.js'
       ],
