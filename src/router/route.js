@@ -112,7 +112,7 @@ export class Route extends HTMLElement {
             url = cbResp.url || url;
             options = cbResp.options || {};
           }
-          return fetch(url, options)
+          return window.fetch(url, options)
             .then(response => {
               if (!response.ok) {
                 throw Error(`url: ${url}, status: ${response.statusText}`);

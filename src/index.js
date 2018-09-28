@@ -1,4 +1,6 @@
+import 'whatwg-fetch';
 import './mce-polyfill.js';
+
 import {AppBar} from './app-bar/app-bar.js';
 import {BottomNavBar} from './bottom-nav-bar/bottom-nav-bar.js';
 import {Button} from './button/button.js';

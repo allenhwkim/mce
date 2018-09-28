@@ -10,7 +10,7 @@ function isLatLng(latlng) {
 export function geocode(address) {
   let url = 'https://nominatim.openstreetmap.org/?format=json'+
     '&addressdetails=1&q='+address+'&format=json&limit=1'; 
-  return fetch(url).then( function(response) {
+  return window.fetch(url).then( function(response) {
     return response.json();
   });
 }
