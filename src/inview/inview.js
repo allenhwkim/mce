@@ -1,4 +1,5 @@
 import {parseAttributes} from '../utils/index.js';
+import {createCustomEvent} from '../create-custom-event.js';
 
 /**
  * Render element only if the element comes into the viewport
@@ -61,9 +62,9 @@ export class Inview extends HTMLElement {
       let detail = {entry};
       if (entry.isIntersecting) {
         this.__activateTemplate();
-        this.dispatchEvent(new CustomEvent('inview', {detail}));
+        this.dispatchEvent(createCustomEvent('inview', {detail}));
       } else {
-        this.dispatchEvent(new CustomEvent('outview', {detail}));
+        this.dispatchEvent(createCustomEvent('outview', {detail}));
       }
     });
   }

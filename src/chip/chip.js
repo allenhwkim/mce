@@ -1,3 +1,5 @@
+import {createCustomEvent} from '../create-custom-event.js';
+
 /**
  * Chips represent complex entities in small blocks, such as a contact.
  *
@@ -56,7 +58,7 @@ export class Chip extends HTMLElement {
       removeEl.innerHTML = 'clear';
 
       removeEl.addEventListener('click', event => {
-        let customEvent = new CustomEvent('remove', event);
+        let customEvent = createCustomEvent('remove', event);
         this.dispatchEvent(customEvent);
       });
 

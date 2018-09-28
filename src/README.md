@@ -7,6 +7,7 @@
 
 <script>
   import {parseAttributes} from '../utils/index.js';
+  import {createCustomEvent} from '../create-custom-event.js';
 
   let el = document.querySelector('#foo');
   let parsedAttrs = parseAttributes(el.attributes);
@@ -14,7 +15,7 @@
     el.addEventListener(eventName, parsedAttrs.events[eventName]);
   }
 
-  let customEvent = new CustomEvent('foo', {});
+  let customEvent = createCustomEvent('foo', {});
   el.dispatchEvent(customEvent);
 </script>
 ```

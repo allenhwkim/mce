@@ -1,3 +1,5 @@
+import {createCustomEvent} from '../create-custom-event.js';
+
 export class NavItem extends HTMLElement {
   connectedCallback() {
     this.regroupedOnce = false;
@@ -14,7 +16,7 @@ export class NavItem extends HTMLElement {
     if (href) {
       window.location.href = href; //with href, go to the given url, 
       //with href, close it if the container is mce-nav-drawer or mce-menu
-      let customEvent = new CustomEvent('close', event);
+      let customEvent = createCustomEvent('close', {bubbles: true});
       this.dispatchEvent(customEvent);
       event.preventDefault();
     }

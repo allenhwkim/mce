@@ -1,4 +1,5 @@
 import {observeAttrChange} from '../utils/index.js';
+import {createCustomEvent} from '../create-custom-event.js';
 
 const HTML = `
   <label for="__ID__" tabindex="0">
@@ -84,7 +85,7 @@ export class Search extends HTMLElement {
 
   _showInputField(event) {
     if (this.inputWrapper.classList.contains('mce-visible') && this.inputEl.value) {
-      let customEvent = new CustomEvent('search', event);
+      let customEvent = createCustomEvent('search', {bubbles: true});
       this.dispatchEvent(customEvent);
     } else {
       this.inputWrapper.classList.toggle('mce-visible');

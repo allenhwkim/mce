@@ -1,4 +1,5 @@
 import {str2Val} from '../utils/index.js';
+import {createCustomEvent} from '../create-custom-event.js';
 
 /**
  * List item responds to tab, keydown, keyup(ENTER, ESC), and cick
@@ -66,7 +67,7 @@ export class ListItem extends HTMLElement {
       case 'Enter':
       case 'Escape':
         const eventName = event.key == 'Enter' ? 'selected' : 'escaped';
-        customEvent = new CustomEvent(eventName, {detail: this.item});
+        customEvent = createCustomEvent(eventName, {bubbles: true, detail: this.item});
         this.parentListEl.dispatchEvent(customEvent);
         this.parentListEl.focus();
         break;

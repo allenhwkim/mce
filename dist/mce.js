@@ -12308,8 +12308,11 @@ customElements.define('mce-checkbox', Checkbox);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.Chip = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _createCustomEvent = __webpack_require__(/*! ../create-custom-event.js */ "./src/create-custom-event.js");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12395,7 +12398,7 @@ var Chip = exports.Chip = function (_CustomElement2) {
         removeEl.innerHTML = 'clear';
 
         removeEl.addEventListener('click', function (event) {
-          var customEvent = new CustomEvent('remove', event);
+          var customEvent = (0, _createCustomEvent.createCustomEvent)('remove', event);
           _this2.dispatchEvent(customEvent);
         });
 
@@ -12414,6 +12417,39 @@ var Chip = exports.Chip = function (_CustomElement2) {
 }(_CustomElement);
 
 customElements.define('mce-chip', Chip);
+
+/***/ }),
+
+/***/ "./src/create-custom-event.js":
+/*!************************************!*\
+  !*** ./src/create-custom-event.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.createCustomEvent = createCustomEvent;
+/**
+ * IE11 Compatible CustomEvent
+ * @example:
+ *   const myEvent = createCustomEvent('agent-live-chat', {bubbles: true});
+ *   element.dispatchEvent(myEvent);
+ */
+function createCustomEvent(eventName, options) {
+  var event = void 0;
+  if (typeof CustomEvent === 'function') {
+    event = new CustomEvent(eventName, options);
+  } else {
+    event = document.createEvent('CustomEvent');
+    event.initCustomEvent(eventName, options.bubbles, options.cancelable, options.detail);
+  }
+  return event;
+}
 
 /***/ }),
 
@@ -13064,6 +13100,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _index = __webpack_require__(/*! ../utils/index.js */ "./src/utils/index.js");
 
+var _createCustomEvent = __webpack_require__(/*! ../create-custom-event.js */ "./src/create-custom-event.js");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13155,9 +13193,9 @@ var Inview = exports.Inview = function (_CustomElement2) {
         var detail = { entry: entry };
         if (entry.isIntersecting) {
           _this2.__activateTemplate();
-          _this2.dispatchEvent(new CustomEvent('inview', { detail: detail }));
+          _this2.dispatchEvent((0, _createCustomEvent.createCustomEvent)('inview', { detail: detail }));
         } else {
-          _this2.dispatchEvent(new CustomEvent('outview', { detail: detail }));
+          _this2.dispatchEvent((0, _createCustomEvent.createCustomEvent)('outview', { detail: detail }));
         }
       });
     }
@@ -13226,7 +13264,7 @@ function isLatLng(latlng) {
 
 function geocode(address) {
   var url = 'https://nominatim.openstreetmap.org/?format=json' + '&addressdetails=1&q=' + address + '&format=json&limit=1';
-  return fetch(url).then(function (response) {
+  return window.fetch(url).then(function (response) {
     return response.json();
   });
 }
@@ -13604,6 +13642,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _index = __webpack_require__(/*! ../utils/index.js */ "./src/utils/index.js");
 
+var _createCustomEvent = __webpack_require__(/*! ../create-custom-event.js */ "./src/create-custom-event.js");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -13704,7 +13744,7 @@ var ListItem = exports.ListItem = function (_CustomElement2) {
         case 'Enter':
         case 'Escape':
           var eventName = event.key == 'Enter' ? 'selected' : 'escaped';
-          customEvent = new CustomEvent(eventName, { detail: this.item });
+          customEvent = (0, _createCustomEvent.createCustomEvent)(eventName, { bubbles: true, detail: this.item });
           this.parentListEl.dispatchEvent(customEvent);
           this.parentListEl.focus();
           break;
@@ -14332,8 +14372,11 @@ customElements.define('mce-nav-drawer', NavDrawer);
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.NavItem = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _createCustomEvent = __webpack_require__(/*! ../create-custom-event.js */ "./src/create-custom-event.js");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -14376,7 +14419,7 @@ var NavItem = exports.NavItem = function (_CustomElement2) {
       if (href) {
         window.location.href = href; //with href, go to the given url, 
         //with href, close it if the container is mce-nav-drawer or mce-menu
-        var customEvent = new CustomEvent('close', event);
+        var customEvent = (0, _createCustomEvent.createCustomEvent)('close', { bubbles: true });
         this.dispatchEvent(customEvent);
         event.preventDefault();
       }
@@ -15180,6 +15223,8 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _index = __webpack_require__(/*! ../utils/index.js */ "./src/utils/index.js");
 
+var _createCustomEvent = __webpack_require__(/*! ../create-custom-event.js */ "./src/create-custom-event.js");
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -15296,7 +15341,7 @@ var Search = exports.Search = function (_CustomElement2) {
       var _this4 = this;
 
       if (this.inputWrapper.classList.contains('mce-visible') && this.inputEl.value) {
-        var customEvent = new CustomEvent('search', event);
+        var customEvent = (0, _createCustomEvent.createCustomEvent)('search', { bubbles: true });
         this.dispatchEvent(customEvent);
       } else {
         this.inputWrapper.classList.toggle('mce-visible');
