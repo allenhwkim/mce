@@ -4444,25 +4444,57 @@ customElements.define('mce-list', List);
 /**
  * Allen's Custom Element Polyfill for better performance
  */
-
-/**
- * Hack in support for Function.name for browsers that don't support it.
- * IE, I'm looking at you.
-**/
-if (Function.prototype.name === undefined && Object.defineProperty !== undefined) {
-  Object.defineProperty(Function.prototype, 'name', {
-    get: function get() {
-      var funcNameRegex = /function\s([^(]{1,})\(/;
-      var results = funcNameRegex.exec(this.toString());
-      return results && results.length > 1 ? results[1].trim() : "";
-    },
-    set: function set(value) {}
-  });
-}
-
 (function () {
   var __customElements = {};
   var debug = !!window.location.search.match(/\?debug=true/);
+
+  // common polyfill Object.values(obj)
+  if (!Object.values) {
+    // Safari does not have this. hmm
+    Object.values = function (obj) {
+      return Object.keys(obj).map(function (key) {
+        return obj[key];
+      });
+    };
+  };
+
+  // common polyfill el.matches(selector)
+  if (!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+
+  // common polyfill el.closest(selector)
+  if (!Element.prototype.closest) {
+    Element.prototype.closest = function (s) {
+      var el = this;
+      if (!document.documentElement.contains(el)) return null;
+      do {
+        if (el.matches(s)) return el;
+        el = el.parentElement;
+      } while (el !== null);
+      return null;
+    };
+  }
+
+  // common polyfill el.constructor.name for IE11
+  var getClassName = function getClassName(obj) {
+    if (obj.constructor.name) return obj.constructor.name;
+
+    // Chrome "function HTMLButtonElement() { [native code] }"
+    var funcMatch = obj.constructor.toString().match(/^\s*function\s*(\S+)\s*\(/);
+    // IE11   "[object HTMLButtonElement]"
+    var objMatch = obj.constructor.toString().match(/\[object\s(\S+)\]/);
+
+    return objMatch ? objMatch[1] : funcMatch[1];
+  };
+
+  // polyfill window.customElements(obj)
+  if (!window.customElements) {
+    window.customElements = CustomElements;
+    window.addEventListener('load', function () {
+      var options = { childList: true, subtree: true };
+      observer.observe(document.body, options);
+      checkAndApplyAllCustomElements(document.body);
+    });
+  }
 
   // change a HTMLElement to a custom element by applying its prototype
   var applyCustomElement = function applyCustomElement(el, klass) {
@@ -4496,7 +4528,7 @@ if (Function.prototype.name === undefined && Object.defineProperty !== undefined
     var _loop = function _loop(name) {
       debug && console.log('checkAndApplyAllCustomElements..........', el.querySelectorAll(name));
       Array.from(el.querySelectorAll(name)).forEach(function (el) {
-        if (el.constructor.name.match(/^HTML\w*Element$/)) {
+        if (getClassName(el).match(/^HTML\w*Element$/)) {
           applyCustomElement(el, __customElements[name]);
         }
       });
@@ -4510,7 +4542,7 @@ if (Function.prototype.name === undefined && Object.defineProperty !== undefined
   var checkAndApplyCustomElement = function checkAndApplyCustomElement(node) {
     var nodeName = node.nodeName.toLowerCase();
     if (node.nodeType === Node.ELEMENT_NODE && __customElements[nodeName] && // defined as a custom element
-    node.constructor.name.match(/^HTML\w*Element$/)) {
+    getClassName(node).match(/^HTML\w*Element$/)) {
       // and not yet initialized
       debug && console.log('observer....................... 2', node);
       applyCustomElement(node, __customElements[nodeName]);
@@ -4549,42 +4581,6 @@ if (Function.prototype.name === undefined && Object.defineProperty !== undefined
       }
     });
   });
-
-  // polyfill window.customElements(obj)
-  if (!window.customElements) {
-    window.customElements = CustomElements;
-    window.addEventListener('load', function () {
-      var options = { childList: true, subtree: true };
-      observer.observe(document.body, options);
-      checkAndApplyAllCustomElements(document.body);
-    });
-  }
-
-  // polyfill Object.values(obj)
-  if (!Object.values) {
-    // Safari does not have this. hmm
-    Object.values = function (obj) {
-      return Object.keys(obj).map(function (key) {
-        return obj[key];
-      });
-    };
-  };
-
-  // polyfill el.matches(selector)
-  if (!Element.prototype.matches) Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-
-  // polyfill el.closest(selector)
-  if (!Element.prototype.closest) {
-    Element.prototype.closest = function (s) {
-      var el = this;
-      if (!document.documentElement.contains(el)) return null;
-      do {
-        if (el.matches(s)) return el;
-        el = el.parentElement;
-      } while (el !== null);
-      return null;
-    };
-  }
 })();
 
 /***/ }),
