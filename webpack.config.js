@@ -17,6 +17,7 @@ module.exports = (env, argv) => {
       mce: [
         'core-js/fn/reflect/construct', 
         'core-js/es6/array',
+        'url-polyfill',
         './src/index.js'
       ],
       style: './src/index.scss' 
