@@ -1,7 +1,10 @@
 <a href="https://mymce.github.io" target="_blank"><img src="logo.png" alt="MCE" height="200"></a>
+
+![image](https://user-images.githubusercontent.com/1437734/46240499-8fbebf00-c376-11e8-9c59-04f7a6b3469d.png) ![image](https://user-images.githubusercontent.com/1437734/46240506-a8c77000-c376-11e8-9e89-a410ce0563ff.png) ![image](https://user-images.githubusercontent.com/1437734/46240509-b54bc880-c376-11e8-98ea-52a708780d2f.png) ![image](https://user-images.githubusercontent.com/1437734/46240513-bf6dc700-c376-11e8-9f9d-2c70a7b22aa7.png)
+
 ## Materialized Custom Element 
 
-1. Small and fast(Less than 9KB gzipped).
+1. Small and fast.
 2. No depenancy on framework or library. Vanilla JS only.
 3. Common-sense engineering; Element itself(not JS object) has properties and functions.
 4. Minimal coding, easy to maintain. Take a look at [code](https://github.com/allenhwkim/mce/blob/master/src/app-bar/app-bar.js)
