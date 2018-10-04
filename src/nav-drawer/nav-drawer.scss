@@ -11,10 +11,6 @@
   > mce-nav-drawer:not(.mce-visible) {
     visibility: visible;
 
-    + * { /* adjavent-sibling, main contents */
-      margin-left: 280px;
-    }
-
     .mce-contents {
       left: 0;
       transform: translateX(0);
