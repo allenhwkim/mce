@@ -798,9 +798,6 @@ mce-menu {
 
 .mce-desktop > mce-nav-drawer:not(.mce-visible) {
   visibility: visible; }
-  .mce-desktop > mce-nav-drawer:not(.mce-visible) + * {
-    /* adjavent-sibling, main contents */
-    margin-left: 280px; }
   .mce-desktop > mce-nav-drawer:not(.mce-visible) .mce-contents {
     left: 0;
     transform: translateX(0);
